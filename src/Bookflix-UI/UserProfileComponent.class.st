@@ -72,19 +72,15 @@ UserProfileComponent >> renderContentOn: html [
 		class: 'container';
 		style: 'max-width: 320px;';
 		with: [ self
-				renderFormTitleOn: html;
-				renderFormUserName: html;
-				renderFormUserSurname: html;
-				renderFormUserEmail: html;
-				renderFormUserPassword: html;
-				renderFormUserBirthdate: html ]
+				renderUserDatesOn: html;
+				renderUpdateButtonOn: html ]
 ]
 
 { #category : #rendering }
 UserProfileComponent >> renderFormTitleOn: html [
 	^ html heading level1
 		class: 'h3 mb-3 font-weight-normal text-center mb-5';
-		with: 'Perfil de usuario'
+		with: 'Datos de usuario'
 ]
 
 { #category : #rendering }
@@ -97,13 +93,7 @@ UserProfileComponent >> renderFormUserBirthdate: html [
 			html textInput
 				id: 'input_birthdate';
 				class: 'form-control';
-				on: #birthdate of: self.
-			html button
-				type: 'submit';
-				class: 'btn btn-primary';
-				callback: [ self session user birthdate: birthdate.
-					self session updateUser ];
-				with: 'Modificar' ]
+				on: #birthdate of: self ]
 ]
 
 { #category : #rendering }
@@ -116,13 +106,7 @@ UserProfileComponent >> renderFormUserEmail: html [
 			html textInput
 				id: 'input_email';
 				class: 'form-control';
-				on: #email of: self.
-			html button
-				type: 'submit';
-				class: 'btn btn-primary';
-				callback: [ self session user email: email.
-					self session updateUser ];
-				with: 'Modificar' ]
+				on: #email of: self ]
 ]
 
 { #category : #rendering }
@@ -135,13 +119,7 @@ UserProfileComponent >> renderFormUserName: html [
 			html textInput
 				id: 'input_name';
 				class: 'form-control';
-				on: #name of: self.
-			html button
-				type: 'submit';
-				class: 'btn btn-primary';
-				callback: [ self session user name: name.
-					self session updateUser ];
-				with: 'Modificar' ]
+				on: #name of: self ]
 ]
 
 { #category : #rendering }
@@ -154,13 +132,7 @@ UserProfileComponent >> renderFormUserPassword: html [
 			html textInput
 				id: 'input_password';
 				class: 'form-control';
-				on: #password of: self.
-			html button
-				type: 'submit';
-				class: 'btn btn-primary';
-				callback: [ self session user password: password.
-					self session updateUser ];
-				with: 'Modificar' ]
+				on: #password of: self ]
 ]
 
 { #category : #rendering }
@@ -173,13 +145,28 @@ UserProfileComponent >> renderFormUserSurname: html [
 			html textInput
 				id: 'input_surname';
 				class: 'form-control';
-				on: #surname of: self.
-			html button
-				type: 'submit';
-				class: 'btn btn-primary';
-				callback: [ self session user surname: surname.
-					self session updateUser ];
-				with: 'Modificar' ]
+				on: #surname of: self ]
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderUpdateButtonOn: html [
+	html button
+		type: 'submit';
+		class: 'btn btn-primary';
+		callback: [ self updateUser ];
+		with: 'Actualizar datos'
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderUserDatesOn: html [
+	html form
+		with: [ self
+				renderFormTitleOn: html;
+				renderFormUserName: html;
+				renderFormUserSurname: html;
+				renderFormUserEmail: html;
+				renderFormUserPassword: html;
+				renderFormUserBirthdate: html ]
 ]
 
 { #category : #accessing }
@@ -190,4 +177,14 @@ UserProfileComponent >> surname [
 { #category : #accessing }
 UserProfileComponent >> surname: aSurname [
 	surname := aSurname
+]
+
+{ #category : #'as yet unclassified' }
+UserProfileComponent >> updateUser [
+	self session user name: name.
+	self session user surname: surname.
+	self session user email: email.
+	self session user password: password.
+	self session user birthdate: birthdate.
+	self session updateUser
 ]
