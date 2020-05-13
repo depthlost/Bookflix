@@ -7,6 +7,11 @@ Class {
 	#category : #'Bookflix-UI'
 }
 
+{ #category : #'as yet unclassified' }
+UserSession >> updateUser [
+"actualiza los datos de un usuario en la base de datos"
+]
+
 { #category : #accessing }
 UserSession >> user [
 	^ user

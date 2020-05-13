@@ -27,6 +27,11 @@ User class >> name: aName surname: aSurname email: anEmail password: aPassword b
 ]
 
 { #category : #setting }
+User >> birthdate [
+	^ birthdate
+]
+
+{ #category : #setting }
 User >> birthdate: aBirthdate [
 	birthdate := aBirthdate
 ]
@@ -82,6 +87,11 @@ User >> password [
 { #category : #setting }
 User >> password: aPassword [
 	password := aPassword
+]
+
+{ #category : #setting }
+User >> surname [
+	^ surname
 ]
 
 { #category : #setting }
