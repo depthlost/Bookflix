@@ -9,13 +9,13 @@ Class {
 
 { #category : #'as yet unclassified' }
 CommonUser class >> name: aName surname: aSurname email: anEmail password: aPassword birthdate: aBirthdate card: aCard [
-	^ self new
+	^ (self
 		name: aName
-			surname: aSurname
-			email: anEmail
-			password: aPassword
-			birthdate: aBirthdate
-			card: aCard;
+		surname: aSurname
+		email: anEmail
+		password: aPassword
+		birthdate: aBirthdate)
+		card: aCard;
 		yourself
 ]
 

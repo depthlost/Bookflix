@@ -55,6 +55,11 @@ User >> isAdmin [
 	^ self subclassResponsibility
 ]
 
+{ #category : #accessing }
+User >> name [
+	^ name
+]
+
 { #category : #setting }
 User >> name: aName [
 	name := aName
