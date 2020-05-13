@@ -136,7 +136,5 @@ LoginComponent >> renderSubmitButtonOn: html [
 LoginComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot title: 'Bookflix - Inicio de Sesión'.
-	anHtmlRoot bodyAttributes
-		addClass: 'py-5';
-		addStyle: 'background: #f5f5f5'
+	anHtmlRoot bodyAttributes addClass: 'py-5'
 ]
