@@ -181,10 +181,12 @@ UserProfileComponent >> surname: aSurname [
 
 { #category : #'as yet unclassified' }
 UserProfileComponent >> updateUser [
-	self session user name: name.
-	self session user surname: surname.
-	self session user email: email.
-	self session user password: password.
-	self session user birthdate: birthdate.
-	self session updateUser
+	| user |
+	user := self session user.
+	user name: name.
+	user surname: surname.
+	user email: email.
+	user password: password.
+	user birthdate: birthdate.
+	user save
 ]
