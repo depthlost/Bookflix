@@ -80,6 +80,16 @@ CommonUserProfileComponent >> initialize [
 ]
 
 { #category : #rendering }
+CommonUserProfileComponent >> renderCardUpdateButtonOn: html [
+	self session user card name: cardname.
+	self session user card surname: cardsurname.
+	self session user card number: cardnumber.
+	self session user card expirationDate: cardexpirationDate.
+	self session user card cardsecurityCode: cardsecurityCode.
+	self session updateCard
+]
+
+{ #category : #rendering }
 CommonUserProfileComponent >> renderContentOn: html [
 	super renderContentOn: html.
 	html div
@@ -96,6 +106,19 @@ CommonUserProfileComponent >> renderFormTitleCardOn: html [
 ]
 
 { #category : #rendering }
+CommonUserProfileComponent >> renderFormUserCardexpirationDate: html [
+	html form
+		class: 'form-inline';
+		with: [ html label
+				for: 'input_cardexpirationDate';
+				with: 'Fecha de vencimiento: '.
+			html textInput
+				id: 'input_cardexpirationDate';
+				class: 'form-control';
+				on: #cardexpirationDate of: self ]
+]
+
+{ #category : #rendering }
 CommonUserProfileComponent >> renderFormUserCardname: html [
 	html form
 		class: 'form-inline';
@@ -109,9 +132,53 @@ CommonUserProfileComponent >> renderFormUserCardname: html [
 ]
 
 { #category : #rendering }
+CommonUserProfileComponent >> renderFormUserCardnumber: html [
+	html form
+		class: 'form-inline';
+		with: [ html label
+				for: 'input_cardnumber';
+				with: 'numero: '.
+			html textInput
+				id: 'input_cardnumber';
+				class: 'form-control';
+				on: #cardnumber of: self ]
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderFormUserCardsecurityCode: html [
+	html form
+		class: 'form-inline';
+		with: [ html label
+				for: 'input_cardsecurityCode';
+				with: 'Fecha de vencimiento: '.
+			html textInput
+				id: 'input_cardsecurityCode';
+				class: 'form-control';
+				on: #cardsecurityCode of: self ]
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderFormUserCardsurname: html [
+	html form
+		class: 'form-inline';
+		with: [ html label
+				for: 'input_cardsurname';
+				with: 'Apellido del titular: '.
+			html textInput
+				id: 'input_cardsurname';
+				class: 'form-control';
+				on: #cardsurname of: self ]
+]
+
+{ #category : #rendering }
 CommonUserProfileComponent >> renderUserCardDates: html [
 	html form
 		with: [ self
 				renderFormTitleCardOn: html;
-				renderFormUserCardname: html ]
+				renderFormUserCardname: html;
+				renderFormUserCardsurname: html;
+				renderFormUserCardnumber: html;
+				renderFormUserCardexpirationDate: html;
+				renderFormUserCardsecurityCode: html;
+				renderCardUpdateButtonOn: html ]
 ]
