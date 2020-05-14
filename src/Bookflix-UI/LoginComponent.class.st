@@ -1,6 +1,6 @@
 "
 | application |
-application := WAAdmin register: LoginComponent asApplicationAt: '/bookflix'.
+application := WAAdmin register: LoginComponent asApplicationAt: '/main'.
 application sessionClass: UserSession.
 
 "
