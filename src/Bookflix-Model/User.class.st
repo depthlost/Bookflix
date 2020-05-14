@@ -57,7 +57,7 @@ User >> emailIsValid: aEmail [
 
 { #category : #abstract }
 User >> isAdmin [
-	^ self subclassResponsibility
+	^ false
 ]
 
 { #category : #accessing }

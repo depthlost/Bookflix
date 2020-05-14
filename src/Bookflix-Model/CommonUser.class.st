@@ -39,8 +39,3 @@ CommonUser >> name: aName surname: aSurname email: anEmail password: aPassword b
 		birthdate: aBirthdate.
 	card := aCard
 ]
-
-{ #category : #'as yet unclassified' }
-CommonUser >> îsAdmin [
-	^ false
-]

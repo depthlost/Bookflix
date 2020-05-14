@@ -6,14 +6,20 @@ application sessionClass: UserSession.
 "
 Class {
 	#name : #LoginComponent,
-	#superclass : #WABootstrapComponent,
+	#superclass : #WAComponent,
 	#instVars : [
+		'rootComponent',
 		'inputEmail',
 		'inputPassword',
 		'error'
 	],
 	#category : #'Bookflix-UI'
 }
+
+{ #category : #accessing }
+LoginComponent class >> rootComponent: aRootComponent [
+	^ self new rootComponent: aRootComponent
+]
 
 { #category : #initialization }
 LoginComponent >> initialize [
@@ -43,13 +49,14 @@ LoginComponent >> login [
 
 { #category : #callbacks }
 LoginComponent >> loginWith: anUser [
-	self session user: anUser
+	self session user: anUser.
+	rootComponent updateWithContentTo: WhitePage new
 ]
 
 { #category : #rendering }
 LoginComponent >> renderContentOn: html [
 	html div
-		class: 'container';
+		class: 'container py-5';
 		style: 'max-width: 320px;';
 		with: [ self renderFormOn: html ]
 ]
@@ -132,9 +139,13 @@ LoginComponent >> renderSubmitButtonOn: html [
 		with: 'Acceder'
 ]
 
+{ #category : #accessing }
+LoginComponent >> rootComponent: aRootComponent [
+	rootComponent := aRootComponent
+]
+
 { #category : #seaside }
 LoginComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix - Inicio de Sesión'.
-	anHtmlRoot bodyAttributes addClass: 'py-5'
+	anHtmlRoot title: 'Bookflix - Inicio de Sesión'
 ]

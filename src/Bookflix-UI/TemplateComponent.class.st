@@ -30,7 +30,8 @@ TemplateComponent >> contentComponent: aContentComponent [
 
 { #category : #initialization }
 TemplateComponent >> initialize [
-	headComponent := ProxyNavBarComponent new
+	headComponent := ProxyNavBarComponent rootComponent: self.
+	contentComponent := LoginComponent rootComponent: self
 ]
 
 { #category : #rendering }
@@ -38,4 +39,14 @@ TemplateComponent >> renderContentOn: html [
 	html
 		render: headComponent;
 		render: contentComponent
+]
+
+{ #category : #updating }
+TemplateComponent >> updateContentTo: aComponent [
+	contentComponent call: aComponent
+]
+
+{ #category : #updating }
+TemplateComponent >> updateWithContentTo: aComponent [
+	self call: (TemplateComponent contentComponent: aComponent)
 ]

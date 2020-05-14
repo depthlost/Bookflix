@@ -5,7 +5,7 @@ application sessionClass: UserSession.
 "
 Class {
 	#name : #UserProfileComponent,
-	#superclass : #WABootstrapComponent,
+	#superclass : #WAComponent,
 	#instVars : [
 		'name',
 		'surname',

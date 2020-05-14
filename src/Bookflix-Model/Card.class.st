@@ -2,8 +2,8 @@ Class {
 	#name : #Card,
 	#superclass : #Object,
 	#instVars : [
-		'name',
-		'surname',
+		'titular',
+		'type',
 		'number',
 		'expirationDate',
 		'securityCode'
@@ -11,15 +11,19 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #'as yet unclassified' }
-Card class >> name: aName surname: aSurname number: aNumber expirationDate: aDate securityCode: aCode [
+{ #category : #testing }
+Card class >> isVoyageRoot [
+	^ true
+]
+
+{ #category : #construction }
+Card class >> titular: aTitular type: aType number: aNumber expirationDate: aExpirationDate securityCode: aSecurityCode [
 	^ self new
-		name: aName
-			surname: aSurname
-			number: aNumber
-			expirationDate: aDate
-			securityCode: aCode;
-		yourself
+		titular: aTitular
+		type: aType
+		number: aNumber
+		expirationDate: aExpirationDate
+		securityCode: aSecurityCode
 ]
 
 { #category : #accessing }
@@ -28,37 +32,8 @@ Card >> expirationDate [
 ]
 
 { #category : #accessing }
-Card >> expirationDate: aDate [
-	expirationDate := aDate
-]
-
-{ #category : #accessing }
-Card >> name [
-	^ name
-]
-
-{ #category : #accessing }
-Card >> name: aName [
-	name := aName
-]
-
-{ #category : #'as yet unclassified' }
-Card >> name: aName surname: aSurname number: aNumber expirationDate: aDate securityCode: aCode [
-	name := aName.
-	surname := aSurname.
-	number := aNumber.
-	expirationDate := aDate.
-	securityCode := aCode
-]
-
-{ #category : #accessing }
 Card >> number [
 	^ number
-]
-
-{ #category : #accessing }
-Card >> number: aNumber [
-	number := aNumber
 ]
 
 { #category : #accessing }
@@ -67,16 +42,20 @@ Card >> securityCode [
 ]
 
 { #category : #accessing }
-Card >> securityCode: aCode [
-	securityCode := aCode
+Card >> titular [
+	^ titular
+]
+
+{ #category : #'as yet unclassified' }
+Card >> titular: aTitular type: aType number: aNumber expirationDate: aExpirationDate securityCode: aSecurityCode [
+	titular := aTitular.
+	type := aType.
+	number := aNumber.
+	expirationDate := aExpirationDate.
+	securityCode := aSecurityCode
 ]
 
 { #category : #accessing }
-Card >> surname [
-	^ surname
-]
-
-{ #category : #accessing }
-Card >> surname: aSurname [
-	^ aSurname
+Card >> type [
+	^ type
 ]
