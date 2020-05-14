@@ -73,7 +73,7 @@ UserProfileComponent >> renderContentOn: html [
 		style: 'max-width: 320px;';
 		with: [ self
 				renderUserDatesOn: html;
-				renderUpdateButtonOn: html ]
+				renderUserUpdateButtonOn: html ]
 ]
 
 { #category : #rendering }
@@ -149,15 +149,6 @@ UserProfileComponent >> renderFormUserSurname: html [
 ]
 
 { #category : #rendering }
-UserProfileComponent >> renderUpdateButtonOn: html [
-	html button
-		type: 'submit';
-		class: 'btn btn-primary';
-		callback: [ self updateUser ];
-		with: 'Actualizar datos'
-]
-
-{ #category : #rendering }
 UserProfileComponent >> renderUserDatesOn: html [
 	html form
 		with: [ self
@@ -167,6 +158,15 @@ UserProfileComponent >> renderUserDatesOn: html [
 				renderFormUserEmail: html;
 				renderFormUserPassword: html;
 				renderFormUserBirthdate: html ]
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderUserUpdateButtonOn: html [
+	html button
+		type: 'submit';
+		class: 'btn btn-primary';
+		callback: [ self updateUser ];
+		with: 'Actualizar datos'
 ]
 
 { #category : #accessing }
