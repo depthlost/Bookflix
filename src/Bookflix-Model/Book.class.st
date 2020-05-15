@@ -27,7 +27,8 @@ Book class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageUR
 
 { #category : #adding }
 Book >> addGender: aGender [
-	genders add: aGender
+	genders add: aGender.
+	aGender addBook: self
 ]
 
 { #category : #initialization }
@@ -42,5 +43,7 @@ Book >> title: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL 
 	description := aDescription.
 	imageURL := aImageURL.
 	author := aAuthor.
-	editorial := aEditorial
+	aAuthor addBook: self.
+	editorial := aEditorial.
+	aEditorial addBook: self
 ]
