@@ -26,12 +26,12 @@ User class >> name: aName surname: aSurname email: anEmail password: aPassword b
 		birthdate: aBirthdate
 ]
 
-{ #category : #setting }
+{ #category : #accessing }
 User >> birthdate [
 	^ birthdate
 ]
 
-{ #category : #setting }
+{ #category : #accessing }
 User >> birthdate: aBirthdate [
 	birthdate := aBirthdate
 ]
@@ -41,7 +41,7 @@ User >> email [
 	^ email
 ]
 
-{ #category : #setting }
+{ #category : #accessing }
 User >> email: anEmail [
 	(self emailIsValid: anEmail)
 		ifTrue: [ email := anEmail.
@@ -65,7 +65,7 @@ User >> name [
 	^ name
 ]
 
-{ #category : #setting }
+{ #category : #accessing }
 User >> name: aName [
 	name := aName
 ]
@@ -84,17 +84,17 @@ User >> password [
 	^ password
 ]
 
-{ #category : #setting }
+{ #category : #accessing }
 User >> password: aPassword [
 	password := aPassword
 ]
 
-{ #category : #setting }
+{ #category : #accessing }
 User >> surname [
 	^ surname
 ]
 
-{ #category : #setting }
+{ #category : #accessing }
 User >> surname: asurname [
 	surname := surname
 ]

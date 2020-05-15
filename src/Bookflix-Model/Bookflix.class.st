@@ -32,6 +32,11 @@ Bookflix >> addUser: aUser [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> existUserWithEmail: anEmail [
+	^ User selectAll anySatisfy: [ :user | user email = anEmail ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 	^ User selectAll
 		detect: [ :user | user email = anEmail & (user password = aPassword) ]
