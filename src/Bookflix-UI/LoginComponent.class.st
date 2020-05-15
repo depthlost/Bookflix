@@ -9,6 +9,7 @@ Class {
 	#superclass : #WAComponent,
 	#instVars : [
 		'rootComponent',
+		'registerComponent',
 		'inputEmail',
 		'inputPassword',
 		'error'
@@ -23,7 +24,8 @@ LoginComponent class >> rootComponent: aRootComponent [
 
 { #category : #initialization }
 LoginComponent >> initialize [
-	error := false
+	error := false.
+	registerComponent := RegisterComponent new
 ]
 
 { #category : #acccessing }
@@ -54,11 +56,25 @@ LoginComponent >> loginWith: anUser [
 ]
 
 { #category : #rendering }
+LoginComponent >> renderBottomSectionOn: html [
+	html div
+		class: 'row mt-3';
+		with: [ html div
+				class: 'col-6';
+				with: [  ].
+			html div
+				class: 'col-6';
+				with: [ self renderRegisterButtonOn: html ] ]
+]
+
+{ #category : #rendering }
 LoginComponent >> renderContentOn: html [
 	html div
 		class: 'container py-5';
 		style: 'max-width: 320px;';
-		with: [ self renderFormOn: html ]
+		with: [ self
+				renderFormOn: html;
+				renderBottomSectionOn: html ]
 ]
 
 { #category : #rendering }
@@ -128,6 +144,13 @@ LoginComponent >> renderLoginErrorMessageOn: html [
 		class: 'form-text text-danger';
 		with:
 			'El correo electronico y/o contraseña es incorrecto. Por favor intenta de nuevo.'
+]
+
+{ #category : #rendering }
+LoginComponent >> renderRegisterButtonOn: html [
+	html anchor
+		callback: [ self loginWith: (self call: registerComponent) ];
+		with: 'Registrarse'
 ]
 
 { #category : #rendering }
