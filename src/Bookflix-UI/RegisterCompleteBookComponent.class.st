@@ -91,8 +91,7 @@ RegisterCompleteBookComponent >> imageURL: aImageURL [
 
 { #category : #'as yet unclassified' }
 RegisterCompleteBookComponent >> registerBook: html [
-	| completeBook |
-	completeBook := CompleteBook
+	(CompleteBook
 		newWithTitle: title
 		ISBN: ISBN
 		description: description
@@ -100,8 +99,7 @@ RegisterCompleteBookComponent >> registerBook: html [
 		author: author
 		editorial: editorial
 		content: content
-		genders: genders.
-	completeBook save.
+		genders: genders) save.
 	html div
 		class: 'container';
 		style: 'max-width: 320px;';

@@ -24,22 +24,12 @@ ModifyCompleteBookComponent >> ISBN: aISBN [
 
 { #category : #accessing }
 ModifyCompleteBookComponent >> author [
-	^ book author name
+	^ book author
 ]
 
 { #category : #accessing }
 ModifyCompleteBookComponent >> author: aName [
-	book author name: aName
-]
-
-{ #category : #accessing }
-ModifyCompleteBookComponent >> authorSurname [
-	^ book author surname
-]
-
-{ #category : #accessing }
-ModifyCompleteBookComponent >> authorSurname: aSurname [
-	book author surname: aSurname
+	book author: aName
 ]
 
 { #category : #accessing }
@@ -69,7 +59,7 @@ ModifyCompleteBookComponent >> description: aDescription [
 
 { #category : #accessing }
 ModifyCompleteBookComponent >> editorial [
-	^ book editorial name
+	^ book editorial
 ]
 
 { #category : #accessing }
@@ -79,7 +69,7 @@ ModifyCompleteBookComponent >> editorial: aName [
 
 { #category : #accessing }
 ModifyCompleteBookComponent >> genders [
-	^ book gendersHowString
+	^ book genders
 ]
 
 { #category : #accessing }
@@ -102,7 +92,7 @@ ModifyCompleteBookComponent >> renderButtonSaveBook: html [
 	html button
 		type: 'submit';
 		class: 'btn btn-primary';
-		callback: [ self registerBook: html ];
+		callback: [ self updateBook: html ];
 		with: 'Actualizar datos'
 ]
 
@@ -113,7 +103,7 @@ ModifyCompleteBookComponent >> renderContentOn: html [
 		style: 'max-width: 320px;';
 		with: [ self
 				renderTextOn: html;
-				renderBookFormulariOn: html;
+				renderFormulariOn: html;
 				renderButtonSaveBook: html ]
 ]
 
@@ -136,5 +126,11 @@ ModifyCompleteBookComponent >> title: aTitle [
 
 { #category : #'as yet unclassified' }
 ModifyCompleteBookComponent >> updateBook: html [
-	
+	book save.
+	html div
+		class: 'container';
+		style: 'max-width: 320px;';
+		with: [ html text
+				class: 'h3 mb-3 font-weight-normal text-center mb-5';
+				with: 'Libro actualizado correctamente' ]
 ]
