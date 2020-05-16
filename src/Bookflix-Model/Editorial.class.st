@@ -41,7 +41,12 @@ Editorial >> initialize [
 	books := OrderedCollection new
 ]
 
-{ #category : #setting }
+{ #category : #accesing }
+Editorial >> name [
+	^ name
+]
+
+{ #category : #accesing }
 Editorial >> name: aName [
 	name := aName
 ]

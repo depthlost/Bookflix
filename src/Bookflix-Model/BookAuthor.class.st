@@ -42,8 +42,28 @@ BookAuthor >> initialize [
 	books := OrderedCollection new
 ]
 
+{ #category : #accesing }
+BookAuthor >> name [
+	^ name
+]
+
+{ #category : #accesing }
+BookAuthor >> name: aName [
+	name := aName
+]
+
 { #category : #setting }
 BookAuthor >> name: aName surname: aSurname [
 	name := aName.
+	surname := aSurname
+]
+
+{ #category : #accesing }
+BookAuthor >> surname [
+	^ surname
+]
+
+{ #category : #accesing }
+BookAuthor >> surname: aSurname [
 	surname := aSurname
 ]

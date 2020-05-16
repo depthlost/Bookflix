@@ -21,6 +21,11 @@ CompleteBook class >> newWithTitle: aTitle ISBN: aISBN description: aDescription
 ]
 
 { #category : #accessing }
+CompleteBook >> content [
+	^ content
+]
+
+{ #category : #accessing }
 CompleteBook >> content: aContent [
 	content := aContent
 ]

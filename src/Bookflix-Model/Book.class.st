@@ -30,6 +30,16 @@ Book class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageUR
 		yourself
 ]
 
+{ #category : #accessing }
+Book >> ISBN [
+	^ ISBN
+]
+
+{ #category : #accessing }
+Book >> ISBN: aISBN [
+	ISBN := aISBN
+]
+
 { #category : #adding }
 Book >> addGender: aGender [
 	(genders includes: aGender)
@@ -48,8 +58,28 @@ Book >> addGenders: aGenders [
 ]
 
 { #category : #accessing }
+Book >> author [
+	^ author
+]
+
+{ #category : #accessing }
 Book >> description [
 	^ description
+]
+
+{ #category : #accessing }
+Book >> description: aDescription [
+	description := aDescription
+]
+
+{ #category : #accessing }
+Book >> editorial [
+	^ editorial
+]
+
+{ #category : #accessing }
+Book >> editorial: aEditorial [
+	editorial := aEditorial
 ]
 
 { #category : #accessing }
@@ -58,8 +88,28 @@ Book >> genders [
 ]
 
 { #category : #accessing }
+Book >> genders: aGenders [
+	| col |
+	col := aGenders findTokens: ','.
+	col := col
+		collect: [ :nomGender | Gender newOrExistingWithName: nomGender ].
+	genders := col do: [ :gender | self addGender: gender ]
+	"y aca borraria de la base de datos todos generos que no apunten a nada"
+]
+
+{ #category : #accessing }
+Book >> gendersHowString [
+	^ self
+]
+
+{ #category : #accessing }
 Book >> imageURL [
 	^ imageURL
+]
+
+{ #category : #accessing }
+Book >> imageURL: aImageURL [
+	imageURL := aImageURL
 ]
 
 { #category : #initialization }
