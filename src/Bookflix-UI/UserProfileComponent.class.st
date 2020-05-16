@@ -1,191 +1,251 @@
-"
-| application |
-application := WAAdmin register: UserProfileComponent asApplicationAt: '/bookflix'.
-application sessionClass: UserSession.
-"
 Class {
 	#name : #UserProfileComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'name',
-		'surname',
-		'email',
-		'password',
-		'birthdate'
+		'inputName',
+		'inputSurname',
+		'inputBirthdate',
+		'inputEmail',
+		'inputPassword',
+		'errorByRegisteredEmail'
 	],
 	#category : #'Bookflix-UI'
 }
 
-{ #category : #accessing }
-UserProfileComponent >> birthdate [
-	^ birthdate asString
-]
-
-{ #category : #accessing }
-UserProfileComponent >> birthdate: aBirthdate [
-	birthdate := aBirthdate asDate
-]
-
-{ #category : #accessing }
-UserProfileComponent >> email [
-	^ email
-]
-
-{ #category : #accessing }
-UserProfileComponent >> email: aEmail [
-	email := aEmail
+{ #category : #private }
+UserProfileComponent >> emailWasChangedAndExist [
+	^ self session user email ~= inputEmail address
+		& (Bookflix instance existUserWithEmail: inputEmail address)
 ]
 
 { #category : #initialization }
 UserProfileComponent >> initialize [
-	name := self session user name.
-	surname := self session user surname.
-	email := self session user email.
-	password := self session user password.
-	birthdate := self session user birthdate
+	| user |
+	super initialize.
+	errorByRegisteredEmail := false.
+	user := self session user.
+	inputName := user name.
+	inputSurname := user surname.
+	inputBirthdate := user birthdate yyyymmdd.
+	inputEmail := user email.
+	inputPassword := user password
 ]
 
 { #category : #accessing }
-UserProfileComponent >> name [
-	^ name
+UserProfileComponent >> inputBirthdate [
+	^ inputBirthdate
 ]
 
 { #category : #accessing }
-UserProfileComponent >> name: aName [
-	name := aName
+UserProfileComponent >> inputBirthdate: anObject [
+	inputBirthdate := anObject
 ]
 
 { #category : #accessing }
-UserProfileComponent >> password [
-	^ password
+UserProfileComponent >> inputEmail [
+	^ inputEmail
 ]
 
 { #category : #accessing }
-UserProfileComponent >> password: aPassword [
-	password := aPassword
+UserProfileComponent >> inputEmail: anObject [
+	inputEmail := anObject
+]
+
+{ #category : #accessing }
+UserProfileComponent >> inputName [
+	^ inputName
+]
+
+{ #category : #accessing }
+UserProfileComponent >> inputName: anObject [
+	inputName := anObject
+]
+
+{ #category : #accessing }
+UserProfileComponent >> inputPassword [
+	^ inputPassword
+]
+
+{ #category : #accessing }
+UserProfileComponent >> inputPassword: anObject [
+	^ inputPassword := anObject
+]
+
+{ #category : #accessing }
+UserProfileComponent >> inputSurname [
+	^ inputSurname
+]
+
+{ #category : #accessing }
+UserProfileComponent >> inputSurname: anObject [
+	inputSurname := anObject
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderBirthdateInputOn: html [
+	html div
+		class: 'form-label-group';
+		with: [ html dateInput5
+				id: 'inputBirthdate';
+				class: 'form-control';
+				placeholder: 'Fecha de Nacimiento';
+				required;
+				on: #inputBirthdate of: self.
+			html label
+				for: 'inputBirthdate';
+				with: 'Fecha de Nacimiento' ]
 ]
 
 { #category : #rendering }
 UserProfileComponent >> renderContentOn: html [
 	html div
-		class: 'container';
-		style: 'max-width: 320px;';
+		class: 'register';
+		with: [ html form
+				class: 'form-signin';
+				with: [ self
+						renderTitleOn: html;
+						renderDataInputOn: html;
+						renderSubmitButtonOn: html ] ]
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderDataInputOn: html [
+	self
+		renderNameSurnameInputOn: html;
+		renderBirthdateInputOn: html;
+		renderEmailInputOn: html;
+		renderPasswordInputOn: html
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderEmailInputOn: html [
+	html div
+		class: 'form-label-group';
+		with: [ html emailInput
+				id: 'emailInput';
+				class: 'form-control';
+				placeholder: 'Dirección de Correo';
+				required;
+				on: #inputEmail of: self.
+			html label
+				for: 'emailInput';
+				with: 'Dirección de Correo'.
+			errorByRegisteredEmail
+				ifTrue: [ self renderErrorByRegisteredEmailOn: html ] ]
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderErrorByRegisteredEmailOn: html [
+	html small
+		class: 'form-text text-danger ml-2';
+		with: 'El correo electronico ya se encuentra registrado.'
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderNameInputOn: html [
+	html div
+		class: 'col form-label-group';
+		with: [ html textInput
+				id: 'inputName';
+				class: 'form-control';
+				placeholder: 'Nombre';
+				required;
+				attributeAt: 'minlength' put: '3';
+				maxLength: '24';
+				on: #inputName of: self.
+			html label
+				for: 'inputName';
+				with: 'Nombre' ]
+]
+
+{ #category : #rendering }
+UserProfileComponent >> renderNameSurnameInputOn: html [
+	html div
+		class: 'form-row';
 		with: [ self
-				renderUserDatesOn: html;
-				renderUserUpdateButtonOn: html ]
+				renderNameInputOn: html;
+				renderSurnameInputOn: html ]
 ]
 
 { #category : #rendering }
-UserProfileComponent >> renderFormTitleOn: html [
-	^ html heading level1
-		class: 'h3 mb-3 font-weight-normal text-center mb-5';
-		with: 'Datos de usuario'
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderFormUserBirthdate: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_birthdate';
-				with: 'Fecha de nacimiento: '.
-			html textInput
-				id: 'input_birthdate';
+UserProfileComponent >> renderPasswordInputOn: html [
+	html div
+		class: 'form-label-group';
+		with: [ html passwordInput
+				id: 'passwordInput';
 				class: 'form-control';
-				on: #birthdate of: self ]
+				placeholder: 'Contraseña';
+				required;
+				attributeAt: 'minlength' put: '3';
+				maxLength: '24';
+				on: #inputPassword of: self.
+			html label
+				for: 'passwordInput';
+				with: 'Contraseña' ]
 ]
 
 { #category : #rendering }
-UserProfileComponent >> renderFormUserEmail: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_email';
-				with: 'Email: '.
-			html textInput
-				id: 'input_email';
-				class: 'form-control';
-				on: #email of: self ]
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderFormUserName: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_name';
-				with: 'Nombre: '.
-			html textInput
-				id: 'input_name';
-				class: 'form-control';
-				on: #name of: self ]
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderFormUserPassword: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_password';
-				with: 'Contraseña: '.
-			html textInput
-				id: 'input_password';
-				class: 'form-control';
-				on: #password of: self ]
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderFormUserSurname: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_surname';
-				with: 'Apellido: '.
-			html textInput
-				id: 'input_surname';
-				class: 'form-control';
-				on: #surname of: self ]
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderUserDatesOn: html [
-	html form
-		with: [ self
-				renderFormTitleOn: html;
-				renderFormUserName: html;
-				renderFormUserSurname: html;
-				renderFormUserEmail: html;
-				renderFormUserPassword: html;
-				renderFormUserBirthdate: html ]
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderUserUpdateButtonOn: html [
+UserProfileComponent >> renderSubmitButtonOn: html [
 	html button
 		type: 'submit';
-		class: 'btn btn-primary';
-		callback: [ self updateUser ];
-		with: 'Actualizar datos'
+		class: 'btn btn-lg btn-primary btn-block w-50 float-right';
+		callback: [ self update ];
+		with: 'Actualizar'
 ]
 
-{ #category : #accessing }
-UserProfileComponent >> surname [
-	^ surname
+{ #category : #rendering }
+UserProfileComponent >> renderSurnameInputOn: html [
+	html div
+		class: 'col form-label-group';
+		with: [ html textInput
+				id: 'inputSurname';
+				class: 'form-control';
+				placeholder: 'Apellido';
+				required;
+				attributeAt: 'minlength' put: '3';
+				maxLength: '24';
+				on: #inputSurname of: self.
+			html label
+				for: 'inputSurname';
+				with: 'Apellido' ]
 ]
 
-{ #category : #accessing }
-UserProfileComponent >> surname: aSurname [
-	surname := aSurname
+{ #category : #rendering }
+UserProfileComponent >> renderTitleOn: html [
+	html heading level1
+		class: 'h3 text-center mb-5 font-weight-normal';
+		with: self session user name , ' ' , self session user surname
 ]
 
-{ #category : #'as yet unclassified' }
-UserProfileComponent >> updateUser [
-	| user |
-	user := self session user.
-	user name: name.
-	user surname: surname.
-	user email: email.
-	user password: password.
-	user birthdate: birthdate.
-	user save
+{ #category : #seaside }
+UserProfileComponent >> states [
+	^ Array with: self
+]
+
+{ #category : #update }
+UserProfileComponent >> update [
+	self emailWasChangedAndExist
+		ifTrue: [ errorByRegisteredEmail := true.
+			^ self ].
+	errorByRegisteredEmail := false.
+	self updateUserData.
+	self session user save
+]
+
+{ #category : #seaside }
+UserProfileComponent >> updateRoot: anHtmlRoot [
+	super updateRoot: anHtmlRoot.
+	anHtmlRoot title: 'Bookflix - Perfil'.
+	anHtmlRoot stylesheet url: '/css/register.css'.
+	anHtmlRoot stylesheet url: '/css/floating-labels.css'
+]
+
+{ #category : #update }
+UserProfileComponent >> updateUserData [
+	self session user
+		name: inputName;
+		surname: inputSurname;
+		email: inputEmail address;
+		password: inputPassword;
+		birthdate: (Date fromString: inputBirthdate)
 ]

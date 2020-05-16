@@ -35,6 +35,11 @@ HomeComponent >> renderContentOn: html [
 ]
 
 { #category : #seaside }
+HomeComponent >> states [
+	^ Array with: self
+]
+
+{ #category : #seaside }
 HomeComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot title: 'Bookflix'.

@@ -12,6 +12,12 @@ NavBarComponent class >> rootComponent: aRootComponent [
 	^ self new rootComponent: aRootComponent
 ]
 
+{ #category : #callbacks }
+NavBarComponent >> goToHome [
+	rootComponent
+		updateContentTo: (LoginComponent rootComponent: rootComponent)
+]
+
 { #category : #rendering }
 NavBarComponent >> renderContentOn: html [
 	html navigation
@@ -23,7 +29,7 @@ NavBarComponent >> renderContentOn: html [
 NavBarComponent >> renderLogoOn: html [
 	html anchor
 		class: 'navbar-brand';
-		callback: [  ];
+		callback: [ self goToHome ];
 		with: [ html image
 				url: 'images/logo.svg';
 				height: '24' ]

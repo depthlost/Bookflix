@@ -12,7 +12,7 @@ ProxyUserProfileComponent >> initialize [
 	super initialize.
 	userProfileComponent := self session user isAdmin
 		ifFalse: [ CommonUserProfileComponent new ]
-		ifTrue: [ AdminUserProfileComponent new ]
+		ifTrue: [ UserProfileComponent new ]
 ]
 
 { #category : #rendering }
