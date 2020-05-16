@@ -27,6 +27,8 @@ Book class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageUR
 
 { #category : #adding }
 Book >> addGender: aGender [
+	(genders includes: aGender)
+		ifTrue: [ ^ self ].
 	genders add: aGender.
 	aGender addBook: self
 ]
@@ -37,7 +39,7 @@ Book >> addGenders: aGenders [
 	col := aGenders findTokens: ','.
 	col := col
 		collect: [ :nomGender | Gender newOrExistingWithName: nomGender ].
-	genders := col
+	col do: [ :gender | self addGender: gender ]
 ]
 
 { #category : #initialization }
