@@ -31,6 +31,11 @@ Book >> addGender: aGender [
 	aGender addBook: self
 ]
 
+{ #category : #adding }
+Book >> addGenders: aGenders [
+	
+]
+
 { #category : #initialization }
 Book >> initialize [
 	genders := OrderedCollection new

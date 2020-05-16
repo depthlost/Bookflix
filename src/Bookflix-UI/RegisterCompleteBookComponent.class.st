@@ -97,7 +97,45 @@ RegisterCompleteBookComponent >> imageURL: aImageURL [
 
 { #category : #'as yet unclassified' }
 RegisterCompleteBookComponent >> registerBook [
-	
+	| completeBook author editorial |
+	author := BookAuthor
+		newOrExistingWithName: authorName
+		surname: authorSurname.
+	editorial := Editorial newOrExistingWithName: editorialName.
+	completeBook := CompleteBook
+		newWithTitle: title
+		ISBN: ISBN
+		description: description
+		imageURL: imageURL
+		author: author
+		editorial: editorial
+		content: content.
+	completeBook save
+]
+
+{ #category : #'as yet unclassified' }
+RegisterCompleteBookComponent >> registerBook: html [
+	| completeBook author editorial |
+	author := BookAuthor
+		newOrExistingWithName: authorName
+		surname: authorSurname.
+	editorial := Editorial newOrExistingWithName: editorialName.
+	completeBook := CompleteBook
+		newWithTitle: title
+		ISBN: ISBN
+		description: description
+		imageURL: imageURL
+		author: author
+		editorial: editorial
+		content: content.
+	completeBook addGenders: genders.
+	completeBook save.
+	html div
+		class: 'container';
+		style: 'max-width: 320px;';
+		with: [ html text
+				class: 'h3 mb-3 font-weight-normal text-center mb-5';
+				with: 'La operación se realizo correctamente' ]
 ]
 
 { #category : #rendering }
