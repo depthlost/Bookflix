@@ -23,12 +23,12 @@ ModifyCompleteBookComponent >> ISBN: aISBN [
 ]
 
 { #category : #accessing }
-ModifyCompleteBookComponent >> authorName [
+ModifyCompleteBookComponent >> author [
 	^ book author name
 ]
 
 { #category : #accessing }
-ModifyCompleteBookComponent >> authorName: aName [
+ModifyCompleteBookComponent >> author: aName [
 	book author name: aName
 ]
 
@@ -68,12 +68,12 @@ ModifyCompleteBookComponent >> description: aDescription [
 ]
 
 { #category : #accessing }
-ModifyCompleteBookComponent >> editorialName [
+ModifyCompleteBookComponent >> editorial [
 	^ book editorial name
 ]
 
 { #category : #accessing }
-ModifyCompleteBookComponent >> editorialName: aName [
+ModifyCompleteBookComponent >> editorial: aName [
 	^ book editorial: aName
 ]
 
