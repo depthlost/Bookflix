@@ -168,6 +168,11 @@ LoginComponent >> rootComponent: aRootComponent [
 ]
 
 { #category : #seaside }
+LoginComponent >> states [
+	^ Array with: self
+]
+
+{ #category : #seaside }
 LoginComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot title: 'Bookflix - Inicio de Sesión'

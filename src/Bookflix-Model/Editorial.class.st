@@ -8,6 +8,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #testing }
+Editorial class >> isVoyageRoot [
+	^ true
+]
+
 { #category : #'instance creation' }
 Editorial class >> newOrExistingWithName: aName [
 	self selectAll

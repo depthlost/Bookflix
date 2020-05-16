@@ -13,6 +13,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #testing }
+Book class >> isVoyageRoot [
+	^ true
+]
+
 { #category : #'instance creation' }
 Book class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
 	^ self new

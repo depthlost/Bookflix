@@ -8,6 +8,16 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #testing }
+Gender class >> isVoyageRoot [
+	^ true
+]
+
+{ #category : #construction }
+Gender class >> name: aName [
+	^ self new name: aName
+]
+
 { #category : #'instance creation' }
 Gender class >> newOrExistingWithName: aName [
 	self selectAll
