@@ -15,22 +15,12 @@ BookFormulariComponent >> ISBN: aISBN [
 ]
 
 { #category : #accessing }
-BookFormulariComponent >> authorName [
+BookFormulariComponent >> author [
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-BookFormulariComponent >> authorName: aName [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
-BookFormulariComponent >> authorSurname [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
-BookFormulariComponent >> authorSurname: aSurname [
+BookFormulariComponent >> author: aName [
 	^ self subclassResponsibility
 ]
 
@@ -45,12 +35,12 @@ BookFormulariComponent >> description: aDescription [
 ]
 
 { #category : #accessing }
-BookFormulariComponent >> editorialName [
+BookFormulariComponent >> editorial [
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-BookFormulariComponent >> editorialName: aName [
+BookFormulariComponent >> editorial: aName [
 	^ self subclassResponsibility
 ]
 
@@ -75,52 +65,16 @@ BookFormulariComponent >> imageURL: aImageURL [
 ]
 
 { #category : #rendering }
-BookFormulariComponent >> renderAuthorFormulariOn: html [
-	html form
-		with: [ self
-				renderFormulariAuthorNameOn: html;
-				renderFormulariAuthorSurnameOn: html ]
-]
-
-{ #category : #rendering }
-BookFormulariComponent >> renderBookFormulariOn: html [
-	html form
-		with: [ self
-				renderFormulariOn: html;
-				renderAuthorFormulariOn: html;
-				renderEditorialFormulariOn: html;
-				renderGendersFormulariOn: html ]
-]
-
-{ #category : #rendering }
-BookFormulariComponent >> renderEditorialFormulariOn: html [
-	html form with: [ self renderFormulariEditorialNameOn: html ]
-]
-
-{ #category : #rendering }
-BookFormulariComponent >> renderFormulariAuthorNameOn: html [
+BookFormulariComponent >> renderFormulariAuthorOn: html [
 	html form
 		class: 'form-inline';
 		with: [ html label
-				for: 'input_authorName';
-				with: 'Nombre del autor: '.
+				for: 'input_author';
+				with: 'Autor: '.
 			html textInput
-				id: 'input_authorName';
+				id: 'input_author';
 				class: 'form-control';
-				on: #authorName of: self ]
-]
-
-{ #category : #rendering }
-BookFormulariComponent >> renderFormulariAuthorSurnameOn: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_authorSurname';
-				with: 'Apellido del autor: '.
-			html textInput
-				id: 'input_authorSurname';
-				class: 'form-control';
-				on: #authorSurname of: self ]
+				on: #author of: self ]
 ]
 
 { #category : #rendering }
@@ -137,16 +91,16 @@ BookFormulariComponent >> renderFormulariDescriptionOn: html [
 ]
 
 { #category : #rendering }
-BookFormulariComponent >> renderFormulariEditorialNameOn: html [
+BookFormulariComponent >> renderFormulariEditorialOn: html [
 	html form
 		class: 'form-inline';
 		with: [ html label
-				for: 'input_editorialName';
-				with: 'Nombre de la editorial:'.
+				for: 'input_editorial';
+				with: 'Editorial:'.
 			html textInput
-				id: 'input_editorialName';
+				id: 'input_editorial';
 				class: 'form-control';
-				on: #editorialName of: self ]
+				on: #editorial of: self ]
 ]
 
 { #category : #rendering }
@@ -182,7 +136,10 @@ BookFormulariComponent >> renderFormulariOn: html [
 				renderFormulariTitleOn: html;
 				renderFormulariDescriptionOn: html;
 				renderFormulariImageURLOn: html;
-				renderFormulariISBNOn: html ]
+				renderFormulariISBNOn: html;
+				renderFormulariAuthorOn: html;
+				renderFormulariEditorialOn: html;
+				renderGendersFormulariOn: html ]
 ]
 
 { #category : #rendering }
@@ -204,7 +161,7 @@ BookFormulariComponent >> renderGendersFormulariOn: html [
 		class: 'form-inline';
 		with: [ html label
 				for: 'input_genders';
-				with: 'Generos(Ingreselos separados por comas): '.
+				with: 'Generos(Separados por comas): '.
 			html textInput
 				id: 'input_genders';
 				class: 'form-control';

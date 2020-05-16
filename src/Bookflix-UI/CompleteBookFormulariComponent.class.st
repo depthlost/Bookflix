@@ -15,22 +15,12 @@ CompleteBookFormulariComponent >> ISBN: aISBN [
 ]
 
 { #category : #accessing }
-CompleteBookFormulariComponent >> authorName [
+CompleteBookFormulariComponent >> author [
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-CompleteBookFormulariComponent >> authorName: aName [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
-CompleteBookFormulariComponent >> authorSurname [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
-CompleteBookFormulariComponent >> authorSurname: aSurname [
+CompleteBookFormulariComponent >> author: aName [
 	^ self subclassResponsibility
 ]
 
@@ -55,12 +45,12 @@ CompleteBookFormulariComponent >> description: aDescription [
 ]
 
 { #category : #accessing }
-CompleteBookFormulariComponent >> editorialName [
+CompleteBookFormulariComponent >> editorial [
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-CompleteBookFormulariComponent >> editorialName: aName [
+CompleteBookFormulariComponent >> editorial: aName [
 	^ self subclassResponsibility
 ]
 
@@ -100,12 +90,8 @@ CompleteBookFormulariComponent >> renderFormulariContentOn: html [
 { #category : #rendering }
 CompleteBookFormulariComponent >> renderFormulariOn: html [
 	html form
-		with: [ self
-				renderFormulariTitleOn: html;
-				renderFormulariDescriptionOn: html;
-				renderFormulariImageURLOn: html;
-				renderFormulariISBNOn: html;
-				renderFormulariContentOn: html ]
+		with: [ super renderFormulariOn: html.
+			self renderFormulariContentOn: html ]
 ]
 
 { #category : #accessing }

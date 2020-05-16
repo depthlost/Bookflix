@@ -12,9 +12,8 @@ Class {
 		'imageURL',
 		'ISBN',
 		'content',
-		'authorName',
-		'authorSurname',
-		'editorialName',
+		'author',
+		'editorial',
 		'genders'
 	],
 	#category : #'Bookflix-UI'
@@ -31,23 +30,13 @@ RegisterCompleteBookComponent >> ISBN: aISBN [
 ]
 
 { #category : #accessing }
-RegisterCompleteBookComponent >> authorName [
-	^ authorName
+RegisterCompleteBookComponent >> author [
+	^ author
 ]
 
 { #category : #accessing }
-RegisterCompleteBookComponent >> authorName: aName [
-	authorName := aName
-]
-
-{ #category : #accessing }
-RegisterCompleteBookComponent >> authorSurname [
-	^ authorSurname
-]
-
-{ #category : #accessing }
-RegisterCompleteBookComponent >> authorSurname: aSurname [
-	authorSurname := aSurname
+RegisterCompleteBookComponent >> author: aName [
+	author := aName
 ]
 
 { #category : #accessing }
@@ -71,13 +60,13 @@ RegisterCompleteBookComponent >> description: aDescription [
 ]
 
 { #category : #accessing }
-RegisterCompleteBookComponent >> editorialName [
-	^ editorialName
+RegisterCompleteBookComponent >> editorial [
+	^ editorial
 ]
 
 { #category : #accessing }
-RegisterCompleteBookComponent >> editorialName: aName [
-	editorialName := aName
+RegisterCompleteBookComponent >> editorial: aName [
+	editorial := aName
 ]
 
 { #category : #accessing }
@@ -102,27 +91,21 @@ RegisterCompleteBookComponent >> imageURL: aImageURL [
 
 { #category : #'as yet unclassified' }
 RegisterCompleteBookComponent >> registerBook: html [
-	| completeBook author editorial |
-	author := BookAuthor
-		newOrExistingWithName: authorName
-		surname: authorSurname.
-	editorial := Editorial newOrExistingWithName: editorialName.
-	completeBook := CompleteBook
+	(CompleteBook
 		newWithTitle: title
 		ISBN: ISBN
 		description: description
 		imageURL: imageURL
 		author: author
 		editorial: editorial
-		content: content.
-	completeBook addGenders: genders.
-	completeBook save.
+		content: content
+		genders: genders) save.
 	html div
 		class: 'container';
 		style: 'max-width: 320px;';
 		with: [ html text
 				class: 'h3 mb-3 font-weight-normal text-center mb-5';
-				with: 'La operación se realizo correctamente' ]
+				with: 'Libro guardado correctamente' ]
 ]
 
 { #category : #rendering }
@@ -141,7 +124,7 @@ RegisterCompleteBookComponent >> renderContentOn: html [
 		style: 'max-width: 320px;';
 		with: [ self
 				renderTextOn: html;
-				renderBookFormulariOn: html;
+				renderFormulariOn: html;
 				renderButtonRegisterOn: html ]
 ]
 
