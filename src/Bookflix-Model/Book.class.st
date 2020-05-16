@@ -52,6 +52,16 @@ Book >> initialize [
 	genders := OrderedCollection new
 ]
 
+{ #category : #accessing }
+Book >> title [
+	^ title
+]
+
+{ #category : #accessing }
+Book >> title: aTitle [
+	title := aTitle
+]
+
 { #category : #setting }
 Book >> title: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
 	title := aTitle.
