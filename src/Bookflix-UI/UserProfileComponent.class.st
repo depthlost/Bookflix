@@ -38,7 +38,6 @@ UserProfileComponent >> email: aEmail [
 
 { #category : #initialization }
 UserProfileComponent >> initialize [
-	self session user: User selectAll first.
 	name := self session user name.
 	surname := self session user surname.
 	email := self session user email.
