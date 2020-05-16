@@ -9,6 +9,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #testing }
+BookAuthor class >> isVoyageRoot [
+	^ true
+]
+
 { #category : #'instance creation' }
 BookAuthor class >> newOrExistingWithName: aName surname: aSurname [
 	self selectAll
