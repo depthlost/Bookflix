@@ -47,6 +47,21 @@ Book >> addGenders: aGenders [
 	col do: [ :gender | self addGender: gender ]
 ]
 
+{ #category : #accessing }
+Book >> description [
+	^ description
+]
+
+{ #category : #accessing }
+Book >> genders [
+	^ genders
+]
+
+{ #category : #accessing }
+Book >> imageURL [
+	^ imageURL
+]
+
 { #category : #initialization }
 Book >> initialize [
 	genders := OrderedCollection new

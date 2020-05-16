@@ -46,6 +46,11 @@ Gender >> initialize [
 	books := OrderedCollection new
 ]
 
+{ #category : #accessing }
+Gender >> name [
+	^ name
+]
+
 { #category : #setting }
 Gender >> name: aName [
 	name := aName
