@@ -19,14 +19,15 @@ Book class >> isVoyageRoot [
 ]
 
 { #category : #'instance creation' }
-Book class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
 	^ self new
 		title: aTitle
 			ISBN: aISBN
 			description: aDescription
 			imageURL: aImageURL
 			author: aAuthor
-			editorial: aEditorial;
+			editorial: aEditorial
+			genders: aGenders;
 		yourself
 ]
 
@@ -40,26 +41,14 @@ Book >> ISBN: aISBN [
 	ISBN := aISBN
 ]
 
-{ #category : #adding }
-Book >> addGender: aGender [
-	(genders includes: aGender)
-		ifTrue: [ ^ self ].
-	genders add: aGender.
-	aGender addBook: self
-]
-
-{ #category : #adding }
-Book >> addGenders: aGenders [
-	| col |
-	col := aGenders findTokens: ','.
-	col := col
-		collect: [ :nomGender | Gender newOrExistingWithName: nomGender ].
-	col do: [ :gender | self addGender: gender ]
-]
-
 { #category : #accessing }
 Book >> author [
 	^ author
+]
+
+{ #category : #accessing }
+Book >> author: aAuthor [
+	author := aAuthor
 ]
 
 { #category : #accessing }
@@ -89,17 +78,7 @@ Book >> genders [
 
 { #category : #accessing }
 Book >> genders: aGenders [
-	| col |
-	col := aGenders findTokens: ','.
-	col := col
-		collect: [ :nomGender | Gender newOrExistingWithName: nomGender ].
-	genders := col do: [ :gender | self addGender: gender ]
-	"y aca borraria de la base de datos todos generos que no apunten a nada"
-]
-
-{ #category : #accessing }
-Book >> gendersHowString [
-	^ self
+	genders := aGenders
 ]
 
 { #category : #accessing }
@@ -110,11 +89,6 @@ Book >> imageURL [
 { #category : #accessing }
 Book >> imageURL: aImageURL [
 	imageURL := aImageURL
-]
-
-{ #category : #initialization }
-Book >> initialize [
-	genders := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -128,13 +102,12 @@ Book >> title: aTitle [
 ]
 
 { #category : #setting }
-Book >> title: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book >> title: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
 	title := aTitle.
 	ISBN := aISBN.
 	description := aDescription.
 	imageURL := aImageURL.
 	author := aAuthor.
-	aAuthor addBook: self.
 	editorial := aEditorial.
-	aEditorial addBook: self
+	genders := aGenders
 ]
