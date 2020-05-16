@@ -33,7 +33,11 @@ Book >> addGender: aGender [
 
 { #category : #adding }
 Book >> addGenders: aGenders [
-	
+	| col |
+	col := aGenders findTokens: ','.
+	col := col
+		collect: [ :nomGender | Gender newOrExistingWithName: nomGender ].
+	genders := col
 ]
 
 { #category : #initialization }
