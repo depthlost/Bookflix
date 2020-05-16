@@ -52,7 +52,7 @@ LoginComponent >> login [
 { #category : #callbacks }
 LoginComponent >> loginWith: anUser [
 	self session user: anUser.
-	rootComponent updateWithContentTo: WhitePage new
+	rootComponent updateWithContentTo: HomeComponent new
 ]
 
 { #category : #rendering }
