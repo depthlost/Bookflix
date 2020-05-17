@@ -2,19 +2,26 @@ Class {
 	#name : #BookComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'book'
+		'book',
+		'parentComponent'
 	],
 	#category : #'Bookflix-UI'
 }
 
 { #category : #'as yet unclassified' }
-BookComponent class >> book: aBook [
-	^ self new book: aBook
+BookComponent class >> book: aBook andParentComponent: aComponent [
+	^ self new book: aBook andParentComponent: aComponent
 ]
 
 { #category : #accessing }
-BookComponent >> book: aBook [
-	book := aBook
+BookComponent >> book [
+	^ book
+]
+
+{ #category : #accessing }
+BookComponent >> book: aBook andParentComponent: aComponent [
+	book := aBook.
+	parentComponent := aComponent
 ]
 
 { #category : #rendering }

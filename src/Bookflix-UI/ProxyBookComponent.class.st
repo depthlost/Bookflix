@@ -8,15 +8,20 @@ Class {
 }
 
 { #category : #accessing }
-ProxyBookComponent class >> book: aBook [
-	^ self new book: aBook
+ProxyBookComponent class >> book: aBook andParentComponent: aComponent [
+	^ self new book: aBook andParentComponent: aComponent
 ]
 
 { #category : #accessing }
-ProxyBookComponent >> book: aBook [
+ProxyBookComponent >> book [
+	^ bookComponent book
+]
+
+{ #category : #accessing }
+ProxyBookComponent >> book: aBook andParentComponent: aComponent [
 	bookComponent := self session user isAdmin
-		ifFalse: [ BookComponent book: aBook ]
-		ifTrue: [ AdminBookComponent book: aBook ]
+		ifFalse: [ BookComponent book: aBook andParentComponent: aComponent ]
+		ifTrue: [ AdminBookComponent book: aBook andParentComponent: aComponent ]
 ]
 
 { #category : #rendering }

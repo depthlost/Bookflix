@@ -4,6 +4,12 @@ Class {
 	#category : #'Bookflix-UI'
 }
 
+{ #category : #callbacks }
+AdminBookComponent >> removeBook [
+	parentComponent removeBookComponent: book.
+	book remove
+]
+
 { #category : #rendering }
 AdminBookComponent >> renderBookContentOn: html [
 	super renderBookContentOn: html.
@@ -31,6 +37,6 @@ AdminBookComponent >> renderModifyButtonOn: html [
 AdminBookComponent >> renderRemoveButtonOn: html [
 	html anchor
 		class: 'text-danger ml-3';
-		callback: [  ];
+		callback: [ self removeBook ];
 		with: 'Borrar'
 ]
