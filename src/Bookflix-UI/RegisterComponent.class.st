@@ -129,7 +129,7 @@ RegisterComponent >> register [
 		surname: inputSurname
 		email: inputEmail address
 		password: inputPassword
-		birthdate: (Date fromString: inputBirthdate) asDate
+		birthdate: (Date fromString: inputBirthdate)
 		card:
 			(Card
 				titular: inputTitular

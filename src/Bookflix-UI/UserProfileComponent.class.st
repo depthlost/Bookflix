@@ -26,7 +26,7 @@ UserProfileComponent >> initialize [
 	user := self session user.
 	inputName := user name.
 	inputSurname := user surname.
-	inputBirthdate := user birthdate yyyymmdd.
+	inputBirthdate := user birthdate asDate yyyymmdd.
 	inputEmail := user email.
 	inputPassword := user password
 ]
@@ -247,5 +247,5 @@ UserProfileComponent >> updateUserData [
 		surname: inputSurname;
 		email: inputEmail address;
 		password: inputPassword;
-		birthdate: (Date fromString: inputBirthdate) asDate
+		birthdate: (Date fromString: inputBirthdate)
 ]
