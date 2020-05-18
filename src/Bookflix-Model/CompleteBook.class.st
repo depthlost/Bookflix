@@ -8,10 +8,10 @@ Class {
 }
 
 { #category : #'instance creation' }
-CompleteBook class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aContent genders: aGenders [
+CompleteBook class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aContent genders: aGenders [
 	^ (self
 		newWithTitle: aTitle
-		ISBN: aISBN
+		isbn: aISBN
 		description: aDescription
 		imageURL: aImageURL
 		author: aAuthor

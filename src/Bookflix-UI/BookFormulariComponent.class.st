@@ -5,16 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-BookFormulariComponent >> ISBN [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
-BookFormulariComponent >> ISBN: aISBN [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
 BookFormulariComponent >> author [
 	^ self subclassResponsibility
 ]
@@ -61,6 +51,16 @@ BookFormulariComponent >> imageURL [
 
 { #category : #accessing }
 BookFormulariComponent >> imageURL: aImageURL [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+BookFormulariComponent >> isbn [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+BookFormulariComponent >> isbn: aISBN [
 	^ self subclassResponsibility
 ]
 
@@ -113,7 +113,7 @@ BookFormulariComponent >> renderFormulariISBNOn: html [
 			html textInput
 				id: 'input_ISBN';
 				class: 'form-control';
-				on: #ISBN of: self ]
+				on: #isbn of: self ]
 ]
 
 { #category : #rendering }

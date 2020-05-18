@@ -20,16 +20,6 @@ Class {
 }
 
 { #category : #accessing }
-RegisterCompleteBookComponent >> ISBN [
-	^ ISBN
-]
-
-{ #category : #accessing }
-RegisterCompleteBookComponent >> ISBN: aISBN [
-	ISBN := aISBN
-]
-
-{ #category : #accessing }
 RegisterCompleteBookComponent >> author [
 	^ author
 ]
@@ -89,23 +79,27 @@ RegisterCompleteBookComponent >> imageURL: aImageURL [
 	imageURL := aImageURL
 ]
 
+{ #category : #accessing }
+RegisterCompleteBookComponent >> isbn [
+	^ ISBN
+]
+
+{ #category : #accessing }
+RegisterCompleteBookComponent >> isbn: aISBN [
+	ISBN := aISBN
+]
+
 { #category : #'as yet unclassified' }
 RegisterCompleteBookComponent >> registerBook: html [
 	(CompleteBook
 		newWithTitle: title
-		ISBN: ISBN
+		isbn: ISBN
 		description: description
 		imageURL: imageURL
 		author: author
 		editorial: editorial
 		content: content
-		genders: genders) save.
-	html div
-		class: 'container';
-		style: 'max-width: 320px;';
-		with: [ html text
-				class: 'h3 mb-3 font-weight-normal text-center mb-5';
-				with: 'Libro guardado correctamente' ]
+		genders: genders) save
 ]
 
 { #category : #rendering }

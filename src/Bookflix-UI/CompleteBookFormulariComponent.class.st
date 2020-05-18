@@ -5,16 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-CompleteBookFormulariComponent >> ISBN [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
-CompleteBookFormulariComponent >> ISBN: aISBN [
-	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
 CompleteBookFormulariComponent >> author [
 	^ self subclassResponsibility
 ]
@@ -71,6 +61,16 @@ CompleteBookFormulariComponent >> imageURL [
 
 { #category : #accessing }
 CompleteBookFormulariComponent >> imageURL: aImageURL [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+CompleteBookFormulariComponent >> isbn [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+CompleteBookFormulariComponent >> isbn: aISBN [
 	^ self subclassResponsibility
 ]
 
