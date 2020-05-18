@@ -6,7 +6,7 @@ Class {
 
 { #category : #adding }
 BookSample class >> addBook1 [
-	(CompleteBook
+	^ (CompleteBook
 		newWithTitle: 'Oso y caja'
 		isbn: '1112056795'
 		description:
@@ -20,7 +20,7 @@ BookSample class >> addBook1 [
 
 { #category : #adding }
 BookSample class >> addBook2 [
-	(CompleteBook
+	^ (CompleteBook
 		newWithTitle: 'El gran libro de las flores'
 		isbn: '9788426146434'
 		description:
@@ -37,7 +37,7 @@ Descubre todo tipo de plantas con flores coloridas, carnívoras, extrañas y mar
 
 { #category : #adding }
 BookSample class >> addBook3 [
-	(CompleteBook
+	^ (CompleteBook
 		newWithTitle: 'Los Cinco se escapan'
 		isbn: '9788426142948'
 		description:
@@ -51,7 +51,7 @@ BookSample class >> addBook3 [
 
 { #category : #adding }
 BookSample class >> addBook4 [
-	(CompleteBook
+	^ (CompleteBook
 		newWithTitle: 'El gran libro de las bestias'
 		isbn: '9788426144119'
 		description:
