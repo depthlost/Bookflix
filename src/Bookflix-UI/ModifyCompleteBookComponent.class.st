@@ -92,7 +92,7 @@ ModifyCompleteBookComponent >> renderButtonSaveBook: html [
 	html button
 		type: 'submit';
 		class: 'btn btn-primary';
-		callback: [ self updateBook: html ];
+		callback: [ self updateBook ];
 		with: 'Actualizar datos'
 ]
 
@@ -124,7 +124,8 @@ ModifyCompleteBookComponent >> title: aTitle [
 	book title: aTitle
 ]
 
-{ #category : #'as yet unclassified' }
-ModifyCompleteBookComponent >> updateBook: html [
-	book save
+{ #category : #callbacks }
+ModifyCompleteBookComponent >> updateBook [
+	book save.
+	self answer
 ]

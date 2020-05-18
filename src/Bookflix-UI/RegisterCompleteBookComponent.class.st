@@ -99,7 +99,8 @@ RegisterCompleteBookComponent >> registerBook: html [
 		author: author
 		editorial: editorial
 		content: content
-		genders: genders) save
+		genders: genders) save.
+	self answer
 ]
 
 { #category : #rendering }
