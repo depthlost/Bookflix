@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #callbacks }
+AdminBookComponent >> goToModifyBook [
+	parentComponent call: (ModifyCompleteBookComponent newWith: book)
+]
+
+{ #category : #callbacks }
 AdminBookComponent >> removeBook [
 	parentComponent removeBookComponent: book.
 	book remove
@@ -29,7 +34,7 @@ AdminBookComponent >> renderBookFooterOn: html [
 AdminBookComponent >> renderModifyButtonOn: html [
 	html anchor
 		class: 'text-primary';
-		callback: [  ];
+		callback: [ self goToModifyBook ];
 		with: 'Modificar'
 ]
 

@@ -4,6 +4,11 @@ Class {
 	#category : #'Bookflix-UI'
 }
 
+{ #category : #callbacks }
+AdminNavBarComponent >> goToAddBook [
+	rootComponent updateContentTo: RegisterCompleteBookComponent new
+]
+
 { #category : #rendering }
 AdminNavBarComponent >> renderItemUserDropdownOn: html [
 	self
@@ -11,7 +16,9 @@ AdminNavBarComponent >> renderItemUserDropdownOn: html [
 			withCallback: [ self goToUserProfile ]
 			on: html;
 		renderDropdownDividerOn: html;
-		renderDropdownItem: 'Administración' withCallback: [  ] on: html;
+		renderDropdownItem: 'Agregar Libro'
+			withCallback: [ self goToAddBook ]
+			on: html;
 		renderDropdownItem: 'Cerrar Sesión'
 			withCallback: [ self logout ]
 			on: html
