@@ -109,7 +109,7 @@ ModifyCompleteBookComponent >> renderContentOn: html [
 
 { #category : #rendering }
 ModifyCompleteBookComponent >> renderTextOn: html [
-	^ html text
+	^ html heading level1
 		class: 'h3 mb-3 font-weight-normal text-center mb-5';
 		with: 'Datos de libro completo'
 ]
