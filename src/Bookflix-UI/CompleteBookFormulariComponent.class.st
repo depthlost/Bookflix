@@ -81,15 +81,13 @@ CompleteBookFormulariComponent >> renderButtonOn: html [
 
 { #category : #rendering }
 CompleteBookFormulariComponent >> renderFormulariContentOn: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_content';
-				with: 'Contenido: '.
-			html textInput
-				id: 'input_content';
-				class: 'form-control';
-				on: #content of: self ]
+	html label
+		for: 'input_content';
+		with: 'Contenido: '.
+	html textInput
+		id: 'input_content';
+		class: 'form-control';
+		on: #content of: self
 ]
 
 { #category : #rendering }
