@@ -90,7 +90,7 @@ RegisterCompleteBookComponent >> isbn: aISBN [
 ]
 
 { #category : #'as yet unclassified' }
-RegisterCompleteBookComponent >> registerBook: html [
+RegisterCompleteBookComponent >> registerBook [
 	(CompleteBook
 		newWithTitle: title
 		isbn: ISBN
@@ -104,11 +104,11 @@ RegisterCompleteBookComponent >> registerBook: html [
 ]
 
 { #category : #rendering }
-RegisterCompleteBookComponent >> renderButtonRegisterOn: html [
+RegisterCompleteBookComponent >> renderButtonOn: html [
 	html button
 		type: 'submit';
 		class: 'btn btn-primary';
-		callback: [ self registerBook: html ];
+		callback: [ self registerBook ];
 		with: 'Registrar Libro'
 ]
 
@@ -119,8 +119,7 @@ RegisterCompleteBookComponent >> renderContentOn: html [
 		style: 'max-width: 320px;';
 		with: [ self
 				renderTextOn: html;
-				renderFormulariOn: html;
-				renderButtonRegisterOn: html ]
+				renderFormulariOn: html ]
 ]
 
 { #category : #rendering }

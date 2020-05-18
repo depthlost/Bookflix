@@ -88,7 +88,7 @@ ModifyCompleteBookComponent >> isbn: aISBN [
 ]
 
 { #category : #rendering }
-ModifyCompleteBookComponent >> renderButtonSaveBook: html [
+ModifyCompleteBookComponent >> renderButtonOn: html [
 	html button
 		type: 'submit';
 		class: 'btn btn-primary';
@@ -103,8 +103,7 @@ ModifyCompleteBookComponent >> renderContentOn: html [
 		style: 'max-width: 320px;';
 		with: [ self
 				renderTextOn: html;
-				renderFormulariOn: html;
-				renderButtonSaveBook: html ]
+				renderFormulariOn: html ]
 ]
 
 { #category : #rendering }

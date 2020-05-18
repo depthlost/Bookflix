@@ -75,6 +75,11 @@ CompleteBookFormulariComponent >> isbn: aISBN [
 ]
 
 { #category : #rendering }
+CompleteBookFormulariComponent >> renderButtonOn: html [
+	^ self subclassResponsibility
+]
+
+{ #category : #rendering }
 CompleteBookFormulariComponent >> renderFormulariContentOn: html [
 	html form
 		class: 'form-inline';
@@ -91,7 +96,9 @@ CompleteBookFormulariComponent >> renderFormulariContentOn: html [
 CompleteBookFormulariComponent >> renderFormulariOn: html [
 	html form
 		with: [ super renderFormulariOn: html.
-			self renderFormulariContentOn: html ]
+			self
+				renderFormulariContentOn: html;
+				renderButtonOn: html ]
 ]
 
 { #category : #accessing }
