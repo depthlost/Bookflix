@@ -6,22 +6,23 @@ Class {
 
 { #category : #adding }
 BookSample class >> addBook1 [
-	(Book
+	(CompleteBook
 		newWithTitle: 'Oso y caja'
-		ISBN: '1112056795'
+		isbn: '1112056795'
 		description:
 			'A través de sus aventuras, Oso Blanco, Oso Negro y Oso Pardo nos enseñan los colores, los contrarios, y los números. ¿Qué hay en la caja? Descúbrelo en este primer libro de colores. A partir de 1 año.'
 		imageURL: 'https://www.editorialjuventud.es/wp-content/uploads/2018/08/3608.jpg'
 		author: 'Cliff Wright'
 		editorial: 'Juventud'
+		content: ''
 		genders: 'Libros de cartón') save
 ]
 
 { #category : #adding }
 BookSample class >> addBook2 [
-	(Book
+	(CompleteBook
 		newWithTitle: 'El gran libro de las flores'
-		ISBN: '9788426146434'
+		isbn: '9788426146434'
 		description:
 			'¿Qué comen las plantas carnívoras? ¿Cuánto peso soportan las hojas del nenúfar gigante? ¿Florecen los cactus? Encontrarás las respuestas a estas preguntas tan espinosas y a muchas más en el interior. También podrás jugar a buscar y encontrar en las imágenes un bulbo especial.
 
@@ -30,27 +31,29 @@ Descubre todo tipo de plantas con flores coloridas, carnívoras, extrañas y mar
 			'https://www.editorialjuventud.es/wp-content/uploads/2020/04/ElGranLibroDeLasFlores_cover.jpg'
 		author: 'Yuval Zommer'
 		editorial: 'Juventud'
+		content: ''
 		genders: 'Libros informativos (infantil)') save
 ]
 
 { #category : #adding }
 BookSample class >> addBook3 [
-	(Book
+	(CompleteBook
 		newWithTitle: 'Los Cinco se escapan'
-		ISBN: '9788426142948'
+		isbn: '9788426142948'
 		description:
 			'Los Cinco escapan a la isla de Kirrin huyendo de unos personajes instalados en Villa Kirrin. Pero ¿quién ha estado en la isla? ¿Qué contiene el misterioso baúl que alguien ha dejado en el viejo barco naufragado? Los Cinco creen que están tras la pista de unos contrabandistas. Hasta que oyen el grito de un niño…'
 		imageURL: 'https://www.editorialjuventud.es/wp-content/uploads/2018/09/4294.jpg'
 		author: 'Enid Blyton'
 		editorial: 'Juventud'
+		content: ''
 		genders: 'Narrativa juvenil') save
 ]
 
 { #category : #adding }
 BookSample class >> addBook4 [
-	(Book
+	(CompleteBook
 		newWithTitle: 'El gran libro de las bestias'
-		ISBN: '9788426144119'
+		isbn: '9788426144119'
 		description:
 			'¿Por qué los lobos aúllan a la luna? ¿Es verdad que la hiena se ríe? ¿Por qué les gusta tanto el barro a los hipopótamos? Encuentra las respuestas a estas bestiales preguntas, y muchas más, dentro del libro. También puedes jugar a buscar en las imágenes: ¿eres capaz de detectar todas las huellas de bestias misteriosas?
 
@@ -61,5 +64,6 @@ Finalmente, ofrece un repaso a las bestias míticas, las bestias de la Edad de H
 			'https://www.editorialjuventud.es/wp-content/uploads/2018/08/9788426144126-1.jpg'
 		author: 'Yuval Zommer'
 		editorial: 'Juventud'
+		content: ''
 		genders: 'Libros informativos (infantil)') save
 ]
