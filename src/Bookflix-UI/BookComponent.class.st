@@ -51,7 +51,7 @@ BookComponent >> renderContentOn: html [
 BookComponent >> renderDescriptionOn: html [
 	html paragraph
 		class: 'card-text';
-		with: book description
+		with: (book description first: 100) , '...'
 ]
 
 { #category : #rendering }
