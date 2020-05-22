@@ -125,6 +125,9 @@ ModifyCompleteBookComponent >> title: aTitle [
 
 { #category : #callbacks }
 ModifyCompleteBookComponent >> updateBook [
-	book save.
-	self answer
+	(Bookflix instance existingIsbn: self isbn)
+		ifTrue: [ error := true ]
+		ifFalse: [ error := false.
+			book save.
+			self answer ]
 ]

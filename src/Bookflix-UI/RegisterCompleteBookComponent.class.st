@@ -91,16 +91,19 @@ RegisterCompleteBookComponent >> isbn: aISBN [
 
 { #category : #'as yet unclassified' }
 RegisterCompleteBookComponent >> registerBook [
-	(CompleteBook
-		newWithTitle: title
-		isbn: ISBN
-		description: description
-		imageURL: imageURL
-		author: author
-		editorial: editorial
-		content: content
-		genders: genders) save.
-	self answer
+	(Bookflix instance existingIsbn: self isbn)
+		ifTrue: [ error := true ]
+		ifFalse: [ error := false.
+			(CompleteBook
+				newWithTitle: title
+				isbn: ISBN
+				description: description
+				imageURL: imageURL
+				author: author
+				editorial: editorial
+				content: content
+				genders: genders) save.
+			self answer ]
 ]
 
 { #category : #rendering }
