@@ -28,12 +28,12 @@ LoginComponent >> initialize [
 	registerComponent := RegisterComponent new
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 LoginComponent >> inputEmail [
 	^ inputEmail
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 LoginComponent >> inputEmail: anInputEmail [
 	inputEmail := anInputEmail
 ]

@@ -182,7 +182,7 @@ CommonUserProfileComponent >> renderTitularInputOn: html [
 				with: 'Titular' ]
 ]
 
-{ #category : #update }
+{ #category : #callbacks }
 CommonUserProfileComponent >> updateUserData [
 	super updateUserData.
 	self session user card
