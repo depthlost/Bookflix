@@ -17,23 +17,16 @@ Bookflix class >> instance [
 	^ instance ifNil: [ instance := Bookflix new ]
 ]
 
-{ #category : #adding }
-Bookflix >> addBook: aBook [
-	"agrega un libro a la base de datos"
-
-	
-]
-
-{ #category : #adding }
-Bookflix >> addUser: aUser [
-	"agrega un usuario a la base de datos"
-
-	
-]
-
 { #category : #'as yet unclassified' }
 Bookflix >> existUserWithEmail: anEmail [
 	^ User selectAll anySatisfy: [ :user | user email = anEmail ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> existingIsbn: aIsbn [
+	| books |
+	books := self getAllBooks.
+	^ books anySatisfy: [ :book | book isbn = aIsbn ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -46,11 +39,4 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 	^ User selectAll
 		detect: [ :user | user email = anEmail & (user password = aPassword) ]
 		ifNone: [ nil ]
-]
-
-{ #category : #removing }
-Bookflix >> removeBook: aBook [
-	"borra el libro recivido como parametro de la base de datos si es que esta alli"
-
-	
 ]
