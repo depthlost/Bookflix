@@ -1,6 +1,9 @@
 Class {
 	#name : #BookFormulariComponent,
 	#superclass : #WAComponent,
+	#instVars : [
+		'error'
+	],
 	#category : #'Bookflix-UI'
 }
 
@@ -54,6 +57,11 @@ BookFormulariComponent >> imageURL: aImageURL [
 	^ self subclassResponsibility
 ]
 
+{ #category : #initialization }
+BookFormulariComponent >> initialize [
+	error := false
+]
+
 { #category : #accessing }
 BookFormulariComponent >> isbn [
 	^ self subclassResponsibility
@@ -99,13 +107,17 @@ BookFormulariComponent >> renderFormulariEditorialOn: html [
 
 { #category : #rendering }
 BookFormulariComponent >> renderFormulariISBNOn: html [
-	html label
-		for: 'input_ISBN';
-		with: 'ISBN: '.
-	html textInput
-		id: 'input_ISBN';
-		class: 'form-control';
-		on: #isbn of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_ISBN';
+				with: 'ISBN: '.
+			html textInput
+				id: 'input_ISBN';
+				class: 'form-control';
+				on: #isbn of: self.
+			error
+				ifTrue: [ self renderLoginErrorMessageOn: html ] ]
 ]
 
 { #category : #rendering }
@@ -151,6 +163,13 @@ BookFormulariComponent >> renderGendersFormulariOn: html [
 		id: 'input_genders';
 		class: 'form-control';
 		on: #genders of: self
+]
+
+{ #category : #rendering }
+BookFormulariComponent >> renderLoginErrorMessageOn: html [
+	html small
+		class: 'form-text text-danger';
+		with: 'El ISBN se encuentra en uso. Por favor intenta de nuevo.'
 ]
 
 { #category : #accessing }
