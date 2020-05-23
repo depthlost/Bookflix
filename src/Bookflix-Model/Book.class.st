@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'title',
-		'ISBN',
+		'isbn',
 		'description',
 		'imageURL',
 		'author',
@@ -19,32 +19,26 @@ Book class >> isVoyageRoot [
 ]
 
 { #category : #'instance creation' }
-Book class >> newWithTitle: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
 	^ self new
 		title: aTitle
-			ISBN: aISBN
+			isbn: aISBN
 			description: aDescription
 			imageURL: aImageURL
 			author: aAuthor
-			editorial: aEditorial;
+			editorial: aEditorial
+			genders: aGenders;
 		yourself
 ]
 
-{ #category : #adding }
-Book >> addGender: aGender [
-	(genders includes: aGender)
-		ifTrue: [ ^ self ].
-	genders add: aGender.
-	aGender addBook: self
+{ #category : #accessing }
+Book >> author [
+	^ author
 ]
 
-{ #category : #adding }
-Book >> addGenders: aGenders [
-	| col |
-	col := aGenders findTokens: ','.
-	col := col
-		collect: [ :nomGender | Gender newOrExistingWithName: nomGender ].
-	col do: [ :gender | self addGender: gender ]
+{ #category : #accessing }
+Book >> author: aAuthor [
+	author := aAuthor
 ]
 
 { #category : #accessing }
@@ -53,8 +47,28 @@ Book >> description [
 ]
 
 { #category : #accessing }
+Book >> description: aDescription [
+	description := aDescription
+]
+
+{ #category : #accessing }
+Book >> editorial [
+	^ editorial
+]
+
+{ #category : #accessing }
+Book >> editorial: aEditorial [
+	editorial := aEditorial
+]
+
+{ #category : #accessing }
 Book >> genders [
 	^ genders
+]
+
+{ #category : #accessing }
+Book >> genders: aGenders [
+	genders := aGenders
 ]
 
 { #category : #accessing }
@@ -62,9 +76,19 @@ Book >> imageURL [
 	^ imageURL
 ]
 
-{ #category : #initialization }
-Book >> initialize [
-	genders := OrderedCollection new
+{ #category : #accessing }
+Book >> imageURL: aImageURL [
+	imageURL := aImageURL
+]
+
+{ #category : #accessing }
+Book >> isbn [
+	^ isbn
+]
+
+{ #category : #accessing }
+Book >> isbn: aISBN [
+	isbn := aISBN
 ]
 
 { #category : #accessing }
@@ -72,14 +96,18 @@ Book >> title [
 	^ title
 ]
 
+{ #category : #accessing }
+Book >> title: aTitle [
+	title := aTitle
+]
+
 { #category : #setting }
-Book >> title: aTitle ISBN: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book >> title: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
 	title := aTitle.
-	ISBN := aISBN.
+	isbn := aISBN.
 	description := aDescription.
 	imageURL := aImageURL.
 	author := aAuthor.
-	aAuthor addBook: self.
 	editorial := aEditorial.
-	aEditorial addBook: self
+	genders := aGenders
 ]

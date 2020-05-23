@@ -43,16 +43,7 @@ User >> email [
 
 { #category : #accessing }
 User >> email: anEmail [
-	(self emailIsValid: anEmail)
-		ifTrue: [ email := anEmail.
-			^ true ].
-	^ false
-]
-
-{ #category : #'as yet unclassified' }
-User >> emailIsValid: aEmail [
-	^ (aEmail includesSubstring: '@')
-		& (aEmail includesSubstring: '.com')
+	email := anEmail
 ]
 
 { #category : #abstract }
@@ -95,6 +86,6 @@ User >> surname [
 ]
 
 { #category : #accessing }
-User >> surname: asurname [
-	surname := surname
+User >> surname: aSurname [
+	surname := aSurname
 ]

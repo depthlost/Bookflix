@@ -32,8 +32,18 @@ Card >> expirationDate [
 ]
 
 { #category : #accessing }
+Card >> expirationDate: anObject [
+	expirationDate := anObject
+]
+
+{ #category : #accessing }
 Card >> number [
 	^ number
+]
+
+{ #category : #accessing }
+Card >> number: anObject [
+	number := anObject
 ]
 
 { #category : #accessing }
@@ -42,8 +52,18 @@ Card >> securityCode [
 ]
 
 { #category : #accessing }
+Card >> securityCode: anObject [
+	securityCode := anObject
+]
+
+{ #category : #accessing }
 Card >> titular [
 	^ titular
+]
+
+{ #category : #accessing }
+Card >> titular: anObject [
+	titular := anObject
 ]
 
 { #category : #'as yet unclassified' }
@@ -58,4 +78,9 @@ Card >> titular: aTitular type: aType number: aNumber expirationDate: aExpiratio
 { #category : #accessing }
 Card >> type [
 	^ type
+]
+
+{ #category : #accessing }
+Card >> type: anObject [
+	type := anObject
 ]

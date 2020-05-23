@@ -16,7 +16,13 @@ HomeComponent >> children [
 HomeComponent >> initialize [
 	super initialize.
 	bookComponents := Bookflix instance getAllBooks
-		collect: [ :each | ProxyBookComponent book: each ]
+		collect: [ :each | ProxyBookComponent book: each andParentComponent: self ]
+]
+
+{ #category : #'add/remove' }
+HomeComponent >> removeBookComponent: aBook [
+	bookComponents
+		remove: (bookComponents detect: [ :each | each book = aBook ])
 ]
 
 { #category : #rendering }
@@ -32,6 +38,11 @@ HomeComponent >> renderContentOn: html [
 		with: [ html div
 				class: 'card-columns custom-columns';
 				with: [ self renderBooksOn: html ] ]
+]
+
+{ #category : #seaside }
+HomeComponent >> states [
+	^ Array with: self
 ]
 
 { #category : #seaside }

@@ -1,184 +1,194 @@
-"
-| application |
-application := WAAdmin register: UserProfileComponent asApplicationAt: '/bookflix'.
-application sessionClass: UserSession.
-"
 Class {
 	#name : #CommonUserProfileComponent,
 	#superclass : #UserProfileComponent,
 	#instVars : [
-		'cardname',
-		'cardsurname',
-		'cardnumber',
-		'cardexpirationDate',
-		'cardsecurityCode'
+		'inputTitular',
+		'inputType',
+		'inputCardNumber',
+		'inputCardExpirationDate',
+		'inputCardSecurityCode'
 	],
 	#category : #'Bookflix-UI'
 }
 
-{ #category : #accessing }
-CommonUserProfileComponent >> cardexpirationDate [
-	^ cardexpirationDate
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardexpirationDate: aDate [
-	cardexpirationDate := aDate asString
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardname [
-	^ cardname
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardname: aCardname [
-	cardname := aCardname
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardnumber [
-	^ cardnumber asString
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardnumber: aCardnumber [
-	cardnumber := aCardnumber asInteger
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardsecurityCode [
-	^ cardsecurityCode asString
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardsecurityCode: aCardsecurityCode [
-	cardsecurityCode := aCardsecurityCode asInteger
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardsurname [
-	^ cardsurname
-]
-
-{ #category : #accessing }
-CommonUserProfileComponent >> cardsurname: aCardsurname [
-	cardsurname := aCardsurname
-]
-
 { #category : #initialization }
 CommonUserProfileComponent >> initialize [
-	self session user
-		card:
-			(Card
-				name: 'Jhon'
-				surname: 'Travolta'
-				number: 123
-				expirationDate: Date today
-				securityCode: 4321).
-	cardname := self session user card name
+	| userCard |
+	super initialize.
+	userCard := self session user card.
+	inputTitular := userCard titular.
+	inputType := userCard type.
+	inputCardNumber := userCard number.
+	inputCardExpirationDate := userCard expirationDate year asString
+		, '-'
+		, (userCard expirationDate month asString padLeftTo: 2 with: $0).
+	inputCardSecurityCode := userCard securityCode
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputCardExpirationDate [
+	^ inputCardExpirationDate
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputCardExpirationDate: anObject [
+	inputCardExpirationDate := anObject
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputCardNumber [
+	^ inputCardNumber
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputCardNumber: anObject [
+	inputCardNumber := anObject
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputCardSecurityCode [
+	^ inputCardSecurityCode
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputCardSecurityCode: anObject [
+	inputCardSecurityCode := anObject
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputTitular [
+	^ inputTitular
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputTitular: anObject [
+	inputTitular := anObject
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputType [
+	^ inputType
+]
+
+{ #category : #accessing }
+CommonUserProfileComponent >> inputType: anObject [
+	^ inputType := anObject
 ]
 
 { #category : #rendering }
-CommonUserProfileComponent >> renderCardUpdateButtonOn: html [
-	self session user card name: cardname.
-	self session user card surname: cardsurname.
-	self session user card number: cardnumber.
-	self session user card expirationDate: cardexpirationDate.
-	self session user card cardsecurityCode: cardsecurityCode.
-	self session updateCard
-]
-
-{ #category : #rendering }
-CommonUserProfileComponent >> renderContentOn: html [
-	super renderContentOn: html.
+CommonUserProfileComponent >> renderCardCodeInputOn: html [
 	html div
-		class: 'container';
-		style: 'max-width: 320px;';
-		with: [ self renderUserCardDates: html ]
-]
-
-{ #category : #rendering }
-CommonUserProfileComponent >> renderFormTitleCardOn: html [
-	^ html heading level1
-		class: 'h3 mb-3 font-weight-normal text-center mb-5';
-		with: 'Datos de Tarjeta'
-]
-
-{ #category : #rendering }
-CommonUserProfileComponent >> renderFormUserCardexpirationDate: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_cardexpirationDate';
-				with: 'Fecha de vencimiento: '.
-			html textInput
-				id: 'input_cardexpirationDate';
+		class: 'col-6 form-label-group';
+		with: [ html textInput
+				id: 'cardCodeInput';
 				class: 'form-control';
-				on: #cardexpirationDate of: self ]
+				placeholder: 'Codigo de Seguridad';
+				required;
+				pattern: '\d{3}';
+				on: #inputCardSecurityCode of: self.
+			html label
+				for: 'cardCodeInput';
+				with: 'Codigo de Seguridad' ]
 ]
 
 { #category : #rendering }
-CommonUserProfileComponent >> renderFormUserCardname: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_cardname';
-				with: 'Nombre del titular: '.
-			html textInput
-				id: 'input_cardname';
-				class: 'form-control';
-				on: #cardname of: self ]
-]
-
-{ #category : #rendering }
-CommonUserProfileComponent >> renderFormUserCardnumber: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_cardnumber';
-				with: 'numero: '.
-			html textInput
-				id: 'input_cardnumber';
-				class: 'form-control';
-				on: #cardnumber of: self ]
-]
-
-{ #category : #rendering }
-CommonUserProfileComponent >> renderFormUserCardsecurityCode: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_cardsecurityCode';
-				with: 'Fecha de vencimiento: '.
-			html textInput
-				id: 'input_cardsecurityCode';
-				class: 'form-control';
-				on: #cardsecurityCode of: self ]
-]
-
-{ #category : #rendering }
-CommonUserProfileComponent >> renderFormUserCardsurname: html [
-	html form
-		class: 'form-inline';
-		with: [ html label
-				for: 'input_cardsurname';
-				with: 'Apellido del titular: '.
-			html textInput
-				id: 'input_cardsurname';
-				class: 'form-control';
-				on: #cardsurname of: self ]
-]
-
-{ #category : #rendering }
-CommonUserProfileComponent >> renderUserCardDates: html [
-	html form
+CommonUserProfileComponent >> renderCardDateAndCodeInputOn: html [
+	html div
+		class: 'form-row';
 		with: [ self
-				renderFormTitleCardOn: html;
-				renderFormUserCardname: html;
-				renderFormUserCardsurname: html;
-				renderFormUserCardnumber: html;
-				renderFormUserCardexpirationDate: html;
-				renderFormUserCardsecurityCode: html;
-				renderCardUpdateButtonOn: html ]
+				renderCardDateInputOn: html;
+				renderCardCodeInputOn: html ]
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderCardDateInputOn: html [
+	html div
+		class: 'col-6 form-label-group';
+		with: [ html monthInput
+				id: 'cardDateInput';
+				class: 'form-control';
+				placeholder: 'Fecha de Vencimiento';
+				required;
+				on: #inputCardExpirationDate of: self.
+			html label
+				for: 'cardDateInput';
+				with: 'Fecha de Vencimiento' ]
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderCardNumberInputOn: html [
+	html div
+		class: 'col-8 form-label-group';
+		with: [ html textInput
+				id: 'cardNumberInput';
+				class: 'form-control';
+				placeholder: 'Numero de Tarjeta';
+				required;
+				pattern: '\s*(\d\s*){16}';
+				on: #inputCardNumber of: self.
+			html label
+				for: 'cardNumberInput';
+				with: 'Numero de Tarjeta' ]
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderCardTypeAndNumberInputOn: html [
+	html div
+		class: 'form-row';
+		with: [ self
+				renderCardTypeInputOn: html;
+				renderCardNumberInputOn: html ]
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderCardTypeInputOn: html [
+	html div
+		class: 'col-4 form-label-group';
+		with: [ html select
+				class: 'form-control';
+				id: 'cardTypeInput';
+				attributeAt: 'placeholder' put: 'Tipo de Pago';
+				list: #('Debito' 'Credito');
+				selected: inputType;
+				callback: [ :input | inputType := input ].
+			html label
+				for: 'cardTypeInput';
+				with: 'Tipo de Pago' ]
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderDataInputOn: html [
+	super renderDataInputOn: html.
+	self
+		renderTitularInputOn: html;
+		renderCardTypeAndNumberInputOn: html;
+		renderCardDateAndCodeInputOn: html
+]
+
+{ #category : #rendering }
+CommonUserProfileComponent >> renderTitularInputOn: html [
+	html div
+		class: 'form-label-group';
+		with: [ html textInput
+				id: 'titularInput';
+				class: 'form-control';
+				placeholder: 'Titular';
+				required;
+				attributeAt: 'minlength' put: '3';
+				maxLength: '48';
+				on: #inputTitular of: self.
+			html label
+				for: 'titularInput';
+				with: 'Titular' ]
+]
+
+{ #category : #callbacks }
+CommonUserProfileComponent >> updateUserData [
+	super updateUserData.
+	self session user card
+		titular: inputTitular;
+		type: inputType;
+		number: (inputCardNumber copyWithout: $ );
+		expirationDate: (Date fromString: inputCardExpirationDate , '-01') asMonth;
+		securityCode: inputCardSecurityCode
 ]

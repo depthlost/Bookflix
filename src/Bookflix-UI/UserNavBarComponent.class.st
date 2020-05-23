@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #callbacks }
+UserNavBarComponent >> goToHome [
+	rootComponent updateContentTo: HomeComponent new
+]
+
+{ #category : #callbacks }
 UserNavBarComponent >> goToUserProfile [
 	rootComponent updateContentTo: ProxyUserProfileComponent new
 ]
