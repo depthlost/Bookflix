@@ -7,46 +7,42 @@ Class {
 	#name : #TemplateComponent,
 	#superclass : #WABootstrapComponent,
 	#instVars : [
-		'headComponent',
-		'contentComponent'
+		'contentComponent',
+		'navbarComponent'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-others'
 }
 
-{ #category : #accessing }
-TemplateComponent class >> contentComponent: aContentComponent [
-	^ self new contentComponent: aContentComponent
+{ #category : #update }
+TemplateComponent >> addContent: aComponent [
+	contentComponent call: aComponent
 ]
 
 { #category : #seaside }
 TemplateComponent >> children [
-	^ Array with: headComponent with: contentComponent
+	^ Array with: navbarComponent with: contentComponent
 ]
 
-{ #category : #accessing }
-TemplateComponent >> contentComponent: aContentComponent [
-	contentComponent := aContentComponent
+{ #category : #update }
+TemplateComponent >> goToHomeContent [
+	contentComponent home
 ]
 
 { #category : #initialization }
 TemplateComponent >> initialize [
-	headComponent := ProxyNavBarComponent rootComponent: self.
-	contentComponent := LoginComponent rootComponent: self
+	navbarComponent := ProxyNavBarComponent in: self.
+	contentComponent := LoginComponent in: self
+]
+
+{ #category : #update }
+TemplateComponent >> loadSessionState [
+	navbarComponent := ProxyNavBarComponent in: self.
+	contentComponent := HomeComponent new
 ]
 
 { #category : #rendering }
 TemplateComponent >> renderContentOn: html [
 	html
-		render: headComponent;
+		render: navbarComponent;
 		render: contentComponent
-]
-
-{ #category : #updating }
-TemplateComponent >> updateContentTo: aComponent [
-	contentComponent call: aComponent
-]
-
-{ #category : #updating }
-TemplateComponent >> updateWithContentTo: aComponent [
-	self call: (TemplateComponent contentComponent: aComponent)
 ]

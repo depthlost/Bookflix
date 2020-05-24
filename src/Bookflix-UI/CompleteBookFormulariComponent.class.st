@@ -1,7 +1,7 @@
 Class {
 	#name : #CompleteBookFormulariComponent,
 	#superclass : #BookFormulariComponent,
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-books'
 }
 
 { #category : #accessing }

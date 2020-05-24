@@ -1,12 +1,12 @@
 Class {
 	#name : #AdminNavBarComponent,
 	#superclass : #UserNavBarComponent,
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-navbars'
 }
 
 { #category : #callbacks }
 AdminNavBarComponent >> goToAddBook [
-	rootComponent updateContentTo: RegisterCompleteBookComponent new
+	parentComponent addContent: RegisterCompleteBookComponent new
 ]
 
 { #category : #rendering }

@@ -1,7 +1,7 @@
 Class {
 	#name : #AdminBookComponent,
 	#superclass : #BookComponent,
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-books'
 }
 
 { #category : #callbacks }

@@ -12,5 +12,5 @@ Class {
 		'editorialName',
 		'genders'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-books'
 }

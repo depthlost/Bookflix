@@ -5,7 +5,7 @@ Class {
 		'book',
 		'parentComponent'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-books'
 }
 
 { #category : #'as yet unclassified' }

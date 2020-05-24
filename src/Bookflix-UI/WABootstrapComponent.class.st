@@ -1,7 +1,7 @@
 Class {
 	#name : #WABootstrapComponent,
 	#superclass : #WAComponent,
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-others'
 }
 
 { #category : #adding }

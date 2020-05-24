@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'book'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-books'
 }
 
 { #category : #'instance creation' }

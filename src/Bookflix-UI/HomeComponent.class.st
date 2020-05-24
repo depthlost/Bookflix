@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'bookComponents'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-others'
 }
 
 { #category : #seaside }

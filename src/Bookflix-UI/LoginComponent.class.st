@@ -8,24 +8,27 @@ Class {
 	#name : #LoginComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'rootComponent',
-		'registerComponent',
+		'parentComponent',
 		'inputEmail',
 		'inputPassword',
 		'error'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-users'
 }
 
-{ #category : #accessing }
-LoginComponent class >> rootComponent: aRootComponent [
-	^ self new rootComponent: aRootComponent
+{ #category : #evaluating }
+LoginComponent class >> in: aComponent [
+	^ self new in: aComponent
+]
+
+{ #category : #initialization }
+LoginComponent >> in: aComponent [
+	parentComponent := aComponent
 ]
 
 { #category : #initialization }
 LoginComponent >> initialize [
-	error := false.
-	registerComponent := RegisterComponent new
+	error := false
 ]
 
 { #category : #accessing }
@@ -52,7 +55,7 @@ LoginComponent >> login [
 { #category : #callbacks }
 LoginComponent >> loginWith: anUser [
 	self session user: anUser.
-	rootComponent updateWithContentTo: HomeComponent new
+	parentComponent loadSessionState
 ]
 
 { #category : #rendering }
@@ -149,7 +152,7 @@ LoginComponent >> renderLoginErrorMessageOn: html [
 { #category : #rendering }
 LoginComponent >> renderRegisterButtonOn: html [
 	html anchor
-		callback: [ self loginWith: (self call: registerComponent) ];
+		callback: [ self loginWith: (self call: RegisterComponent new) ];
 		with: 'Registrarse'
 ]
 
@@ -160,11 +163,6 @@ LoginComponent >> renderSubmitButtonOn: html [
 		class: 'btn btn-primary btn-block';
 		callback: [ self login ];
 		with: 'Acceder'
-]
-
-{ #category : #accessing }
-LoginComponent >> rootComponent: aRootComponent [
-	rootComponent := aRootComponent
 ]
 
 { #category : #seaside }

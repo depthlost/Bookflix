@@ -2,20 +2,24 @@ Class {
 	#name : #NavBarComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'rootComponent'
+		'parentComponent'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-navbars'
 }
 
-{ #category : #accessing }
-NavBarComponent class >> rootComponent: aRootComponent [
-	^ self new rootComponent: aRootComponent
+{ #category : #construction }
+NavBarComponent class >> in: aComponent [
+	^ self new in: aComponent
 ]
 
 { #category : #callbacks }
 NavBarComponent >> goToHome [
-	rootComponent
-		updateContentTo: (LoginComponent rootComponent: rootComponent)
+	parentComponent goToHomeContent
+]
+
+{ #category : #initialization }
+NavBarComponent >> in: aComponent [
+	parentComponent := aComponent
 ]
 
 { #category : #rendering }
@@ -38,11 +42,6 @@ NavBarComponent >> renderLogoOn: html [
 { #category : #rendering }
 NavBarComponent >> renderNavBarContentOn: html [
 	self renderLogoOn: html
-]
-
-{ #category : #accessing }
-NavBarComponent >> rootComponent: aRootComponent [
-	rootComponent := aRootComponent
 ]
 
 { #category : #seaside }

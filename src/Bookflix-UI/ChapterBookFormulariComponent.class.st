@@ -1,5 +1,5 @@
 Class {
 	#name : #ChapterBookFormulariComponent,
 	#superclass : #BookFormulariComponent,
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-books'
 }

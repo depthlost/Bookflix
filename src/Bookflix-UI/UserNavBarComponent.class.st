@@ -1,23 +1,25 @@
 Class {
 	#name : #UserNavBarComponent,
 	#superclass : #NavBarComponent,
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-navbars'
 }
 
 { #category : #callbacks }
-UserNavBarComponent >> goToHome [
-	rootComponent updateContentTo: HomeComponent new
-]
-
-{ #category : #callbacks }
 UserNavBarComponent >> goToUserProfile [
-	rootComponent updateContentTo: ProxyUserProfileComponent new
+	parentComponent addContent: ProxyUserProfileComponent new
 ]
 
 { #category : #callbacks }
 UserNavBarComponent >> logout [
-	self session user: nil.
-	rootComponent answer
+	self session unregister.
+	self redirectUrl
+]
+
+{ #category : #private }
+UserNavBarComponent >> redirectUrl [
+	^ self requestContext responseGenerator
+		redirectTo: self application url;
+		respond
 ]
 
 { #category : #rendering }

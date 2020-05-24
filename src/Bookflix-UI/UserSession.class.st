@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'user'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-others'
 }
 
 { #category : #accessing }

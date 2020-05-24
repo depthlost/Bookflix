@@ -9,7 +9,7 @@ Class {
 		'inputPassword',
 		'errorByRegisteredEmail'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-users'
 }
 
 { #category : #private }

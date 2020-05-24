@@ -16,7 +16,7 @@ Class {
 		'editorial',
 		'genders'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-books'
 }
 
 { #category : #accessing }

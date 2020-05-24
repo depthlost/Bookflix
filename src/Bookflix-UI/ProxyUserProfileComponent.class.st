@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'userProfileComponent'
 	],
-	#category : #'Bookflix-UI'
+	#category : #'Bookflix-UI-users'
 }
 
 { #category : #initialization }
