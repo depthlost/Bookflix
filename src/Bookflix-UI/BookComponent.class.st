@@ -14,11 +14,6 @@ BookComponent class >> book: aBook in: aComponent [
 ]
 
 { #category : #accessing }
-BookComponent >> book [
-	^ book
-]
-
-{ #category : #accessing }
 BookComponent >> book: aBook in: aComponent [
 	book := aBook.
 	parentComponent := aComponent

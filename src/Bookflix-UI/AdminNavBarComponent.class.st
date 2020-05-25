@@ -6,7 +6,7 @@ Class {
 
 { #category : #callbacks }
 AdminNavBarComponent >> goToAddBook [
-	parentComponent addContent: RegisterCompleteBookComponent new
+	parentComponent addContent: AddBookComponent new
 ]
 
 { #category : #rendering }

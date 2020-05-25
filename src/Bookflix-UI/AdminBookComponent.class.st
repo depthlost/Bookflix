@@ -6,13 +6,7 @@ Class {
 
 { #category : #callbacks }
 AdminBookComponent >> goToModifyBook [
-	parentComponent call: (ModifyCompleteBookComponent newWith: book)
-]
-
-{ #category : #callbacks }
-AdminBookComponent >> removeBook [
-	parentComponent removeBookComponent: book.
-	book remove
+	parentComponent call: (SetBookComponent with: book)
 ]
 
 { #category : #rendering }
@@ -42,6 +36,6 @@ AdminBookComponent >> renderModifyButtonOn: html [
 AdminBookComponent >> renderRemoveButtonOn: html [
 	html anchor
 		class: 'text-danger ml-3';
-		callback: [ self removeBook ];
+		callback: [ book remove ];
 		with: 'Borrar'
 ]

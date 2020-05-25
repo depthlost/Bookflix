@@ -1,33 +1,19 @@
 Class {
 	#name : #HomeComponent,
 	#superclass : #WAComponent,
-	#instVars : [
-		'bookComponents'
-	],
 	#category : #'Bookflix-UI-others'
 }
 
-{ #category : #seaside }
-HomeComponent >> children [
-	^ bookComponents
-]
-
-{ #category : #initialization }
-HomeComponent >> initialize [
-	super initialize.
-	bookComponents := Bookflix instance getAllBooks
+{ #category : #private }
+HomeComponent >> getBookComponents [
+	^ Bookflix instance getAllBooks
 		collect: [ :each | ProxyBookComponent book: each in: self ]
-]
-
-{ #category : #'add/remove' }
-HomeComponent >> removeBookComponent: aBook [
-	bookComponents
-		remove: (bookComponents detect: [ :each | each book = aBook ])
 ]
 
 { #category : #rendering }
 HomeComponent >> renderBooksOn: html [
-	bookComponents do: [ :bookComponent | html render: bookComponent ]
+	self getBookComponents
+		do: [ :bookComponent | html render: bookComponent ]
 ]
 
 { #category : #rendering }
