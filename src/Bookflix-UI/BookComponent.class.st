@@ -19,6 +19,13 @@ BookComponent >> book: aBook in: aComponent [
 	parentComponent := aComponent
 ]
 
+{ #category : #private }
+BookComponent >> getBookDescriptionWithMaxLength: aNumber [
+	^ book description size <= aNumber
+		ifTrue: [ book description takeFirst: aNumber ]
+		ifFalse: [ (book description first: aNumber) , '...' ]
+]
+
 { #category : #rendering }
 BookComponent >> renderBookBodyOn: html [
 	html div
@@ -46,7 +53,7 @@ BookComponent >> renderContentOn: html [
 BookComponent >> renderDescriptionOn: html [
 	html paragraph
 		class: 'card-text';
-		with: (book description first: 150) , '...'
+		with: (self getBookDescriptionWithMaxLength: 150)
 ]
 
 { #category : #rendering }

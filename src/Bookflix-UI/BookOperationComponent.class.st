@@ -93,32 +93,40 @@ BookOperationComponent >> isbnInput: anObject [
 
 { #category : #rendering }
 BookOperationComponent >> renderAuthorOn: html [
-	html label
-		for: 'input_author';
-		with: 'Autor: '.
-	html textInput
-		id: 'input_author';
-		class: 'form-control';
-		on: #authorInput of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_author';
+				with: 'Autor'.
+			html textInput
+				id: 'input_author';
+				class: 'form-control';
+				placeholder: 'Autor';
+				required;
+				on: #authorInput of: self ]
 ]
 
 { #category : #rendering }
 BookOperationComponent >> renderContentOn: html [
 	html div
-		class: 'container';
+		class: 'container py-5';
 		style: 'max-width: 320px;';
 		with: [ html form: [ self renderDataInputOn: html ] ]
 ]
 
 { #category : #rendering }
 BookOperationComponent >> renderContentUrlsOn: html [
-	html label
-		for: 'input_content_urls';
-		with: 'Contenido: '.
-	html textInput
-		id: 'input_content_urls';
-		class: 'form-control';
-		on: #contentUrlsInput of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_content_urls';
+				with: 'Contenido'.
+			html textInput
+				id: 'input_content_urls';
+				class: 'form-control';
+				placeholder: 'URL de Contenido';
+				required;
+				on: #contentUrlsInput of: self ]
 ]
 
 { #category : #rendering }
@@ -138,24 +146,32 @@ BookOperationComponent >> renderDataInputOn: html [
 
 { #category : #rendering }
 BookOperationComponent >> renderDescriptionOn: html [
-	html label
-		for: 'input_description';
-		with: 'Descripcion:'.
-	html textInput
-		id: 'input_description';
-		class: 'form-control';
-		on: #descriptionInput of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_description';
+				with: 'Descripción'.
+			html textInput
+				id: 'input_description';
+				class: 'form-control';
+				placeholder: 'Descripción';
+				required;
+				on: #descriptionInput of: self ]
 ]
 
 { #category : #rendering }
 BookOperationComponent >> renderEditorialOn: html [
-	html label
-		for: 'input_editorial';
-		with: 'Editorial:'.
-	html textInput
-		id: 'input_editorial';
-		class: 'form-control';
-		on: #editorialInput of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_editorial';
+				with: 'Editorial'.
+			html textInput
+				id: 'input_editorial';
+				class: 'form-control';
+				placeholder: 'Editorial';
+				required;
+				on: #editorialInput of: self ]
 ]
 
 { #category : #rendering }
@@ -172,24 +188,35 @@ BookOperationComponent >> renderFormTitleOn: html [
 
 { #category : #rendering }
 BookOperationComponent >> renderGendersOn: html [
-	html label
-		for: 'input_genders';
-		with: 'Generos (separados por comas): '.
-	html textInput
-		id: 'input_genders';
-		class: 'form-control';
-		on: #gendersInput of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_genders';
+				with: 'Generos'.
+			html textInput
+				id: 'input_genders';
+				class: 'form-control';
+				placeholder: 'Generos';
+				required;
+				on: #gendersInput of: self.
+			html small
+				class: 'form-text text-muted';
+				with: 'Utilice comas para separar diferentes generos' ]
 ]
 
 { #category : #rendering }
 BookOperationComponent >> renderImageUrlOn: html [
-	html label
-		for: 'input_imageURL';
-		with: 'ImagenURL:'.
-	html textInput
-		id: 'input_imageURL';
-		class: 'form-control';
-		on: #imageUrlInput of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_imageURL';
+				with: 'Imagen'.
+			html textInput
+				id: 'input_imageURL';
+				class: 'form-control';
+				placeholder: 'URL de Imagen';
+				required;
+				on: #imageUrlInput of: self ]
 ]
 
 { #category : #rendering }
@@ -198,10 +225,12 @@ BookOperationComponent >> renderIsbnOn: html [
 		class: 'form-group';
 		with: [ html label
 				for: 'input_ISBN';
-				with: 'ISBN: '.
+				with: 'ISBN'.
 			html textInput
 				id: 'input_ISBN';
 				class: 'form-control';
+				placeholder: 'ISBN';
+				required;
 				on: #isbnInput of: self.
 			errorByRegisteredIsbn
 				ifTrue: [ self renderErrorByRegisteredIsbnOn: html ] ]
@@ -214,13 +243,18 @@ BookOperationComponent >> renderSubmitButtonOn: html [
 
 { #category : #rendering }
 BookOperationComponent >> renderTitleOn: html [
-	html label
-		for: 'input_title';
-		with: 'Titulo: '.
-	html textInput
-		id: 'input_title';
-		class: 'form-control';
-		on: #titleInput of: self
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'input_title';
+				with: 'Titulo'.
+			html textInput
+				id: 'input_title';
+				class: 'form-control';
+				placeholder: 'Titulo';
+				required;
+				autofocus;
+				on: #titleInput of: self ]
 ]
 
 { #category : #seaside }

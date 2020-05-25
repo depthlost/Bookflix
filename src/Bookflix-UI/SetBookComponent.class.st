@@ -29,7 +29,7 @@ SetBookComponent >> renderFormTitleOn: html [
 SetBookComponent >> renderSubmitButtonOn: html [
 	html button
 		type: 'submit';
-		class: 'btn btn-primary';
+		class: 'btn btn-primary btn-block';
 		callback: [ self update ];
 		with: 'Modificar'
 ]
