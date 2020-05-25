@@ -9,8 +9,8 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-BookComponent class >> book: aBook andParentComponent: aComponent [
-	^ self new book: aBook andParentComponent: aComponent
+BookComponent class >> book: aBook in: aComponent [
+	^ self new book: aBook in: aComponent
 ]
 
 { #category : #accessing }
@@ -19,7 +19,7 @@ BookComponent >> book [
 ]
 
 { #category : #accessing }
-BookComponent >> book: aBook andParentComponent: aComponent [
+BookComponent >> book: aBook in: aComponent [
 	book := aBook.
 	parentComponent := aComponent
 ]

@@ -16,7 +16,7 @@ HomeComponent >> children [
 HomeComponent >> initialize [
 	super initialize.
 	bookComponents := Bookflix instance getAllBooks
-		collect: [ :each | ProxyBookComponent book: each andParentComponent: self ]
+		collect: [ :each | ProxyBookComponent book: each in: self ]
 ]
 
 { #category : #'add/remove' }
