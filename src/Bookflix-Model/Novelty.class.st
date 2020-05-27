@@ -1,5 +1,5 @@
 Class {
-	#name : #Novedad,
+	#name : #Novelty,
 	#superclass : #Object,
 	#instVars : [
 		'date',
@@ -10,8 +10,13 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #testing }
+Novelty class >> isVoyageRoot [
+	^ true
+]
+
 { #category : #'as yet unclassified' }
-Novedad class >> title: aTitle description: aDescription collection: aCollection [
+Novelty class >> title: aTitle description: aDescription collection: aCollection [
 	^ self new
 		title: aTitle
 		description: aDescription
@@ -19,42 +24,42 @@ Novedad class >> title: aTitle description: aDescription collection: aCollection
 ]
 
 { #category : #accessing }
-Novedad >> addCollection: aElement [
+Novelty >> addCollection: aElement [
 	collection add: aElement
 ]
 
 { #category : #accessing }
-Novedad >> collection [
+Novelty >> collection [
 	^ collection
 ]
 
 { #category : #accessing }
-Novedad >> collection: aCollection [
+Novelty >> collection: aCollection [
 	collection := aCollection
 ]
 
 { #category : #accessing }
-Novedad >> date [
+Novelty >> date [
 	^ date
 ]
 
 { #category : #accessing }
-Novedad >> date: aDateAndTime [
+Novelty >> date: aDateAndTime [
 	date := aDateAndTime
 ]
 
 { #category : #accessing }
-Novedad >> description [
+Novelty >> description [
 	^ description
 ]
 
 { #category : #accessing }
-Novedad >> description: aDescription [
+Novelty >> description: aDescription [
 	description := aDescription
 ]
 
 { #category : #initialization }
-Novedad >> initialize [
+Novelty >> initialize [
 	date := DateAndTime now.
 	title := ''.
 	description := ''.
@@ -62,17 +67,17 @@ Novedad >> initialize [
 ]
 
 { #category : #accessing }
-Novedad >> title [
+Novelty >> title [
 	^ title
 ]
 
 { #category : #accessing }
-Novedad >> title: aTitle [
+Novelty >> title: aTitle [
 	title := aTitle
 ]
 
 { #category : #'as yet unclassified' }
-Novedad >> title: aTitle description: aDescription collection: aCollection [
+Novelty >> title: aTitle description: aDescription collection: aCollection [
 	title := aTitle.
 	description := aDescription.
 	collection := aDescription
