@@ -1,10 +1,8 @@
 Class {
 	#name : #Book,
-	#superclass : #Object,
+	#superclass : #Readable,
 	#instVars : [
-		'title',
 		'isbn',
-		'description',
 		'imageURL',
 		'author',
 		'editorial',
@@ -20,10 +18,8 @@ Book class >> isVoyageRoot [
 
 { #category : #'instance creation' }
 Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
-	^ self new
-		title: aTitle
-			isbn: aISBN
-			description: aDescription
+	^ (self title: aTitle description: aDescription)
+		isbn: aISBN
 			imageURL: aImageURL
 			author: aAuthor
 			editorial: aEditorial
@@ -39,16 +35,6 @@ Book >> author [
 { #category : #accessing }
 Book >> author: aAuthor [
 	author := aAuthor
-]
-
-{ #category : #accessing }
-Book >> description [
-	^ description
-]
-
-{ #category : #accessing }
-Book >> description: aDescription [
-	description := aDescription
 ]
 
 { #category : #accessing }
@@ -91,21 +77,9 @@ Book >> isbn: aISBN [
 	isbn := aISBN
 ]
 
-{ #category : #accessing }
-Book >> title [
-	^ title
-]
-
-{ #category : #accessing }
-Book >> title: aTitle [
-	title := aTitle
-]
-
 { #category : #setting }
-Book >> title: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
-	title := aTitle.
+Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
 	isbn := aISBN.
-	description := aDescription.
 	imageURL := aImageURL.
 	author := aAuthor.
 	editorial := aEditorial.
