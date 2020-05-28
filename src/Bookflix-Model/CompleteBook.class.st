@@ -28,5 +28,5 @@ CompleteBook >> content [
 
 { #category : #accessing }
 CompleteBook >> content: aContent [
-	content := aContent
+	content := aContent.
 ]
