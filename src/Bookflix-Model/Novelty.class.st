@@ -5,7 +5,8 @@ Class {
 		'date',
 		'title',
 		'description',
-		'collection'
+		'videos',
+		'photos'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -23,19 +24,14 @@ Novelty class >> title: aTitle description: aDescription collection: aCollection
 		collection: aCollection
 ]
 
-{ #category : #accessing }
-Novelty >> addCollection: aElement [
-	collection add: aElement
+{ #category : #adding }
+Novelty >> addPhoto: aPhoto [
+	photos add: aPhoto
 ]
 
-{ #category : #accessing }
-Novelty >> collection [
-	^ collection
-]
-
-{ #category : #accessing }
-Novelty >> collection: aCollection [
-	collection := aCollection
+{ #category : #adding }
+Novelty >> addVideo: aVideo [
+	videos add: aVideo
 ]
 
 { #category : #accessing }
@@ -63,7 +59,13 @@ Novelty >> initialize [
 	date := DateAndTime now.
 	title := ''.
 	description := ''.
-	collection := OrderedCollection new
+	videos := OrderedCollection new.
+	photos := OrderedCollection new
+]
+
+{ #category : #accessing }
+Novelty >> photos [
+	^ photos
 ]
 
 { #category : #accessing }
@@ -76,9 +78,13 @@ Novelty >> title: aTitle [
 	title := aTitle
 ]
 
-{ #category : #'as yet unclassified' }
-Novelty >> title: aTitle description: aDescription collection: aCollection [
+{ #category : #initialization }
+Novelty >> title: aTitle description: aDescription [
 	title := aTitle.
-	description := aDescription.
-	collection := aDescription
+	description := aDescription
+]
+
+{ #category : #accessing }
+Novelty >> videos [
+	^ videos
 ]
