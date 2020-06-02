@@ -17,6 +17,11 @@ Bookflix class >> instance [
 	^ instance ifNil: [ instance := Bookflix new ]
 ]
 
+{ #category : #adding }
+Bookflix >> addAuthor: aName [
+	(BookAuthor name: aName) save
+]
+
 { #category : #'as yet unclassified' }
 Bookflix >> existUserWithEmail: anEmail [
 	^ User selectAll anySatisfy: [ :user | user email = anEmail ]
