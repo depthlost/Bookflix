@@ -1,16 +1,8 @@
 Class {
 	#name : #AddBookComponent,
 	#superclass : #BookOperationComponent,
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-add/modify'
 }
-
-{ #category : #callbacks }
-AddBookComponent >> add [
-	self validateInputData
-		ifFalse: [ ^ self ].
-	self buildBook save.
-	self answer
-]
 
 { #category : #private }
 AddBookComponent >> buildBook [
@@ -25,20 +17,22 @@ AddBookComponent >> buildBook [
 		genders: gendersInput
 ]
 
-{ #category : #rendering }
-AddBookComponent >> renderFormTitleOn: html [
-	html heading level1
-		class: 'h3 mb-3 font-weight-normal text-center mb-5';
-		with: 'Ingrese los datos correspondientes'
+{ #category : #private }
+AddBookComponent >> buttonDescription [
+	^ 'Registrar'
 ]
 
-{ #category : #rendering }
-AddBookComponent >> renderSubmitButtonOn: html [
-	html button
-		type: 'submit';
-		class: 'btn btn-primary btn-block';
-		callback: [ self add ];
-		with: 'Registrar'
+{ #category : #private }
+AddBookComponent >> formTitle [
+	^ 'Ingrese los datos correspondientes'
+]
+
+{ #category : #callbacks }
+AddBookComponent >> onSubmit [
+	self validateInputData
+		ifFalse: [ ^ self ].
+	self buildBook save.
+	^ AlertComponent with: 'El libro fue registrado con exito'
 ]
 
 { #category : #seaside }

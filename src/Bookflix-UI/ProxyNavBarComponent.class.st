@@ -5,8 +5,8 @@ Class {
 }
 
 { #category : #construction }
-ProxyNavBarComponent class >> in: aComponent [
-	^ self new in: aComponent
+ProxyNavBarComponent class >> withContentComponent: aComponent [
+	^ self new withContentComponent: aComponent
 ]
 
 { #category : #initialization }

@@ -1,31 +1,13 @@
 Class {
 	#name : #ProxyUserProfileComponent,
 	#superclass : #WAComponent,
-	#instVars : [
-		'userProfileComponent'
-	],
 	#category : #'Bookflix-UI-users'
 }
 
 { #category : #initialization }
 ProxyUserProfileComponent >> initialize [
 	super initialize.
-	userProfileComponent := self session user isAdmin
+	^ self session user isAdmin
 		ifFalse: [ CommonUserProfileComponent new ]
 		ifTrue: [ UserProfileComponent new ]
-]
-
-{ #category : #rendering }
-ProxyUserProfileComponent >> renderContentOn: html [
-	userProfileComponent renderContentOn: html
-]
-
-{ #category : #seaside }
-ProxyUserProfileComponent >> states [
-	^ userProfileComponent states
-]
-
-{ #category : #seaside }
-ProxyUserProfileComponent >> updateRoot: anHtmlRoot [
-	userProfileComponent updateRoot: anHtmlRoot
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #BookOperationComponent,
-	#superclass : #WAComponent,
+	#superclass : #SimpleFormComponent,
 	#instVars : [
 		'titleInput',
 		'descriptionInput',
@@ -12,7 +12,7 @@ Class {
 		'contentUrlsInput',
 		'errorByRegisteredIsbn'
 	],
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-add/modify'
 }
 
 { #category : #accessing }
@@ -23,6 +23,11 @@ BookOperationComponent >> authorInput [
 { #category : #accessing }
 BookOperationComponent >> authorInput: anObject [
 	authorInput := anObject
+]
+
+{ #category : #private }
+BookOperationComponent >> buttonDescription [
+	self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -53,6 +58,11 @@ BookOperationComponent >> editorialInput [
 { #category : #accessing }
 BookOperationComponent >> editorialInput: anObject [
 	editorialInput := anObject
+]
+
+{ #category : #private }
+BookOperationComponent >> formTitle [
+	self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -91,6 +101,11 @@ BookOperationComponent >> isbnInput: anObject [
 	isbnInput := anObject
 ]
 
+{ #category : #callbacks }
+BookOperationComponent >> onSubmit [
+	self subclassResponsibility
+]
+
 { #category : #rendering }
 BookOperationComponent >> renderAuthorOn: html [
 	html div
@@ -104,14 +119,6 @@ BookOperationComponent >> renderAuthorOn: html [
 				placeholder: 'Autor';
 				required;
 				on: #authorInput of: self ]
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderContentOn: html [
-	html div
-		class: 'container py-5';
-		style: 'max-width: 320px;';
-		with: [ html form: [ self renderDataInputOn: html ] ]
 ]
 
 { #category : #rendering }
@@ -132,7 +139,6 @@ BookOperationComponent >> renderContentUrlsOn: html [
 { #category : #rendering }
 BookOperationComponent >> renderDataInputOn: html [
 	self
-		renderFormTitleOn: html;
 		renderTitleOn: html;
 		renderDescriptionOn: html;
 		renderImageUrlOn: html;
@@ -140,8 +146,7 @@ BookOperationComponent >> renderDataInputOn: html [
 		renderAuthorOn: html;
 		renderEditorialOn: html;
 		renderGendersOn: html;
-		renderContentUrlsOn: html;
-		renderSubmitButtonOn: html
+		renderContentUrlsOn: html
 ]
 
 { #category : #rendering }
@@ -179,11 +184,6 @@ BookOperationComponent >> renderErrorByRegisteredIsbnOn: html [
 	html small
 		class: 'form-text text-danger';
 		with: 'El ISBN se encuentra en uso. Por favor intenta de nuevo.'
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderFormTitleOn: html [
-	self subclassResponsibility
 ]
 
 { #category : #rendering }
@@ -234,11 +234,6 @@ BookOperationComponent >> renderIsbnOn: html [
 				on: #isbnInput of: self.
 			errorByRegisteredIsbn
 				ifTrue: [ self renderErrorByRegisteredIsbnOn: html ] ]
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderSubmitButtonOn: html [
-	self subclassResponsibility
 ]
 
 { #category : #rendering }
