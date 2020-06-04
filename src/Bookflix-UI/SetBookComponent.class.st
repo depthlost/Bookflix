@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'book'
 	],
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-add/modify'
 }
 
 { #category : #'instance creation' }
@@ -13,33 +13,27 @@ SetBookComponent class >> with: aBook [
 ]
 
 { #category : #private }
+SetBookComponent >> buttonDescription [
+	^ 'Modificar'
+]
+
+{ #category : #private }
+SetBookComponent >> formTitle [
+	^ book title
+]
+
+{ #category : #private }
 SetBookComponent >> isbnWasChangedAndExist [
 	^ isbnInput ~= book isbn
 		& (Bookflix instance existingIsbn: isbnInput)
 ]
 
-{ #category : #rendering }
-SetBookComponent >> renderFormTitleOn: html [
-	html heading level1
-		class: 'h3 mb-3 font-weight-normal text-center mb-5';
-		with: book title
-]
-
-{ #category : #rendering }
-SetBookComponent >> renderSubmitButtonOn: html [
-	html button
-		type: 'submit';
-		class: 'btn btn-primary btn-block';
-		callback: [ self update ];
-		with: 'Modificar'
-]
-
 { #category : #callbacks }
-SetBookComponent >> update [
+SetBookComponent >> onSubmit [
 	self validateInputData
 		ifFalse: [ ^ self ].
 	self updateBook save.
-	self answer
+	^ AlertComponent with: 'El libro fue actualizado con exito'
 ]
 
 { #category : #private }

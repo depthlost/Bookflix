@@ -4,22 +4,15 @@ Class {
 	#category : #'Bookflix-UI-navbars'
 }
 
-{ #category : #callbacks }
-AdminNavBarComponent >> goToAddBook [
-	parentComponent addContent: AddBookComponent new
-]
-
 { #category : #rendering }
-AdminNavBarComponent >> renderItemUserDropdownOn: html [
+AdminNavBarComponent >> renderUserTopItemsOn: html [
+	super renderUserTopItemsOn: html.
 	self
-		renderDropdownItem: 'Perfil'
-			withCallback: [ self goToUserProfile ]
-			on: html;
 		renderDropdownDividerOn: html;
 		renderDropdownItem: 'Agregar Libro'
-			withCallback: [ self goToAddBook ]
+			withCallback: [ contentComponent call: AddBookComponent new ]
 			on: html;
-		renderDropdownItem: 'Cerrar Sesión'
-			withCallback: [ self logout ]
+		renderDropdownItem: 'Agregar Autor'
+			withCallback: [ contentComponent call: AddAuthorComponent new ]
 			on: html
 ]

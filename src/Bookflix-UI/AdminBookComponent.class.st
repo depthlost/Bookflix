@@ -9,6 +9,13 @@ AdminBookComponent >> goToModifyBook [
 	parentComponent call: (SetBookComponent with: book)
 ]
 
+{ #category : #callbacks }
+AdminBookComponent >> removeBook [
+	book remove.
+	parentComponent
+		addAlert: (AlertComponent with: 'Se elimino "' , book title , '" con exito')
+]
+
 { #category : #rendering }
 AdminBookComponent >> renderBookContentOn: html [
 	super renderBookContentOn: html.
@@ -36,6 +43,6 @@ AdminBookComponent >> renderModifyButtonOn: html [
 AdminBookComponent >> renderRemoveButtonOn: html [
 	html anchor
 		class: 'text-danger ml-3';
-		callback: [ book remove ];
+		callback: [ self removeBook ];
 		with: 'Borrar'
 ]

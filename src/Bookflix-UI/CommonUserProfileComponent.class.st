@@ -20,7 +20,7 @@ CommonUserProfileComponent >> checkData [
 
 { #category : #seaside }
 CommonUserProfileComponent >> children [
-	^ super children , Array with: cardComponent
+	^ super children , (Array with: cardComponent)
 ]
 
 { #category : #initialization }

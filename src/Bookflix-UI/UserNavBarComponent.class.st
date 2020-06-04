@@ -5,11 +5,6 @@ Class {
 }
 
 { #category : #callbacks }
-UserNavBarComponent >> goToUserProfile [
-	parentComponent addContent: ProxyUserProfileComponent new
-]
-
-{ #category : #callbacks }
 UserNavBarComponent >> logout [
 	self session unregister.
 	self redirectUrl
@@ -33,18 +28,6 @@ UserNavBarComponent >> renderDropdownItem: aTitle withCallback: aCallback on: ht
 		class: 'dropdown-item';
 		callback: aCallback;
 		with: aTitle
-]
-
-{ #category : #rendering }
-UserNavBarComponent >> renderItemUserDropdownOn: html [
-	 self
-		renderDropdownItem: 'Perfil'
-			withCallback: [ self goToUserProfile ]
-			on: html;
-		renderDropdownDividerOn: html;
-		renderDropdownItem: 'Cerrar Sesión'
-			withCallback: [ self logout ]
-			on: html
 ]
 
 { #category : #rendering }
@@ -74,7 +57,17 @@ UserNavBarComponent >> renderUserDropdownOn: html [
 	html div
 		class: 'dropdown-menu site-header-dropdown my-2';
 		attributeAt: 'aria-labelledby' put: 'navbar_user_dropdown';
-		with: [ self renderItemUserDropdownOn: html ]
+		with: [ self renderUserItemsOn: html ]
+]
+
+{ #category : #rendering }
+UserNavBarComponent >> renderUserItemsOn: html [
+	self
+		renderUserTopItemsOn: html;
+		renderDropdownDividerOn: html;
+		renderDropdownItem: 'Cerrar Sesión'
+			withCallback: [ self logout ]
+			on: html
 ]
 
 { #category : #rendering }
@@ -91,4 +84,12 @@ UserNavBarComponent >> renderUserLinkOn: html [
 				attributeAt: 'aria-expanded' put: 'false';
 				with: self session user name , ' ' , self session user surname.
 			self renderUserDropdownOn: html ]
+]
+
+{ #category : #rendering }
+UserNavBarComponent >> renderUserTopItemsOn: html [
+	self
+		renderDropdownItem: 'Perfil'
+		withCallback: [ contentComponent call: ProxyUserProfileComponent new ]
+		on: html
 ]
