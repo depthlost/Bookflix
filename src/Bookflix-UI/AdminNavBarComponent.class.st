@@ -14,5 +14,11 @@ AdminNavBarComponent >> renderUserTopItemsOn: html [
 			on: html;
 		renderDropdownItem: 'Agregar Autor'
 			withCallback: [ contentComponent call: AddAuthorComponent new ]
+			on: html;
+		renderDropdownItem: 'Agregar Género'
+			withCallback: [ contentComponent call: AddGenderComponent new ]
+			on: html;
+		renderDropdownItem: 'Agregar Editorial'
+			withCallback: [ contentComponent call: AddEditorialComponent new ]
 			on: html
 ]
