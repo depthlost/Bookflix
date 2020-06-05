@@ -8,9 +8,6 @@
   .card-columns.custom-columns {
     column-count: 2;
   }
-  .book-cover-image {
-    max-height: 18rem
-  }
 }
 
 @media (min-width: 1000px) {
@@ -23,4 +20,12 @@
   .card-columns.custom-columns {
     column-count: 4;
   }
+}
+
+.card {
+  max-width: 16rem
+}
+
+.card-img-top {
+  max-height: 18rem
 }
