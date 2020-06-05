@@ -22,6 +22,16 @@ Bookflix >> addAuthor: aName [
 	(BookAuthor name: aName) save
 ]
 
+{ #category : #adding }
+Bookflix >> addEditorial: aName [
+	(Editorial name: aName) save
+]
+
+{ #category : #adding }
+Bookflix >> addGender: aName [
+	(Gender name: aName) save
+]
+
 { #category : #'as yet unclassified' }
 Bookflix >> existUserWithEmail: anEmail [
 	^ User selectAll anySatisfy: [ :user | user email = anEmail ]
