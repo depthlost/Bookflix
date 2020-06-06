@@ -33,12 +33,6 @@ Novelty >> initialize [
 ]
 
 { #category : #'as yet unclassified' }
-Novelty >> saveAsImage: aPhoto [
-	content := aPhoto.
-	type := 'photo'
-]
-
-{ #category : #'as yet unclassified' }
 Novelty >> saveAsPhoto: aPhoto [
 	content := aPhoto.
 	type := 'photo'
