@@ -29,6 +29,7 @@ AddGenderComponent >> nameInput: anObject [
 
 { #category : #callbacks }
 AddGenderComponent >> onSubmit [
+	Bookflix instance addGender: nameInput.
 	^ AlertComponent with: 'El género fue registrado con exito'
 ]
 
