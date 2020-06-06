@@ -7,7 +7,8 @@ Class {
 		'imageURL',
 		'author',
 		'editorial',
-		'genders'
+		'genders',
+		'advance'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -27,6 +28,16 @@ Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageUR
 			editorial: aEditorial
 			genders: aGenders;
 		yourself
+]
+
+{ #category : #accessing }
+Book >> advance [
+	^ advance
+]
+
+{ #category : #accessing }
+Book >> advance: aContent [
+	advance := Advance content: aContent book: self
 ]
 
 { #category : #accessing }
