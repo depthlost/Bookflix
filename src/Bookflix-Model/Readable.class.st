@@ -2,25 +2,14 @@ Class {
 	#name : #Readable,
 	#superclass : #Object,
 	#instVars : [
-		'title',
-		'description'
+		'title'
 	],
 	#category : #'Bookflix-Model'
 }
 
 { #category : #'as yet unclassified' }
-Readable class >> title: aTitle description: aDescription [
-	^ self new title: aTitle description: aDescription
-]
-
-{ #category : #accessing }
-Readable >> description [
-	^ description
-]
-
-{ #category : #accessing }
-Readable >> description: aDescription [
-	description := aDescription
+Readable class >> title: aTitle [
+	^ self new title: aTitle
 ]
 
 { #category : #accessing }
@@ -28,13 +17,7 @@ Readable >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 Readable >> title: aTitle [
 	title := aTitle
-]
-
-{ #category : #initialization }
-Readable >> title: aTitle description: aDescription [
-	title := aTitle.
-	description := aDescription
 ]

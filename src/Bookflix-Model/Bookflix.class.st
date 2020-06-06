@@ -33,6 +33,11 @@ Bookflix >> addGender: aName [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> addNovelty: aNovelty [
+	^ aNovelty save
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> existUserWithEmail: anEmail [
 	^ User selectAll anySatisfy: [ :user | user email = anEmail ]
 ]
@@ -47,6 +52,11 @@ Bookflix >> existingIsbn: aIsbn [
 { #category : #'as yet unclassified' }
 Bookflix >> getAllBooks [
 	^ Book selectAll
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> getAllNovelty [
+	^ Novelty selectAll
 ]
 
 { #category : #'as yet unclassified' }

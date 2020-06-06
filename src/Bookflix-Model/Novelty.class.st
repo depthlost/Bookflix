@@ -3,8 +3,8 @@ Class {
 	#superclass : #Readable,
 	#instVars : [
 		'date',
-		'videos',
-		'photos'
+		'content',
+		'type'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -12,16 +12,6 @@ Class {
 { #category : #testing }
 Novelty class >> isVoyageRoot [
 	^ true
-]
-
-{ #category : #adding }
-Novelty >> addPhoto: aPhoto [
-	photos add: aPhoto
-]
-
-{ #category : #adding }
-Novelty >> addVideo: aVideo [
-	videos add: aVideo
 ]
 
 { #category : #accessing }
@@ -38,17 +28,37 @@ Novelty >> date: aDateAndTime [
 Novelty >> initialize [
 	date := DateAndTime now.
 	title := ''.
-	description := ''.
-	videos := OrderedCollection new.
-	photos := OrderedCollection new
+	content := ''.
+	type := 'text'
+]
+
+{ #category : #'as yet unclassified' }
+Novelty >> saveAsImage: aPhoto [
+	content := aPhoto.
+	type := 'photo'
+]
+
+{ #category : #'as yet unclassified' }
+Novelty >> saveAsPhoto: aPhoto [
+	content := aPhoto.
+	type := 'photo'
+]
+
+{ #category : #'as yet unclassified' }
+Novelty >> saveAsText: aText [
+	content := aText.
+	type := 'text'
+]
+
+{ #category : #'as yet unclassified' }
+Novelty >> saveAsVideo: aVideo [
+	content := aVideo.
+	type := 'video'
 ]
 
 { #category : #accessing }
-Novelty >> photos [
-	^ photos
-]
+Novelty >> type [
+	"devuelve en un string el tipo de deato del contenido, sean las opciones text-photo-video"
 
-{ #category : #accessing }
-Novelty >> videos [
-	^ videos
+	^ type
 ]
