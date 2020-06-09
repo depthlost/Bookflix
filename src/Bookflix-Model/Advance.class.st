@@ -1,6 +1,6 @@
 Class {
 	#name : #Advance,
-	#superclass : #Object,
+	#superclass : #Readable,
 	#instVars : [
 		'book',
 		'content'
@@ -29,8 +29,8 @@ Advance >> content [
 ]
 
 { #category : #accessing }
-Advance >> content: aContent [
-	content := aContent
+Advance >> content: aPdf [
+	content := aPdf
 ]
 
 { #category : #accessing }
