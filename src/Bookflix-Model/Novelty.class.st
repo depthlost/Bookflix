@@ -26,6 +26,7 @@ Novelty >> date: aDateAndTime [
 
 { #category : #initialization }
 Novelty >> initialize [
+	super initialize.
 	date := DateAndTime now.
 	title := ''.
 	content := ''.

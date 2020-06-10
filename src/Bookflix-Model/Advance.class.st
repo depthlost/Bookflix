@@ -8,14 +8,23 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #accessing }
-Advance class >> content: aContent book: aBook [
-	^ self new content: aContent book: aBook
-]
-
 { #category : #testing }
 Advance class >> isVoyageRoot [
 	^ true
+]
+
+{ #category : #accessing }
+Advance class >> title: aTitle description: aDescription content: aContent book: aBook [
+	^ (self title: aTitle description: aDescription)
+		content: aContent
+		book: aBook
+]
+
+{ #category : #accessing }
+Advance class >> title: aTitle description: aDescription expirationDate: aDate content: aContent book: aBook [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		content: aContent
+		book: aBook
 ]
 
 { #category : #accessing }
@@ -37,4 +46,11 @@ Advance >> content: aPdf [
 Advance >> content: aContent book: aBook [
 	self content: aContent.
 	self book: aBook
+]
+
+{ #category : #initialization }
+Advance >> initialize [
+	super initialize.
+	book := nil.
+	content := nil
 ]

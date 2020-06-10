@@ -51,12 +51,12 @@ Bookflix >> existingIsbn: aIsbn [
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllBooks [
-	^ Book selectAll
+	^ Book selectAll reject: [ :book | book isExpired ]
 ]
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllNovelty [
-	^ Novelty selectAll
+	^ Novelty selectAll reject: [ :book | book isExpired ]
 ]
 
 { #category : #'as yet unclassified' }
