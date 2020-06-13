@@ -34,7 +34,7 @@ BookInformationComponent >> listItemName: aName with: aDescription on: html [
 { #category : #rendering }
 BookInformationComponent >> listOfBookInformationOn: html [
 	^ ListComponent
-		withTitle: 'Information'
+		withTitle: 'Información'
 		blocks:
 			{(self listItemName: 'Titulo' with: book title on: html).
 			(self listItemName: 'Descripcion' with: book description on: html).
@@ -42,6 +42,7 @@ BookInformationComponent >> listOfBookInformationOn: html [
 			(self listItemName: 'Autor' with: book author on: html).
 			(self listItemName: 'Editorial' with: book editorial on: html).
 			(self listItemName: 'Generos' with: book genders on: html).
+			(self listItemName: 'Vencimiento' with: '08/12/2020' on: html).
 			(self listFooterWith: 'Subido el 20/05/2020' on: html)}
 				asOrderedCollection
 ]
