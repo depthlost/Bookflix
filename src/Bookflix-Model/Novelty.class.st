@@ -2,7 +2,6 @@ Class {
 	#name : #Novelty,
 	#superclass : #Readable,
 	#instVars : [
-		'date',
 		'content',
 		'type'
 	],
@@ -12,16 +11,6 @@ Class {
 { #category : #testing }
 Novelty class >> isVoyageRoot [
 	^ true
-]
-
-{ #category : #accessing }
-Novelty >> date [
-	^ date
-]
-
-{ #category : #accessing }
-Novelty >> date: aDateAndTime [
-	date := aDateAndTime
 ]
 
 { #category : #initialization }
