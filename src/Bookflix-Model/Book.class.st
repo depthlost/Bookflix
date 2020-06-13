@@ -6,7 +6,8 @@ Class {
 		'imageURL',
 		'author',
 		'editorial',
-		'genders'
+		'genders',
+		'advance'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -17,14 +18,38 @@ Book class >> isVoyageRoot [
 ]
 
 { #category : #'instance creation' }
-Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
+Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
 	^ (self title: aTitle description: aDescription)
 		isbn: aISBN
 			imageURL: aImageURL
 			author: aAuthor
-			editorial: aEditorial
-			genders: aGenders;
+			editorial: aEditorial;
 		yourself
+]
+
+{ #category : #'instance creation' }
+Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial expirationDate: aDate [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		isbn: aISBN
+			imageURL: aImageURL
+			author: aAuthor
+			editorial: aEditorial;
+		yourself
+]
+
+{ #category : #accessing }
+Book >> addGenders: aGenders [
+	genders add: aGenders
+]
+
+{ #category : #accessing }
+Book >> advance [
+	^ advance
+]
+
+{ #category : #accessing }
+Book >> advance: aContent [
+	advance := Advance content: aContent book: self
 ]
 
 { #category : #accessing }
@@ -53,11 +78,6 @@ Book >> genders [
 ]
 
 { #category : #accessing }
-Book >> genders: aGenders [
-	genders := aGenders
-]
-
-{ #category : #accessing }
 Book >> imageURL [
 	^ imageURL
 ]
@@ -65,6 +85,17 @@ Book >> imageURL [
 { #category : #accessing }
 Book >> imageURL: aImageURL [
 	imageURL := aImageURL
+]
+
+{ #category : #initialization }
+Book >> initialize [
+	super initialize.
+	isbn := 0000.
+	imageURL := ''.
+	author := nil.
+	editorial := nil.
+	genders := OrderedCollection new.
+	advance := nil
 ]
 
 { #category : #accessing }
@@ -78,10 +109,9 @@ Book >> isbn: aISBN [
 ]
 
 { #category : #setting }
-Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial genders: aGenders [
+Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial [
 	isbn := aISBN.
 	imageURL := aImageURL.
 	author := aAuthor.
-	editorial := aEditorial.
-	genders := aGenders
+	editorial := aEditorial
 ]

@@ -38,7 +38,7 @@ BookComponent >> renderBookBodyOn: html [
 { #category : #rendering }
 BookComponent >> renderBookContentOn: html [
 	self
-		renderImageOn: html;
+		renderLinkImageOn: html;
 		renderBookBodyOn: html
 ]
 
@@ -61,6 +61,13 @@ BookComponent >> renderImageOn: html [
 	html image
 		class: 'card-img-top book-cover-image';
 		url: book imageURL
+]
+
+{ #category : #rendering }
+BookComponent >> renderLinkImageOn: html [
+	html anchor
+		callback: [ parentComponent call: (BookDetailComponent with: book) ];
+		with: [ self renderImageOn: html ]
 ]
 
 { #category : #rendering }

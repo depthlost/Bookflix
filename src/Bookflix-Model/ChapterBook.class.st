@@ -9,5 +9,6 @@ Class {
 
 { #category : #initialization }
 ChapterBook >> initialize [
+	super initialize.
 	chapters := OrderedCollection new
 ]

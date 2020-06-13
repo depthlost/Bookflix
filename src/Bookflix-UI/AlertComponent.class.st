@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'description'
 	],
-	#category : #'Bookflix-UI-others'
+	#category : #'Bookflix-UI-resources'
 }
 
 { #category : #construction }

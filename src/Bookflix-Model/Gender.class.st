@@ -1,5 +1,5 @@
 Class {
-	#name : #BookAuthor,
+	#name : #Gender,
 	#superclass : #Object,
 	#instVars : [
 		'name',
@@ -9,32 +9,32 @@ Class {
 }
 
 { #category : #testing }
-BookAuthor class >> isVoyageRoot [
+Gender class >> isVoyageRoot [
 	^ true
 ]
 
-{ #category : #testing }
-BookAuthor class >> name: aString [
+{ #category : #accessing }
+Gender class >> name: aString [
 	^ self new name: aString
 ]
 
 { #category : #adding }
-BookAuthor >> addBook: aBook [
+Gender >> addBook: aBook [
 	books add: aBook
 ]
 
 { #category : #initialization }
-BookAuthor >> initialize [
-	name := 'anonimo'.
+Gender >> initialize [
+	name := 'ninguno'.
 	books := Set new
 ]
 
 { #category : #accessing }
-BookAuthor >> name [
+Gender >> name [
 	^ name
 ]
 
 { #category : #accessing }
-BookAuthor >> name: anAuthor [
-	name := anAuthor
+Gender >> name: aString [
+	name := aString
 ]

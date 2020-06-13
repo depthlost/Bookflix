@@ -8,7 +8,20 @@ Class {
 }
 
 { #category : #'instance creation' }
-CompleteBook class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aContent genders: aGenders [
+CompleteBook class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aContent [
+	^ (self
+		newWithTitle: aTitle
+		isbn: aISBN
+		description: aDescription
+		imageURL: aImageURL
+		author: aAuthor
+		editorial: aEditorial)
+		content: aContent;
+		yourself
+]
+
+{ #category : #'instance creation' }
+CompleteBook class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aContent expirationDate: aDate [
 	^ (self
 		newWithTitle: aTitle
 		isbn: aISBN
@@ -16,7 +29,7 @@ CompleteBook class >> newWithTitle: aTitle isbn: aISBN description: aDescription
 		imageURL: aImageURL
 		author: aAuthor
 		editorial: aEditorial
-		genders: aGenders)
+		expirationDate: aDate)
 		content: aContent;
 		yourself
 ]

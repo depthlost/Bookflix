@@ -22,6 +22,21 @@ Bookflix >> addAuthor: aName [
 	(BookAuthor name: aName) save
 ]
 
+{ #category : #adding }
+Bookflix >> addEditorial: aName [
+	(Editorial name: aName) save
+]
+
+{ #category : #adding }
+Bookflix >> addGender: aName [
+	(Gender name: aName) save
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> addNovelty: aNovelty [
+	^ aNovelty save
+]
+
 { #category : #'as yet unclassified' }
 Bookflix >> existUserWithEmail: anEmail [
 	^ User selectAll anySatisfy: [ :user | user email = anEmail ]
@@ -36,7 +51,12 @@ Bookflix >> existingIsbn: aIsbn [
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllBooks [
-	^ Book selectAll
+	^ Book selectAll reject: [ :book | book isExpired ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> getAllNovelty [
+	^ Novelty selectAll reject: [ :book | book isExpired ]
 ]
 
 { #category : #'as yet unclassified' }
