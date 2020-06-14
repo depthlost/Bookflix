@@ -74,5 +74,7 @@ Bookflix >> removeBook: aBook [
 
 { #category : #'as yet unclassified' }
 Bookflix >> returnOrderedReadblesByAlphabet [
-	^ self getAllBooks sort: [ :readble | readble managementCriteria ]
+	^ self getAllBooks
+		sort:
+			[ :readble1 :readble2 | readble1 managementCriteria <= readble2 managementCriteria ]
 ]
