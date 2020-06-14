@@ -30,6 +30,12 @@ CommonUser >> card: aCard [
 ]
 
 { #category : #'as yet unclassified' }
+CommonUser >> initialize [
+	super initialize.
+	self card: nil
+]
+
+{ #category : #'as yet unclassified' }
 CommonUser >> name: aName surname: aSurname email: anEmail password: aPassword birthdate: aBirthdate card: aCard [
 	self
 		name: aName
