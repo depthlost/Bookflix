@@ -78,3 +78,8 @@ Bookflix >> returnOrderedReadblesByAlphabet [
 		sort:
 			[ :readble1 :readble2 | readble1 managementCriteria <= readble2 managementCriteria ]
 ]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> updateReadable: aReadable [
+	aReadable save
+]

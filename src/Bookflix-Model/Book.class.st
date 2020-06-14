@@ -38,8 +38,9 @@ Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageUR
 ]
 
 { #category : #accessing }
-Book >> addGenders: aGenders [
-	genders add: aGenders
+Book >> addGender: aGender [
+	genders add: aGender.
+	aGender addBook: self
 ]
 
 { #category : #accessing }
