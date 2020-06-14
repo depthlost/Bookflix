@@ -49,8 +49,9 @@ Book >> advance [
 ]
 
 { #category : #accessing }
-Book >> advance: aContent [
-	advance := Advance content: aContent book: self
+Book >> advance: aAdvance [
+	advance := aAdvance.
+	aAdvance book: self
 ]
 
 { #category : #accessing }
