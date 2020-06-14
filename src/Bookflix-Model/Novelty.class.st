@@ -62,6 +62,21 @@ Novelty >> initialize [
 	type := 'text'
 ]
 
+{ #category : #testing }
+Novelty >> isPhoto [
+	^ type = 'photo'
+]
+
+{ #category : #testing }
+Novelty >> isText [
+	^ type = 'text'
+]
+
+{ #category : #testing }
+Novelty >> isVideo [
+	^ type = 'video'
+]
+
 { #category : #'as yet unclassified' }
 Novelty >> saveAsPhoto: aPhoto [
 	content := aPhoto.
