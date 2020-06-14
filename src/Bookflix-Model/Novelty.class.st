@@ -13,10 +13,50 @@ Novelty class >> isVoyageRoot [
 	^ true
 ]
 
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription expirationDate: aDate saveAsPhoto: aContent [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		saveAsPhoto: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription expirationDate: aDate saveAsText: aContent [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		saveAsText: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription expirationDate: aDate saveAsVideo: aContent [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		saveAsVideo: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription saveAsPhoto: aContent [
+	^ (self title: aTitle description: aDescription)
+		saveAsPhoto: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription saveAsText: aContent [
+	^ (self title: aTitle description: aDescription) saveAsText: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription saveAsVideo: aContent [
+	^ (self title: aTitle description: aDescription)
+		saveAsVideo: aContent
+]
+
+{ #category : #accessing }
+Novelty >> content [
+	^ content
+]
+
 { #category : #initialization }
 Novelty >> initialize [
 	super initialize.
-	date := DateAndTime now.
+	date := Date today.
 	title := ''.
 	content := ''.
 	type := 'text'
