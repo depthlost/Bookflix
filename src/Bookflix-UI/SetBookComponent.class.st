@@ -30,8 +30,6 @@ SetBookComponent >> isbnWasChangedAndExist [
 
 { #category : #callbacks }
 SetBookComponent >> onSubmit [
-	self validateInputData
-		ifFalse: [ ^ self ].
 	self updateBook save.
 	^ AlertComponent with: 'El libro fue actualizado con exito'
 ]
@@ -58,7 +56,8 @@ SetBookComponent >> updateRoot: anHtmlRoot [
 
 { #category : #private }
 SetBookComponent >> validateInputData [
-	^ (errorByRegisteredIsbn := self isbnWasChangedAndExist) not
+	errorByRegisteredIsbn := self isbnWasChangedAndExist.
+	^ super validateInputData & errorByRegisteredIsbn not
 ]
 
 { #category : #initialization }
