@@ -54,7 +54,7 @@ Readable >> expirationDate: aDate [
 ]
 
 { #category : #'as yet unclassified' }
-Readable >> inicialize [
+Readable >> initialize [
 	date := Date today.
 	title := 'sin titulo'.
 	description := 'sin descripcion'.
