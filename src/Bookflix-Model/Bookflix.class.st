@@ -71,3 +71,8 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 Bookflix >> removeBook: aBook [
 	aBook remove
 ]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> returnOrderedReadblesByAlphabet [
+	^ self getAllBooks sort: [ :readble | readble managementCriteria ]
+]

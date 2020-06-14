@@ -68,6 +68,11 @@ Readable >> isExpired [
 		ifNotNil: [ ^ expirationDate < Date today ]
 ]
 
+{ #category : #'as yet unclassified' }
+Readable >> managementCriteria [
+	^ title
+]
+
 { #category : #accessing }
 Readable >> title [
 	^ title
