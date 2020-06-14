@@ -69,7 +69,10 @@ ReadableOperationComponent >> renderExpirationDateOn: html [
 				placeholder: 'Fecha de Vencimiento';
 				value:
 					(expirationDateInput ifNotNil: [ expirationDateInput asDate yyyymmdd ]);
-				callback: [ :input | expirationDateInput := Date fromString: input ].
+				callback: [ :input | 
+					expirationDateInput := input
+						ifEmpty: [ nil ]
+						ifNotEmpty: [ Date fromString: input ] ].
 			errorByExpiryDate
 				ifTrue: [ self renderErrorByExpiryDateOn: html ] ]
 ]
@@ -102,6 +105,8 @@ ReadableOperationComponent >> titleInput: anObject [
 
 { #category : #validation }
 ReadableOperationComponent >> validateInputData [
-	errorByExpiryDate := expirationDateInput <= Date today.
+	expirationDateInput
+		ifNil: [ errorByExpiryDate := false ]
+		ifNotNil: [ errorByExpiryDate := expirationDateInput <= Date today ].
 	^ errorByExpiryDate not
 ]

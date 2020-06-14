@@ -20,5 +20,8 @@ AdminNavBarComponent >> renderUserTopItemsOn: html [
 			on: html;
 		renderDropdownItem: 'Agregar Editorial'
 			withCallback: [ contentComponent call: AddEditorialComponent new ]
+			on: html;
+		renderDropdownItem: 'Agregar Trailer'
+			withCallback: [ contentComponent call: AddTrailerComponent new ]
 			on: html
 ]
