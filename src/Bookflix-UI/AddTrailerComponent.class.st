@@ -25,7 +25,6 @@ AddTrailerComponent >> buildTrailer [
 		description: descriptionInput
 		expirationDate: expirationDateInput
 		content: contentUrlInput
-		book: bookInput
 ]
 
 { #category : #private }
@@ -50,7 +49,7 @@ AddTrailerComponent >> formTitle [
 
 { #category : #callbacks }
 AddTrailerComponent >> onSubmit [
-	self buildTrailer save.
+	self saveTrailer.
 	^ AlertComponent with: 'Se registro el trailer con exito'
 ]
 
@@ -92,6 +91,12 @@ AddTrailerComponent >> renderDataInputOn: html [
 	self
 		renderBookOn: html;
 		renderContentUrlOn: html
+]
+
+{ #category : #saving }
+AddTrailerComponent >> saveTrailer [
+	bookInput advance: self buildTrailer.
+	Bookflix instance updateReadable: bookInput
 ]
 
 { #category : #seaside }
