@@ -10,7 +10,7 @@ BooksHistoryComponent >> renderBooksHistoryOn: html [
 		render:
 			(ListComponent
 				withTitle: 'Historial de Lectura'
-				collection: Bookflix instance getAllBooks
+				collection: self session user historial
 				do: [ :each :htmlCanvas | htmlCanvas text: each title ])
 ]
 

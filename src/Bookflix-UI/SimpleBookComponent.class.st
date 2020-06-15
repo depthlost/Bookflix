@@ -40,8 +40,9 @@ SimpleBookComponent >> renderImageOn: html [
 
 { #category : #rendering }
 SimpleBookComponent >> renderReadButtonOn: html [
-	html button
+	html anchor
 		class: 'btn btn-success px-4';
+		callback: [ self session user addReadableForHistorial: book ];
 		with: 'Leer'
 ]
 
