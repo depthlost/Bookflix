@@ -42,8 +42,11 @@ BookInformationComponent >> listOfBookInformationOn: html [
 			(self listItemName: 'Autor' with: book author on: html).
 			(self listItemName: 'Editorial' with: book editorial on: html).
 			(self listItemName: 'Generos' with: book genders on: html).
-			(self listItemName: 'Vencimiento' with: '08/12/2020' on: html).
-			(self listFooterWith: 'Subido el 20/05/2020' on: html)}
+			(self
+				listItemName: 'Vencimiento'
+				with: book expirationDate ddmmyyyy
+				on: html).
+			(self listFooterWith: 'Subido el ' , book date ddmmyyyy on: html)}
 				asOrderedCollection
 ]
 
