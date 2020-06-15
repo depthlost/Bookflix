@@ -10,6 +10,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #testing }
+Readable class >> isVoyageRoot [
+	^ true
+]
+
 { #category : #'as yet unclassified' }
 Readable class >> title: aTitle description: aDescription [
 	^ self new title: aTitle description: aDescription
