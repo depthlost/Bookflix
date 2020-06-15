@@ -14,17 +14,14 @@ Advance class >> isVoyageRoot [
 ]
 
 { #category : #accessing }
-Advance class >> title: aTitle description: aDescription content: aContent book: aBook [
-	^ (self title: aTitle description: aDescription)
-		content: aContent
-		book: aBook
+Advance class >> title: aTitle description: aDescription content: aContent [
+	^ (self title: aTitle description: aDescription) content: aContent
 ]
 
 { #category : #accessing }
-Advance class >> title: aTitle description: aDescription expirationDate: aDate content: aContent book: aBook [
+Advance class >> title: aTitle description: aDescription expirationDate: aDate content: aContent [
 	^ (self title: aTitle description: aDescription expirationDate: aDate)
 		content: aContent
-		book: aBook
 ]
 
 { #category : #accessing }
@@ -40,12 +37,6 @@ Advance >> content [
 { #category : #accessing }
 Advance >> content: aPdf [
 	content := aPdf
-]
-
-{ #category : #accessing }
-Advance >> content: aContent book: aBook [
-	self content: aContent.
-	self book: aBook
 ]
 
 { #category : #initialization }

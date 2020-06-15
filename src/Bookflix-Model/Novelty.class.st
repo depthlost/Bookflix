@@ -2,7 +2,6 @@ Class {
 	#name : #Novelty,
 	#superclass : #Readable,
 	#instVars : [
-		'date',
 		'content',
 		'type'
 	],
@@ -14,23 +13,68 @@ Novelty class >> isVoyageRoot [
 	^ true
 ]
 
-{ #category : #accessing }
-Novelty >> date [
-	^ date
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription expirationDate: aDate saveAsPhoto: aContent [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		saveAsPhoto: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription expirationDate: aDate saveAsText: aContent [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		saveAsText: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription expirationDate: aDate saveAsVideo: aContent [
+	^ (self title: aTitle description: aDescription expirationDate: aDate)
+		saveAsVideo: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription saveAsPhoto: aContent [
+	^ (self title: aTitle description: aDescription)
+		saveAsPhoto: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription saveAsText: aContent [
+	^ (self title: aTitle description: aDescription) saveAsText: aContent
+]
+
+{ #category : #'as yet unclassified' }
+Novelty class >> title: aTitle description: aDescription saveAsVideo: aContent [
+	^ (self title: aTitle description: aDescription)
+		saveAsVideo: aContent
 ]
 
 { #category : #accessing }
-Novelty >> date: aDateAndTime [
-	date := aDateAndTime
+Novelty >> content [
+	^ content
 ]
 
 { #category : #initialization }
 Novelty >> initialize [
 	super initialize.
-	date := DateAndTime now.
+	date := Date today.
 	title := ''.
 	content := ''.
 	type := 'text'
+]
+
+{ #category : #testing }
+Novelty >> isPhoto [
+	^ type = 'photo'
+]
+
+{ #category : #testing }
+Novelty >> isText [
+	^ type = 'text'
+]
+
+{ #category : #testing }
+Novelty >> isVideo [
+	^ type = 'video'
 ]
 
 { #category : #'as yet unclassified' }

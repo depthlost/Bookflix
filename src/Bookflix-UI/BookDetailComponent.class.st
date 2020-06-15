@@ -2,7 +2,9 @@ Class {
 	#name : #BookDetailComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'book'
+		'book',
+		'bookInformationComponent',
+		'simpleBookComponent'
 	],
 	#category : #'Bookflix-UI-books'
 }
@@ -16,7 +18,19 @@ BookDetailComponent class >> with: aBook [
 BookDetailComponent >> renderContentOn: html [
 	html div
 		class: 'container my-4';
-		with: [ html render: (BookInformationComponent with: book) ]
+		with: [ self renderTopRowOn: html ]
+]
+
+{ #category : #rendering }
+BookDetailComponent >> renderTopRowOn: html [
+	html div
+		class: 'row';
+		with: [ html div
+				class: 'col-3';
+				with: [ html render: simpleBookComponent ].
+			html div
+				class: 'col-9';
+				with: [ html render: bookInformationComponent ] ]
 ]
 
 { #category : #seaside }
@@ -27,5 +41,7 @@ BookDetailComponent >> updateRoot: anHtmlRoot [
 
 { #category : #initialization }
 BookDetailComponent >> with: aBook [
-	book := aBook
+	book := aBook.
+	bookInformationComponent := BookInformationComponent with: book.
+	simpleBookComponent := SimpleBookComponent with: book in: self
 ]

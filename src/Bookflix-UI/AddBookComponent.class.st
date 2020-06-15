@@ -14,7 +14,7 @@ AddBookComponent >> buildBook [
 		author: authorInput
 		editorial: editorialInput
 		content: contentUrlsInput
-		genders: gendersInput
+		expirationDate: Date today
 ]
 
 { #category : #private }
@@ -29,8 +29,6 @@ AddBookComponent >> formTitle [
 
 { #category : #callbacks }
 AddBookComponent >> onSubmit [
-	self validateInputData
-		ifFalse: [ ^ self ].
 	self buildBook save.
 	^ AlertComponent with: 'El libro fue registrado con exito'
 ]
@@ -43,6 +41,6 @@ AddBookComponent >> updateRoot: anHtmlRoot [
 
 { #category : #private }
 AddBookComponent >> validateInputData [
-	^ (errorByRegisteredIsbn := Bookflix instance existingIsbn: isbnInput)
-		not
+	errorByRegisteredIsbn := Bookflix instance existingIsbn: isbnInput.
+	^ super validateInputData & errorByRegisteredIsbn not
 ]

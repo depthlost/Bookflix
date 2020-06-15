@@ -33,8 +33,9 @@ Bookflix >> addGender: aName [
 ]
 
 { #category : #'as yet unclassified' }
-Bookflix >> addNovelty: aNovelty [
-	^ aNovelty save
+Bookflix >> addReadable: aReadable [
+	aReadable isExpired
+		ifFalse: [ aReadable save ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -60,8 +61,42 @@ Bookflix >> getAllNovelty [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> getAllReadables [
+	^ Readable selectAll reject: [ :book | book isExpired ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 	^ User selectAll
 		detect: [ :user | user email = anEmail & (user password = aPassword) ]
 		ifNone: [ nil ]
+]
+
+{ #category : #removing }
+Bookflix >> removeBook: aBook [
+	aBook remove
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> returnBooksWithoutAdvance [
+	^ self getAllBooks select: [ :readble | readble advance isNil ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> returnOrderedBookByAlphabet [
+	^ self getAllBooks
+		sort:
+			[ :readble1 :readble2 | readble1 managementCriteria <= readble2 managementCriteria ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> returnOrderedNoveltyByAlphabet [
+	^ self getAllNovelty
+		sort:
+			[ :readble1 :readble2 | readble1 managementCriteria <= readble2 managementCriteria ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> updateReadable: aReadable [
+	aReadable save
 ]

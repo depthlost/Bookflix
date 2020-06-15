@@ -1,9 +1,7 @@
 Class {
 	#name : #BookOperationComponent,
-	#superclass : #SimpleFormComponent,
+	#superclass : #ReadableOperationComponent,
 	#instVars : [
-		'titleInput',
-		'descriptionInput',
 		'imageUrlInput',
 		'isbnInput',
 		'authorInput',
@@ -25,11 +23,6 @@ BookOperationComponent >> authorInput: anObject [
 	authorInput := anObject
 ]
 
-{ #category : #private }
-BookOperationComponent >> buttonDescription [
-	self subclassResponsibility
-]
-
 { #category : #accessing }
 BookOperationComponent >> contentUrlsInput [
 	^ contentUrlsInput
@@ -41,16 +34,6 @@ BookOperationComponent >> contentUrlsInput: anObject [
 ]
 
 { #category : #accessing }
-BookOperationComponent >> descriptionInput [
-	^ descriptionInput
-]
-
-{ #category : #accessing }
-BookOperationComponent >> descriptionInput: anObject [
-	descriptionInput := anObject
-]
-
-{ #category : #accessing }
 BookOperationComponent >> editorialInput [
 	^ editorialInput
 ]
@@ -58,11 +41,6 @@ BookOperationComponent >> editorialInput [
 { #category : #accessing }
 BookOperationComponent >> editorialInput: anObject [
 	editorialInput := anObject
-]
-
-{ #category : #private }
-BookOperationComponent >> formTitle [
-	self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -101,11 +79,6 @@ BookOperationComponent >> isbnInput: anObject [
 	isbnInput := anObject
 ]
 
-{ #category : #callbacks }
-BookOperationComponent >> onSubmit [
-	self subclassResponsibility
-]
-
 { #category : #rendering }
 BookOperationComponent >> renderAuthorOn: html [
 	html div
@@ -138,30 +111,14 @@ BookOperationComponent >> renderContentUrlsOn: html [
 
 { #category : #rendering }
 BookOperationComponent >> renderDataInputOn: html [
+	super renderDataInputOn: html.
 	self
-		renderTitleOn: html;
-		renderDescriptionOn: html;
 		renderImageUrlOn: html;
 		renderIsbnOn: html;
 		renderAuthorOn: html;
 		renderEditorialOn: html;
 		renderGendersOn: html;
 		renderContentUrlsOn: html
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderDescriptionOn: html [
-	html div
-		class: 'form-group';
-		with: [ html label
-				for: 'input_description';
-				with: 'Descripción'.
-			html textInput
-				id: 'input_description';
-				class: 'form-control';
-				placeholder: 'Descripción';
-				required;
-				on: #descriptionInput of: self ]
 ]
 
 { #category : #rendering }
@@ -236,38 +193,7 @@ BookOperationComponent >> renderIsbnOn: html [
 				ifTrue: [ self renderErrorByRegisteredIsbnOn: html ] ]
 ]
 
-{ #category : #rendering }
-BookOperationComponent >> renderTitleOn: html [
-	html div
-		class: 'form-group';
-		with: [ html label
-				for: 'input_title';
-				with: 'Titulo'.
-			html textInput
-				id: 'input_title';
-				class: 'form-control';
-				placeholder: 'Titulo';
-				required;
-				autofocus;
-				on: #titleInput of: self ]
-]
-
 { #category : #seaside }
 BookOperationComponent >> states [
 	^ Array with: self
-]
-
-{ #category : #accessing }
-BookOperationComponent >> titleInput [
-	^ titleInput
-]
-
-{ #category : #accessing }
-BookOperationComponent >> titleInput: anObject [
-	titleInput := anObject
-]
-
-{ #category : #private }
-BookOperationComponent >> validateInputData [
-	self subclassResponsibility
 ]

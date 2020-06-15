@@ -6,7 +6,8 @@ Class {
 		'surname',
 		'email',
 		'password',
-		'birthdate'
+		'birthdate',
+		'historial'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -24,6 +25,11 @@ User class >> name: aName surname: aSurname email: anEmail password: aPassword b
 		email: anEmail
 		password: aPassword
 		birthdate: aBirthdate
+]
+
+{ #category : #adding }
+User >> addReadableForHistorial: aReadble [
+	historial add: aReadble
 ]
 
 { #category : #accessing }
@@ -44,6 +50,21 @@ User >> email [
 { #category : #accessing }
 User >> email: anEmail [
 	email := anEmail
+]
+
+{ #category : #adding }
+User >> historial [
+	^ historial
+]
+
+{ #category : #initialization }
+User >> initialize [
+	name := 'nombre por defecto'.
+	surname := 'apellido por defecto'.
+	email := ''.
+	password := ''.
+	birthdate := Date today.
+	historial := OrderedCollection new
 ]
 
 { #category : #abstract }

@@ -4,10 +4,16 @@ Class {
 	#instVars : [
 		'title',
 		'description',
+		'date',
 		'expirationDate'
 	],
 	#category : #'Bookflix-Model'
 }
+
+{ #category : #testing }
+Readable class >> isVoyageRoot [
+	^ true
+]
 
 { #category : #'as yet unclassified' }
 Readable class >> title: aTitle description: aDescription [
@@ -20,6 +26,16 @@ Readable class >> title: aTitle description: aDescription expirationDate: aDate 
 		title: aTitle
 		description: aDescription
 		expirationDate: aDate
+]
+
+{ #category : #accessing }
+Readable >> date [
+	^ date
+]
+
+{ #category : #accessing }
+Readable >> date: aDateAndTime [
+	date := aDateAndTime
 ]
 
 { #category : #accessing }
@@ -42,10 +58,11 @@ Readable >> expirationDate: aDate [
 	expirationDate := aDate
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Readable >> initialize [
-	title := 'indefinido'.
-	description := 'indefinido'.
+	date := Date today.
+	title := 'sin titulo'.
+	description := 'sin descripcion'.
 	expirationDate := nil
 ]
 
@@ -54,6 +71,11 @@ Readable >> isExpired [
 	expirationDate
 		ifNil: [ ^ false ]
 		ifNotNil: [ ^ expirationDate < Date today ]
+]
+
+{ #category : #'as yet unclassified' }
+Readable >> managementCriteria [
+	^ title
 ]
 
 { #category : #accessing }

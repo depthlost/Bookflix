@@ -52,6 +52,18 @@ SimpleFormComponent >> renderSubmitButtonOn: html [
 	html button
 		type: 'submit';
 		class: 'btn btn-primary btn-block';
-		callback: [ self answer: self onSubmit ];
+		callback: [ self submit ];
 		with: self buttonDescription
+]
+
+{ #category : #callbacks }
+SimpleFormComponent >> submit [
+	self validateInputData
+		ifFalse: [ ^ self ].
+	self answer: self onSubmit
+]
+
+{ #category : #validation }
+SimpleFormComponent >> validateInputData [
+	^ true
 ]
