@@ -52,6 +52,11 @@ User >> email: anEmail [
 	email := anEmail
 ]
 
+{ #category : #adding }
+User >> historial [
+	^ historial
+]
+
 { #category : #initialization }
 User >> initialize [
 	name := 'nombre por defecto'.
