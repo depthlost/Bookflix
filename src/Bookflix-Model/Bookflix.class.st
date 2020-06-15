@@ -79,7 +79,7 @@ Bookflix >> removeBook: aBook [
 
 { #category : #'as yet unclassified' }
 Bookflix >> returnBooksWithoutAdvance [
-	^ self getAllBooks collect: [ :readble | readble advance isNil ]
+	^ self getAllBooks select: [ :readble | readble advance isNil ]
 ]
 
 { #category : #'as yet unclassified' }

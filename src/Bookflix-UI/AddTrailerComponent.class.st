@@ -63,7 +63,7 @@ AddTrailerComponent >> renderBookOn: html [
 			html select
 				id: 'book_input';
 				class: 'form-control';
-				list: Bookflix instance getAllBooks;
+				list: Bookflix instance returnBooksWithoutAdvance;
 				on: #bookInput of: self;
 				labels: [ :each | each title ];
 				required ]
