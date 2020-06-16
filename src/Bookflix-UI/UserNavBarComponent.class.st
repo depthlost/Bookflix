@@ -48,14 +48,14 @@ UserNavBarComponent >> renderNavBarContentOn: html [
 { #category : #rendering }
 UserNavBarComponent >> renderRightMenuOn: html [
 	html unorderedList
-		class: 'navbar-nav mr-4';
+		class: 'navbar-nav';
 		with: [ self renderUserLinkOn: html ]
 ]
 
 { #category : #rendering }
 UserNavBarComponent >> renderUserDropdownOn: html [
 	html div
-		class: 'dropdown-menu site-header-dropdown my-2';
+		class: 'dropdown-menu dropdown-menu-right site-header-dropdown my-2';
 		attributeAt: 'aria-labelledby' put: 'navbar_user_dropdown';
 		with: [ self renderUserItemsOn: html ]
 ]
@@ -75,7 +75,7 @@ UserNavBarComponent >> renderUserLinkOn: html [
 	html listItem
 		class: 'nav-item dropdown';
 		with: [ html anchor
-				class: 'nav-link dropdown-toggle';
+				class: 'nav-link dropdown-toggle mr-1';
 				callback: [  ];
 				id: 'navbar_user_dropdown';
 				attributeAt: 'role' put: 'button';
@@ -90,6 +90,9 @@ UserNavBarComponent >> renderUserLinkOn: html [
 UserNavBarComponent >> renderUserTopItemsOn: html [
 	self
 		renderDropdownItem: 'Perfil'
-		withCallback: [ contentComponent call: ProxyUserProfileComponent new ]
-		on: html
+			withCallback: [ contentComponent call: ProxyUserProfileComponent new ]
+			on: html;
+		renderDropdownItem: 'Historial de Lectura'
+			withCallback: [ contentComponent call: BooksHistoryComponent new ]
+			on: html
 ]
