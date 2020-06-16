@@ -15,7 +15,7 @@ ReadableInformationComponent class >> with: aReadable [
 { #category : #builder }
 ReadableInformationComponent >> informationList [
 	^ ListComponent
-		withTitle: 'Información'
+		withTitle: self title
 		blocks: self informationListItems
 ]
 
@@ -68,6 +68,11 @@ ReadableInformationComponent >> readableExpirationDateDescription [
 { #category : #rendering }
 ReadableInformationComponent >> renderContentOn: html [
 	html render: self informationList
+]
+
+{ #category : #private }
+ReadableInformationComponent >> title [
+	self subclassResponsibility
 ]
 
 { #category : #initialization }

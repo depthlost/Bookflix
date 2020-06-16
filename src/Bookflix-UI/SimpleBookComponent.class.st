@@ -33,9 +33,13 @@ SimpleBookComponent >> renderReadButtonOn: html [
 
 { #category : #rendering }
 SimpleBookComponent >> renderTrailerButtonOn: html [
-	html anchor
-		class: 'btn btn-primary';
-		callback: [ parentComponent
-				call: (TrailerDetailComponent with: readable advance) ];
-		with: 'Trailer'
+	readable advance
+		ifNil: [ html anchor
+				class: 'btn btn-primary disabled';
+				with: 'Trailer' ]
+		ifNotNil: [ html anchor
+				class: 'btn btn-primary';
+				callback: [ parentComponent
+						call: (TrailerDetailComponent with: readable advance) ];
+				with: 'Trailer' ]
 ]

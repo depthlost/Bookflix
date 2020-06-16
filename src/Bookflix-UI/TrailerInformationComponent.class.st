@@ -8,3 +8,8 @@ Class {
 TrailerInformationComponent >> informationListInternalItems [
 	^ {(self listItemName: 'Libro' with: readable book title)}
 ]
+
+{ #category : #private }
+TrailerInformationComponent >> title [
+	^ 'Información del Trailer'
+]

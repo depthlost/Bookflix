@@ -11,3 +11,8 @@ BookInformationComponent >> informationListInternalItems [
 	(self listItemName: 'Editorial' with: readable editorial).
 	(self listItemName: 'Generos' with: readable genders)}
 ]
+
+{ #category : #private }
+BookInformationComponent >> title [
+	^ 'Información del Libro'
+]
