@@ -25,6 +25,11 @@ Advance class >> title: aTitle description: aDescription expirationDate: aDate c
 ]
 
 { #category : #accessing }
+Advance >> book [
+	^ book
+]
+
+{ #category : #accessing }
 Advance >> book: aBook [
 	book := aBook
 ]
