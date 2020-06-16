@@ -1,7 +1,7 @@
 Class {
 	#name : #BookInformationComponent,
 	#superclass : #ReadableInformationComponent,
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-readables'
 }
 
 { #category : #builder }

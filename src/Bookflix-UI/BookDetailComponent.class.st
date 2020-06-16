@@ -6,7 +6,7 @@ Class {
 		'bookInformationComponent',
 		'simpleBookComponent'
 	],
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-readables'
 }
 
 { #category : #construction }

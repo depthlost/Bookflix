@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'readable'
 	],
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-readables'
 }
 
 { #category : #constructor }
