@@ -6,7 +6,7 @@ Class {
 
 { #category : #builder }
 NoveltyInformationComponent >> informationListInternalItems [
-	^ {}
+	^ {(self listItemName: 'Contenido' with: readable type)}
 ]
 
 { #category : #private }

@@ -24,12 +24,12 @@ SimpleViewReadableComponent >> renderContentOn: html [
 		class: 'card';
 		style: 'max-width: 16rem';
 		with: [ self
-				renderImageOn: html;
+				renderHeadOn: html;
 				renderBodyOn: html ]
 ]
 
 { #category : #rendering }
-SimpleViewReadableComponent >> renderImageOn: html [
+SimpleViewReadableComponent >> renderHeadOn: html [
 	self subclassResponsibility
 ]
 

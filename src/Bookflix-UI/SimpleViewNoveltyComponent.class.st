@@ -6,21 +6,26 @@ Class {
 
 { #category : #rendering }
 SimpleViewNoveltyComponent >> renderBodyOn: html [
-	html div
-		class: 'card-body';
-		with: [ html div
-				class: 'btn-group d-flex';
-				with: [ self
-						renderReadButtonOn: html;
-						renderBookButtonOn: html ] ]
+	readable isText
+		ifTrue: [ html div
+				class: 'card-body';
+				with: [ self renderDocumentOn: html ] ]
 ]
 
 { #category : #rendering }
-SimpleViewNoveltyComponent >> renderBookButtonOn: html [
+SimpleViewNoveltyComponent >> renderDocumentOn: html [
 	html anchor
-		class: 'btn btn-primary';
-		callback: [ parentComponent answer ];
-		with: 'Libro'
+		class: 'btn btn-block btn-success';
+		callback: [  ];
+		with: 'Ver Contenido'
+]
+
+{ #category : #rendering }
+SimpleViewNoveltyComponent >> renderHeadOn: html [
+	readable isPhoto
+		ifTrue: [ self renderImageOn: html ]
+		ifFalse: [ readable isVideo
+				ifTrue: [ self renderVideoOn: html ] ]
 ]
 
 { #category : #rendering }
@@ -28,13 +33,13 @@ SimpleViewNoveltyComponent >> renderImageOn: html [
 	html image
 		style: 'max-height: 18rem';
 		class: 'card-img-top book-cover-image';
-		url: readable book imageURL
+		url: readable content
 ]
 
 { #category : #rendering }
-SimpleViewNoveltyComponent >> renderReadButtonOn: html [
-	html anchor
-		class: 'btn btn-success';
-		callback: [  ];
-		with: 'Leer'
+SimpleViewNoveltyComponent >> renderVideoOn: html [
+	html video
+		class: 'img-fluid';
+		url: readable content;
+		controls: true
 ]

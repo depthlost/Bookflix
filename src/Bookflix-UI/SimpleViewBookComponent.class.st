@@ -16,7 +16,7 @@ SimpleViewBookComponent >> renderBodyOn: html [
 ]
 
 { #category : #rendering }
-SimpleViewBookComponent >> renderImageOn: html [
+SimpleViewBookComponent >> renderHeadOn: html [
 	html image
 		style: 'max-height: 18rem';
 		class: 'card-img-top book-cover-image';

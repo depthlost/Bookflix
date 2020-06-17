@@ -24,7 +24,7 @@ SimpleViewTrailerComponent >> renderBookButtonOn: html [
 ]
 
 { #category : #rendering }
-SimpleViewTrailerComponent >> renderImageOn: html [
+SimpleViewTrailerComponent >> renderHeadOn: html [
 	html image
 		style: 'max-height: 18rem';
 		class: 'card-img-top book-cover-image';
