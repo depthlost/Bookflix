@@ -14,7 +14,7 @@ ListComponent class >> withTitle: aTitle blocks: aCollection [
 	^ self new
 		withTitle: aTitle
 		collection: aCollection
-		do: [ :each :html | each value ]
+		do: [ :each :html | each value: html ]
 ]
 
 { #category : #constructor }

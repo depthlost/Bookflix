@@ -1,7 +1,7 @@
 Class {
 	#name : #ProxyBookComponent,
 	#superclass : #WAComponent,
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-readables'
 }
 
 { #category : #accessing }
