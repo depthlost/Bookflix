@@ -1,11 +1,11 @@
 Class {
-	#name : #SimpleBookComponent,
-	#superclass : #SimpleReadableComponent,
+	#name : #SimpleViewBookComponent,
+	#superclass : #SimpleViewReadableComponent,
 	#category : #'Bookflix-UI-readables'
 }
 
 { #category : #rendering }
-SimpleBookComponent >> renderBodyOn: html [
+SimpleViewBookComponent >> renderBodyOn: html [
 	html div
 		class: 'card-body';
 		with: [ html div
@@ -16,7 +16,7 @@ SimpleBookComponent >> renderBodyOn: html [
 ]
 
 { #category : #rendering }
-SimpleBookComponent >> renderImageOn: html [
+SimpleViewBookComponent >> renderImageOn: html [
 	html image
 		style: 'max-height: 18rem';
 		class: 'card-img-top book-cover-image';
@@ -24,7 +24,7 @@ SimpleBookComponent >> renderImageOn: html [
 ]
 
 { #category : #rendering }
-SimpleBookComponent >> renderReadButtonOn: html [
+SimpleViewBookComponent >> renderReadButtonOn: html [
 	html anchor
 		class: 'btn btn-success';
 		callback: [ self session user addReadableForHistorial: readable ];
@@ -32,7 +32,7 @@ SimpleBookComponent >> renderReadButtonOn: html [
 ]
 
 { #category : #rendering }
-SimpleBookComponent >> renderTrailerButtonOn: html [
+SimpleViewBookComponent >> renderTrailerButtonOn: html [
 	readable advance
 		ifNil: [ html anchor
 				class: 'btn btn-primary disabled';

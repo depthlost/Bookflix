@@ -3,8 +3,8 @@ Class {
 	#superclass : #WAComponent,
 	#instVars : [
 		'book',
-		'bookInformationComponent',
-		'simpleBookComponent'
+		'simpleViewComponent',
+		'informationComponent'
 	],
 	#category : #'Bookflix-UI-readables'
 }
@@ -27,10 +27,10 @@ BookDetailComponent >> renderTopRowOn: html [
 		class: 'row';
 		with: [ html div
 				class: 'col-3';
-				with: [ html render: simpleBookComponent ].
+				with: [ html render: simpleViewComponent ].
 			html div
 				class: 'col-9';
-				with: [ html render: bookInformationComponent ] ]
+				with: [ html render: informationComponent ] ]
 ]
 
 { #category : #seaside }
@@ -42,6 +42,6 @@ BookDetailComponent >> updateRoot: anHtmlRoot [
 { #category : #initialization }
 BookDetailComponent >> with: aBook [
 	book := aBook.
-	bookInformationComponent := BookInformationComponent with: book.
-	simpleBookComponent := SimpleBookComponent with: book in: self
+	informationComponent := BookInformationComponent with: book.
+	simpleViewComponent := SimpleViewBookComponent with: book in: self
 ]

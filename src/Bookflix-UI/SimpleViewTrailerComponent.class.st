@@ -1,11 +1,11 @@
 Class {
-	#name : #SimpleTrailerComponent,
-	#superclass : #SimpleReadableComponent,
+	#name : #SimpleViewTrailerComponent,
+	#superclass : #SimpleViewReadableComponent,
 	#category : #'Bookflix-UI-readables'
 }
 
 { #category : #rendering }
-SimpleTrailerComponent >> renderBodyOn: html [
+SimpleViewTrailerComponent >> renderBodyOn: html [
 	html div
 		class: 'card-body';
 		with: [ html div
@@ -16,7 +16,7 @@ SimpleTrailerComponent >> renderBodyOn: html [
 ]
 
 { #category : #rendering }
-SimpleTrailerComponent >> renderBookButtonOn: html [
+SimpleViewTrailerComponent >> renderBookButtonOn: html [
 	html anchor
 		class: 'btn btn-primary';
 		callback: [ parentComponent answer ];
@@ -24,7 +24,7 @@ SimpleTrailerComponent >> renderBookButtonOn: html [
 ]
 
 { #category : #rendering }
-SimpleTrailerComponent >> renderImageOn: html [
+SimpleViewTrailerComponent >> renderImageOn: html [
 	html image
 		style: 'max-height: 18rem';
 		class: 'card-img-top book-cover-image';
@@ -32,7 +32,7 @@ SimpleTrailerComponent >> renderImageOn: html [
 ]
 
 { #category : #rendering }
-SimpleTrailerComponent >> renderReadButtonOn: html [
+SimpleViewTrailerComponent >> renderReadButtonOn: html [
 	html anchor
 		class: 'btn btn-success';
 		callback: [  ];

@@ -1,5 +1,5 @@
 Class {
-	#name : #SimpleReadableComponent,
+	#name : #SimpleViewReadableComponent,
 	#superclass : #WAComponent,
 	#instVars : [
 		'readable',
@@ -9,17 +9,17 @@ Class {
 }
 
 { #category : #construction }
-SimpleReadableComponent class >> with: aReadable in: aComponent [
+SimpleViewReadableComponent class >> with: aReadable in: aComponent [
 	^ self new with: aReadable in: aComponent
 ]
 
 { #category : #rendering }
-SimpleReadableComponent >> renderBodyOn: html [
+SimpleViewReadableComponent >> renderBodyOn: html [
 	self subclassResponsibility
 ]
 
 { #category : #rendering }
-SimpleReadableComponent >> renderContentOn: html [
+SimpleViewReadableComponent >> renderContentOn: html [
 	html div
 		class: 'card';
 		style: 'max-width: 16rem';
@@ -29,12 +29,12 @@ SimpleReadableComponent >> renderContentOn: html [
 ]
 
 { #category : #rendering }
-SimpleReadableComponent >> renderImageOn: html [
+SimpleViewReadableComponent >> renderImageOn: html [
 	self subclassResponsibility
 ]
 
 { #category : #initialization }
-SimpleReadableComponent >> with: aReadable in: aComponent [
+SimpleViewReadableComponent >> with: aReadable in: aComponent [
 	readable := aReadable.
 	parentComponent := aComponent
 ]

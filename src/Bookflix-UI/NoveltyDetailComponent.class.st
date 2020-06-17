@@ -1,8 +1,8 @@
 Class {
-	#name : #TrailerDetailComponent,
+	#name : #NoveltyDetailComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'trailer',
+		'novelty',
 		'informationComponent',
 		'simpleViewComponent'
 	],
@@ -10,19 +10,19 @@ Class {
 }
 
 { #category : #construction }
-TrailerDetailComponent class >> with: aTrailer [
-	^ self new with: aTrailer
+NoveltyDetailComponent class >> with: aNovelty [
+	^ self new with: aNovelty
 ]
 
 { #category : #rendering }
-TrailerDetailComponent >> renderContentOn: html [
+NoveltyDetailComponent >> renderContentOn: html [
 	html div
 		class: 'container my-4';
 		with: [ self renderRowOn: html ]
 ]
 
 { #category : #rendering }
-TrailerDetailComponent >> renderRowOn: html [
+NoveltyDetailComponent >> renderRowOn: html [
 	html div
 		class: 'row';
 		with: [ html div
@@ -34,17 +34,16 @@ TrailerDetailComponent >> renderRowOn: html [
 ]
 
 { #category : #seaside }
-TrailerDetailComponent >> updateRoot: anHtmlRoot [
+NoveltyDetailComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix - ' , trailer title
+	anHtmlRoot title: 'Bookflix - ' , novelty title
 ]
 
 { #category : #initialization }
-TrailerDetailComponent >> with: aTrailer [
-	trailer := aTrailer.
-	informationComponent := TrailerInformationComponent
-		with: trailer.
-	simpleViewComponent := SimpleViewTrailerComponent
-		with: trailer
+NoveltyDetailComponent >> with: aNovelty [
+	novelty := aNovelty.
+	informationComponent := NoveltyInformationComponent with: novelty.
+	simpleViewComponent := SimpleViewNoveltyComponent
+		with: novelty
 		in: self
 ]
