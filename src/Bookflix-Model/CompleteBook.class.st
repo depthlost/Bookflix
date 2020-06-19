@@ -43,3 +43,8 @@ CompleteBook >> content [
 CompleteBook >> content: aContent [
 	content := aContent.
 ]
+
+{ #category : #testing }
+CompleteBook >> isCompleteBook [
+	^ true
+]

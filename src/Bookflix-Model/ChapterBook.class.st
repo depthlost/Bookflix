@@ -12,3 +12,8 @@ ChapterBook >> initialize [
 	super initialize.
 	chapters := OrderedCollection new
 ]
+
+{ #category : #testing }
+ChapterBook >> isCompleteBook [
+	^ false
+]
