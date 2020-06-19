@@ -19,7 +19,8 @@ SimpleViewTrailerComponent >> renderBodyOn: html [
 SimpleViewTrailerComponent >> renderBookButtonOn: html [
 	html anchor
 		class: 'btn btn-primary';
-		callback: [ parentComponent answer ];
+		callback:
+				[ parentComponent call: (BookDetailComponent with: readable book) ];
 		with: 'Libro'
 ]
 
