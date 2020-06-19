@@ -100,6 +100,11 @@ Book >> initialize [
 	advance := nil
 ]
 
+{ #category : #testing }
+Book >> isCompleteBook [
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 Book >> isbn [
 	^ isbn

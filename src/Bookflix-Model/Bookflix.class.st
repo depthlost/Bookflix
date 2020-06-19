@@ -51,8 +51,23 @@ Bookflix >> existingIsbn: aIsbn [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> getAllAuthors [
+	^ BookAuthor selectAll
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getAllBooks [
-	^ Book selectAll reject: [ :book | book isExpired ]
+	^ Author selectAll reject: [ :book | book isExpired ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> getAllEditorials [
+	^ Editorial selectAll
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> getAllGenders [
+	^ Gender selectAll
 ]
 
 { #category : #'as yet unclassified' }
