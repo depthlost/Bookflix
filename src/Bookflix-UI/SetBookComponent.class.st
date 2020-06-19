@@ -44,7 +44,7 @@ SetBookComponent >> updateBook [
 		author: authorInput;
 		editorial: editorialInput;
 		content: contentUrlsInput;
-		genders: gendersInput;
+		"genders: gendersInput;"
 		yourself
 ]
 

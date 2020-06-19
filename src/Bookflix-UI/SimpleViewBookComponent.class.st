@@ -27,7 +27,11 @@ SimpleViewBookComponent >> renderHeadOn: html [
 SimpleViewBookComponent >> renderReadButtonOn: html [
 	html anchor
 		class: 'btn btn-success';
-		callback: [ self session user addReadableForHistorial: readable ];
+		url: 'javascript:{}';
+		onClick:
+			(html jQuery ajax
+				callback: [ self session user addReadableForHistorial: readable ];
+				onComplete: (html javascript goto: readable content , '#toolbar=0'));
 		with: 'Leer'
 ]
 

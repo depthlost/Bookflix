@@ -82,7 +82,8 @@ BookOperationComponent >> isbnInput: anObject [
 
 { #category : #rendering }
 BookOperationComponent >> renderAddContentUrlButtonOn: html [
-	html anchor
+	html button
+		type: 'submit';
 		class: 'btn btn-success';
 		callback: [ contentUrlsInput add: '' ];
 		with: '+'
@@ -95,21 +96,22 @@ BookOperationComponent >> renderAuthorOn: html [
 		with: [ html label
 				for: 'input_author';
 				with: 'Autor'.
-			html textInput
+			html select
 				id: 'input_author';
 				class: 'form-control';
-				placeholder: 'Autor';
-				required;
-				on: #authorInput of: self ]
+				list: BookAuthor selectAll;
+				on: #authorInput of: self;
+				labels: [ :each | each name ];
+				required ]
 ]
 
 { #category : #rendering }
 BookOperationComponent >> renderContentUrl: index on: html [
-	html textInput
+	html urlInput
 		class: 'form-control';
 		placeholder: 'Link del Contenido';
 		value: (contentUrlsInput at: index);
-		callback: [ :input | contentUrlsInput at: index put: input ];
+		callback: [ :input | contentUrlsInput at: index put: input asString ];
 		required
 ]
 
@@ -149,12 +151,13 @@ BookOperationComponent >> renderEditorialOn: html [
 		with: [ html label
 				for: 'input_editorial';
 				with: 'Editorial'.
-			html textInput
+			html select
 				id: 'input_editorial';
 				class: 'form-control';
-				placeholder: 'Editorial';
-				required;
-				on: #editorialInput of: self ]
+				list: Editorial selectAll;
+				on: #editorialInput of: self;
+				labels: [ :each | each name ];
+				required ]
 ]
 
 { #category : #rendering }
@@ -183,15 +186,13 @@ BookOperationComponent >> renderGendersOn: html [
 		with: [ html label
 				for: 'input_genders';
 				with: 'Generos'.
-			html textInput
+			html multiSelect
 				id: 'input_genders';
 				class: 'form-control';
-				placeholder: 'Generos';
-				required;
-				on: #gendersInput of: self.
-			html small
-				class: 'form-text text-muted';
-				with: 'Utilice comas para separar diferentes generos' ]
+				list: Gender selectAll;
+				on: #gendersInput of: self;
+				labels: [ :each | each name ];
+				required ]
 ]
 
 { #category : #rendering }
@@ -201,12 +202,13 @@ BookOperationComponent >> renderImageUrlOn: html [
 		with: [ html label
 				for: 'input_imageURL';
 				with: 'Imagen'.
-			html textInput
+			html urlInput
 				id: 'input_imageURL';
 				class: 'form-control';
 				placeholder: 'URL de Imagen';
-				required;
-				on: #imageUrlInput of: self ]
+				value: imageUrlInput;
+				callback: [ :input | imageUrlInput := input asString ];
+				required ]
 ]
 
 { #category : #rendering }
@@ -240,7 +242,8 @@ BookOperationComponent >> renderNewContentUrlOn: html [
 
 { #category : #rendering }
 BookOperationComponent >> renderRemoveContentUrlButton: index on: html [
-	html anchor
+	html button
+		type: 'submit';
 		class: 'btn btn-danger';
 		callback: [ contentUrlsInput removeAt: index ];
 		with: 'x'
