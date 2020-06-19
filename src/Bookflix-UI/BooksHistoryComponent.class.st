@@ -1,7 +1,7 @@
 Class {
 	#name : #BooksHistoryComponent,
 	#superclass : #WAComponent,
-	#category : #'Bookflix-UI-books'
+	#category : #'Bookflix-UI-readables'
 }
 
 { #category : #rendering }

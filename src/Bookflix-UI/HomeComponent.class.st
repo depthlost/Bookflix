@@ -25,8 +25,19 @@ HomeComponent >> clearAlert [
 
 { #category : #private }
 HomeComponent >> getBookComponents [
-	^ Bookflix instance getAllBooks
-		collect: [ :each | ProxyBookComponent book: each in: self ]
+	"metodo modificado para retornar todos los leibles"
+
+	"^ Bookflix instance getAllBooks
+		collect: [ :each | ProxyBookComponent with: each in: self ]"
+
+	^ (Book selectAll
+		collect: [ :each | BookComponentProxy with: each in: self ])
+		,
+			(Novelty selectAll
+				collect: [ :each | NoveltyComponentProxy with: each in: self ])
+		,
+			(Advance selectAll
+				collect: [ :each | TrailerComponentProxy with: each in: self ])
 ]
 
 { #category : #seaside }
