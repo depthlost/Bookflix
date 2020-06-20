@@ -166,10 +166,21 @@ Book >> removeGender: aGender [
 	(genders included: aGender)
 		ifFalse: [ ^ self ].
 	aGender removeBook: self.
-	genders remove: self
+	genders remove: aGender
 ]
 
 { #category : #accessing }
 Book >> removeGenders: aGenders [
 	aGenders do: [ :gender | self removeGender: gender ]
+]
+
+{ #category : #adding }
+Book >> updateChapters: aChapters [
+	chapters := aChapters
+]
+
+{ #category : #accessing }
+Book >> updateGenders: aGenders [
+	genders do: [ :gender | self removeGender: gender ].
+	genders := aGenders
 ]

@@ -62,7 +62,7 @@ Bookflix >> getAllAuthors [
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllBooks [
-	^ Author selectAll reject: [ :book | book isExpired ]
+	^ Book selectAll reject: [ :book | book isExpired ]
 ]
 
 { #category : #'as yet unclassified' }
