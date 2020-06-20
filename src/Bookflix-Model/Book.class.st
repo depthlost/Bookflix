@@ -13,11 +13,6 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #testing }
-Book class >> isVoyageRoot [
-	^ true
-]
-
 { #category : #'instance creation' }
 Book class >> title: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aCollection [
 	^ (self title: aTitle description: aDescription)
@@ -125,10 +120,10 @@ Book >> initialize [
 	super initialize.
 	isbn := 0000.
 	imageURL := ''.
-	author := nil.
-	editorial := nil.
 	genders := OrderedCollection new.
 	chapters := OrderedCollection new.
+	author := nil.
+	editorial := nil.
 	advance := nil
 ]
 

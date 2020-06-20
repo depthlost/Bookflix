@@ -8,11 +8,6 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #testing }
-Advance class >> isVoyageRoot [
-	^ true
-]
-
 { #category : #accessing }
 Advance class >> title: aTitle description: aDescription content: aContent [
 	^ (self title: aTitle description: aDescription) content: aContent

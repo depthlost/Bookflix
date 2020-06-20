@@ -2,21 +2,24 @@ Class {
 	#name : #Searchable,
 	#superclass : #Object,
 	#instVars : [
-		'name',
-		'books'
+		'name'
 	],
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #adding }
-Searchable >> addBook: aBook [
-	books add: aBook
+{ #category : #testing }
+Searchable class >> isVoyageRoot [
+	^ true
+]
+
+{ #category : #accessing }
+Searchable class >> name: aName [
+	^ self new name: aName
 ]
 
 { #category : #initialization }
 Searchable >> initialize [
-	name := ''.
-	books := Set new
+	name := ''
 ]
 
 { #category : #accessing }
@@ -27,9 +30,4 @@ Searchable >> name [
 { #category : #accessing }
 Searchable >> name: aString [
 	name := aString
-]
-
-{ #category : #removing }
-Searchable >> removeBook: aBook [
-	books remove: aBook
 ]
