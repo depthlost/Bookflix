@@ -7,7 +7,8 @@ Class {
 		'author',
 		'editorial',
 		'genders',
-		'advance'
+		'advance',
+		'chapters'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -18,29 +19,46 @@ Book class >> isVoyageRoot [
 ]
 
 { #category : #'instance creation' }
-Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book class >> title: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aCollection [
 	^ (self title: aTitle description: aDescription)
 		isbn: aISBN
 			imageURL: aImageURL
 			author: aAuthor
-			editorial: aEditorial;
+			editorial: aEditorial
+			content: aCollection;
 		yourself
 ]
 
 { #category : #'instance creation' }
-Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial expirationDate: aDate [
+Book class >> title: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial expirationDate: aDate content: aCollection [
 	^ (self title: aTitle description: aDescription expirationDate: aDate)
 		isbn: aISBN
 			imageURL: aImageURL
 			author: aAuthor
-			editorial: aEditorial;
+			editorial: aEditorial
+			content: aCollection;
 		yourself
+]
+
+{ #category : #adding }
+Book >> addChapter: aChapter [
+	chapters add: aChapter
+]
+
+{ #category : #adding }
+Book >> addChapters: aChapters [
+	aChapters do: [ :chapter | self addChapter: chapter ]
 ]
 
 { #category : #accessing }
 Book >> addGender: aGender [
 	genders add: aGender.
 	aGender addBook: self
+]
+
+{ #category : #accessing }
+Book >> addGenders: aGenders [
+	aGenders do: [ :gender | self removeGender: gender ]
 ]
 
 { #category : #accessing }
@@ -66,6 +84,11 @@ Book >> author: aAuthor [
 	author ifNotNil: [ :arg | author removeBook: self ].
 	author := aAuthor.
 	author addBook: self
+]
+
+{ #category : #accessing }
+Book >> content [
+	^ chapters
 ]
 
 { #category : #accessing }
@@ -105,12 +128,13 @@ Book >> initialize [
 	author := nil.
 	editorial := nil.
 	genders := OrderedCollection new.
+	chapters := OrderedCollection new.
 	advance := nil
 ]
 
 { #category : #testing }
 Book >> isCompleteBook [
-	^ self subclassResponsibility
+	^ chapters size <= 1
 ]
 
 { #category : #accessing }
@@ -124,11 +148,22 @@ Book >> isbn: aISBN [
 ]
 
 { #category : #setting }
-Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial content: aCollection [
 	isbn := aISBN.
 	imageURL := aImageURL.
 	author := aAuthor.
-	editorial := aEditorial
+	editorial := aEditorial.
+	chapters := aCollection
+]
+
+{ #category : #adding }
+Book >> removeChapter: aChapter [
+	chapters remove: aChapter
+]
+
+{ #category : #adding }
+Book >> removeChapters: aChapters [
+	aChapters do: [ :chapter | self removeChapter: chapter ]
 ]
 
 { #category : #accessing }
@@ -137,4 +172,9 @@ Book >> removeGender: aGender [
 		ifFalse: [ ^ self ].
 	aGender removeBook: self.
 	genders remove: self
+]
+
+{ #category : #accessing }
+Book >> removeGenders: aGenders [
+	aGenders do: [ :gender | self removeGender: gender ]
 ]
