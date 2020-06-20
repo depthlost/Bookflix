@@ -146,8 +146,8 @@ Book >> isbn: aISBN [
 Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial content: aCollection [
 	isbn := aISBN.
 	imageURL := aImageURL.
-	author := aAuthor.
-	editorial := aEditorial.
+	self author: aAuthor.
+	self editorial: aEditorial.
 	chapters := aCollection
 ]
 
