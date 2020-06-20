@@ -53,7 +53,7 @@ Book >> addGender: aGender [
 
 { #category : #accessing }
 Book >> addGenders: aGenders [
-	aGenders do: [ :gender | self removeGender: gender ]
+	aGenders do: [ :gender | self addGender: gender ]
 ]
 
 { #category : #accessing }
