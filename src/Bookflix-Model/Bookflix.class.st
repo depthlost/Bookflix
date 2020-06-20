@@ -51,6 +51,11 @@ Bookflix >> existingIsbn: aIsbn [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> finderBooksThatSatisfy: aName with: aStrategy [
+	^ aStrategy finder: aName
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getAllAuthors [
 	^ BookAuthor selectAll
 ]

@@ -12,6 +12,11 @@ Criterion >> addBook: aBook [
 	books add: aBook
 ]
 
+{ #category : #accessing }
+Criterion >> books [
+	^ books
+]
+
 { #category : #initialization }
 Criterion >> initialize [
 	super initialize.
