@@ -61,7 +61,11 @@ Book >> author [
 
 { #category : #accessing }
 Book >> author: aAuthor [
-	author := aAuthor
+	author = aAuthor
+		ifTrue: [ ^ self ].
+	author ifNotNil: [ :arg | author removeBook: self ].
+	author := aAuthor.
+	author addBook: self
 ]
 
 { #category : #accessing }
@@ -71,7 +75,11 @@ Book >> editorial [
 
 { #category : #accessing }
 Book >> editorial: aEditorial [
-	editorial := aEditorial
+	editorial = aEditorial
+		ifTrue: [ ^ self ].
+	editorial ifNotNil: [ :arg | editorial removeBook: self ].
+	editorial := aEditorial.
+	editorial addBook: self
 ]
 
 { #category : #accessing }
@@ -121,4 +129,12 @@ Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial [
 	imageURL := aImageURL.
 	author := aAuthor.
 	editorial := aEditorial
+]
+
+{ #category : #accessing }
+Book >> removeGender: aGender [
+	(genders included: aGender)
+		ifFalse: [ ^ self ].
+	aGender removeBook: self.
+	genders remove: self
 ]
