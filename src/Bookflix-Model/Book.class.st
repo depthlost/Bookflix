@@ -44,6 +44,11 @@ Book >> addGender: aGender [
 ]
 
 { #category : #accessing }
+Book >> addGenders: aGenders [
+	aGenders do: [ :gender | self removeGender: gender ]
+]
+
+{ #category : #accessing }
 Book >> advance [
 	^ advance
 ]
@@ -137,4 +142,9 @@ Book >> removeGender: aGender [
 		ifFalse: [ ^ self ].
 	aGender removeBook: self.
 	genders remove: self
+]
+
+{ #category : #accessing }
+Book >> removeGenders: aGenders [
+	aGenders do: [ :gender | self removeGender: gender ]
 ]
