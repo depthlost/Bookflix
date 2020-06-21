@@ -12,7 +12,6 @@ SearchforGenderName >> asString [
 { #category : #accessing }
 SearchforGenderName >> finder: aName [
 	^ (Bookflix instance getAllGenders
-		select:
-			[ :gender | (gender name indexOfSubCollection: aName startingAt: 0) ~= 0 ])
+		select: [ :gender | gender name includesSubstring: aName ])
 		flatCollect: [ :gender | gender books ]
 ]
