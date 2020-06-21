@@ -38,7 +38,11 @@ SearchComponent >> renderCriteriaOn: html [
 	html select
 		class: 'form-control mr-2';
 		style: 'width: 120px';
-		list: {'Título' . 'Genero' . 'Editorial' . 'Autor'};
+		list:
+			{SearchforBookName new.
+			SearchforAuthorName new.
+			SearchforEditorialName new.
+			SearchforGenderName new};
 		on: #criteriaInput of: self;
 		required
 ]
@@ -57,7 +61,7 @@ SearchComponent >> renderSearchContentOn: html [
 
 { #category : #callbacks }
 SearchComponent >> search [
-	"modificar con lo desarrollado en el modelo"
-
-	books := Book selectAll takeFirst: 2
+	books := Bookflix instance
+		finderBooksThatSatisfy: contentInput
+		with: criteriaInput
 ]
