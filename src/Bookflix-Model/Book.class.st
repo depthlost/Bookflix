@@ -170,6 +170,8 @@ Book >> removeChapters: aChapters [
 
 { #category : #accessing }
 Book >> removeGender: aGender [
+	(genders includes: aGender)
+		ifFalse: [ ^ self ].
 	aGender removeBook: self.
 	genders remove: aGender
 ]
