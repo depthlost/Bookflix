@@ -94,6 +94,7 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 
 { #category : #removing }
 Bookflix >> removeBook: aBook [
+	aBook detach.
 	aBook remove
 ]
 
