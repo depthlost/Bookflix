@@ -39,6 +39,11 @@ Advance >> content: aPdf [
 	content := aPdf
 ]
 
+{ #category : #'submorphs-add/remove' }
+Advance >> delete [
+	self remove
+]
+
 { #category : #initialization }
 Advance >> initialize [
 	super initialize.

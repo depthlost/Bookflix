@@ -90,6 +90,8 @@ Book >> content [
 Book >> detach [
 	author removeBook: self.
 	editorial removeBook: self.
+	advance delete.
+	advance := nil.
 	self save
 ]
 
