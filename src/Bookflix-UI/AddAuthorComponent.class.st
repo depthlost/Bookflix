@@ -2,8 +2,7 @@ Class {
 	#name : #AddAuthorComponent,
 	#superclass : #SimpleFormComponent,
 	#instVars : [
-		'nameInput',
-		'surnameInput'
+		'fullNameInput'
 	],
 	#category : #'Bookflix-UI-add/modify'
 }
@@ -19,26 +18,24 @@ AddAuthorComponent >> formTitle [
 ]
 
 { #category : #accessing }
-AddAuthorComponent >> nameInput [
-	^ nameInput
+AddAuthorComponent >> fullNameInput [
+	^ fullNameInput
 ]
 
 { #category : #accessing }
-AddAuthorComponent >> nameInput: anObject [
-	nameInput := anObject
+AddAuthorComponent >> fullNameInput: anObject [
+	fullNameInput := anObject
 ]
 
 { #category : #callbacks }
 AddAuthorComponent >> onSubmit [
-	Bookflix instance addAuthor: nameInput , ' ' , surnameInput.
+	Bookflix instance addAuthor: fullNameInput.
 	^ AlertComponent with: 'El autor fue registrado con exito'
 ]
 
 { #category : #rendering }
 AddAuthorComponent >> renderDataInputOn: html [
-	self
-		renderNameOn: html;
-		renderSurnameOn: html
+	self renderNameOn: html
 ]
 
 { #category : #rendering }
@@ -55,33 +52,7 @@ AddAuthorComponent >> renderNameOn: html [
 				autofocus;
 				required;
 				attributeAt: 'minlength' put: '3';
-				on: #nameInput of: self ]
-]
-
-{ #category : #rendering }
-AddAuthorComponent >> renderSurnameOn: html [
-	html div
-		class: 'form-group';
-		with: [ html label
-				for: 'surname_input';
-				with: 'Apellido'.
-			html textInput
-				id: 'surname_input';
-				class: 'form-control';
-				placeholder: 'Apellido';
-				required;
-				attributeAt: 'minlength' put: '3';
-				on: #surnameInput of: self ]
-]
-
-{ #category : #accessing }
-AddAuthorComponent >> surnameInput [
-	^ surnameInput
-]
-
-{ #category : #accessing }
-AddAuthorComponent >> surnameInput: anObject [
-	surnameInput := anObject
+				on: #fullNameInput of: self ]
 ]
 
 { #category : #seaside }

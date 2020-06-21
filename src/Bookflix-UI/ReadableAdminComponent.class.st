@@ -31,7 +31,9 @@ ReadableAdminComponent >> readableComponent: aReadableComponent [
 
 { #category : #callbacks }
 ReadableAdminComponent >> removeReadable [
-	readable remove.
+	"por el momento solo borra libros"
+
+	Bookflix instance removeBook: readable.
 	parentComponent
 		addAlert: (AlertComponent with: 'Se elimino "' , readable title , '" con exito')
 ]
