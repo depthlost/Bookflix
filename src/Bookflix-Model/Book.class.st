@@ -86,6 +86,13 @@ Book >> content [
 	^ chapters
 ]
 
+{ #category : #modifying }
+Book >> detach [
+	author removeBook: self.
+	editorial removeBook: self.
+	self removeGenders
+]
+
 { #category : #accessing }
 Book >> editorial [
 	^ editorial
@@ -120,7 +127,7 @@ Book >> initialize [
 	super initialize.
 	isbn := 0000.
 	imageURL := ''.
-	genders := OrderedCollection new.
+	genders := Set new.
 	chapters := OrderedCollection new.
 	author := nil.
 	editorial := nil.
@@ -169,6 +176,11 @@ Book >> removeGender: aGender [
 	genders remove: aGender
 ]
 
+{ #category : #removing }
+Book >> removeGenders [
+	genders do: [ :gender | self removeGender: gender ]
+]
+
 { #category : #accessing }
 Book >> removeGenders: aGenders [
 	aGenders do: [ :gender | self removeGender: gender ]
@@ -182,5 +194,5 @@ Book >> updateChapters: aChapters [
 { #category : #accessing }
 Book >> updateGenders: aGenders [
 	genders do: [ :gender | self removeGender: gender ].
-	genders := aGenders
+	self addGenders: aGenders
 ]
