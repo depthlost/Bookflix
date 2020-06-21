@@ -9,8 +9,7 @@ Class {
 
 { #category : #adding }
 Criterion >> addBook: aBook [
-	books add: aBook.
-	self save
+	books add: aBook
 ]
 
 { #category : #accessing }
@@ -26,6 +25,5 @@ Criterion >> initialize [
 
 { #category : #removing }
 Criterion >> removeBook: aBook [
-	books remove: aBook.
-	self save
+	books remove: aBook
 ]

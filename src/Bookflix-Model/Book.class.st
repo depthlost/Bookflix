@@ -90,7 +90,7 @@ Book >> content [
 Book >> detach [
 	author removeBook: self.
 	editorial removeBook: self.
-	self removeGenders
+	self save
 ]
 
 { #category : #accessing }
