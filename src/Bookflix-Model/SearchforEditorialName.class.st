@@ -4,6 +4,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #converting }
+SearchforEditorialName >> asString [
+	^ 'SearchforEditorialName'
+]
+
 { #category : #accessing }
 SearchforEditorialName >> finder: aName [
 	^ (Bookflix instance getAllEditorials

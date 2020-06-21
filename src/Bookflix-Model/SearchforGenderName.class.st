@@ -4,6 +4,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #converting }
+SearchforGenderName >> asString [
+	^ 'SearchforGenderName'
+]
+
 { #category : #accessing }
 SearchforGenderName >> finder: aName [
 	^ (Bookflix instance getAllGenders
