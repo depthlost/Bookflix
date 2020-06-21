@@ -6,7 +6,16 @@ Class {
 
 { #category : #builder }
 NoveltyInformationComponent >> informationListInternalItems [
-	^ {(self listItemName: 'Contenido' with: readable type)}
+	^ {(self listItemName: 'Contenido' with: self noveltyType)}
+]
+
+{ #category : #private }
+NoveltyInformationComponent >> noveltyType [
+	^ readable isText
+		ifTrue: [ 'Documento' ]
+		ifFalse: [ readable isPhoto
+				ifTrue: [ 'Imagen' ]
+				ifFalse: [ 'Video' ] ]
 ]
 
 { #category : #private }

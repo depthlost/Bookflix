@@ -19,7 +19,7 @@ SetBookComponent >> buttonDescription [
 
 { #category : #private }
 SetBookComponent >> formTitle [
-	^ book title
+	^ titleInput
 ]
 
 { #category : #private }
@@ -44,8 +44,8 @@ SetBookComponent >> updateBook [
 		imageURL: imageUrlInput;
 		author: authorInput;
 		editorial: editorialInput;
-		content: contentUrlsInput;
-		"genders: gendersInput;"
+		updateChapters: contentUrlsInput;
+		"updateGenders: gendersInput;"
 		yourself
 ]
 
@@ -72,5 +72,5 @@ SetBookComponent >> with: aBook [
 	authorInput := book author.
 	editorialInput := book editorial.
 	gendersInput := book genders.
-	contentUrlsInput := book content
+	contentUrlsInput := book content copy
 ]

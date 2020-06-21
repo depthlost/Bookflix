@@ -11,7 +11,9 @@ BookInformationComponent >> informationListInternalItems [
 	(self listItemName: 'Editorial' with: readable editorial name).
 	(self
 		listItemName: 'Generos'
-		with: ((readable genders collect: [ :each | each name ]) joinUsing: ', '))}
+		with:
+			((readable genders asOrderedCollection collect: [ :each | each name ])
+				joinUsing: ', '))}
 ]
 
 { #category : #private }

@@ -78,8 +78,7 @@ AddGenderComponent >> updateRoot: anHtmlRoot [
 
 { #category : #validation }
 AddGenderComponent >> validateInputData [
-	"errorByRegisteredGender := Bookflix instance existingGender: nameInput."
-
-	errorByRegisteredGender := true.
+	errorByRegisteredGender := Bookflix instance
+		existingGender: nameInput.
 	^ errorByRegisteredGender not
 ]

@@ -6,15 +6,17 @@ Class {
 
 { #category : #private }
 AddBookComponent >> buildBook [
-	^ CompleteBook
-		newWithTitle: titleInput
+	^ (Book
+		title: titleInput
 		isbn: isbnInput
 		description: descriptionInput
 		imageURL: imageUrlInput
 		author: authorInput
 		editorial: editorialInput
-		content: contentUrlsInput
-		expirationDate: Date today
+		expirationDate: expirationDateInput
+		content: contentUrlsInput)
+		addGenders: gendersInput;
+		yourself
 ]
 
 { #category : #private }
