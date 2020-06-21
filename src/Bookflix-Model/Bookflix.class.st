@@ -44,10 +44,26 @@ Bookflix >> existUserWithEmail: anEmail [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> existingAuthor: aAuthor [
+	^ self getAllAuthors
+		anySatisfy: [ :author | author name = aAuthor name ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> existingEditorial: aEditorial [
+	^ self getAllEditorials
+		anySatisfy: [ :editorial | editorial name = aEditorial name ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> existingGender: aGender [
+	^ self getAllGenders
+		anySatisfy: [ :gender | gender name = aGender name ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> existingIsbn: aIsbn [
-	| books |
-	books := self getAllBooks.
-	^ books anySatisfy: [ :book | book isbn = aIsbn ]
+	^ self getAllBooks anySatisfy: [ :book | book isbn = aIsbn ]
 ]
 
 { #category : #'as yet unclassified' }
