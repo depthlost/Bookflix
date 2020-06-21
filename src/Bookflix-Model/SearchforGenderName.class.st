@@ -6,7 +6,7 @@ Class {
 
 { #category : #converting }
 SearchforGenderName >> asString [
-	^ 'SearchforGenderName'
+	^ 'Genero'
 ]
 
 { #category : #accessing }

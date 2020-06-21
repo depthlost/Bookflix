@@ -6,7 +6,7 @@ Class {
 
 { #category : #converting }
 SearchforAuthorName >> asString [
-	^ 'SearchforAuthorName'
+	^ 'Autor'
 ]
 
 { #category : #accessing }

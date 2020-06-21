@@ -6,7 +6,7 @@ Class {
 
 { #category : #converting }
 SearchforEditorialName >> asString [
-	^ 'SearchforEditorialName'
+	^ 'Editorial'
 ]
 
 { #category : #accessing }
