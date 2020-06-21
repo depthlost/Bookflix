@@ -38,8 +38,9 @@ SetBookComponent >> onSubmit [
 SetBookComponent >> updateBook [
 	^ book
 		title: titleInput;
-		isbn: isbnInput;
 		description: descriptionInput;
+		expirationDate: expirationDateInput;
+		isbn: isbnInput;
 		imageURL: imageUrlInput;
 		author: authorInput;
 		editorial: editorialInput;
@@ -65,6 +66,7 @@ SetBookComponent >> with: aBook [
 	book := aBook.
 	titleInput := book title.
 	descriptionInput := book description.
+	expirationDateInput := book expirationDate.
 	imageUrlInput := book imageURL.
 	isbnInput := book isbn.
 	authorInput := book author.

@@ -99,7 +99,7 @@ BookOperationComponent >> renderAuthorOn: html [
 			html select
 				id: 'input_author';
 				class: 'form-control';
-				list: BookAuthor selectAll;
+				list: Bookflix instance getAllAuthors;
 				on: #authorInput of: self;
 				labels: [ :each | each name ];
 				required ]
@@ -154,7 +154,7 @@ BookOperationComponent >> renderEditorialOn: html [
 			html select
 				id: 'input_editorial';
 				class: 'form-control';
-				list: Editorial selectAll;
+				list: Bookflix instance getAllEditorials;
 				on: #editorialInput of: self;
 				labels: [ :each | each name ];
 				required ]
@@ -189,7 +189,7 @@ BookOperationComponent >> renderGendersOn: html [
 			html multiSelect
 				id: 'input_genders';
 				class: 'form-control';
-				list: Gender selectAll;
+				list: Bookflix instance getAllGenders;
 				on: #gendersInput of: self;
 				labels: [ :each | each name ];
 				required ]

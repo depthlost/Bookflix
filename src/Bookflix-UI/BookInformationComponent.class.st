@@ -7,9 +7,11 @@ Class {
 { #category : #builder }
 BookInformationComponent >> informationListInternalItems [
 	^ {(self listItemName: 'ISBN' with: readable isbn).
-	(self listItemName: 'Autor' with: readable author).
-	(self listItemName: 'Editorial' with: readable editorial).
-	(self listItemName: 'Generos' with: readable genders)}
+	(self listItemName: 'Autor' with: readable author name).
+	(self listItemName: 'Editorial' with: readable editorial name).
+	(self
+		listItemName: 'Generos'
+		with: ((readable genders collect: [ :each | each name ]) joinUsing: ', '))}
 ]
 
 { #category : #private }
