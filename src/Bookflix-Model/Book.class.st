@@ -196,5 +196,5 @@ Book >> updateChapters: aChapters [
 { #category : #accessing }
 Book >> updateGenders: aGenders [
 	self removeGenders: genders.
-	self addGenders: aGenders
+	self addGenders: aGenders asSet
 ]
