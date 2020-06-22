@@ -25,6 +25,5 @@ Criterion >> initialize [
 
 { #category : #removing }
 Criterion >> removeBook: aBook [
-	(books includes: aBook)
-		ifTrue: [ books remove: aBook ]
+	books remove: aBook
 ]
