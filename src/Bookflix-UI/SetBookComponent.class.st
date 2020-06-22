@@ -22,7 +22,7 @@ SetBookComponent >> formTitle [
 	^ titleInput
 ]
 
-{ #category : #private }
+{ #category : #'as yet unclassified' }
 SetBookComponent >> isbnWasChangedAndExist [
 	^ isbnInput ~= book isbn
 		& (Bookflix instance existingIsbn: isbnInput)
@@ -45,7 +45,7 @@ SetBookComponent >> updateBook [
 		author: authorInput;
 		editorial: editorialInput;
 		updateChapters: contentUrlsInput;
-		"updateGenders: gendersInput;"
+		updateGenders: gendersInput;
 		yourself
 ]
 

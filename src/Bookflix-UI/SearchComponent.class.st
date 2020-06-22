@@ -39,10 +39,10 @@ SearchComponent >> renderCriteriaOn: html [
 		class: 'form-control mr-2';
 		style: 'width: 120px';
 		list:
-			{SearchforBookName new.
-			SearchforAuthorName new.
-			SearchforEditorialName new.
-			SearchforGenderName new};
+			{SearchforBookName instance.
+			SearchforAuthorName instance.
+			SearchforEditorialName instance.
+			SearchforGenderName instance};
 		on: #criteriaInput of: self;
 		required
 ]

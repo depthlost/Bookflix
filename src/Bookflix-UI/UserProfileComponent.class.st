@@ -54,7 +54,7 @@ UserProfileComponent >> renderSubmitButtonOn: html [
 	html button
 		type: 'submit';
 		class: 'btn btn-lg btn-primary btn-block w-50 float-right';
-		callback: [ self answer: self update ];
+		callback: [ self update ];
 		with: 'Actualizar'
 ]
 
@@ -76,8 +76,10 @@ UserProfileComponent >> update [
 		ifFalse: [ ^ self ].
 	self updateUserData.
 	self session user save.
-	^ AlertComponent
-		with: 'Se actualizo la informacion de perfil con exito'
+	self
+		answer:
+			(AlertComponent
+				with: 'Se actualizo la informacion de perfil con exito')
 ]
 
 { #category : #seaside }

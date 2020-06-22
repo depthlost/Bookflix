@@ -31,11 +31,16 @@ ReadableAdminComponent >> readableComponent: aReadableComponent [
 
 { #category : #callbacks }
 ReadableAdminComponent >> removeReadable [
-	"por el momento solo borra libros"
+	"por el momento solo borra libros, Mejorar Metodo!"
 
+	| resultMessage |
+	resultMessage := 'Se elimino "' , readable title , '"'.
+	readable advance
+		ifNotNil:
+			[ :advance | resultMessage := resultMessage , ' y "' , advance title , '"' ].
+	resultMessage := resultMessage , ' con exito'.
 	Bookflix instance removeBook: readable.
-	parentComponent
-		addAlert: (AlertComponent with: 'Se elimino "' , readable title , '" con exito')
+	parentComponent addAlert: (AlertComponent with: resultMessage)
 ]
 
 { #category : #rendering }

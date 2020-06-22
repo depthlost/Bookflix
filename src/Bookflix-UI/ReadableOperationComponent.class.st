@@ -41,9 +41,10 @@ ReadableOperationComponent >> renderDescriptionOn: html [
 		with: [ html label
 				for: 'input_description';
 				with: 'Descripción'.
-			html textInput
+			html textArea
 				id: 'input_description';
 				class: 'form-control';
+				rows: 4;
 				placeholder: 'Descripción';
 				required;
 				on: #descriptionInput of: self ]
