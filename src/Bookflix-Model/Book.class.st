@@ -95,6 +95,11 @@ Book >> detach [
 	self save
 ]
 
+{ #category : #'as yet unclassified' }
+Book >> detachGenders [
+	genders do: [ :gender | gender removeBook: self ]
+]
+
 { #category : #accessing }
 Book >> editorial [
 	^ editorial
@@ -178,16 +183,6 @@ Book >> removeGender: aGender [
 	genders remove: aGender
 ]
 
-{ #category : #removing }
-Book >> removeGenders [
-	genders do: [ :gender | self removeGender: gender ]
-]
-
-{ #category : #accessing }
-Book >> removeGenders: aGenders [
-	aGenders do: [ :gender | self removeGender: gender ]
-]
-
 { #category : #adding }
 Book >> updateChapters: aChapters [
 	chapters := aChapters
@@ -195,6 +190,7 @@ Book >> updateChapters: aChapters [
 
 { #category : #accessing }
 Book >> updateGenders: aGenders [
-	self removeGenders.
-	self addGenders: aGenders asSet
+	self detachGenders.
+	genders := Set new.
+	self addGenders: aGenders
 ]
