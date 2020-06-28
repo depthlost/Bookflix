@@ -66,6 +66,7 @@ BookOperationComponent >> imageUrlInput: anObject [
 { #category : #initialization }
 BookOperationComponent >> initialize [
 	super initialize.
+	contentUrlsInput := OrderedCollection with: ''.
 	errorByRegisteredIsbn := false
 ]
 
@@ -80,18 +81,43 @@ BookOperationComponent >> isbnInput: anObject [
 ]
 
 { #category : #rendering }
+BookOperationComponent >> renderAddContentUrlButtonOn: html [
+	html button
+		type: 'submit';
+		class: 'btn btn-success';
+		callback: [ contentUrlsInput add: '' ];
+		with: '+'
+]
+
+{ #category : #rendering }
 BookOperationComponent >> renderAuthorOn: html [
 	html div
 		class: 'form-group';
 		with: [ html label
 				for: 'input_author';
 				with: 'Autor'.
-			html textInput
+			html select
 				id: 'input_author';
 				class: 'form-control';
-				placeholder: 'Autor';
-				required;
-				on: #authorInput of: self ]
+				list: Bookflix instance getAllAuthors;
+				on: #authorInput of: self;
+				labels: [ :each | each name ];
+				required ]
+]
+
+{ #category : #rendering }
+BookOperationComponent >> renderContentUrl: index on: html [
+	html urlInput
+		class: 'form-control';
+		placeholder: 'Link del Contenido';
+		value: (contentUrlsInput at: index);
+		callback: [ :input | contentUrlsInput at: index put: input asString ];
+		required
+]
+
+{ #category : #rendering }
+BookOperationComponent >> renderContentUrlOn: html [
+	self renderContentUrl: contentUrlsInput size on: html
 ]
 
 { #category : #rendering }
@@ -101,12 +127,9 @@ BookOperationComponent >> renderContentUrlsOn: html [
 		with: [ html label
 				for: 'input_content_urls';
 				with: 'Contenido'.
-			html textInput
-				id: 'input_content_urls';
-				class: 'form-control';
-				placeholder: 'URL de Contenido';
-				required;
-				on: #contentUrlsInput of: self ]
+			contentUrlsInput allButLast
+				doWithIndex: [ :each :index | self renderExistingContentUrl: index on: html ].
+			self renderNewContentUrlOn: html ]
 ]
 
 { #category : #rendering }
@@ -128,12 +151,13 @@ BookOperationComponent >> renderEditorialOn: html [
 		with: [ html label
 				for: 'input_editorial';
 				with: 'Editorial'.
-			html textInput
+			html select
 				id: 'input_editorial';
 				class: 'form-control';
-				placeholder: 'Editorial';
-				required;
-				on: #editorialInput of: self ]
+				list: Bookflix instance getAllEditorials;
+				on: #editorialInput of: self;
+				labels: [ :each | each name ];
+				required ]
 ]
 
 { #category : #rendering }
@@ -144,21 +168,31 @@ BookOperationComponent >> renderErrorByRegisteredIsbnOn: html [
 ]
 
 { #category : #rendering }
+BookOperationComponent >> renderExistingContentUrl: index on: html [
+	html div
+		class: 'form-row mb-2';
+		with: [ html div
+				class: 'col-auto';
+				with: [ self renderContentUrl: index on: html ].
+			html div
+				class: 'col-auto';
+				with: [ self renderRemoveContentUrlButton: index on: html ] ]
+]
+
+{ #category : #rendering }
 BookOperationComponent >> renderGendersOn: html [
 	html div
 		class: 'form-group';
 		with: [ html label
 				for: 'input_genders';
 				with: 'Generos'.
-			html textInput
+			html multiSelect
 				id: 'input_genders';
 				class: 'form-control';
-				placeholder: 'Generos';
-				required;
-				on: #gendersInput of: self.
-			html small
-				class: 'form-text text-muted';
-				with: 'Utilice comas para separar diferentes generos' ]
+				list: Bookflix instance getAllGenders;
+				on: #gendersInput of: self;
+				labels: [ :each | each name ];
+				required ]
 ]
 
 { #category : #rendering }
@@ -168,12 +202,13 @@ BookOperationComponent >> renderImageUrlOn: html [
 		with: [ html label
 				for: 'input_imageURL';
 				with: 'Imagen'.
-			html textInput
+			html urlInput
 				id: 'input_imageURL';
 				class: 'form-control';
 				placeholder: 'URL de Imagen';
-				required;
-				on: #imageUrlInput of: self ]
+				value: imageUrlInput;
+				callback: [ :input | imageUrlInput := input asString ];
+				required ]
 ]
 
 { #category : #rendering }
@@ -191,6 +226,27 @@ BookOperationComponent >> renderIsbnOn: html [
 				on: #isbnInput of: self.
 			errorByRegisteredIsbn
 				ifTrue: [ self renderErrorByRegisteredIsbnOn: html ] ]
+]
+
+{ #category : #rendering }
+BookOperationComponent >> renderNewContentUrlOn: html [
+	html div
+		class: 'form-row mb-2';
+		with: [ html div
+				class: 'col-auto';
+				with: [ self renderContentUrl: contentUrlsInput size on: html ].
+			html div
+				class: 'col-auto';
+				with: [ self renderAddContentUrlButtonOn: html ] ]
+]
+
+{ #category : #rendering }
+BookOperationComponent >> renderRemoveContentUrlButton: index on: html [
+	html button
+		type: 'submit';
+		class: 'btn btn-danger';
+		callback: [ contentUrlsInput removeAt: index ];
+		with: 'x'
 ]
 
 { #category : #seaside }

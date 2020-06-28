@@ -7,40 +7,53 @@ Class {
 		'author',
 		'editorial',
 		'genders',
-		'advance'
+		'advance',
+		'chapters'
 	],
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #testing }
-Book class >> isVoyageRoot [
-	^ true
-]
-
 { #category : #'instance creation' }
-Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book class >> title: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial content: aCollection [
 	^ (self title: aTitle description: aDescription)
 		isbn: aISBN
 			imageURL: aImageURL
 			author: aAuthor
-			editorial: aEditorial;
+			editorial: aEditorial
+			content: aCollection;
 		yourself
 ]
 
 { #category : #'instance creation' }
-Book class >> newWithTitle: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial expirationDate: aDate [
+Book class >> title: aTitle isbn: aISBN description: aDescription imageURL: aImageURL author: aAuthor editorial: aEditorial expirationDate: aDate content: aCollection [
 	^ (self title: aTitle description: aDescription expirationDate: aDate)
 		isbn: aISBN
 			imageURL: aImageURL
 			author: aAuthor
-			editorial: aEditorial;
+			editorial: aEditorial
+			content: aCollection;
 		yourself
+]
+
+{ #category : #adding }
+Book >> addChapter: aChapter [
+	chapters add: aChapter
+]
+
+{ #category : #adding }
+Book >> addChapters: aChapters [
+	aChapters do: [ :chapter | self addChapter: chapter ]
 ]
 
 { #category : #accessing }
 Book >> addGender: aGender [
 	genders add: aGender.
 	aGender addBook: self
+]
+
+{ #category : #accessing }
+Book >> addGenders: aGenders [
+	aGenders do: [ :gender | self addGender: gender ]
 ]
 
 { #category : #accessing }
@@ -61,7 +74,30 @@ Book >> author [
 
 { #category : #accessing }
 Book >> author: aAuthor [
-	author := aAuthor
+	author = aAuthor
+		ifTrue: [ ^ self ].
+	author ifNotNil: [ :arg | author removeBook: self ].
+	author := aAuthor.
+	author addBook: self
+]
+
+{ #category : #accessing }
+Book >> content [
+	^ chapters
+]
+
+{ #category : #modifying }
+Book >> detach [
+	author removeBook: self.
+	editorial removeBook: self.
+	advance ifNotNil: [ :arg | advance delete ].
+	advance := nil.
+	self save
+]
+
+{ #category : #'as yet unclassified' }
+Book >> detachGenders [
+	genders do: [ :gender | gender removeBook: self ]
 ]
 
 { #category : #accessing }
@@ -71,7 +107,11 @@ Book >> editorial [
 
 { #category : #accessing }
 Book >> editorial: aEditorial [
-	editorial := aEditorial
+	editorial = aEditorial
+		ifTrue: [ ^ self ].
+	editorial ifNotNil: [ :arg | editorial removeBook: self ].
+	editorial := aEditorial.
+	editorial addBook: self
 ]
 
 { #category : #accessing }
@@ -94,10 +134,16 @@ Book >> initialize [
 	super initialize.
 	isbn := 0000.
 	imageURL := ''.
+	genders := Set new.
+	chapters := OrderedCollection new.
 	author := nil.
 	editorial := nil.
-	genders := OrderedCollection new.
 	advance := nil
+]
+
+{ #category : #testing }
+Book >> isCompleteBook [
+	^ chapters size <= 1
 ]
 
 { #category : #accessing }
@@ -111,9 +157,40 @@ Book >> isbn: aISBN [
 ]
 
 { #category : #setting }
-Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial [
+Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial content: aCollection [
 	isbn := aISBN.
 	imageURL := aImageURL.
-	author := aAuthor.
-	editorial := aEditorial
+	self author: aAuthor.
+	self editorial: aEditorial.
+	chapters := aCollection
+]
+
+{ #category : #adding }
+Book >> removeChapter: aChapter [
+	chapters remove: aChapter
+]
+
+{ #category : #adding }
+Book >> removeChapters: aChapters [
+	aChapters do: [ :chapter | self removeChapter: chapter ]
+]
+
+{ #category : #accessing }
+Book >> removeGender: aGender [
+	(genders includes: aGender)
+		ifFalse: [ ^ self ].
+	aGender removeBook: self.
+	genders remove: aGender
+]
+
+{ #category : #adding }
+Book >> updateChapters: aChapters [
+	chapters := aChapters
+]
+
+{ #category : #accessing }
+Book >> updateGenders: aGenders [
+	self detachGenders.
+	genders := Set new.
+	self addGenders: aGenders
 ]

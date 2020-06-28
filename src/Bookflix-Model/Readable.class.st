@@ -1,8 +1,7 @@
 Class {
 	#name : #Readable,
-	#superclass : #Object,
+	#superclass : #Searchable,
 	#instVars : [
-		'title',
 		'description',
 		'date',
 		'expirationDate'
@@ -10,22 +9,14 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #testing }
-Readable class >> isVoyageRoot [
-	^ true
-]
-
 { #category : #'as yet unclassified' }
 Readable class >> title: aTitle description: aDescription [
-	^ self new title: aTitle description: aDescription
+	^ (self name: aTitle) description: aDescription
 ]
 
 { #category : #'as yet unclassified' }
 Readable class >> title: aTitle description: aDescription expirationDate: aDate [
-	^ self new
-		title: aTitle
-		description: aDescription
-		expirationDate: aDate
+	^ (self name: aTitle) description: aDescription expirationDate: aDate
 ]
 
 { #category : #accessing }
@@ -48,6 +39,12 @@ Readable >> description: aDescription [
 	description := aDescription
 ]
 
+{ #category : #initialization }
+Readable >> description: aDescription expirationDate: aDate [
+	self description: aDescription.
+	self expirationDate: aDate
+]
+
 { #category : #accessing }
 Readable >> expirationDate [
 	^ expirationDate
@@ -61,7 +58,7 @@ Readable >> expirationDate: aDate [
 { #category : #'as yet unclassified' }
 Readable >> initialize [
 	date := Date today.
-	title := 'sin titulo'.
+	name := 'sin titulo'.
 	description := 'sin descripcion'.
 	expirationDate := nil
 ]
@@ -75,28 +72,15 @@ Readable >> isExpired [
 
 { #category : #'as yet unclassified' }
 Readable >> managementCriteria [
-	^ title
+	^ name
 ]
 
 { #category : #accessing }
 Readable >> title [
-	^ title
+	^ self name
 ]
 
 { #category : #initialization }
-Readable >> title: aTitle [
-	title := aTitle
-]
-
-{ #category : #initialization }
-Readable >> title: aTitle description: aDescription [
-	title := aTitle.
-	description := aDescription
-]
-
-{ #category : #initialization }
-Readable >> title: aTitle description: aDescription expirationDate: aDate [
-	self title: aTitle.
-	self description: aDescription.
-	self expirationDate: aDate
+Readable >> title: aName [
+	self name: aName
 ]

@@ -36,12 +36,15 @@ BookDetailComponent >> renderTopRowOn: html [
 { #category : #seaside }
 BookDetailComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix - ' , book title
+	anHtmlRoot title: 'Bookflix - ' , book title.
+	anHtmlRoot javascript url: JQDeploymentLibrary / #jQueryJs
 ]
 
 { #category : #initialization }
 BookDetailComponent >> with: aBook [
 	book := aBook.
 	informationComponent := BookInformationComponent with: book.
-	simpleViewComponent := SimpleViewBookComponent with: book in: self
+	simpleViewComponent := book content size = 1
+		ifTrue: [ SimpleViewCompleteBookComponent with: book in: self ]
+		ifFalse: [ SimpleViewChaptersBookComponent with: book in: self ]
 ]

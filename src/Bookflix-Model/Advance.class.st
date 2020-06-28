@@ -8,11 +8,6 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #testing }
-Advance class >> isVoyageRoot [
-	^ true
-]
-
 { #category : #accessing }
 Advance class >> title: aTitle description: aDescription content: aContent [
 	^ (self title: aTitle description: aDescription) content: aContent
@@ -42,6 +37,11 @@ Advance >> content [
 { #category : #accessing }
 Advance >> content: aPdf [
 	content := aPdf
+]
+
+{ #category : #'submorphs-add/remove' }
+Advance >> delete [
+	self remove
 ]
 
 { #category : #initialization }

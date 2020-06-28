@@ -2,7 +2,8 @@ Class {
 	#name : #AddGenderComponent,
 	#superclass : #SimpleFormComponent,
 	#instVars : [
-		'nameInput'
+		'nameInput',
+		'errorByRegisteredGender'
 	],
 	#category : #'Bookflix-UI-add/modify'
 }
@@ -15,6 +16,11 @@ AddGenderComponent >> buttonDescription [
 { #category : #private }
 AddGenderComponent >> formTitle [
 	^ 'Registrar Género'
+]
+
+{ #category : #initialization }
+AddGenderComponent >> initialize [
+	errorByRegisteredGender := false
 ]
 
 { #category : #accessing }
@@ -39,6 +45,13 @@ AddGenderComponent >> renderDataInputOn: html [
 ]
 
 { #category : #rendering }
+AddGenderComponent >> renderErrorByRegisteredGenderOn: html [
+	html small
+		class: 'form-text text-danger ml-2';
+		with: 'El genero ya se encuentra registrado.'
+]
+
+{ #category : #rendering }
 AddGenderComponent >> renderNameOn: html [
 	html div
 		class: 'form-group';
@@ -52,11 +65,20 @@ AddGenderComponent >> renderNameOn: html [
 				autofocus;
 				required;
 				attributeAt: 'minlength' put: '3';
-				on: #nameInput of: self ]
+				on: #nameInput of: self.
+			errorByRegisteredGender
+				ifTrue: [ self renderErrorByRegisteredGenderOn: html ] ]
 ]
 
 { #category : #seaside }
 AddGenderComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot title: 'Bookflix - Agregar Género'
+]
+
+{ #category : #validation }
+AddGenderComponent >> validateInputData [
+	errorByRegisteredGender := Bookflix instance
+		existingGender: nameInput.
+	^ errorByRegisteredGender not
 ]

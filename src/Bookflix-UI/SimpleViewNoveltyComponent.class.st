@@ -16,7 +16,7 @@ SimpleViewNoveltyComponent >> renderBodyOn: html [
 SimpleViewNoveltyComponent >> renderDocumentOn: html [
 	html anchor
 		class: 'btn btn-block btn-success';
-		callback: [  ];
+		url: readable content;
 		with: 'Ver Contenido'
 ]
 

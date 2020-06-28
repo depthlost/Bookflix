@@ -26,13 +26,5 @@ AdminNavBarComponent >> renderUserTopItemsOn: html [
 			on: html;
 		renderDropdownItem: 'Agregar Novedad'
 			withCallback: [ contentComponent call: AddNoveltyComponent new ]
-			on: html;
-		renderDropdownItem: 'Modificar Novedad'
-			withCallback: [ contentComponent
-				call: (SetNoveltyComponent with: Novelty selectAll first) ]
-			on: html;
-		renderDropdownItem: 'Ver Novedad'
-			withCallback: [ contentComponent
-				call: (NoveltyDetailComponent with: Novelty selectAll first) ]
 			on: html
 ]

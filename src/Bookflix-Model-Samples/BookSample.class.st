@@ -6,19 +6,23 @@ Class {
 
 { #category : #adding }
 BookSample class >> addBook1 [
-	"gender: Libros de cartón"
-
-	Bookflix instance
-		addReadable:
-			(CompleteBook
-				newWithTitle: 'Oso y caja'
-				isbn: '1112056795'
-				description:
-					'A través de sus aventuras, Oso Blanco, Oso Negro y Oso Pardo nos enseñan los colores, los contrarios, y los números. ¿Qué hay en la caja? Descúbrelo en este primer libro de colores. A partir de 1 año.'
-				imageURL: 'https://www.editorialjuventud.es/wp-content/uploads/2018/08/3608.jpg'
-				author: 'Cliff Wright'
-				editorial: 'Juventud'
-				content: '')
+	| book |
+	book := Book
+		title: 'Oso y caja'
+		isbn: '1112056795'
+		description:
+			'A través de sus aventuras, Oso Blanco, Oso Negro y Oso Pardo nos enseñan los colores, los contrarios, y los números. ¿Qué hay en la caja? Descúbrelo en este primer libro de colores. A partir de 1 año.'
+		imageURL: 'https://www.editorialjuventud.es/wp-content/uploads/2018/08/3608.jpg'
+		author: (BookAuthor selectAll detect: [ :each | each name = 'Cliff Wright' ])
+		editorial: (Editorial selectAll detect: [ :each | each name = 'Juventud' ])
+		expirationDate: (Date year: 2023 month: 2 day: 25)
+		content:
+			(OrderedCollection
+				with:
+					'https://www.cultura.gob.cl/wp-content/uploads/2014/01/un-cuento-al-dia-antologia.pdf').
+	book
+		addGender: (Gender selectAll detect: [ :each | each name = 'Libros de cartón' ]).
+	Bookflix instance addReadable: book
 ]
 
 { #category : #adding }

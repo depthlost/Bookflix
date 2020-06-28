@@ -19,10 +19,10 @@ SetBookComponent >> buttonDescription [
 
 { #category : #private }
 SetBookComponent >> formTitle [
-	^ book title
+	^ titleInput
 ]
 
-{ #category : #private }
+{ #category : #'as yet unclassified' }
 SetBookComponent >> isbnWasChangedAndExist [
 	^ isbnInput ~= book isbn
 		& (Bookflix instance existingIsbn: isbnInput)
@@ -38,13 +38,14 @@ SetBookComponent >> onSubmit [
 SetBookComponent >> updateBook [
 	^ book
 		title: titleInput;
-		isbn: isbnInput;
 		description: descriptionInput;
+		expirationDate: expirationDateInput;
+		isbn: isbnInput;
 		imageURL: imageUrlInput;
 		author: authorInput;
 		editorial: editorialInput;
-		content: contentUrlsInput;
-		genders: gendersInput;
+		updateChapters: contentUrlsInput;
+		updateGenders: gendersInput;
 		yourself
 ]
 
@@ -65,10 +66,11 @@ SetBookComponent >> with: aBook [
 	book := aBook.
 	titleInput := book title.
 	descriptionInput := book description.
+	expirationDateInput := book expirationDate.
 	imageUrlInput := book imageURL.
 	isbnInput := book isbn.
 	authorInput := book author.
 	editorialInput := book editorial.
 	gendersInput := book genders.
-	contentUrlsInput := book content
+	contentUrlsInput := book content copy
 ]

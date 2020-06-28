@@ -25,10 +25,7 @@ SimpleViewBookComponent >> renderHeadOn: html [
 
 { #category : #rendering }
 SimpleViewBookComponent >> renderReadButtonOn: html [
-	html anchor
-		class: 'btn btn-success';
-		callback: [ self session user addReadableForHistorial: readable ];
-		with: 'Leer'
+	self subclassResponsibility
 ]
 
 { #category : #rendering }

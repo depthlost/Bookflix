@@ -8,11 +8,6 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
-{ #category : #testing }
-Novelty class >> isVoyageRoot [
-	^ true
-]
-
 { #category : #'as yet unclassified' }
 Novelty class >> title: aTitle description: aDescription expirationDate: aDate saveAsPhoto: aContent [
 	^ (self title: aTitle description: aDescription expirationDate: aDate)
@@ -56,8 +51,6 @@ Novelty >> content [
 { #category : #initialization }
 Novelty >> initialize [
 	super initialize.
-	date := Date today.
-	title := ''.
 	content := ''.
 	type := 'text'
 ]

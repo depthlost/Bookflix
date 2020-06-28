@@ -44,15 +44,50 @@ Bookflix >> existUserWithEmail: anEmail [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> existingAuthor: aName [
+	^ self getAllAuthors anySatisfy: [ :author | author name = aName ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> existingEditorial: aName [
+	^ self getAllEditorials
+		anySatisfy: [ :editorial | editorial name = aName ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> existingGender: aName [
+	^ self getAllGenders
+		anySatisfy: [ :gender | gender name = aName ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> existingIsbn: aIsbn [
-	| books |
-	books := self getAllBooks.
-	^ books anySatisfy: [ :book | book isbn = aIsbn ]
+	^ self getAllBooks anySatisfy: [ :book | book isbn = aIsbn ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> finderBooksThatSatisfy: aName with: aStrategy [
+	^ aStrategy finder: aName
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> getAllAuthors [
+	^ BookAuthor selectAll
 ]
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllBooks [
 	^ Book selectAll reject: [ :book | book isExpired ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> getAllEditorials [
+	^ Editorial selectAll
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> getAllGenders [
+	^ Gender selectAll
 ]
 
 { #category : #'as yet unclassified' }
@@ -74,6 +109,7 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 
 { #category : #removing }
 Bookflix >> removeBook: aBook [
+	aBook detach.
 	aBook remove
 ]
 

@@ -23,7 +23,7 @@ SimpleFormComponent >> onSubmit [
 SimpleFormComponent >> renderContentOn: html [
 	html div
 		class: 'container py-5';
-		style: 'max-width: 320px;';
+		style: 'max-width: 380px;';
 		with: [ html form: [ self renderFormOn: html ] ]
 ]
 
