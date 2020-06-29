@@ -26,10 +26,10 @@ NoveltyDetailComponent >> renderRowOn: html [
 	html div
 		class: 'row';
 		with: [ html div
-				class: 'col-3';
+				class: 'col-md-4 h-100 d-flex justify-content-center mb-4';
 				with: [ html render: simpleViewComponent ].
 			html div
-				class: 'col-9';
+				class: 'col-md-8 h-100 mb-4';
 				with: [ html render: informationComponent ] ]
 ]
 

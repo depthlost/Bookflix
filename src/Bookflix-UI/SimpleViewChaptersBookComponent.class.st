@@ -44,7 +44,7 @@ SimpleViewChaptersBookComponent >> renderReadButtonItemNamed: aName content: aCo
 { #category : #rendering }
 SimpleViewChaptersBookComponent >> renderReadButtonOn: html [
 	html div
-		class: 'btn-group';
+		class: 'btn-group w-100';
 		attributeAt: 'role' put: 'group';
 		with: [ self
 				renderReadButtonDropdownOn: html;

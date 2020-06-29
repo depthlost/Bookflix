@@ -7,7 +7,7 @@ Class {
 { #category : #rendering }
 SimpleViewCompleteBookComponent >> renderReadButtonOn: html [
 	html anchor
-		class: 'btn btn-success';
+		class: 'btn btn-success w-100';
 		url: 'javascript:{}';
 		onClick:
 			(html jQuery ajax

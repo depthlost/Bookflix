@@ -69,9 +69,11 @@ HomeComponent >> renderAlertOn: html [
 { #category : #rendering }
 HomeComponent >> renderBooksOn: html [
 	html div
-		class: 'card-columns custom-columns';
-		with: [ self getBookComponents
-				do: [ :bookComponent | html render: bookComponent ] ]
+		class: 'd-flex justify-content-center';
+		with: [ html div
+				class: 'card-columns custom-columns';
+				with: [ self getBookComponents
+						do: [ :bookComponent | html render: bookComponent ] ] ]
 ]
 
 { #category : #rendering }
