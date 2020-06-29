@@ -3,7 +3,7 @@ Class {
 	#superclass : #WAComponent,
 	#instVars : [
 		'alertComponent',
-		'searchComponent'
+		'state'
 	],
 	#category : #'Bookflix-UI-others'
 }
@@ -21,7 +21,7 @@ HomeComponent >> call: aComponent [
 
 { #category : #seaside }
 HomeComponent >> children [
-	^ Array with: searchComponent
+	^ state children
 ]
 
 { #category : #private }
@@ -36,7 +36,7 @@ HomeComponent >> getBookComponents [
 	"^ Bookflix instance getAllBooks
 		collect: [ :each | ProxyBookComponent with: each in: self ]"
 
-	^ searchComponent content
+	"^ searchComponent content
 		ifNotNil:
 			[ :books | books collect: [ :each | BookComponentProxy with: each in: self ] ]
 		ifNil: [ (Book selectAll
@@ -46,19 +46,26 @@ HomeComponent >> getBookComponents [
 						collect: [ :each | NoveltyComponentProxy with: each in: self ])
 				,
 					(Advance selectAll
-						collect: [ :each | TrailerComponentProxy with: each in: self ]) ]
+						collect: [ :each | TrailerComponentProxy with: each in: self ]) ]"
+]
+
+{ #category : #private }
+HomeComponent >> getReadablesComponents [
+	^ state getReadablesComponents
 ]
 
 { #category : #seaside }
 HomeComponent >> home [
-	self clearAlert.
-	searchComponent := SearchComponent new.
+	self
+		clearAlert;
+		resetState.
 	super home
 ]
 
 { #category : #initialization }
 HomeComponent >> initialize [
-	searchComponent := SearchComponent new
+	super initialize.
+	self resetState
 ]
 
 { #category : #rendering }
@@ -67,23 +74,67 @@ HomeComponent >> renderAlertOn: html [
 ]
 
 { #category : #rendering }
-HomeComponent >> renderBooksOn: html [
+HomeComponent >> renderBooksCategoryButtonOn: html [
+	html anchor
+		class: 'btn btn-outline-dark';
+		callback: [ state := HomeComponentBookState of: self ];
+		with: 'Libros'
+]
+
+{ #category : #rendering }
+HomeComponent >> renderCategoryButtonGroupOn: html [
 	html div
-		class: 'd-flex justify-content-center';
+		class: 'mb-2 d-flex justify-content-end';
 		with: [ html div
-				class: 'card-columns custom-columns';
-				with: [ self getBookComponents
-						do: [ :bookComponent | html render: bookComponent ] ] ]
+				class: 'btn-group';
+				attributeAt: 'role' put: 'group';
+				with: [ self
+						renderBooksCategoryButtonOn: html;
+						renderNoveltiesCategoryButtonOn: html;
+						renderTrailersCategoryButtonOn: html ] ]
 ]
 
 { #category : #rendering }
 HomeComponent >> renderContentOn: html [
 	html div
 		class: 'container';
-		style: 'margin-top:3em';
-		with: [ self renderAlertOn: html.
-			html render: searchComponent.
-			self renderBooksOn: html ]
+		style: 'margin-top:2em';
+		with: [ self renderElementsOn: html ]
+]
+
+{ #category : #rendering }
+HomeComponent >> renderElementsOn: html [
+	state renderElementsOn: html
+]
+
+{ #category : #rendering }
+HomeComponent >> renderNoveltiesCategoryButtonOn: html [
+	html anchor
+		class: 'btn btn-outline-dark';
+		callback: [ state := HomeComponentNoveltyState of: self ];
+		with: 'Novedades'
+]
+
+{ #category : #rendering }
+HomeComponent >> renderReadablesOn: html [
+	html div
+		class: 'd-flex justify-content-center';
+		with: [ html div
+				class: 'card-columns custom-columns';
+				with: [ self getReadablesComponents do: [ :each | html render: each ] ] ]
+]
+
+{ #category : #rendering }
+HomeComponent >> renderTrailersCategoryButtonOn: html [
+	html anchor
+		class: 'btn btn-outline-dark';
+		callback: [ state := HomeComponentTrailerState of: self ];
+		with: 'Trailers'
+]
+
+{ #category : #private }
+HomeComponent >> resetState [
+	state := HomeComponentBookState of: self
 ]
 
 { #category : #seaside }

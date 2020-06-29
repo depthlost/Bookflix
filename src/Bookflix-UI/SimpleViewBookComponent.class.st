@@ -28,6 +28,7 @@ SimpleViewBookComponent >> renderEndButtonOn: html [
 		class: 'd-inline w-100 d-flex justify-content-end';
 		with: [ html anchor
 				class: 'btn btn-sm btn-outline-dark';
+				callback: [  ];
 				with: 'Terminar' ]
 ]
 
