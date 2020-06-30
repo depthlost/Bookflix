@@ -15,8 +15,9 @@ HomeComponent >> addAlert: anAlertComponent [
 
 { #category : #seaside }
 HomeComponent >> call: aComponent [
-	self home.
-	self addAlert: (super call: aComponent)
+	self
+		home;
+		addAlert: (super call: aComponent)
 ]
 
 { #category : #seaside }
@@ -27,6 +28,15 @@ HomeComponent >> children [
 { #category : #private }
 HomeComponent >> clearAlert [
 	alertComponent := nil
+]
+
+{ #category : #seaside }
+HomeComponent >> clearThenHome [
+	self session mainComponent navbar: ProxyNavBarComponent new.
+	self
+		clearAlert;
+		resetState;
+		home
 ]
 
 { #category : #private }
@@ -52,14 +62,6 @@ HomeComponent >> getBookComponents [
 { #category : #private }
 HomeComponent >> getReadablesComponents [
 	^ state getReadablesComponents
-]
-
-{ #category : #seaside }
-HomeComponent >> home [
-	self
-		clearAlert;
-		resetState.
-	super home
 ]
 
 { #category : #initialization }

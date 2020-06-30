@@ -1,20 +1,12 @@
 Class {
 	#name : #NavBarComponent,
 	#superclass : #WAComponent,
-	#instVars : [
-		'contentComponent'
-	],
 	#category : #'Bookflix-UI-navbars'
 }
 
-{ #category : #construction }
-NavBarComponent class >> withContentComponent: aComponent [
-	^ self new withContentComponent: aComponent
-]
-
 { #category : #callbacks }
 NavBarComponent >> goToHome [
-	contentComponent home
+	self session mainComponent content clearThenHome
 ]
 
 { #category : #rendering }
@@ -43,9 +35,4 @@ NavBarComponent >> renderNavBarContentOn: html [
 NavBarComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot stylesheet url: '/css/navbar.css'
-]
-
-{ #category : #initialization }
-NavBarComponent >> withContentComponent: aComponent [
-	contentComponent := aComponent
 ]

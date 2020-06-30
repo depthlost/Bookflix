@@ -18,22 +18,32 @@ TemplateComponent >> children [
 	^ Array with: navbarComponent with: contentComponent
 ]
 
-{ #category : #initialization }
-TemplateComponent >> initialize [
-	contentComponent := LoginComponent in: self.
-	navbarComponent := ProxyNavBarComponent
-		withContentComponent: contentComponent.
-
-
-	"borrar"
-	MySingletonClass instance element: self session
+{ #category : #accessing }
+TemplateComponent >> content [
+	^ contentComponent
 ]
 
-{ #category : #update }
-TemplateComponent >> loadSessionState [
-	contentComponent := HomeComponent new.
-	navbarComponent := ProxyNavBarComponent
-		withContentComponent: contentComponent
+{ #category : #accessing }
+TemplateComponent >> content: aComponent [
+	contentComponent := aComponent
+]
+
+{ #category : #initialization }
+TemplateComponent >> initialize [
+	super initialize.
+	self session mainComponent: self.
+	contentComponent := LoginComponent new.
+	navbarComponent := ProxyNavBarComponent new
+]
+
+{ #category : #accessing }
+TemplateComponent >> navbar [
+	^ navbarComponent
+]
+
+{ #category : #accessing }
+TemplateComponent >> navbar: aComponent [
+	navbarComponent := aComponent
 ]
 
 { #category : #rendering }
