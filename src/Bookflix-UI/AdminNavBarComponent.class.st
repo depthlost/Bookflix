@@ -9,8 +9,11 @@ AdminNavBarComponent >> renderUserTopItemsOn: html [
 	super renderUserTopItemsOn: html.
 	self
 		renderDropdownDividerOn: html;
-		renderDropdownItem: 'Agregar Libro'
-			withCallback: [ contentComponent call: AddBookComponent new ]
+		renderDropdownItem: 'Agregar Libro Completo'
+			withCallback: [ contentComponent call: AddCompleteBookComponent new ]
+			on: html;
+		renderDropdownItem: 'Agregar Libro por Capítulos'
+			withCallback: [ contentComponent call: AddChaptersBookComponent new ]
 			on: html;
 		renderDropdownItem: 'Agregar Autor'
 			withCallback: [ contentComponent call: AddAuthorComponent new ]

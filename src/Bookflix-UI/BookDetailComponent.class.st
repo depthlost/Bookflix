@@ -44,7 +44,7 @@ BookDetailComponent >> updateRoot: anHtmlRoot [
 BookDetailComponent >> with: aBook [
 	book := aBook.
 	informationComponent := BookInformationComponent with: book.
-	simpleViewComponent := book content size = 1
+	simpleViewComponent := book isCompleteBook
 		ifTrue: [ SimpleViewCompleteBookComponent with: book in: self ]
 		ifFalse: [ SimpleViewChaptersBookComponent with: book in: self ]
 ]

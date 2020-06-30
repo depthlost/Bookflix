@@ -7,6 +7,11 @@ Class {
 	#category : #'Bookflix-UI-others'
 }
 
+{ #category : #callbacks }
+UserSession >> logout [
+	self unregister
+]
+
 { #category : #accessing }
 UserSession >> user [
 	^ user

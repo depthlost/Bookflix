@@ -143,7 +143,7 @@ Book >> initialize [
 
 { #category : #testing }
 Book >> isCompleteBook [
-	^ chapters size <= 1
+	^ chapters isString
 ]
 
 { #category : #accessing }

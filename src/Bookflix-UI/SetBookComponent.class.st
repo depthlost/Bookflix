@@ -22,7 +22,7 @@ SetBookComponent >> formTitle [
 	^ titleInput
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 SetBookComponent >> isbnWasChangedAndExist [
 	^ isbnInput ~= book isbn
 		& (Bookflix instance existingIsbn: isbnInput)
@@ -44,9 +44,9 @@ SetBookComponent >> updateBook [
 		imageURL: imageUrlInput;
 		author: authorInput;
 		editorial: editorialInput;
-		updateChapters: contentUrlsInput;
-		updateGenders: gendersInput;
-		yourself
+		updateChapters: contentInputComponent content;
+		"updateGenders: gendersInput;"
+			yourself
 ]
 
 { #category : #seaside }
@@ -72,5 +72,8 @@ SetBookComponent >> with: aBook [
 	authorInput := book author.
 	editorialInput := book editorial.
 	gendersInput := book genders.
-	contentUrlsInput := book content copy
+	contentInputComponent := (book isCompleteBook
+		ifTrue: [ CompleteBookContentInputComponent ]
+		ifFalse: [ ChaptersBookContentInputComponent ])
+		with: book content copy
 ]

@@ -56,6 +56,11 @@ SimpleFormComponent >> renderSubmitButtonOn: html [
 		with: self buttonDescription
 ]
 
+{ #category : #seaside }
+SimpleFormComponent >> states [
+	^ Array with: self
+]
+
 { #category : #callbacks }
 SimpleFormComponent >> submit [
 	self validateInputData

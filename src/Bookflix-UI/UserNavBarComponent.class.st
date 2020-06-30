@@ -6,8 +6,10 @@ Class {
 
 { #category : #callbacks }
 UserNavBarComponent >> logout [
-	self session unregister.
-	self redirectUrl
+	"self session unregister.
+	self redirectUrl"
+
+	self session logout
 ]
 
 { #category : #private }

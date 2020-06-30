@@ -22,7 +22,11 @@ TemplateComponent >> children [
 TemplateComponent >> initialize [
 	contentComponent := LoginComponent in: self.
 	navbarComponent := ProxyNavBarComponent
-		withContentComponent: contentComponent
+		withContentComponent: contentComponent.
+
+
+	"borrar"
+	MySingletonClass instance element: self session
 ]
 
 { #category : #update }
