@@ -4,6 +4,11 @@ Class {
 	#category : #'Bookflix-UI-others'
 }
 
+{ #category : #private }
+HomeComponentNoveltyState >> activeNoveltyState [
+	^ true
+]
+
 { #category : #get }
 HomeComponentNoveltyState >> getReadablesComponents [
 	^ Bookflix instance getAllNovelty
@@ -12,8 +17,7 @@ HomeComponentNoveltyState >> getReadablesComponents [
 
 { #category : #rendering }
 HomeComponentNoveltyState >> renderElementsOn: html [
-	homeComponent
-		renderAlertOn: html;
-		renderCategoryButtonGroupOn: html;
-		renderReadablesOn: html
+	homeComponent renderAlertOn: html.
+	self renderCategoryButtonGroupOn: html.
+	homeComponent renderReadablesOn: html
 ]

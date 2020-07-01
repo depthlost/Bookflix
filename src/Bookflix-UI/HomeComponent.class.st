@@ -76,27 +76,6 @@ HomeComponent >> renderAlertOn: html [
 ]
 
 { #category : #rendering }
-HomeComponent >> renderBooksCategoryButtonOn: html [
-	html anchor
-		class: 'btn btn-outline-dark';
-		callback: [ state := HomeComponentBookState of: self ];
-		with: 'Libros'
-]
-
-{ #category : #rendering }
-HomeComponent >> renderCategoryButtonGroupOn: html [
-	html div
-		class: 'mb-2 d-flex justify-content-end';
-		with: [ html div
-				class: 'btn-group';
-				attributeAt: 'role' put: 'group';
-				with: [ self
-						renderBooksCategoryButtonOn: html;
-						renderNoveltiesCategoryButtonOn: html;
-						renderTrailersCategoryButtonOn: html ] ]
-]
-
-{ #category : #rendering }
 HomeComponent >> renderContentOn: html [
 	html div
 		class: 'container';
@@ -117,14 +96,6 @@ HomeComponent >> renderNoContentMessageOn: html [
 ]
 
 { #category : #rendering }
-HomeComponent >> renderNoveltiesCategoryButtonOn: html [
-	html anchor
-		class: 'btn btn-outline-dark';
-		callback: [ state := HomeComponentNoveltyState of: self ];
-		with: 'Novedades'
-]
-
-{ #category : #rendering }
 HomeComponent >> renderReadableList: aReadableCollection on: html [
 	html div
 		class: 'd-flex justify-content-center';
@@ -140,17 +111,14 @@ HomeComponent >> renderReadablesOn: html [
 		ifEmpty: [ self renderNoContentMessageOn: html ]
 ]
 
-{ #category : #rendering }
-HomeComponent >> renderTrailersCategoryButtonOn: html [
-	html anchor
-		class: 'btn btn-outline-dark';
-		callback: [ state := HomeComponentTrailerState of: self ];
-		with: 'Trailers'
-]
-
 { #category : #private }
 HomeComponent >> resetState [
 	state := HomeComponentBookState of: self
+]
+
+{ #category : #accessing }
+HomeComponent >> state: anObject [
+	state := anObject
 ]
 
 { #category : #seaside }

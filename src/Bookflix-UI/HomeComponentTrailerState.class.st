@@ -4,6 +4,11 @@ Class {
 	#category : #'Bookflix-UI-others'
 }
 
+{ #category : #private }
+HomeComponentTrailerState >> activeTrailerState [
+	^ true
+]
+
 { #category : #get }
 HomeComponentTrailerState >> getReadablesComponents [
 	"Bookflix instance getAllAdvances"
@@ -14,8 +19,7 @@ HomeComponentTrailerState >> getReadablesComponents [
 
 { #category : #rendering }
 HomeComponentTrailerState >> renderElementsOn: html [
-	homeComponent
-		renderAlertOn: html;
-		renderCategoryButtonGroupOn: html;
-		renderReadablesOn: html
+	homeComponent renderAlertOn: html.
+	self renderCategoryButtonGroupOn: html.
+	homeComponent renderReadablesOn: html
 ]

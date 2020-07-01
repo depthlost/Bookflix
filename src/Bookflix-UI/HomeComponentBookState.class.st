@@ -7,6 +7,11 @@ Class {
 	#category : #'Bookflix-UI-others'
 }
 
+{ #category : #private }
+HomeComponentBookState >> activeBookState [
+	^ true
+]
+
 { #category : #seaside }
 HomeComponentBookState >> children [
 	^ Array with: searchComponent
@@ -30,9 +35,8 @@ HomeComponentBookState >> initialize [
 
 { #category : #rendering }
 HomeComponentBookState >> renderElementsOn: html [
-	homeComponent
-		renderAlertOn: html;
-		renderCategoryButtonGroupOn: html.
+	homeComponent renderAlertOn: html.
+	self renderCategoryButtonGroupOn: html.
 	html render: searchComponent.
 	homeComponent renderReadablesOn: html
 ]
