@@ -13,32 +13,23 @@ HomeComponentState class >> of: aHomeComponent [
 ]
 
 { #category : #private }
-HomeComponentState >> activeBookState [
-	^ false
-]
-
-{ #category : #private }
-HomeComponentState >> activeNoveltyState [
-	^ false
-]
-
-{ #category : #private }
-HomeComponentState >> activeTrailerState [
-	^ false
+HomeComponentState >> activeCategoryButtonClass [
+	^ self defaultClassOfCategoryButton , ' active'
 ]
 
 { #category : #private }
 HomeComponentState >> bookCategoryButtonClass [
-	| class |
-	class := 'btn btn-outline-dark'.
-	self activeBookState
-		ifTrue: [ class := class , ' active' ].
-	^ class
+	^ self defaultClassOfCategoryButton
 ]
 
 { #category : #seaside }
 HomeComponentState >> children [
 	^ Array new
+]
+
+{ #category : #private }
+HomeComponentState >> defaultClassOfCategoryButton [
+	^ 'btn btn-outline-dark'
 ]
 
 { #category : #get }
@@ -48,11 +39,7 @@ HomeComponentState >> getReadablesComponents [
 
 { #category : #private }
 HomeComponentState >> noveltyCategoryButtonClass [
-	| class |
-	class := 'btn btn-outline-dark'.
-	self activeNoveltyState
-		ifTrue: [ class := class , ' active' ].
-	^ class
+	^ self defaultClassOfCategoryButton
 ]
 
 { #category : #initialization }
@@ -104,9 +91,5 @@ HomeComponentState >> renderTrailersCategoryButtonOn: html [
 
 { #category : #private }
 HomeComponentState >> trailerCategoryButtonClass [
-	| class |
-	class := 'btn btn-outline-dark'.
-	self activeTrailerState
-		ifTrue: [ class := class , ' active' ].
-	^ class
+	^ self defaultClassOfCategoryButton
 ]

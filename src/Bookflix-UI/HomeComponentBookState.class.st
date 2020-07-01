@@ -8,8 +8,8 @@ Class {
 }
 
 { #category : #private }
-HomeComponentBookState >> activeBookState [
-	^ true
+HomeComponentBookState >> bookCategoryButtonClass [
+	^ self activeCategoryButtonClass
 ]
 
 { #category : #seaside }

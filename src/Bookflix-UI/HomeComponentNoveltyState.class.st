@@ -4,15 +4,15 @@ Class {
 	#category : #'Bookflix-UI-others'
 }
 
-{ #category : #private }
-HomeComponentNoveltyState >> activeNoveltyState [
-	^ true
-]
-
 { #category : #get }
 HomeComponentNoveltyState >> getReadablesComponents [
 	^ Bookflix instance getAllNovelty
 		collect: [ :each | NoveltyComponentProxy with: each in: homeComponent ]
+]
+
+{ #category : #private }
+HomeComponentNoveltyState >> noveltyCategoryButtonClass [
+	^ self activeCategoryButtonClass
 ]
 
 { #category : #rendering }
