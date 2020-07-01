@@ -44,6 +44,11 @@ Advance >> delete [
 	self remove
 ]
 
+{ #category : #modifying }
+Advance >> detach [
+	book ifNotNil: [ :arg | book removeAdvance ]
+]
+
 { #category : #initialization }
 Advance >> initialize [
 	super initialize.

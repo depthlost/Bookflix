@@ -165,6 +165,12 @@ Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial co
 	chapters := aCollection
 ]
 
+{ #category : #accessing }
+Book >> removeAdvance [
+	advance := nil.
+	self save
+]
+
 { #category : #adding }
 Book >> removeChapter: aChapter [
 	chapters remove: aChapter
