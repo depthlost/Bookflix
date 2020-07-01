@@ -110,6 +110,13 @@ HomeComponent >> renderElementsOn: html [
 ]
 
 { #category : #rendering }
+HomeComponent >> renderNoContentMessageOn: html [
+	html paragraph
+		class: 'mt-2';
+		with: 'No se encontro contenido'
+]
+
+{ #category : #rendering }
 HomeComponent >> renderNoveltiesCategoryButtonOn: html [
 	html anchor
 		class: 'btn btn-outline-dark';
@@ -118,12 +125,19 @@ HomeComponent >> renderNoveltiesCategoryButtonOn: html [
 ]
 
 { #category : #rendering }
-HomeComponent >> renderReadablesOn: html [
+HomeComponent >> renderReadableList: aReadableCollection on: html [
 	html div
 		class: 'd-flex justify-content-center';
 		with: [ html div
 				class: 'card-columns custom-columns';
-				with: [ self getReadablesComponents do: [ :each | html render: each ] ] ]
+				with: [ aReadableCollection do: [ :each | html render: each ] ] ]
+]
+
+{ #category : #rendering }
+HomeComponent >> renderReadablesOn: html [
+	self getReadablesComponents
+		ifNotEmpty: [ :readables | self renderReadableList: readables on: html ]
+		ifEmpty: [ self renderNoContentMessageOn: html ]
 ]
 
 { #category : #rendering }
