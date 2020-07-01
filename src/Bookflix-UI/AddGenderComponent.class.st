@@ -48,7 +48,7 @@ AddGenderComponent >> renderDataInputOn: html [
 AddGenderComponent >> renderErrorByRegisteredGenderOn: html [
 	html small
 		class: 'form-text text-danger ml-2';
-		with: 'El genero ya se encuentra registrado.'
+		with: 'El genero "' , nameInput , '" ya se encuentra registrado.'
 ]
 
 { #category : #rendering }

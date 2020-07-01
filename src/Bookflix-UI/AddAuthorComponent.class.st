@@ -2,7 +2,8 @@ Class {
 	#name : #AddAuthorComponent,
 	#superclass : #SimpleFormComponent,
 	#instVars : [
-		'fullNameInput'
+		'fullNameInput',
+		'errorByRegisteredName'
 	],
 	#category : #'Bookflix-UI-add/modify'
 }
@@ -27,6 +28,12 @@ AddAuthorComponent >> fullNameInput: anObject [
 	fullNameInput := anObject
 ]
 
+{ #category : #initialization }
+AddAuthorComponent >> initialize [
+	super initialize.
+	errorByRegisteredName := false
+]
+
 { #category : #callbacks }
 AddAuthorComponent >> onSubmit [
 	Bookflix instance addAuthor: fullNameInput.
@@ -36,6 +43,13 @@ AddAuthorComponent >> onSubmit [
 { #category : #rendering }
 AddAuthorComponent >> renderDataInputOn: html [
 	self renderNameOn: html
+]
+
+{ #category : #rendering }
+AddAuthorComponent >> renderErrorByRegisteredNameOn: html [
+	html small
+		class: 'form-text text-danger ml-2';
+		with: 'El autor "' , fullNameInput , '" ya se encuentra registrado.'
 ]
 
 { #category : #rendering }
@@ -52,11 +66,20 @@ AddAuthorComponent >> renderNameOn: html [
 				autofocus;
 				required;
 				attributeAt: 'minlength' put: '3';
-				on: #fullNameInput of: self ]
+				on: #fullNameInput of: self.
+			errorByRegisteredName
+				ifTrue: [ self renderErrorByRegisteredNameOn: html ] ]
 ]
 
 { #category : #seaside }
 AddAuthorComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot title: 'Bookflix - Agregar Autor'
+]
+
+{ #category : #validation }
+AddAuthorComponent >> validateInputData [
+	errorByRegisteredName := Bookflix instance
+		existingAuthor: fullNameInput.
+	^ errorByRegisteredName not
 ]

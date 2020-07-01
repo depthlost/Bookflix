@@ -2,7 +2,8 @@ Class {
 	#name : #AddEditorialComponent,
 	#superclass : #SimpleFormComponent,
 	#instVars : [
-		'nameInput'
+		'nameInput',
+		'errorByRegisteredName'
 	],
 	#category : #'Bookflix-UI-add/modify'
 }
@@ -15,6 +16,12 @@ AddEditorialComponent >> buttonDescription [
 { #category : #private }
 AddEditorialComponent >> formTitle [
 	^ 'Registrar Editorial'
+]
+
+{ #category : #initialization }
+AddEditorialComponent >> initialize [
+	super initialize.
+	errorByRegisteredName := false
 ]
 
 { #category : #accessing }
@@ -39,6 +46,13 @@ AddEditorialComponent >> renderDataInputOn: html [
 ]
 
 { #category : #rendering }
+AddEditorialComponent >> renderErrorByRegisteredNameOn: html [
+	html small
+		class: 'form-text text-danger ml-2';
+		with: 'La editorial "' , nameInput , '" ya se encuentra registrada.'
+]
+
+{ #category : #rendering }
 AddEditorialComponent >> renderNameOn: html [
 	html div
 		class: 'form-group';
@@ -52,11 +66,20 @@ AddEditorialComponent >> renderNameOn: html [
 				autofocus;
 				required;
 				attributeAt: 'minlength' put: '3';
-				on: #nameInput of: self ]
+				on: #nameInput of: self.
+			errorByRegisteredName
+				ifTrue: [ self renderErrorByRegisteredNameOn: html ] ]
 ]
 
 { #category : #seaside }
 AddEditorialComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	anHtmlRoot title: 'Bookflix - Agregar Editorial'
+]
+
+{ #category : #validation }
+AddEditorialComponent >> validateInputData [
+	errorByRegisteredName := Bookflix instance
+		existingEditorial: nameInput.
+	^ errorByRegisteredName not
 ]
