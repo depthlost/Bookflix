@@ -15,6 +15,16 @@ ReadableAdminComponent class >> decorateTo: aReadableComponent [
 		readableComponent: aReadableComponent
 ]
 
+{ #category : #private }
+ReadableAdminComponent >> deletionSuccessMessage [
+	^ 'Se elimino "' , readable title , '"'
+		,
+			(readable className = 'Book'
+				ifTrue:
+					[ :book | book advance ifNotNil: [ :advance | ' y "' , advance title , '"' ] ]
+				ifFalse: [ '' ]) , ' con exito'
+]
+
 { #category : #callbacks }
 ReadableAdminComponent >> goToModifyReadable [
 	parentComponent
@@ -31,16 +41,13 @@ ReadableAdminComponent >> readableComponent: aReadableComponent [
 
 { #category : #callbacks }
 ReadableAdminComponent >> removeReadable [
-	"por el momento solo borra libros, Mejorar Metodo!"
-
-	| resultMessage |
-	resultMessage := 'Se elimino "' , readable title , '"'.
-	readable advance
-		ifNotNil:
-			[ :advance | resultMessage := resultMessage , ' y "' , advance title , '"' ].
-	resultMessage := resultMessage , ' con exito'.
-	Bookflix instance removeBook: readable.
-	parentComponent addAlert: (AlertComponent with: resultMessage)
+	readable className = 'Book'
+		ifTrue: [ Bookflix instance removeBook: readable ]
+		ifFalse: [ readable className = 'Novelty'
+				ifTrue: [ Bookflix instance removeNovelty: readable ]
+				ifFalse: [ Bookflix instance removeAdvance: readable ] ].
+	parentComponent
+		addAlert: (AlertComponent with: self deletionSuccessMessage)
 ]
 
 { #category : #rendering }
@@ -59,9 +66,9 @@ ReadableAdminComponent >> renderCardOn: html [
 ReadableAdminComponent >> renderFooterOn: html [
 	html div
 		class: 'card-footer text-right';
-		with: [ self renderModifyButtonOn: html.
-			readable className = 'Novelty'
-				ifFalse: [ self renderRemoveButtonOn: html ] ]
+		with: [ readable className = 'Advance'
+				ifFalse: [ self renderModifyButtonOn: html ].
+			self renderRemoveButtonOn: html ]
 ]
 
 { #category : #rendering }

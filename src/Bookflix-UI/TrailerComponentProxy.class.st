@@ -11,11 +11,9 @@ TrailerComponentProxy class >> with: aTrailer in: aComponent [
 
 { #category : #initialization }
 TrailerComponentProxy >> with: aTrailer in: aComponent [
-	"| readableComponent |
+	| readableComponent |
 	readableComponent := TrailerComponent with: aTrailer in: aComponent.
 	^ self session user isAdmin
 		ifFalse: [ readableComponent ]
-		ifTrue: [ ReadableAdminComponent decorateTo: readableComponent ]"
-
-	^ TrailerComponent with: aTrailer in: aComponent
+		ifTrue: [ ReadableAdminComponent decorateTo: readableComponent ]
 ]
