@@ -37,7 +37,8 @@ AddAuthorComponent >> initialize [
 { #category : #callbacks }
 AddAuthorComponent >> onSubmit [
 	Bookflix instance addAuthor: fullNameInput.
-	^ AlertComponent with: 'El autor fue registrado con exito'
+	^ AlertComponent
+		with: 'El autor "' , fullNameInput , '" fue registrado con exito'
 ]
 
 { #category : #rendering }

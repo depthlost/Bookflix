@@ -17,7 +17,8 @@ AddBookComponent >> buttonDescription [
 { #category : #callbacks }
 AddBookComponent >> onSubmit [
 	self buildBook save.
-	^ AlertComponent with: 'El libro fue registrado con exito'
+	^ AlertComponent
+		with: 'El libro "' , titleInput , '" fue registrado con exito'
 ]
 
 { #category : #seaside }

@@ -31,7 +31,8 @@ SetBookComponent >> isbnWasChangedAndExist [
 { #category : #callbacks }
 SetBookComponent >> onSubmit [
 	self updateBook save.
-	^ AlertComponent with: 'El libro fue actualizado con exito'
+	^ AlertComponent
+		with: 'El libro "' , titleInput , '" fue actualizado con exito'
 ]
 
 { #category : #private }

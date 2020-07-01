@@ -37,7 +37,8 @@ AddEditorialComponent >> nameInput: anObject [
 { #category : #callbacks }
 AddEditorialComponent >> onSubmit [
 	Bookflix instance addEditorial: nameInput.
-	^ AlertComponent with: 'La editorial fue registrada con éxito'
+	^ AlertComponent
+		with: 'La editorial "' , nameInput , '" fue registrada con éxito'
 ]
 
 { #category : #rendering }

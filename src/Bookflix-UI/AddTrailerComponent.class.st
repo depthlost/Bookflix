@@ -50,7 +50,8 @@ AddTrailerComponent >> formTitle [
 { #category : #callbacks }
 AddTrailerComponent >> onSubmit [
 	self saveTrailer.
-	^ AlertComponent with: 'Se registro el trailer con exito'
+	^ AlertComponent
+		with: 'El trailer "' , titleInput , '" fue registrado con exito'
 ]
 
 { #category : #rendering }
