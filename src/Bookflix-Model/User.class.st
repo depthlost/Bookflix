@@ -7,7 +7,8 @@ Class {
 		'email',
 		'password',
 		'birthdate',
-		'historial'
+		'historial',
+		'reades'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -64,12 +65,18 @@ User >> initialize [
 	email := ''.
 	password := ''.
 	birthdate := Date today.
-	historial := OrderedCollection new
+	historial := OrderedCollection new.
+	reades := Set new
 ]
 
 { #category : #abstract }
 User >> isAdmin [
 	^ false
+]
+
+{ #category : #accessing }
+User >> isRead: aBook [
+	^ reades anySatisfy: [ :book | book = aBook ]
 ]
 
 { #category : #accessing }
@@ -92,6 +99,11 @@ User >> name: aName surname: aSurname email: anEmail password: aPassword birthda
 ]
 
 { #category : #accessing }
+User >> notRead: aBook [
+	reades remove: aBook
+]
+
+{ #category : #accessing }
 User >> password [
 	^ password
 ]
@@ -109,4 +121,9 @@ User >> surname [
 { #category : #accessing }
 User >> surname: aSurname [
 	surname := aSurname
+]
+
+{ #category : #accessing }
+User >> yesRead: aBook [
+	reades add: aBook
 ]
