@@ -18,7 +18,8 @@ BookDetailComponent class >> with: aBook [
 BookDetailComponent >> renderContentOn: html [
 	html div
 		class: 'container my-4';
-		with: [ self renderTopRowOn: html ]
+		with: [ self renderTopRowOn: html.
+			html render: (CommentListComponent book: MockBookComment instance) ]
 ]
 
 { #category : #rendering }
