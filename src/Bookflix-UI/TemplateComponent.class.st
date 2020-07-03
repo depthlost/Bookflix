@@ -5,7 +5,7 @@ application sessionClass: UserSession.
 "
 Class {
 	#name : #TemplateComponent,
-	#superclass : #WABootstrapComponent,
+	#superclass : #WAComponent,
 	#instVars : [
 		'contentComponent',
 		'navbarComponent'
@@ -51,4 +51,11 @@ TemplateComponent >> renderContentOn: html [
 	html
 		render: navbarComponent;
 		render: contentComponent
+]
+
+{ #category : #seaside }
+TemplateComponent >> updateRoot: anHtmlRoot [
+	super updateRoot: anHtmlRoot.
+	BootstrapLibrary add: anHtmlRoot.
+	OpenIconicLibrary add: anHtmlRoot
 ]
