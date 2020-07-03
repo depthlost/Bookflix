@@ -4,6 +4,12 @@ Class {
 	#category : #'Bookflix-UI-readables'
 }
 
+{ #category : #private }
+BookComponent >> getGendersSeparatedByCommas [
+	^ (readable genders asOrderedCollection
+		collect: [ :each | each name ]) joinUsing: ', '
+]
+
 { #category : #rendering }
 BookComponent >> renderHeadOn: html [
 	html anchor
@@ -21,4 +27,11 @@ BookComponent >> renderImageOn: html [
 { #category : #rendering }
 BookComponent >> renderInformationButtonOn: html [
 	
+]
+
+{ #category : #rendering }
+BookComponent >> renderSubtitleOn: html [
+	html small
+		class: 'mb-2 text-muted';
+		with: self getGendersSeparatedByCommas
 ]

@@ -6,17 +6,7 @@ Class {
 
 { #category : #private }
 AddBookComponent >> buildBook [
-	^ (Book
-		title: titleInput
-		isbn: isbnInput
-		description: descriptionInput
-		imageURL: imageUrlInput
-		author: authorInput
-		editorial: editorialInput
-		expirationDate: expirationDateInput
-		content: contentUrlsInput)
-		addGenders: gendersInput;
-		yourself
+	self subclassResponsibility
 ]
 
 { #category : #private }
@@ -24,15 +14,11 @@ AddBookComponent >> buttonDescription [
 	^ 'Registrar'
 ]
 
-{ #category : #private }
-AddBookComponent >> formTitle [
-	^ 'Ingrese los datos correspondientes'
-]
-
 { #category : #callbacks }
 AddBookComponent >> onSubmit [
 	self buildBook save.
-	^ AlertComponent with: 'El libro fue registrado con exito'
+	^ AlertComponent
+		with: 'El libro "' , titleInput , '" fue registrado con exito'
 ]
 
 { #category : #seaside }

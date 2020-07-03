@@ -108,9 +108,20 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 ]
 
 { #category : #removing }
+Bookflix >> removeAdvance: aAdvance [
+	aAdvance detach.
+	aAdvance remove
+]
+
+{ #category : #removing }
 Bookflix >> removeBook: aBook [
 	aBook detach.
 	aBook remove
+]
+
+{ #category : #removing }
+Bookflix >> removeNovelty: aNovelty [
+	aNovelty remove
 ]
 
 { #category : #'as yet unclassified' }

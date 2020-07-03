@@ -9,22 +9,27 @@ AdminNavBarComponent >> renderUserTopItemsOn: html [
 	super renderUserTopItemsOn: html.
 	self
 		renderDropdownDividerOn: html;
-		renderDropdownItem: 'Agregar Libro'
-			withCallback: [ contentComponent call: AddBookComponent new ]
+		renderDropdownItem: 'Agregar Libro Completo'
+			withCallback: [ self session mainComponent content
+				call: AddCompleteBookComponent new ]
+			on: html;
+		renderDropdownItem: 'Agregar Libro por Capítulos'
+			withCallback: [ self session mainComponent content
+				call: AddChaptersBookComponent new ]
 			on: html;
 		renderDropdownItem: 'Agregar Autor'
-			withCallback: [ contentComponent call: AddAuthorComponent new ]
+			withCallback: [ self session mainComponent content call: AddAuthorComponent new ]
 			on: html;
 		renderDropdownItem: 'Agregar Género'
-			withCallback: [ contentComponent call: AddGenderComponent new ]
+			withCallback: [ self session mainComponent content call: AddGenderComponent new ]
 			on: html;
 		renderDropdownItem: 'Agregar Editorial'
-			withCallback: [ contentComponent call: AddEditorialComponent new ]
+			withCallback: [ self session mainComponent content call: AddEditorialComponent new ]
 			on: html;
 		renderDropdownItem: 'Agregar Trailer'
-			withCallback: [ contentComponent call: AddTrailerComponent new ]
+			withCallback: [ self session mainComponent content call: AddTrailerComponent new ]
 			on: html;
 		renderDropdownItem: 'Agregar Novedad'
-			withCallback: [ contentComponent call: AddNoveltyComponent new ]
+			withCallback: [ self session mainComponent content call: AddNoveltyComponent new ]
 			on: html
 ]

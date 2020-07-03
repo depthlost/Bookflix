@@ -7,7 +7,7 @@ Class {
 		'authorInput',
 		'editorialInput',
 		'gendersInput',
-		'contentUrlsInput',
+		'contentInputComponent',
 		'errorByRegisteredIsbn'
 	],
 	#category : #'Bookflix-UI-add/modify'
@@ -23,14 +23,9 @@ BookOperationComponent >> authorInput: anObject [
 	authorInput := anObject
 ]
 
-{ #category : #accessing }
-BookOperationComponent >> contentUrlsInput [
-	^ contentUrlsInput
-]
-
-{ #category : #accessing }
-BookOperationComponent >> contentUrlsInput: anObject [
-	contentUrlsInput := anObject
+{ #category : #seaside }
+BookOperationComponent >> children [
+	^ super children , (Array with: contentInputComponent)
 ]
 
 { #category : #accessing }
@@ -66,7 +61,6 @@ BookOperationComponent >> imageUrlInput: anObject [
 { #category : #initialization }
 BookOperationComponent >> initialize [
 	super initialize.
-	contentUrlsInput := OrderedCollection with: ''.
 	errorByRegisteredIsbn := false
 ]
 
@@ -78,15 +72,6 @@ BookOperationComponent >> isbnInput [
 { #category : #accessing }
 BookOperationComponent >> isbnInput: anObject [
 	isbnInput := anObject
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderAddContentUrlButtonOn: html [
-	html button
-		type: 'submit';
-		class: 'btn btn-success';
-		callback: [ contentUrlsInput add: '' ];
-		with: '+'
 ]
 
 { #category : #rendering }
@@ -106,33 +91,6 @@ BookOperationComponent >> renderAuthorOn: html [
 ]
 
 { #category : #rendering }
-BookOperationComponent >> renderContentUrl: index on: html [
-	html urlInput
-		class: 'form-control';
-		placeholder: 'Link del Contenido';
-		value: (contentUrlsInput at: index);
-		callback: [ :input | contentUrlsInput at: index put: input asString ];
-		required
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderContentUrlOn: html [
-	self renderContentUrl: contentUrlsInput size on: html
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderContentUrlsOn: html [
-	html div
-		class: 'form-group';
-		with: [ html label
-				for: 'input_content_urls';
-				with: 'Contenido'.
-			contentUrlsInput allButLast
-				doWithIndex: [ :each :index | self renderExistingContentUrl: index on: html ].
-			self renderNewContentUrlOn: html ]
-]
-
-{ #category : #rendering }
 BookOperationComponent >> renderDataInputOn: html [
 	super renderDataInputOn: html.
 	self
@@ -140,8 +98,8 @@ BookOperationComponent >> renderDataInputOn: html [
 		renderIsbnOn: html;
 		renderAuthorOn: html;
 		renderEditorialOn: html;
-		renderGendersOn: html;
-		renderContentUrlsOn: html
+		renderGendersOn: html.
+	html render: contentInputComponent
 ]
 
 { #category : #rendering }
@@ -165,18 +123,6 @@ BookOperationComponent >> renderErrorByRegisteredIsbnOn: html [
 	html small
 		class: 'form-text text-danger';
 		with: 'El ISBN se encuentra en uso. Por favor intenta de nuevo.'
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderExistingContentUrl: index on: html [
-	html div
-		class: 'form-row mb-2';
-		with: [ html div
-				class: 'col-auto';
-				with: [ self renderContentUrl: index on: html ].
-			html div
-				class: 'col-auto';
-				with: [ self renderRemoveContentUrlButton: index on: html ] ]
 ]
 
 { #category : #rendering }
@@ -226,30 +172,4 @@ BookOperationComponent >> renderIsbnOn: html [
 				on: #isbnInput of: self.
 			errorByRegisteredIsbn
 				ifTrue: [ self renderErrorByRegisteredIsbnOn: html ] ]
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderNewContentUrlOn: html [
-	html div
-		class: 'form-row mb-2';
-		with: [ html div
-				class: 'col-auto';
-				with: [ self renderContentUrl: contentUrlsInput size on: html ].
-			html div
-				class: 'col-auto';
-				with: [ self renderAddContentUrlButtonOn: html ] ]
-]
-
-{ #category : #rendering }
-BookOperationComponent >> renderRemoveContentUrlButton: index on: html [
-	html button
-		type: 'submit';
-		class: 'btn btn-danger';
-		callback: [ contentUrlsInput removeAt: index ];
-		with: 'x'
-]
-
-{ #category : #seaside }
-BookOperationComponent >> states [
-	^ Array with: self
 ]

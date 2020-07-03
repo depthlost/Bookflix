@@ -55,7 +55,7 @@ AddNoveltyComponent >> formTitle [
 { #category : #callbacks }
 AddNoveltyComponent >> onSubmit [
 	Bookflix instance addReadable: self buildNovelty.
-	^ AlertComponent with: 'La novedad fue registrada con exito'
+	^ AlertComponent with: 'La novedad "' , titleInput , '" fue registrada con exito'
 ]
 
 { #category : #seaside }

@@ -8,7 +8,8 @@ Class {
 		'editorial',
 		'genders',
 		'advance',
-		'chapters'
+		'chapters',
+		'totalChapters'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -136,6 +137,7 @@ Book >> initialize [
 	imageURL := ''.
 	genders := Set new.
 	chapters := OrderedCollection new.
+	totalChapters := 0.
 	author := nil.
 	editorial := nil.
 	advance := nil
@@ -143,7 +145,7 @@ Book >> initialize [
 
 { #category : #testing }
 Book >> isCompleteBook [
-	^ chapters size <= 1
+	^ chapters isString
 ]
 
 { #category : #accessing }
@@ -165,6 +167,12 @@ Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial co
 	chapters := aCollection
 ]
 
+{ #category : #accessing }
+Book >> removeAdvance [
+	advance := nil.
+	self save
+]
+
 { #category : #adding }
 Book >> removeChapter: aChapter [
 	chapters remove: aChapter
@@ -181,6 +189,16 @@ Book >> removeGender: aGender [
 		ifFalse: [ ^ self ].
 	aGender removeBook: self.
 	genders remove: aGender
+]
+
+{ #category : #accessing }
+Book >> totalChapters [
+	^ totalChapters
+]
+
+{ #category : #accessing }
+Book >> totalChapters: aNum [
+	totalChapters := aNum
 ]
 
 { #category : #adding }

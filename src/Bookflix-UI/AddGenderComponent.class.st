@@ -36,7 +36,8 @@ AddGenderComponent >> nameInput: anObject [
 { #category : #callbacks }
 AddGenderComponent >> onSubmit [
 	Bookflix instance addGender: nameInput.
-	^ AlertComponent with: 'El género fue registrado con exito'
+	^ AlertComponent
+		with: 'El género "' , nameInput , '" fue registrado con exito'
 ]
 
 { #category : #rendering }
@@ -48,7 +49,7 @@ AddGenderComponent >> renderDataInputOn: html [
 AddGenderComponent >> renderErrorByRegisteredGenderOn: html [
 	html small
 		class: 'form-text text-danger ml-2';
-		with: 'El genero ya se encuentra registrado.'
+		with: 'El genero "' , nameInput , '" ya se encuentra registrado.'
 ]
 
 { #category : #rendering }

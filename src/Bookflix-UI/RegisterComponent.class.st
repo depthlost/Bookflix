@@ -48,7 +48,7 @@ RegisterComponent >> register [
 		ifFalse: [ ^ self ].
 	user := userComponent buildUserWithCard: cardComponent buildCard.
 	user save.
-	self answer: user
+	self session login: user
 ]
 
 { #category : #rendering }

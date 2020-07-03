@@ -26,10 +26,10 @@ BookDetailComponent >> renderTopRowOn: html [
 	html div
 		class: 'row';
 		with: [ html div
-				class: 'col-3';
+				class: 'col-md-4 h-100 d-flex justify-content-center mb-4';
 				with: [ html render: simpleViewComponent ].
 			html div
-				class: 'col-9';
+				class: 'col-md-8 h-100 mb-4';
 				with: [ html render: informationComponent ] ]
 ]
 
@@ -44,7 +44,7 @@ BookDetailComponent >> updateRoot: anHtmlRoot [
 BookDetailComponent >> with: aBook [
 	book := aBook.
 	informationComponent := BookInformationComponent with: book.
-	simpleViewComponent := book content size = 1
+	simpleViewComponent := book isCompleteBook
 		ifTrue: [ SimpleViewCompleteBookComponent with: book in: self ]
 		ifFalse: [ SimpleViewChaptersBookComponent with: book in: self ]
 ]

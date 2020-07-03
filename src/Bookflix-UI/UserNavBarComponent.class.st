@@ -4,19 +4,6 @@ Class {
 	#category : #'Bookflix-UI-navbars'
 }
 
-{ #category : #callbacks }
-UserNavBarComponent >> logout [
-	self session unregister.
-	self redirectUrl
-]
-
-{ #category : #private }
-UserNavBarComponent >> redirectUrl [
-	^ self requestContext responseGenerator
-		redirectTo: self application url;
-		respond
-]
-
 { #category : #rendering }
 UserNavBarComponent >> renderDropdownDividerOn: html [
 	html div class: 'dropdown-divider'
@@ -66,7 +53,7 @@ UserNavBarComponent >> renderUserItemsOn: html [
 		renderUserTopItemsOn: html;
 		renderDropdownDividerOn: html;
 		renderDropdownItem: 'Cerrar Sesión'
-			withCallback: [ self logout ]
+			withCallback: [ self session logout ]
 			on: html
 ]
 
@@ -90,9 +77,10 @@ UserNavBarComponent >> renderUserLinkOn: html [
 UserNavBarComponent >> renderUserTopItemsOn: html [
 	self
 		renderDropdownItem: 'Perfil'
-			withCallback: [ contentComponent call: ProxyUserProfileComponent new ]
+			withCallback: [ self session mainComponent content
+				call: ProxyUserProfileComponent new ]
 			on: html;
 		renderDropdownItem: 'Historial de Lectura'
-			withCallback: [ contentComponent call: BooksHistoryComponent new ]
+			withCallback: [ self session mainComponent content call: BooksHistoryComponent new ]
 			on: html
 ]

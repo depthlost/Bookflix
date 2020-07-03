@@ -8,7 +8,6 @@ Class {
 	#name : #LoginComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'parentComponent',
 		'inputEmail',
 		'inputPassword',
 		'error'
@@ -16,18 +15,9 @@ Class {
 	#category : #'Bookflix-UI-users'
 }
 
-{ #category : #evaluating }
-LoginComponent class >> in: aComponent [
-	^ self new in: aComponent
-]
-
-{ #category : #initialization }
-LoginComponent >> in: aComponent [
-	parentComponent := aComponent
-]
-
 { #category : #initialization }
 LoginComponent >> initialize [
+	super initialize.
 	error := false
 ]
 
@@ -48,14 +38,8 @@ LoginComponent >> login [
 		andPassword: inputPassword)
 		ifNotNil: [ :user | 
 			error := false.
-			self loginWith: user ]
+			self session login: user ]
 		ifNil: [ error := true ]
-]
-
-{ #category : #callbacks }
-LoginComponent >> loginWith: anUser [
-	self session user: anUser.
-	parentComponent loadSessionState
 ]
 
 { #category : #rendering }
@@ -152,7 +136,7 @@ LoginComponent >> renderLoginErrorMessageOn: html [
 { #category : #rendering }
 LoginComponent >> renderRegisterButtonOn: html [
 	html anchor
-		callback: [ self loginWith: (self call: RegisterComponent new) ];
+		callback: [ self call: RegisterComponent new ];
 		with: 'Registrarse'
 ]
 

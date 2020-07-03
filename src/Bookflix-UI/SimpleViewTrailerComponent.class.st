@@ -11,8 +11,8 @@ SimpleViewTrailerComponent >> renderBodyOn: html [
 		with: [ html div
 				class: 'btn-group d-flex';
 				with: [ self
-						renderReadButtonOn: html;
-						renderBookButtonOn: html ] ]
+						renderBookButtonOn: html;
+						renderReadButtonOn: html ] ]
 ]
 
 { #category : #rendering }

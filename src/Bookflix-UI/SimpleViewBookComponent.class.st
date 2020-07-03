@@ -8,11 +8,28 @@ Class {
 SimpleViewBookComponent >> renderBodyOn: html [
 	html div
 		class: 'card-body';
-		with: [ html div
-				class: 'btn-group d-flex';
-				with: [ self
-						renderReadButtonOn: html;
-						renderTrailerButtonOn: html ] ]
+		with: [ self
+				renderTopBodyOn: html;
+				renderBottomBodyOn: html ]
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderBottomBodyOn: html [
+	html div
+		class: 'mt-3 d-flex';
+		with: [ self
+				renderStateOn: html;
+				renderEndButtonOn: html ]
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderEndButtonOn: html [
+	html div
+		class: 'd-inline w-100 d-flex justify-content-end';
+		with: [ html anchor
+				class: 'btn btn-sm btn-outline-dark';
+				callback: [  ];
+				with: 'Terminar' ]
 ]
 
 { #category : #rendering }
@@ -29,13 +46,31 @@ SimpleViewBookComponent >> renderReadButtonOn: html [
 ]
 
 { #category : #rendering }
+SimpleViewBookComponent >> renderStateOn: html [
+	html div
+		class: 'd-inline';
+		with: [ html small
+				class: 'text-muted';
+				with: 'Leyendo' ]
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderTopBodyOn: html [
+	html div
+		class: 'btn-group w-100';
+		with: [ self
+				renderTrailerButtonOn: html;
+				renderReadButtonOn: html ]
+]
+
+{ #category : #rendering }
 SimpleViewBookComponent >> renderTrailerButtonOn: html [
 	readable advance
 		ifNil: [ html anchor
-				class: 'btn btn-primary disabled';
+				class: 'btn btn-primary w-100 disabled';
 				with: 'Trailer' ]
 		ifNotNil: [ html anchor
-				class: 'btn btn-primary';
+				class: 'btn btn-primary w-100';
 				callback: [ parentComponent
 						call: (TrailerDetailComponent with: readable advance) ];
 				with: 'Trailer' ]

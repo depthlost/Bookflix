@@ -25,7 +25,8 @@ SetNoveltyComponent >> formTitle [
 { #category : #callbacks }
 SetNoveltyComponent >> onSubmit [
 	Bookflix instance updateReadable: self updateNovelty.
-	^ AlertComponent with: 'Se actualizo la novedad con exito'
+	^ AlertComponent
+		with: 'La novedad "' , titleInput , '" fue actualizada con exito'
 ]
 
 { #category : #updating }
