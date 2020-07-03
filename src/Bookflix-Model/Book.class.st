@@ -9,7 +9,8 @@ Class {
 		'genders',
 		'advance',
 		'chapters',
-		'totalChapters'
+		'totalChapters',
+		'comments'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -44,6 +45,11 @@ Book >> addChapter: aChapter [
 { #category : #adding }
 Book >> addChapters: aChapters [
 	aChapters do: [ :chapter | self addChapter: chapter ]
+]
+
+{ #category : #adding }
+Book >> addComment: aComment [
+	comments add: aComment
 ]
 
 { #category : #accessing }
@@ -120,6 +126,16 @@ Book >> genders [
 	^ genders
 ]
 
+{ #category : #adding }
+Book >> getAllComments [
+	^ comments
+]
+
+{ #category : #adding }
+Book >> getCommentsWithoutSpoiler [
+	^ comments reject: [ :comment | comment isSpoiler ]
+]
+
 { #category : #accessing }
 Book >> imageURL [
 	^ imageURL
@@ -137,6 +153,7 @@ Book >> initialize [
 	imageURL := ''.
 	genders := Set new.
 	chapters := OrderedCollection new.
+	comments := OrderedCollection new.
 	totalChapters := 0.
 	author := nil.
 	editorial := nil.
@@ -181,6 +198,11 @@ Book >> removeChapter: aChapter [
 { #category : #adding }
 Book >> removeChapters: aChapters [
 	aChapters do: [ :chapter | self removeChapter: chapter ]
+]
+
+{ #category : #adding }
+Book >> removeComment: aComment [
+	comments remove: aComment
 ]
 
 { #category : #accessing }
