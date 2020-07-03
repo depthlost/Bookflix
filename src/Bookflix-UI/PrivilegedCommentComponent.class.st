@@ -24,7 +24,7 @@ PrivilegedCommentComponent >> renderDescriptionOn: html [
 PrivilegedCommentComponent >> renderRemoveButtonOn: html [
 	html anchor
 		class: 'btn btn-sm btn-outline-danger';
-		callback: [  ];
+		callback: [ comment removeComment ];
 		with: [ html span class: 'oi oi-trash' ]
 ]
 
