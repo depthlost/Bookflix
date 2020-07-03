@@ -1,11 +1,21 @@
 Class {
-	#name : #WABootstrapComponent,
-	#superclass : #WAComponent,
-	#category : #'Bookflix-UI-others'
+	#name : #BootstrapLibrary,
+	#superclass : #Object,
+	#category : #'Bookflix-UI-libraries'
 }
 
+{ #category : #seaside }
+BootstrapLibrary class >> add: anHtmlRoot [
+	self
+		addMetaViewport: anHtmlRoot;
+		addCSSBootstrap: anHtmlRoot;
+		addJavascriptJquery: anHtmlRoot;
+		addJavascriptPopper: anHtmlRoot;
+		addJavascriptBootstrap: anHtmlRoot
+]
+
 { #category : #adding }
-WABootstrapComponent >> addCSSBootstrap: anHtmlRoot [
+BootstrapLibrary class >> addCSSBootstrap: anHtmlRoot [
 	anHtmlRoot stylesheet
 		url:
 			'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css';
@@ -14,7 +24,7 @@ WABootstrapComponent >> addCSSBootstrap: anHtmlRoot [
 ]
 
 { #category : #adding }
-WABootstrapComponent >> addJavascriptBootstrap: anHtmlRoot [
+BootstrapLibrary class >> addJavascriptBootstrap: anHtmlRoot [
 	anHtmlRoot javascript
 		url:
 			'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js';
@@ -23,7 +33,7 @@ WABootstrapComponent >> addJavascriptBootstrap: anHtmlRoot [
 ]
 
 { #category : #adding }
-WABootstrapComponent >> addJavascriptJquery: anHtmlRoot [
+BootstrapLibrary class >> addJavascriptJquery: anHtmlRoot [
 	anHtmlRoot javascript
 		url: 'https://code.jquery.com/jquery-3.4.1.slim.min.js';
 		anonymousSubResourceIntegrity:
@@ -31,7 +41,7 @@ WABootstrapComponent >> addJavascriptJquery: anHtmlRoot [
 ]
 
 { #category : #adding }
-WABootstrapComponent >> addJavascriptPopper: anHtmlRoot [
+BootstrapLibrary class >> addJavascriptPopper: anHtmlRoot [
 	anHtmlRoot javascript
 		url: 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js';
 		anonymousSubResourceIntegrity:
@@ -39,19 +49,8 @@ WABootstrapComponent >> addJavascriptPopper: anHtmlRoot [
 ]
 
 { #category : #adding }
-WABootstrapComponent >> addMetaViewport: anHtmlRoot [
+BootstrapLibrary class >> addMetaViewport: anHtmlRoot [
 	anHtmlRoot meta
 		name: 'viewport';
 		content: 'width=device-width, initial-scale=1, shrink-to-fit=no'
-]
-
-{ #category : #seaside }
-WABootstrapComponent >> updateRoot: anHtmlRoot [
-	super updateRoot: anHtmlRoot.
-	self
-		addMetaViewport: anHtmlRoot;
-		addCSSBootstrap: anHtmlRoot;
-		addJavascriptJquery: anHtmlRoot;
-		addJavascriptPopper: anHtmlRoot;
-		addJavascriptBootstrap: anHtmlRoot
 ]
