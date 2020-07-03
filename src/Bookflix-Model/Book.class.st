@@ -126,6 +126,16 @@ Book >> genders [
 	^ genders
 ]
 
+{ #category : #adding }
+Book >> getAllComments [
+	^ comments
+]
+
+{ #category : #adding }
+Book >> getCommentsWithoutSpoiler [
+	^ comments reject: [ :comment | comment isSpoiler ]
+]
+
 { #category : #accessing }
 Book >> imageURL [
 	^ imageURL
