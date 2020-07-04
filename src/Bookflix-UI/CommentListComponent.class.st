@@ -19,7 +19,7 @@ CommentListComponent >> book: aBook [
 
 { #category : #private }
 CommentListComponent >> commentsComponents [
-	^ book comments
+	^ book getAllComments
 		collect: [ :each | CommentComponentBuilder with: each ]
 ]
 

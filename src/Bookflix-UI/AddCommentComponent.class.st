@@ -22,18 +22,19 @@ AddCommentComponent >> book: aBook [
 AddCommentComponent >> publish: hasSpoiler [
 	book
 		addComment:
-			(MockComment
-				book: book
-				author: self session user
-				description: descriptionInput
-				hasSpoiler: hasSpoiler)
+			((Comment user: self session user Content: descriptionInput)
+				isSpoiler: hasSpoiler;
+				yourself).
+	Bookflix instance updateReadable: book
 ]
 
 { #category : #rendering }
 AddCommentComponent >> renderContentOn: html [
 	html form
 		class: 'form-group mb-1';
-		with: [ self
+		with:
+				[ book getAllComments ifEmpty: [ self renderNoCommentMessageOn: html ].
+			self
 				renderDescriptionInputOn: html;
 				renderPublishSectionOn: html ]
 ]
@@ -56,6 +57,13 @@ AddCommentComponent >> renderDropdownItem: aTitle withCallback: aCallback on: ht
 		class: 'btn dropdown-item';
 		callback: aCallback;
 		with: aTitle
+]
+
+{ #category : #rendering }
+AddCommentComponent >> renderNoCommentMessageOn: html [
+	html div
+		class: 'mb-3';
+		with: 'No hay comentarios'
 ]
 
 { #category : #rendering }
