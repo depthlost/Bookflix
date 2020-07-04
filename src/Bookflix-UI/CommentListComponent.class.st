@@ -19,8 +19,15 @@ CommentListComponent >> book: aBook [
 
 { #category : #private }
 CommentListComponent >> commentsComponents [
-	^ book comments
+	^ book getAllComments
 		collect: [ :each | CommentComponentBuilder with: each ]
+]
+
+{ #category : #private }
+CommentListComponent >> listComponents [
+	^ self commentsComponents
+		add: (AddCommentComponent book: book);
+		yourself
 ]
 
 { #category : #rendering }
@@ -29,5 +36,5 @@ CommentListComponent >> renderContentOn: html [
 		render:
 			(ListComponent
 				withTitle: 'Comentarios'
-				components: self commentsComponents)
+				components: self listComponents)
 ]

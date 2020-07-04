@@ -28,14 +28,14 @@ CommentComponent >> renderContentOn: html [
 CommentComponent >> renderDateOn: html [
 	html small
 		class: 'text-muted';
-		with: comment date asDate ddmmyyyy
+		with: Date today ddmmyyyy	"comment date asDate ddmmyyyy"
 ]
 
 { #category : #rendering }
 CommentComponent >> renderDescriptionOn: html [
 	html paragraph
 		class: 'mb-1';
-		with: comment description
+		with: comment content
 ]
 
 { #category : #rendering }
@@ -51,7 +51,7 @@ CommentComponent >> renderHeaderOn: html [
 CommentComponent >> renderUserNameOn: html [
 	html small
 		class: 'text-muted';
-		with: comment author name
+		with: comment user name
 ]
 
 { #category : #initialization }

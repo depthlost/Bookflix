@@ -11,11 +11,11 @@ CommentComponentBuilder class >> with: aComment [
 
 { #category : #initialization }
 CommentComponentBuilder >> with: aComment [
-	^ (aComment author == self session user
+	^ (aComment user == self session user
 		ifTrue: [ OwnCommentComponent ]
 		ifFalse: [ self session user isAdmin
 				ifTrue: [ PrivilegedCommentComponent ]
-				ifFalse: [ aComment hasSpoiler
+				ifFalse: [ aComment isSpoiler
 						ifFalse: [ CommentComponent ]
 						ifTrue: [ SpoilerCommentComponent ] ] ]) with: aComment
 ]

@@ -4,6 +4,21 @@ Class {
 	#category : #'Bookflix-UI-comments'
 }
 
+{ #category : #private }
+PrivilegedCommentComponent >> commentBook [
+	^ Bookflix instance getAllBooks
+		detect: [ :each | each getAllComments includes: comment ]
+		ifNone: nil
+]
+
+{ #category : #callbacks }
+PrivilegedCommentComponent >> removeComment [
+	self commentBook
+		ifNotNil: [ :book | 
+			book removeComment: comment.
+			Bookflix instance updateReadable: book ]
+]
+
 { #category : #rendering }
 PrivilegedCommentComponent >> renderBodyOn: html [
 	html div
@@ -17,14 +32,14 @@ PrivilegedCommentComponent >> renderBodyOn: html [
 
 { #category : #rendering }
 PrivilegedCommentComponent >> renderDescriptionOn: html [
-	html paragraph: comment description
+	html paragraph: comment content
 ]
 
 { #category : #rendering }
 PrivilegedCommentComponent >> renderRemoveButtonOn: html [
 	html anchor
 		class: 'btn btn-sm btn-outline-danger';
-		callback: [  ];
+		callback: [ self removeComment ];
 		with: [ html span class: 'oi oi-trash' ]
 ]
 
@@ -32,7 +47,7 @@ PrivilegedCommentComponent >> renderRemoveButtonOn: html [
 PrivilegedCommentComponent >> renderSpoilerButtonOn: html [
 	html anchor
 		class: self spoilerButtonClass;
-		callback: [ comment hasSpoiler: comment hasSpoiler not ];
+		callback: [ comment isSpoiler: comment isSpoiler not ];
 		with: 'spoiler'
 ]
 
@@ -40,7 +55,7 @@ PrivilegedCommentComponent >> renderSpoilerButtonOn: html [
 PrivilegedCommentComponent >> spoilerButtonClass [
 	| class |
 	class := 'btn btn-sm btn-outline-dark'.
-	comment hasSpoiler
+	comment isSpoiler
 		ifTrue: [ class := class , ' active' ].
 	^ class
 ]
