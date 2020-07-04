@@ -9,6 +9,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #accessing }
+Profile class >> name: aName [
+	^ self new name: aName
+]
+
 { #category : #adding }
 Profile >> addReadableForHistorial: aReadble [
 	historial add: aReadble
@@ -29,6 +34,16 @@ Profile >> initialize [
 { #category : #accessing }
 Profile >> isRead: aBook [
 	^ reades anySatisfy: [ :book | book = aBook ]
+]
+
+{ #category : #accessing }
+Profile >> name [
+	^ name
+]
+
+{ #category : #accessing }
+Profile >> name: aName [
+	name := aName
 ]
 
 { #category : #accessing }

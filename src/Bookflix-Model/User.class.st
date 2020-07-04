@@ -83,7 +83,8 @@ User >> name: aName surname: aSurname email: anEmail password: aPassword birthda
 	surname := aSurname.
 	email := anEmail.
 	password := aPassword.
-	birthdate := aBirthdate
+	birthdate := aBirthdate.
+	self addProfile: (Profile name: 'perfil1')
 ]
 
 { #category : #accessing }
