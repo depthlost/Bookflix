@@ -30,7 +30,7 @@
 							"top": 8,
 							"width": 137,
 							"height": 55,
-							"text": "Bookflix - View\nVersion 1.9\nParte I"
+							"text": "Bookflix - View\nVersion 1.10\nParte I"
 						},
 						{
 							"_type": "RectangleView",
@@ -12094,7 +12094,7 @@
 							"left": 64,
 							"top": 1536,
 							"width": 1248,
-							"height": 561
+							"height": 569
 						},
 						{
 							"_type": "RectangleView",
@@ -16305,7 +16305,7 @@
 							"top": 16,
 							"width": 121,
 							"height": 55,
-							"text": "Bookflix - View\nVersion 1.9\nParte II"
+							"text": "Bookflix - View\nVersion 1.10\nParte II"
 						},
 						{
 							"_type": "UMLClassView",
@@ -19823,13 +19823,30 @@
 											"height": 13,
 											"text": "+renderRemoveButtonOn(html: WAHtmlCanvas)",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFzFxmgrR0HL0o=",
+											"_parent": {
+												"$ref": "AAAAAAFzFQGJdGeH+Mw="
+											},
+											"model": {
+												"$ref": "AAAAAAFzFxmfhB0BVM0="
+											},
+											"font": "Arial;13;0",
+											"left": 325,
+											"top": 1988,
+											"width": 280.1982421875,
+											"height": 13,
+											"text": "+removeComment()",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 320,
 									"top": 1923,
 									"width": 290.1982421875,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -19869,7 +19886,7 @@
 							"left": 320,
 							"top": 1888,
 							"width": 290.1982421875,
-							"height": 103,
+							"height": 118,
 							"nameCompartment": {
 								"$ref": "AAAAAAFzFQGJcmeBikA="
 							},
@@ -19915,7 +19932,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 352,
-											"top": -1232,
+											"top": -1216,
 											"height": 13
 										},
 										{
@@ -19926,7 +19943,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 341,
-											"top": 2031,
+											"top": 2039,
 											"width": 256.3310546875,
 											"height": 13,
 											"text": "OwnCommentComponent"
@@ -19940,7 +19957,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 352,
-											"top": -1232,
+											"top": -1216,
 											"width": 83.7890625,
 											"height": 13,
 											"text": "(from Bookflix)"
@@ -19954,14 +19971,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 352,
-											"top": -1232,
+											"top": -1216,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 336,
-									"top": 2024,
+									"top": 2032,
 									"width": 266.3310546875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -19988,7 +20005,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 336,
-									"top": 2049,
+									"top": 2057,
 									"width": 266.3310546875,
 									"height": 10
 								},
@@ -20013,7 +20030,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 341,
-											"top": 2064,
+											"top": 2072,
 											"width": 256.3310546875,
 											"height": 13,
 											"text": "+renderUserNameOn(html: WAHtmlCanvas)",
@@ -20022,7 +20039,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 336,
-									"top": 2059,
+									"top": 2067,
 									"width": 266.3310546875,
 									"height": 23
 								},
@@ -20038,7 +20055,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 176,
-									"top": -616,
+									"top": -608,
 									"width": 10,
 									"height": 10
 								},
@@ -20054,7 +20071,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 176,
-									"top": -616,
+									"top": -608,
 									"width": 10,
 									"height": 10
 								}
@@ -20062,7 +20079,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 336,
-							"top": 2024,
+							"top": 2032,
 							"width": 266.3310546875,
 							"height": 58,
 							"nameCompartment": {
@@ -20349,7 +20366,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 451,
-									"top": 2000,
+									"top": 2011,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -20370,7 +20387,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 436,
-									"top": 2000,
+									"top": 2011,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -20391,7 +20408,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 480,
-									"top": 2001,
+									"top": 2012,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -20409,7 +20426,7 @@
 								"$ref": "AAAAAAFzFQOcXGfDaSo="
 							},
 							"lineStyle": 1,
-							"points": "467:2023;466:1991",
+							"points": "467:2031;466:2006",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFzFR0Lz2sb2XE="
@@ -20831,7 +20848,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 64,
-											"top": -1280,
+											"top": -1328,
 											"height": 13
 										},
 										{
@@ -20842,7 +20859,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 101,
-											"top": 1695,
+											"top": 1671,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "AddCommentComponent"
@@ -20856,7 +20873,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 64,
-											"top": -1280,
+											"top": -1328,
 											"width": 83.7890625,
 											"height": 13,
 											"text": "(from Bookflix)"
@@ -20870,14 +20887,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 64,
-											"top": -1280,
+											"top": -1328,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 96,
-									"top": 1688,
+									"top": 1664,
 									"width": 343.68359375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -20914,7 +20931,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1718,
+											"top": 1694,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "-book: Book",
@@ -20931,7 +20948,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1733,
+											"top": 1709,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "-descriptionInput: String",
@@ -20940,7 +20957,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 96,
-									"top": 1713,
+									"top": 1689,
 									"width": 343.68359375,
 									"height": 38
 								},
@@ -20965,7 +20982,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1756,
+											"top": 1732,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "+AddCommentComponent(book: Book)",
@@ -20982,10 +20999,27 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1771,
+											"top": 1747,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "+renderContentOn(html: WAHtmlCanvas)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFzFy8zzh1AOso=",
+											"_parent": {
+												"$ref": "AAAAAAFzFSO4HWyezS0="
+											},
+											"model": {
+												"$ref": "AAAAAAFzFy8yrB06XDA="
+											},
+											"font": "Arial;13;0",
+											"left": 101,
+											"top": 1762,
+											"width": 333.68359375,
+											"height": 13,
+											"text": "+renderNoCommentMessageOn(html: WAHtmlCanvas)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -20999,7 +21033,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1786,
+											"top": 1777,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "+renderDescriptionInputOn(html: WAHtmlCanvas)",
@@ -21016,7 +21050,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1801,
+											"top": 1792,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "+renderPublishSectionOn(html: WAHtmlCanvas)",
@@ -21033,7 +21067,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1816,
+											"top": 1807,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "+renderPublishButtonOn(html: WAHtmlCanvas)",
@@ -21050,7 +21084,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1831,
+											"top": 1822,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "+renderPublishButtonDropdownOn(html: WAHtmlCanvas)",
@@ -21067,7 +21101,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 101,
-											"top": 1846,
+											"top": 1837,
 											"width": 333.68359375,
 											"height": 13,
 											"text": "+publish(hasSpoiler: Boolean)",
@@ -21076,9 +21110,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 96,
-									"top": 1751,
+									"top": 1727,
 									"width": 343.68359375,
-									"height": 113
+									"height": 128
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -21092,7 +21126,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 32,
-									"top": -640,
+									"top": -664,
 									"width": 10,
 									"height": 10
 								},
@@ -21108,7 +21142,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 32,
-									"top": -640,
+									"top": -664,
 									"width": 10,
 									"height": 10
 								}
@@ -21116,9 +21150,9 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 96,
-							"top": 1688,
+							"top": 1664,
 							"width": 343.68359375,
-							"height": 176,
+							"height": 191,
 							"nameCompartment": {
 								"$ref": "AAAAAAFzFSO4HGyYAjU="
 							},
@@ -24083,7 +24117,7 @@
 							"top": 16,
 							"width": 121,
 							"height": 55,
-							"text": "Bookflix - View\nVersion 1.9\nParte III"
+							"text": "Bookflix - View\nVersion 1.10\nParte III"
 						},
 						{
 							"_type": "UMLClassView",
@@ -35773,6 +35807,14 @@
 									"type": "WAHtmlCanvas"
 								}
 							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFzFxmfhB0BVM0=",
+							"_parent": {
+								"$ref": "AAAAAAFzFQGJcWd+qE0="
+							},
+							"name": "removeComment"
 						}
 					]
 				},
@@ -36023,6 +36065,25 @@
 									"_id": "AAAAAAFzFSSUxGzhjSA=",
 									"_parent": {
 										"$ref": "AAAAAAFzFSRm72zRWHw="
+									},
+									"name": "html",
+									"type": "WAHtmlCanvas"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFzFy8yrB06XDA=",
+							"_parent": {
+								"$ref": "AAAAAAFzFSO4G2yVUrQ="
+							},
+							"name": "renderNoCommentMessageOn",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFzFy+K1R1e1RY=",
+									"_parent": {
+										"$ref": "AAAAAAFzFy8yrB06XDA="
 									},
 									"name": "html",
 									"type": "WAHtmlCanvas"
