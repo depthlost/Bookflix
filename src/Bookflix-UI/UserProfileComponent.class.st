@@ -20,7 +20,7 @@ UserProfileComponent >> children [
 
 { #category : #private }
 UserProfileComponent >> emailWasChangedAndExist [
-	^ self session user email ~= userComponent inputEmail address
+	^ self session profile email ~= userComponent inputEmail address
 		&
 			(Bookflix instance
 				existUserWithEmail: userComponent inputEmail address)
@@ -29,7 +29,7 @@ UserProfileComponent >> emailWasChangedAndExist [
 { #category : #initialization }
 UserProfileComponent >> initialize [
 	super initialize.
-	userComponent := UserDataInputComponent with: self session user
+	userComponent := UserDataInputComponent with: self session profile
 ]
 
 { #category : #rendering }
@@ -62,7 +62,7 @@ UserProfileComponent >> renderSubmitButtonOn: html [
 UserProfileComponent >> renderTitleOn: html [
 	html heading level1
 		class: 'h3 text-center mb-5 font-weight-normal';
-		with: self session user name , ' ' , self session user surname
+		with: self session profile name , ' ' , self session profile surname
 ]
 
 { #category : #seaside }
@@ -75,7 +75,7 @@ UserProfileComponent >> update [
 	self checkData
 		ifFalse: [ ^ self ].
 	self updateUserData.
-	self session user save.
+	self session profile save.
 	self
 		answer:
 			(AlertComponent
@@ -92,5 +92,5 @@ UserProfileComponent >> updateRoot: anHtmlRoot [
 
 { #category : #private }
 UserProfileComponent >> updateUserData [
-	userComponent updateUser: self session user
+	userComponent updateUser: self session profile
 ]

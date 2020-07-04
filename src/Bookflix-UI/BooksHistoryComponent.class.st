@@ -10,7 +10,7 @@ BooksHistoryComponent >> renderBooksHistoryOn: html [
 		render:
 			(ListComponent
 				withTitle: 'Historial de Lectura'
-				collection: self session user historial
+				collection: self session profile historial
 				do: [ :each :htmlCanvas | htmlCanvas text: each title ])
 ]
 

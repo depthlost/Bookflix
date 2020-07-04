@@ -22,7 +22,7 @@ AddCommentComponent >> book: aBook [
 AddCommentComponent >> publish: hasSpoiler [
 	book
 		addComment:
-			((Comment user: self session user Content: descriptionInput)
+			((Comment profile: self session profile Content: descriptionInput)
 				isSpoiler: hasSpoiler;
 				yourself).
 	Bookflix instance updateReadable: book

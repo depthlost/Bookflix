@@ -7,7 +7,7 @@ Class {
 { #category : #initialization }
 ProxyUserProfileComponent >> initialize [
 	super initialize.
-	^ self session user isAdmin
+	^ self session profile isAdmin
 		ifFalse: [ CommonUserProfileComponent new ]
 		ifTrue: [ UserProfileComponent new ]
 ]

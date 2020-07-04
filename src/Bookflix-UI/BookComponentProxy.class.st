@@ -13,7 +13,7 @@ BookComponentProxy class >> with: aBook in: aComponent [
 BookComponentProxy >> with: aBook in: aComponent [
 	| readableComponent |
 	readableComponent := BookComponent with: aBook in: aComponent.
-	^ self session user isAdmin
+	^ self session profile isAdmin
 		ifFalse: [ readableComponent ]
 		ifTrue: [ ReadableAdminComponent decorateTo: readableComponent ]
 ]

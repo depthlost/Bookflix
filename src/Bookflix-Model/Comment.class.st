@@ -3,15 +3,15 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'isSpoiler',
-		'user',
+		'profile',
 		'content'
 	],
 	#category : #'Bookflix-Model'
 }
 
 { #category : #'as yet unclassified' }
-Comment class >> user: aUser Content: aContent [
-	^ self new user: aUser Content: aContent
+Comment class >> profile: aProfile Content: aContent [
+	^ self new profile: aProfile Content: aContent
 ]
 
 { #category : #accessing }
@@ -28,7 +28,7 @@ Comment >> content: aContent [
 Comment >> initialize [
 	content := ''.
 	isSpoiler := false.
-	user := nil
+	profile := nil
 ]
 
 { #category : #accessing }
@@ -42,17 +42,17 @@ Comment >> isSpoiler: aBoolean [
 ]
 
 { #category : #accessing }
-Comment >> user [
-	^ user
+Comment >> profile [
+	^ profile
 ]
 
 { #category : #accessing }
-Comment >> user: aUser [
-	user := aUser
+Comment >> profile: aProfile [
+	profile := aProfile
 ]
 
 { #category : #'as yet unclassified' }
-Comment >> user: aUser Content: aContent [
-	user := aUser.
+Comment >> profile: aProfile Content: aContent [
+	profile := aProfile.
 	content := aContent
 ]
