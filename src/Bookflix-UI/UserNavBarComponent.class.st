@@ -76,9 +76,13 @@ UserNavBarComponent >> renderUserLinkOn: html [
 { #category : #rendering }
 UserNavBarComponent >> renderUserTopItemsOn: html [
 	self
-		renderDropdownItem: 'Perfil'
+		renderDropdownItem: 'Cuenta'
 			withCallback: [ self session mainComponent content
 				call: UserAccountComponentProxy new ]
+			on: html;
+		renderDropdownItem: 'Perfiles'
+			withCallback: [ self session mainComponent content
+				call: UserProfilesViewComponent new ]
 			on: html;
 		renderDropdownItem: 'Historial de Lectura'
 			withCallback: [ self session mainComponent content call: BooksHistoryComponent new ]

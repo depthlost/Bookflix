@@ -37,14 +37,16 @@ UserProfileComponent >> renderContentOn: html [
 
 { #category : #rendering }
 UserProfileComponent >> renderProfileNameOn: html [
-	html header level5
+	html heading
+		level: 5;
 		class: 'card-title';
 		with: profile name
 ]
 
 { #category : #callbacks }
 UserProfileComponent >> toAccess [
-	
+	self session profile: profile.
+	parentComponent answer: self
 ]
 
 { #category : #initialization }

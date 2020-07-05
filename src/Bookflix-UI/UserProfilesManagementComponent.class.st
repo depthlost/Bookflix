@@ -16,7 +16,9 @@ UserProfilesManagementComponent >> renderAddProfileOn: html [
 		class: 'card';
 		with: [ html anchor
 				class: 'btn btn-block btn-outline-success';
-				callback: [  ];
+				callback: [ self session user
+						addProfile: (Profile name: 'Matesaurio');
+						save ];
 				with: [ html div
 						class: 'card-body';
 						with: [ html span class: 'oi oi-plus' ] ] ]
@@ -26,7 +28,7 @@ UserProfilesManagementComponent >> renderAddProfileOn: html [
 UserProfilesManagementComponent >> renderProfileManagementButtonOn: html [
 	html anchor
 		class: 'btn btn-outline-dark px-3';
-		callback: [  ];
+		callback: [ self answer ];
 		with: 'Listo'
 ]
 

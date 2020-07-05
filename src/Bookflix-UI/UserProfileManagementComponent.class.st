@@ -4,6 +4,13 @@ Class {
 	#category : #'Bookflix-UI-user_profiles'
 }
 
+{ #category : #callbacks }
+UserProfileManagementComponent >> removeProfile [
+	self session user
+		removeProfile: profile;
+		save
+]
+
 { #category : #rendering }
 UserProfileManagementComponent >> renderCardContentOn: html [
 	super renderCardContentOn: html.
@@ -21,6 +28,6 @@ UserProfileManagementComponent >> renderFooterOn: html [
 UserProfileManagementComponent >> renderRemoveButtonOn: html [
 	html anchor
 		class: 'btn btn-sm btn-outline-danger';
-		callback: [  ];
+		callback: [ self removeProfile ];
 		with: [ html span class: 'oi oi-trash' ]
 ]

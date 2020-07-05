@@ -10,11 +10,22 @@ UserProfilesViewComponent >> getUserProfileComponents [
 		collect: [ :each | UserProfileComponent with: each in: self ]
 ]
 
-{ #category : #getting }
+{ #category : #callbacks }
+UserProfilesViewComponent >> onPressingManageProfile [
+	| managementComponent |
+	managementComponent := UserProfilesManagementComponent new.
+	self
+		call: managementComponent
+		onAnswer: [ :answer | 
+			answer ~~ managementComponent
+				ifTrue: [ self answer ] ]
+]
+
+{ #category : #rendering }
 UserProfilesViewComponent >> renderProfileManagementButtonOn: html [
 	html anchor
 		class: 'btn btn-outline-dark px-3';
-		callback: [  ];
+		callback: [ self onPressingManageProfile ];
 		with: 'Administrar Perfiles'
 ]
 

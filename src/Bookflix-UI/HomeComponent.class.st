@@ -15,9 +15,12 @@ HomeComponent >> addAlert: anAlertComponent [
 
 { #category : #seaside }
 HomeComponent >> call: aComponent [
-	self
-		home;
-		addAlert: (super call: aComponent)
+	self home.
+	super
+		call: aComponent
+		onAnswer: [ :answer | 
+			answer className = 'AlertComponent'
+				ifTrue: [ self addAlert: answer ] ]
 ]
 
 { #category : #seaside }
@@ -67,7 +70,9 @@ HomeComponent >> getReadablesComponents [
 { #category : #initialization }
 HomeComponent >> initialize [
 	super initialize.
-	self resetState
+	self
+		resetState;
+		show: UserProfilesViewComponent new
 ]
 
 { #category : #rendering }
