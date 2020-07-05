@@ -26,7 +26,7 @@ CommonUserAccountComponent >> children [
 { #category : #initialization }
 CommonUserAccountComponent >> initialize [
 	super initialize.
-	cardComponent := CardDataInputComponent with: self session profile card
+	cardComponent := CardDataInputComponent with: self session user card
 ]
 
 { #category : #rendering }
@@ -38,5 +38,5 @@ CommonUserAccountComponent >> renderDataInputOn: html [
 { #category : #private }
 CommonUserAccountComponent >> updateUserData [
 	super updateUserData.
-	cardComponent updateCard: self session profile card
+	cardComponent updateCard: self session user card
 ]

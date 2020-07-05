@@ -11,9 +11,9 @@ CommentComponentBuilder class >> with: aComment [
 
 { #category : #initialization }
 CommentComponentBuilder >> with: aComment [
-	^ (aComment profile == self session profile
+	^ (aComment user == self session user
 		ifTrue: [ OwnCommentComponent ]
-		ifFalse: [ self session profile isAdmin
+		ifFalse: [ self session user isAdmin
 				ifTrue: [ PrivilegedCommentComponent ]
 				ifFalse: [ aComment isSpoiler
 						ifFalse: [ CommentComponent ]
