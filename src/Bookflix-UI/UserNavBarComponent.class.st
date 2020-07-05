@@ -69,7 +69,7 @@ UserNavBarComponent >> renderUserLinkOn: html [
 				attributeAt: 'data-toggle' put: 'dropdown';
 				attributeAt: 'aria-haspopup' put: 'true';
 				attributeAt: 'aria-expanded' put: 'false';
-				with: self session user name , ' ' , self session user surname.
+				with: self session profile name , ' ' , self session profile surname.
 			self renderUserDropdownOn: html ]
 ]
 

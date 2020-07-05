@@ -7,8 +7,7 @@ Class {
 		'email',
 		'password',
 		'birthdate',
-		'historial',
-		'reades'
+		'profiles'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -28,9 +27,9 @@ User class >> name: aName surname: aSurname email: anEmail password: aPassword b
 		birthdate: aBirthdate
 ]
 
-{ #category : #adding }
-User >> addReadableForHistorial: aReadble [
-	historial add: aReadble
+{ #category : #'as yet unclassified' }
+User >> addProfile: aProfile [
+	profiles add: aProfile
 ]
 
 { #category : #accessing }
@@ -53,11 +52,6 @@ User >> email: anEmail [
 	email := anEmail
 ]
 
-{ #category : #adding }
-User >> historial [
-	^ historial
-]
-
 { #category : #initialization }
 User >> initialize [
 	name := 'nombre por defecto'.
@@ -65,18 +59,12 @@ User >> initialize [
 	email := ''.
 	password := ''.
 	birthdate := Date today.
-	historial := OrderedCollection new.
-	reades := Set new
+	profiles := Set new
 ]
 
 { #category : #abstract }
 User >> isAdmin [
 	^ false
-]
-
-{ #category : #accessing }
-User >> isRead: aBook [
-	^ reades anySatisfy: [ :book | book = aBook ]
 ]
 
 { #category : #accessing }
@@ -95,12 +83,8 @@ User >> name: aName surname: aSurname email: anEmail password: aPassword birthda
 	surname := aSurname.
 	email := anEmail.
 	password := aPassword.
-	birthdate := aBirthdate
-]
-
-{ #category : #accessing }
-User >> notRead: aBook [
-	reades remove: aBook
+	birthdate := aBirthdate.
+	self addProfile: (Profile name: name)
 ]
 
 { #category : #accessing }
@@ -113,6 +97,16 @@ User >> password: aPassword [
 	password := aPassword
 ]
 
+{ #category : #'as yet unclassified' }
+User >> profiles [
+	^ profiles
+]
+
+{ #category : #'as yet unclassified' }
+User >> removeProfile: aProfile [
+	profiles remove: aProfile
+]
+
 { #category : #accessing }
 User >> surname [
 	^ surname
@@ -121,9 +115,4 @@ User >> surname [
 { #category : #accessing }
 User >> surname: aSurname [
 	surname := aSurname
-]
-
-{ #category : #accessing }
-User >> yesRead: aBook [
-	reades add: aBook
 ]

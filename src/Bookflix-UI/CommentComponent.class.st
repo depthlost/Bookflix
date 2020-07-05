@@ -51,7 +51,7 @@ CommentComponent >> renderHeaderOn: html [
 CommentComponent >> renderUserNameOn: html [
 	html small
 		class: 'text-muted';
-		with: comment user name
+		with: comment profile name
 ]
 
 { #category : #initialization }

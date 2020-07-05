@@ -35,11 +35,11 @@ UserSession >> mainComponent: aComponent [
 ]
 
 { #category : #accessing }
-UserSession >> user [
+UserSession >> profile [
 	^ user
 ]
 
 { #category : #accessing }
-UserSession >> user: anUser [
+UserSession >> profile: anUser [
 	user := anUser
 ]

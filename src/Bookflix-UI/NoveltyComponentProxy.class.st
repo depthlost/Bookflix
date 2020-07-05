@@ -13,7 +13,7 @@ NoveltyComponentProxy class >> with: aNovelty in: aComponent [
 NoveltyComponentProxy >> with: aNovelty in: aComponent [
 	| readableComponent |
 	readableComponent := NoveltyComponent with: aNovelty in: aComponent.
-	^ self session user isAdmin
+	^ self session profile isAdmin
 		ifFalse: [ readableComponent ]
 		ifTrue: [ ReadableAdminComponent decorateTo: readableComponent ]
 ]

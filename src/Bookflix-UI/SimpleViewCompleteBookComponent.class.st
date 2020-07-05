@@ -11,7 +11,7 @@ SimpleViewCompleteBookComponent >> renderReadButtonOn: html [
 		url: 'javascript:{}';
 		onClick:
 			(html jQuery ajax
-				callback: [ self session user addReadableForHistorial: readable ];
+				callback: [ self session profile addReadableForHistorial: readable ];
 				onComplete: (html javascript goto: readable content , '#toolbar=0'));
 		with: 'Leer'
 ]

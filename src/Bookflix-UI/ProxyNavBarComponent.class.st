@@ -6,7 +6,7 @@ Class {
 
 { #category : #initialization }
 ProxyNavBarComponent >> initialize [
-	^ self session user
+	^ self session profile
 		ifNil: [ NavBarComponent new ]
 		ifNotNil: [ :user | 
 			user isAdmin
