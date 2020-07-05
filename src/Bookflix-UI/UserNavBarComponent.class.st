@@ -78,7 +78,7 @@ UserNavBarComponent >> renderUserTopItemsOn: html [
 	self
 		renderDropdownItem: 'Perfil'
 			withCallback: [ self session mainComponent content
-				call: ProxyUserProfileComponent new ]
+				call: UserAccountComponentProxy new ]
 			on: html;
 		renderDropdownItem: 'Historial de Lectura'
 			withCallback: [ self session mainComponent content call: BooksHistoryComponent new ]
