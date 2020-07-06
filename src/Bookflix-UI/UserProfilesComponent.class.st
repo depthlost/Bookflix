@@ -53,5 +53,6 @@ UserProfilesComponent >> states [
 { #category : #seaside }
 UserProfilesComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix - Perfiles'
+	anHtmlRoot title: 'Bookflix - Perfiles'.
+	anHtmlRoot stylesheet url: '/css/user_profiles.css'
 ]

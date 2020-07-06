@@ -14,14 +14,14 @@ UserProfilesManagementComponent >> getUserProfileComponents [
 UserProfilesManagementComponent >> renderAddProfileOn: html [
 	html div
 		class: 'card';
-		with: [ html anchor
-				class: 'btn btn-block btn-outline-success';
-				callback: [ self session user
-						addProfile: (Profile name: 'Matesaurio');
-						save ];
-				with: [ html div
-						class: 'card-body';
-						with: [ html span class: 'oi oi-plus' ] ] ]
+		with: [ html
+				render:
+					(ModalButtonComponent
+						modal: (AddUserProfileModalComponent id: 'modal_add_profile')
+						class: 'btn btn-block btn-outline-success'
+						with: [ html div
+								class: 'card-body';
+								with: [ html span class: 'oi oi-plus' ] ]) ]
 ]
 
 { #category : #rendering }
