@@ -17,7 +17,7 @@ UserSample class >> addJulian [
 { #category : #adding }
 UserSample class >> addLisa [
 	(CommonUser
-		name: 'lisa'
+		name: 'Lisa'
 		surname: 'Stanus'
 		email: 'lisa@gmail.com'
 		password: 'lisa123'

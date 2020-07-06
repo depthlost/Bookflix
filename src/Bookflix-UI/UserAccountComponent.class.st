@@ -62,7 +62,7 @@ UserAccountComponent >> renderSubmitButtonOn: html [
 UserAccountComponent >> renderTitleOn: html [
 	html heading level1
 		class: 'h3 text-center mb-5 font-weight-normal';
-		with: self session user name , ' ' , self session user surname
+		with: 'Información de Cuenta'
 ]
 
 { #category : #seaside }
@@ -85,7 +85,7 @@ UserAccountComponent >> update [
 { #category : #seaside }
 UserAccountComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix - Perfil'.
+	anHtmlRoot title: 'Bookflix - Cuenta'.
 	anHtmlRoot stylesheet url: '/css/register.css'.
 	anHtmlRoot stylesheet url: '/css/floating-labels.css'
 ]
