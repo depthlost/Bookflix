@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'comment'
 	],
-	#category : #'Bookflix-UI-resources'
+	#category : #'Bookflix-UI-comments'
 }
 
 { #category : #'instance creation' }
