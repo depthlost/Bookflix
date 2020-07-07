@@ -4,21 +4,6 @@ Class {
 	#category : #'Bookflix-UI-comments'
 }
 
-{ #category : #private }
-PrivilegedCommentComponent >> commentBook [
-	^ Bookflix instance getAllBooks
-		detect: [ :each | each getAllComments includes: comment ]
-		ifNone: nil
-]
-
-{ #category : #callbacks }
-PrivilegedCommentComponent >> removeComment [
-	self commentBook
-		ifNotNil: [ :book | 
-			book removeComment: comment.
-			Bookflix instance updateReadable: book ]
-]
-
 { #category : #rendering }
 PrivilegedCommentComponent >> renderBodyOn: html [
 	html div
@@ -37,10 +22,14 @@ PrivilegedCommentComponent >> renderDescriptionOn: html [
 
 { #category : #rendering }
 PrivilegedCommentComponent >> renderRemoveButtonOn: html [
-	html anchor
-		class: 'btn btn-sm btn-outline-danger';
-		callback: [ self removeComment ];
-		with: [ html span class: 'oi oi-trash' ]
+	html
+		render:
+			(ModalButtonComponent
+				modal: (RemoveCommentModalComponent with: comment)
+				class: 'btn btn-sm btn-outline-danger'
+				with: [ html span
+						class: 'oi oi-trash';
+						with: '' ])
 ]
 
 { #category : #rendering }
