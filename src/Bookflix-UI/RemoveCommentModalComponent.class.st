@@ -9,8 +9,7 @@ Class {
 
 { #category : #'instance creation' }
 RemoveCommentModalComponent class >> with: aComment [
-	^ (self id: 'modal_remove_comment_' , aComment hash asString)
-		with: aComment
+	^ self new with: aComment
 ]
 
 { #category : #private }

@@ -29,6 +29,12 @@ ModalComponent >> id: anId labelId: aLabelId [
 	labelId := aLabelId
 ]
 
+{ #category : #initialization }
+ModalComponent >> initialize [
+	id := 'modal_' , self hash asString.
+	labelId := 'modal_label_' , self hash asString
+]
+
 { #category : #rendering }
 ModalComponent >> renderBodyContentOn: html [
 	
