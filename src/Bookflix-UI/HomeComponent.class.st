@@ -33,15 +33,6 @@ HomeComponent >> clearAlert [
 	alertComponent := nil
 ]
 
-{ #category : #seaside }
-HomeComponent >> clearThenHome [
-	self session mainComponent navbar: ProxyNavBarComponent new.
-	self
-		clearAlert;
-		resetState;
-		home
-]
-
 { #category : #private }
 HomeComponent >> getBookComponents [
 	"metodo modificado para retornar todos los leibles"
@@ -65,6 +56,14 @@ HomeComponent >> getBookComponents [
 { #category : #private }
 HomeComponent >> getReadablesComponents [
 	^ state getReadablesComponents
+]
+
+{ #category : #seaside }
+HomeComponent >> home [
+	self
+		clearAlert;
+		resetState.
+	super home
 ]
 
 { #category : #initialization }
