@@ -69,9 +69,9 @@ HomeComponent >> home [
 { #category : #initialization }
 HomeComponent >> initialize [
 	super initialize.
-	self
-		resetState;
-		show: UserProfilesViewComponent new
+	self resetState.
+	self session user isAdmin
+		ifFalse: [ self show: UserProfilesViewComponent new ]
 ]
 
 { #category : #rendering }

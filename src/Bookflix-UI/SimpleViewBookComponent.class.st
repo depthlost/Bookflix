@@ -4,6 +4,12 @@ Class {
 	#category : #'Bookflix-UI-readables'
 }
 
+{ #category : #callbacks }
+SimpleViewBookComponent >> readBook [
+	self session profile addReadableForHistorial: readable.
+	self session user save
+]
+
 { #category : #rendering }
 SimpleViewBookComponent >> renderBodyOn: html [
 	html div
