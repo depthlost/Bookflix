@@ -7,7 +7,8 @@ Class {
 		'email',
 		'password',
 		'birthdate',
-		'profiles'
+		'profiles',
+		'isPremium'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -42,6 +43,23 @@ User >> birthdate: aBirthdate [
 	birthdate := aBirthdate
 ]
 
+{ #category : #testing }
+User >> canAddProfile [
+	self haveMaxProfiles
+		ifTrue: [ ^ false ].
+	^ true
+]
+
+{ #category : #testing }
+User >> canNotPremium [
+	^ self subclassResponsibility
+]
+
+{ #category : #testing }
+User >> canRemoveProfile [
+	^ profiles size > 1
+]
+
 { #category : #accessing }
 User >> email [
 	^ email
@@ -50,6 +68,13 @@ User >> email [
 { #category : #accessing }
 User >> email: anEmail [
 	email := anEmail
+]
+
+{ #category : #'as yet unclassified' }
+User >> haveMaxProfiles [
+	self isPremium
+		ifTrue: [ ^ profiles size => 5 ].
+	^ profiles size => 3
 ]
 
 { #category : #initialization }
@@ -65,6 +90,16 @@ User >> initialize [
 { #category : #abstract }
 User >> isAdmin [
 	^ false
+]
+
+{ #category : #accessing }
+User >> isPremium [
+	^ isPremium
+]
+
+{ #category : #accessing }
+User >> isPremium: aBool [
+	isPremium := aBool
 ]
 
 { #category : #accessing }
