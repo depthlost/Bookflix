@@ -51,6 +51,11 @@ User >> canAddProfile [
 ]
 
 { #category : #testing }
+User >> canNotPremium [
+	^ self subclassResponsibility
+]
+
+{ #category : #testing }
 User >> canRemoveProfile [
 	^ profiles size > 1
 ]

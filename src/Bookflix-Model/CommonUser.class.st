@@ -24,6 +24,11 @@ CommonUser >> canAddProfile [
 	
 ]
 
+{ #category : #testing }
+CommonUser >> canNotPremium [
+	^ profiles size <= 3
+]
+
 { #category : #accesing }
 CommonUser >> card [
 	^ card
