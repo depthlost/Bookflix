@@ -1,8 +1,13 @@
 Class {
 	#name : #AdminNavBarComponent,
-	#superclass : #UserNavBarComponent,
+	#superclass : #SessionNavBarComponent,
 	#category : #'Bookflix-UI-navbars'
 }
+
+{ #category : #getting }
+AdminNavBarComponent >> nickname [
+	^ self session user name , ' ' , self session user surname
+]
 
 { #category : #rendering }
 AdminNavBarComponent >> renderUserTopItemsOn: html [

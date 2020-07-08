@@ -1,0 +1,22 @@
+@media (max-width: 700px) {
+  .card-columns.custom-columns {
+    column-count: 1;
+  }
+}
+
+@media (min-width: 700px) {
+  .card-columns.custom-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1000px) {
+  .card-columns.custom-columns {
+    column-count: 4;
+  }
+}
+
+.card {
+  min-width: 14rem;
+  max-width: 16rem
+}

@@ -15,9 +15,12 @@ HomeComponent >> addAlert: anAlertComponent [
 
 { #category : #seaside }
 HomeComponent >> call: aComponent [
-	self
-		home;
-		addAlert: (super call: aComponent)
+	self home.
+	super
+		call: aComponent
+		onAnswer: [ :answer | 
+			answer className = 'AlertComponent'
+				ifTrue: [ self addAlert: answer ] ]
 ]
 
 { #category : #seaside }
@@ -28,15 +31,6 @@ HomeComponent >> children [
 { #category : #private }
 HomeComponent >> clearAlert [
 	alertComponent := nil
-]
-
-{ #category : #seaside }
-HomeComponent >> clearThenHome [
-	self session mainComponent navbar: ProxyNavBarComponent new.
-	self
-		clearAlert;
-		resetState;
-		home
 ]
 
 { #category : #private }
@@ -64,10 +58,20 @@ HomeComponent >> getReadablesComponents [
 	^ state getReadablesComponents
 ]
 
+{ #category : #seaside }
+HomeComponent >> home [
+	self
+		clearAlert;
+		resetState.
+	super home
+]
+
 { #category : #initialization }
 HomeComponent >> initialize [
 	super initialize.
-	self resetState
+	self resetState.
+	self session user isAdmin
+		ifFalse: [ self show: UserProfilesViewComponent new ]
 ]
 
 { #category : #rendering }

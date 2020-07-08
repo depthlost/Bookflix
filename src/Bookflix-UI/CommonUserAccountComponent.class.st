@@ -1,6 +1,6 @@
 Class {
-	#name : #CommonUserProfileComponent,
-	#superclass : #UserProfileComponent,
+	#name : #CommonUserAccountComponent,
+	#superclass : #UserAccountComponent,
 	#instVars : [
 		'cardComponent'
 	],
@@ -8,35 +8,35 @@ Class {
 }
 
 { #category : #private }
-CommonUserProfileComponent >> cardIsExpired [
+CommonUserAccountComponent >> cardIsExpired [
 	^ cardComponent inputCardExpirationDate <= Month current
 ]
 
 { #category : #private }
-CommonUserProfileComponent >> checkData [
+CommonUserAccountComponent >> checkData [
 	cardComponent errorByExpiredCard: self cardIsExpired.
 	^ super checkData & self cardIsExpired not
 ]
 
 { #category : #seaside }
-CommonUserProfileComponent >> children [
+CommonUserAccountComponent >> children [
 	^ super children , (Array with: cardComponent)
 ]
 
 { #category : #initialization }
-CommonUserProfileComponent >> initialize [
+CommonUserAccountComponent >> initialize [
 	super initialize.
-	cardComponent := CardDataInputComponent with: self session profile card
+	cardComponent := CardDataInputComponent with: self session user card
 ]
 
 { #category : #rendering }
-CommonUserProfileComponent >> renderDataInputOn: html [
+CommonUserAccountComponent >> renderDataInputOn: html [
 	super renderDataInputOn: html.
 	html render: cardComponent
 ]
 
 { #category : #private }
-CommonUserProfileComponent >> updateUserData [
+CommonUserAccountComponent >> updateUserData [
 	super updateUserData.
-	cardComponent updateCard: self session profile card
+	cardComponent updateCard: self session user card
 ]

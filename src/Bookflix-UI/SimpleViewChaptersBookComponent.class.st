@@ -36,7 +36,7 @@ SimpleViewChaptersBookComponent >> renderReadButtonItemNamed: aName content: aCo
 		url: 'javascript:{}';
 		onClick:
 			(html jQuery ajax
-				callback: [ self session profile addReadableForHistorial: readable ];
+				callback: [ self readBook ];
 				onComplete: (html javascript goto: aContent , '#toolbar=0'));
 		with: aName
 ]

@@ -6,7 +6,7 @@ Class {
 
 { #category : #callbacks }
 NavBarComponent >> goToHome [
-	self session mainComponent content clearThenHome
+	self session mainComponent content home
 ]
 
 { #category : #rendering }

@@ -13,7 +13,7 @@ CommentComponentBuilder class >> with: aComment [
 CommentComponentBuilder >> with: aComment [
 	^ (aComment profile == self session profile
 		ifTrue: [ OwnCommentComponent ]
-		ifFalse: [ self session profile isAdmin
+		ifFalse: [ self session user isAdmin
 				ifTrue: [ PrivilegedCommentComponent ]
 				ifFalse: [ aComment isSpoiler
 						ifFalse: [ CommentComponent ]

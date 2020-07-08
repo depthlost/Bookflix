@@ -3,7 +3,8 @@ Class {
 	#superclass : #WASession,
 	#instVars : [
 		'mainComponent',
-		'user'
+		'user',
+		'profile'
 	],
 	#category : #'Bookflix-UI-others'
 }
@@ -11,6 +12,7 @@ Class {
 { #category : #callbacks }
 UserSession >> login: anUser [
 	user := anUser.
+	profile := user profiles asOrderedCollection first.
 	mainComponent
 		content: HomeComponent new;
 		navbar: ProxyNavBarComponent new
@@ -36,10 +38,20 @@ UserSession >> mainComponent: aComponent [
 
 { #category : #accessing }
 UserSession >> profile [
+	^ profile
+]
+
+{ #category : #accessing }
+UserSession >> profile: anObject [
+	profile := anObject
+]
+
+{ #category : #accessing }
+UserSession >> user [
 	^ user
 ]
 
 { #category : #accessing }
-UserSession >> profile: anUser [
+UserSession >> user: anUser [
 	user := anUser
 ]

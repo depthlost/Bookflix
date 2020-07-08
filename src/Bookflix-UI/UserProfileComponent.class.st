@@ -2,95 +2,55 @@ Class {
 	#name : #UserProfileComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'userComponent'
+		'parentComponent',
+		'profile'
 	],
-	#category : #'Bookflix-UI-users'
+	#category : #'Bookflix-UI-user_profiles'
 }
 
-{ #category : #private }
-UserProfileComponent >> checkData [
-	userComponent errorByRegisteredEmail: self emailWasChangedAndExist.
-	^ self emailWasChangedAndExist not
+{ #category : #'instance creation' }
+UserProfileComponent class >> with: aProfile in: aComponent [
+	^ self new with: aProfile in: aComponent
 ]
 
-{ #category : #seaside }
-UserProfileComponent >> children [
-	^ Array with: userComponent
+{ #category : #rendering }
+UserProfileComponent >> renderBodyOn: html [
+	html anchor
+		class: 'btn btn-block btn-dark';
+		callback: [ self toAccess ];
+		with: [ html div
+				class: 'card-body';
+				with: [ self renderProfileNameOn: html ] ]
 ]
 
-{ #category : #private }
-UserProfileComponent >> emailWasChangedAndExist [
-	^ self session profile email ~= userComponent inputEmail address
-		&
-			(Bookflix instance
-				existUserWithEmail: userComponent inputEmail address)
-]
-
-{ #category : #initialization }
-UserProfileComponent >> initialize [
-	super initialize.
-	userComponent := UserDataInputComponent with: self session profile
+{ #category : #rendering }
+UserProfileComponent >> renderCardContentOn: html [
+	self renderBodyOn: html
 ]
 
 { #category : #rendering }
 UserProfileComponent >> renderContentOn: html [
 	html div
-		class: 'register';
-		with: [ html form
-				class: 'form-signin';
-				with: [ self
-						renderTitleOn: html;
-						renderDataInputOn: html;
-						renderSubmitButtonOn: html ] ]
+		class: 'card';
+		with: [ self renderCardContentOn: html ]
 ]
 
 { #category : #rendering }
-UserProfileComponent >> renderDataInputOn: html [
-	html render: userComponent
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderSubmitButtonOn: html [
-	html button
-		type: 'submit';
-		class: 'btn btn-lg btn-primary btn-block w-50 float-right';
-		callback: [ self update ];
-		with: 'Actualizar'
-]
-
-{ #category : #rendering }
-UserProfileComponent >> renderTitleOn: html [
-	html heading level1
-		class: 'h3 text-center mb-5 font-weight-normal';
-		with: self session profile name , ' ' , self session profile surname
-]
-
-{ #category : #seaside }
-UserProfileComponent >> states [
-	^ Array with: self
+UserProfileComponent >> renderProfileNameOn: html [
+	html heading
+		level: 5;
+		class: 'card-title';
+		with: profile name
 ]
 
 { #category : #callbacks }
-UserProfileComponent >> update [
-	self checkData
-		ifFalse: [ ^ self ].
-	self updateUserData.
-	self session profile save.
-	self
-		answer:
-			(AlertComponent
-				with: 'Se actualizo la informacion de perfil con exito')
+UserProfileComponent >> toAccess [
+	self session profile: profile.
+	parentComponent answer: self
 ]
 
-{ #category : #seaside }
-UserProfileComponent >> updateRoot: anHtmlRoot [
-	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix - Perfil'.
-	anHtmlRoot stylesheet url: '/css/register.css'.
-	anHtmlRoot stylesheet url: '/css/floating-labels.css'
-]
-
-{ #category : #private }
-UserProfileComponent >> updateUserData [
-	userComponent updateUser: self session profile
+{ #category : #initialization }
+UserProfileComponent >> with: aProfile in: aComponent [
+	profile := aProfile.
+	parentComponent := aComponent
 ]
