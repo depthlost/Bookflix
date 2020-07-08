@@ -7,7 +7,8 @@ Class {
 		'email',
 		'password',
 		'birthdate',
-		'profiles'
+		'profiles',
+		'isPremium'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -40,6 +41,11 @@ User >> birthdate [
 { #category : #accessing }
 User >> birthdate: aBirthdate [
 	birthdate := aBirthdate
+]
+
+{ #category : #testing }
+User >> canAddProfile [
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }

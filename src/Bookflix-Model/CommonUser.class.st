@@ -19,6 +19,11 @@ CommonUser class >> name: aName surname: aSurname email: anEmail password: aPass
 		yourself
 ]
 
+{ #category : #testing }
+CommonUser >> canAddProfile [
+	
+]
+
 { #category : #accesing }
 CommonUser >> card [
 	^ card
