@@ -44,6 +44,11 @@ Profile >> initialize [
 ]
 
 { #category : #accessing }
+Profile >> isInFavorites: aBook [
+	^ favorites includes: aBook
+]
+
+{ #category : #accessing }
 Profile >> isRead: aBook [
 	^ reades anySatisfy: [ :book | book = aBook ]
 ]
