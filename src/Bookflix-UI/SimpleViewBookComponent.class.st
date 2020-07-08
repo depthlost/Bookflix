@@ -29,13 +29,29 @@ SimpleViewBookComponent >> renderBottomBodyOn: html [
 ]
 
 { #category : #rendering }
+SimpleViewBookComponent >> renderDislikeButtonOn: html [
+	html anchor
+		class: 'btn btn-sm btn-outline-danger';
+		callback: [  ];
+		with: [ html span class: 'oi oi-thumb-down' ]
+]
+
+{ #category : #rendering }
 SimpleViewBookComponent >> renderEndButtonOn: html [
+	html anchor
+		class: 'btn btn-sm btn-outline-dark';
+		callback: [  ];
+		with: 'Terminar'
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderFavoriteButtonOn: html [
 	html div
-		class: 'd-inline w-100 d-flex justify-content-end';
+		style: 'margin-top: auto; margin-bottom: auto';
 		with: [ html anchor
-				class: 'btn btn-sm btn-outline-dark';
+				class: 'btn btn-sm btn-outline-primary';
 				callback: [  ];
-				with: 'Terminar' ]
+				with: [ html span class: 'oi oi-heart' ] ]
 ]
 
 { #category : #rendering }
@@ -47,8 +63,32 @@ SimpleViewBookComponent >> renderHeadOn: html [
 ]
 
 { #category : #rendering }
+SimpleViewBookComponent >> renderLikeButtonOn: html [
+	html anchor
+		class: 'btn btn-sm btn-outline-primary';
+		callback: [  ];
+		with: [ html span class: 'oi oi-thumb-up' ]
+]
+
+{ #category : #rendering }
 SimpleViewBookComponent >> renderReadButtonOn: html [
 	self subclassResponsibility
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderScoreButtonsOn: html [
+	html
+		div: [ self renderLikeButtonOn: html.
+			html space.
+			self renderDislikeButtonOn: html ]
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderScoreStateOn: html [
+	true
+		ifTrue: [ self renderScoreButtonsOn: html ]
+		ifFalse: [ false
+				ifTrue: [ self renderEndButtonOn: html ] ]
 ]
 
 { #category : #rendering }
@@ -63,10 +103,13 @@ SimpleViewBookComponent >> renderStateOn: html [
 { #category : #rendering }
 SimpleViewBookComponent >> renderTopBodyOn: html [
 	html div
-		class: 'btn-group w-100';
-		with: [ self
-				renderTrailerButtonOn: html;
-				renderReadButtonOn: html ]
+		class: 'btn-toolbar d-flex justify-content-between';
+		with: [ html div
+				class: 'btn-group w-75';
+				with: [ self
+						renderTrailerButtonOn: html;
+						renderReadButtonOn: html ].
+			self renderFavoriteButtonOn: html ]
 ]
 
 { #category : #rendering }
