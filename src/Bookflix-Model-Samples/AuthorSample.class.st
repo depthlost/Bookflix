@@ -18,3 +18,17 @@ AuthorSample class >> addAuthor2 [
 AuthorSample class >> addAuthor3 [
 	Bookflix instance addAuthor: 'Enid Blyton'
 ]
+
+{ #category : #adding }
+AuthorSample class >> addAuthor4 [
+	Bookflix instance addAuthor: 'Juan Ramón Jiménez'
+]
+
+{ #category : #adding }
+AuthorSample class >> addAuthors [
+	self
+		addAuthor1;
+		addAuthor2;
+		addAuthor3;
+		addAuthor4
+]

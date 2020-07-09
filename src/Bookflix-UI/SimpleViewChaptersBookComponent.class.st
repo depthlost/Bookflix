@@ -5,6 +5,22 @@ Class {
 }
 
 { #category : #rendering }
+SimpleViewChaptersBookComponent >> renderBottomBodyOn: html [
+	html div
+		class: 'mt-3 d-flex justify-content-between';
+		with: [ self
+				renderChaptersInformationOn: html;
+				renderScoreStateOn: html ]
+]
+
+{ #category : #rendering }
+SimpleViewChaptersBookComponent >> renderChaptersInformationOn: html [
+	html small
+		class: 'text-muted';
+		with: readable totalChapters asString , ' capítulos'
+]
+
+{ #category : #rendering }
 SimpleViewChaptersBookComponent >> renderReadButtonDropdownMenuOn: html [
 	html div
 		class: 'dropdown-menu';
