@@ -5,6 +5,7 @@ Class {
 		'name',
 		'historial',
 		'reades',
+		'finished',
 		'favorites'
 	],
 	#category : #'Bookflix-Model'
@@ -39,8 +40,14 @@ Profile >> historial [
 Profile >> initialize [
 	name := '---'.
 	reades := Set new.
+	finished := Set new.
 	favorites := Set new.
-	historial := OrderedCollection new
+	historial := Set new
+]
+
+{ #category : #accessing }
+Profile >> isFinished: aBook [
+	^ finished anySatisfy: [ :book | book = aBook ]
 ]
 
 { #category : #accessing }
@@ -64,6 +71,11 @@ Profile >> name: aName [
 ]
 
 { #category : #accessing }
+Profile >> notFinished: aBook [
+	finished remove: aBook
+]
+
+{ #category : #accessing }
 Profile >> notRead: aBook [
 	reades remove: aBook
 ]
@@ -71,6 +83,11 @@ Profile >> notRead: aBook [
 { #category : #accessing }
 Profile >> removeFavorite: aBook [
 	favorites remove: aBook
+]
+
+{ #category : #accessing }
+Profile >> yesFinished: aBook [
+	finished add: aBook
 ]
 
 { #category : #accessing }
