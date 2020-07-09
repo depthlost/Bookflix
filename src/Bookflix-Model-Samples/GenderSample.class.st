@@ -18,3 +18,11 @@ GenderSample class >> addGender2 [
 GenderSample class >> addGender3 [
 	Bookflix instance addGender: 'Narrativa juvenil'
 ]
+
+{ #category : #adding }
+GenderSample class >> addGenders [
+	self
+		addGender1;
+		addGender2;
+		addGender3
+]

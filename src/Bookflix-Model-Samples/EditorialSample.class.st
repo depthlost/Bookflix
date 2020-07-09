@@ -8,3 +8,8 @@ Class {
 EditorialSample class >> addEditorial1 [
 	Bookflix instance addEditorial: 'Juventud'
 ]
+
+{ #category : #adding }
+EditorialSample class >> addEditorials [
+	self addEditorial1
+]

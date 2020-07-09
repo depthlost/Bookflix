@@ -30,3 +30,10 @@ UserSample class >> addLisa [
 				expirationDate: (Month year: 2022 month: 9)
 				securityCode: '123')) save
 ]
+
+{ #category : #adding }
+UserSample class >> addUsers [
+	self
+		addJulian;
+		addLisa
+]

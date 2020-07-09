@@ -21,65 +21,61 @@ BookSample class >> addBook1 [
 				with:
 					'https://www.cultura.gob.cl/wp-content/uploads/2014/01/un-cuento-al-dia-antologia.pdf').
 	book
+		totalChapters: 4;
 		addGender: (Gender selectAll detect: [ :each | each name = 'Libros de cartón' ]).
 	Bookflix instance addReadable: book
 ]
 
 { #category : #adding }
 BookSample class >> addBook2 [
-	"gender: Libros informativos (infantil)"
-
-	Bookflix instance
-		addReadable:
-			(CompleteBook
-				newWithTitle: 'El gran libro de las flores'
-				isbn: '9788426146434'
-				description:
-					'¿Qué comen las plantas carnívoras? ¿Cuánto peso soportan las hojas del nenúfar gigante? ¿Florecen los cactus? Encontrarás las respuestas a estas preguntas tan espinosas y a muchas más en el interior. También podrás jugar a buscar y encontrar en las imágenes un bulbo especial.
-
-Descubre todo tipo de plantas con flores coloridas, carnívoras, extrañas y maravillosas de todo el mundo en este innovador libro de flores y déjate sorprender por las curiosidades que encierran.'
-				imageURL:
-					'https://www.editorialjuventud.es/wp-content/uploads/2020/04/ElGranLibroDeLasFlores_cover.jpg'
-				author: 'Yuval Zommer'
-				editorial: 'Juventud'
-				content: '')
+	| book |
+	book := Book
+		title: 'Platero y yo'
+		isbn: '978842614655'
+		description:
+			'«Platero es pequeño, peludo, suave; tan blando por fuera, que se diría todo de algodón». Platero es un burrito, pero además es la encarnación del compañero inseparable, el amigo ideal. Él nos acompaña en este viaje a través de los recuerdos del autor llenos de sensaciones, colores, e imágenes. J. R. Jiménez nos cuenta historias de su pueblo natal a través del amor a Platero, su burro, y ese amor trasciende a todo lo que ve, la naturaleza, el camino, los aromas, los chiquillos y sus juegos y su inocencia, la gente sencilla en su día a día, la vida; y con su lenguaje sencillo y al mismo tiempo poético, lleno de metáforas, nos hacen sentir esas vivencias como propias. Descubre esta narración lírica que contribuyó sobremanera a que su autor ganara el Premio Nobel de Literatura en 1956 por el conjunto de su obra.'
+		imageURL:
+			'https://www.editorialjuventud.es/wp-content/uploads/2020/06/Platero-y-yo_alta.jpg'
+		author:
+			(BookAuthor selectAll
+				detect: [ :each | each name = 'Juan Ramón Jiménez' ])
+		editorial: (Editorial selectAll detect: [ :each | each name = 'Juventud' ])
+		expirationDate: (Date year: 2020 month: 9 day: 10)
+		content:
+			'https://www.cultura.gob.cl/wp-content/uploads/2014/01/un-cuento-al-dia-antologia.pdf'.
+	book
+		addGender: (Gender selectAll detect: [ :each | each name = 'Narrativa juvenil' ]).
+	Bookflix instance addReadable: book
 ]
 
 { #category : #adding }
 BookSample class >> addBook3 [
-	"gender: Narrativa juvenil"
-
-	Bookflix instance
-		addReadable:
-			(CompleteBook
-				newWithTitle: 'Los Cinco se escapan'
-				isbn: '9788426142948'
-				description:
-					'Los Cinco escapan a la isla de Kirrin huyendo de unos personajes instalados en Villa Kirrin. Pero ¿quién ha estado en la isla? ¿Qué contiene el misterioso baúl que alguien ha dejado en el viejo barco naufragado? Los Cinco creen que están tras la pista de unos contrabandistas. Hasta que oyen el grito de un niño…'
-				imageURL: 'https://www.editorialjuventud.es/wp-content/uploads/2018/09/4294.jpg'
-				author: 'Enid Blyton'
-				editorial: 'Juventud'
-				content: '')
+	| book |
+	book := Book
+		title: 'Los Cinco van de camping'
+		isbn: '978842614298'
+		description:
+			'¿Trenes fantasma que se desvanecen en la noche? ¡Tiene que haber una explicación lógica! Pero tal vez están equivocados. Definitivamente, bajo tierra hay algo escalofriante…'
+		imageURL:
+			'https://www.editorialjuventud.es/wp-content/uploads/2018/08/Los-Cinco-van-de-camping-1.jpg'
+		author: (BookAuthor selectAll detect: [ :each | each name = 'Enid Blyton' ])
+		editorial: (Editorial selectAll detect: [ :each | each name = 'Juventud' ])
+		expirationDate: nil
+		content:
+			(OrderedCollection
+				new: 6
+				withAll:
+					'https://www.cultura.gob.cl/wp-content/uploads/2014/01/un-cuento-al-dia-antologia.pdf').
+	book
+		totalChapters: 6;
+		addGender: (Gender selectAll detect: [ :each | each name = 'Narrativa juvenil' ]).
+	Bookflix instance addReadable: book
 ]
 
 { #category : #adding }
-BookSample class >> addBook4 [
-	"gender: Libros informativos (infantil)"
-
-	Bookflix instance
-		addReadable:
-			(CompleteBook
-				newWithTitle: 'El gran libro de las bestias'
-				isbn: '9788426144119'
-				description:
-					'¿Por qué los lobos aúllan a la luna? ¿Es verdad que la hiena se ríe? ¿Por qué les gusta tanto el barro a los hipopótamos? Encuentra las respuestas a estas bestiales preguntas, y muchas más, dentro del libro. También puedes jugar a buscar en las imágenes: ¿eres capaz de detectar todas las huellas de bestias misteriosas?
-
-Descubre todo tipo de bestias pardas, peludas, salvajes y maravillosas del mundo entero, con un montón de detalles sobre cómo comen, cazan y sobreviven. Este libro empieza explicando que las bestias son animales salvajes que no pueden ser domados y ofrece consejos sobre cómo encontrarlos en sus hábitats naturales. A continuación, el libro sigue dedicando dobles páginas a distintas especies de bestias, incluyendo armadillos, osos, tigres o Diablos de Tasmania.
-
-Finalmente, ofrece un repaso a las bestias míticas, las bestias de la Edad de Hielo, las bestias de la calle y se explica cómo salvar a las bestias en peligro. Siguiendo el éxito de El gran libro de los bichos, El gran libro de las bestias es un libro lleno de ilustraciones y composiciones escénicas muy detalladas, con un texto sencillo, divertido y lleno de hechos asombrosos, ideal como primer libro del reino animal para disfrutar leyendo con los más pequeños.'
-				imageURL:
-					'https://www.editorialjuventud.es/wp-content/uploads/2018/08/9788426144126-1.jpg'
-				author: 'Yuval Zommer'
-				editorial: 'Juventud'
-				content: '')
+BookSample class >> addBooks [
+	self
+		addBook1;
+		addBook2;
+		addBook3
 ]
