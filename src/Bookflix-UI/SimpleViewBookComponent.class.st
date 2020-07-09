@@ -4,6 +4,15 @@ Class {
 	#category : #'Bookflix-UI-readables'
 }
 
+{ #category : #private }
+SimpleViewBookComponent >> favoriteButtonClass [
+	| class |
+	class := 'btn btn-sm btn-outline-primary'.
+	(self session profile isInFavorites: readable)
+		ifTrue: [ class := class , ' active' ].
+	^ class
+]
+
 { #category : #callbacks }
 SimpleViewBookComponent >> readBook [
 	self session profile addReadableForHistorial: readable.
@@ -20,12 +29,25 @@ SimpleViewBookComponent >> renderBodyOn: html [
 ]
 
 { #category : #rendering }
-SimpleViewBookComponent >> renderBottomBodyOn: html [
+SimpleViewBookComponent >> renderBookSectionOn: html [
 	html div
-		class: 'mt-3 d-flex';
+		class: 'card';
 		with: [ self
-				renderStateOn: html;
-				renderEndButtonOn: html ]
+				renderHeadOn: html;
+				renderBodyOn: html ]
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderBottomBodyOn: html [
+	self subclassResponsibility
+]
+
+{ #category : #rendering }
+SimpleViewBookComponent >> renderContentOn: html [
+	html div
+		style: 'max-width: 16rem';
+		with: [ self renderBookSectionOn: html.
+			html render: (BookScoreComponent with: readable) ]
 ]
 
 { #category : #rendering }
@@ -49,8 +71,8 @@ SimpleViewBookComponent >> renderFavoriteButtonOn: html [
 	html div
 		style: 'margin-top: auto; margin-bottom: auto';
 		with: [ html anchor
-				class: 'btn btn-sm btn-outline-primary';
-				callback: [  ];
+				class: self favoriteButtonClass;
+				callback: [ self toggleFavorite ];
 				with: [ html span class: 'oi oi-heart' ] ]
 ]
 
@@ -92,15 +114,6 @@ SimpleViewBookComponent >> renderScoreStateOn: html [
 ]
 
 { #category : #rendering }
-SimpleViewBookComponent >> renderStateOn: html [
-	html div
-		class: 'd-inline';
-		with: [ html small
-				class: 'text-muted';
-				with: 'Leyendo' ]
-]
-
-{ #category : #rendering }
 SimpleViewBookComponent >> renderTopBodyOn: html [
 	html div
 		class: 'btn-toolbar d-flex justify-content-between';
@@ -123,4 +136,12 @@ SimpleViewBookComponent >> renderTrailerButtonOn: html [
 				callback: [ parentComponent
 						call: (TrailerDetailComponent with: readable advance) ];
 				with: 'Trailer' ]
+]
+
+{ #category : #callbacks }
+SimpleViewBookComponent >> toggleFavorite [
+	(self session profile isInFavorites: readable)
+		ifTrue: [ self session profile removeFavorite: readable ]
+		ifFalse: [ self session profile addFavorite: readable ].
+	self session user save
 ]
