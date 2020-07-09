@@ -1,6 +1,6 @@
 Class {
 	#name : #HomeComponentNoveltyState,
-	#superclass : #HomeComponentState,
+	#superclass : #HomeComponentCategoryState,
 	#category : #'Bookflix-UI-others'
 }
 
@@ -13,11 +13,4 @@ HomeComponentNoveltyState >> getReadablesComponents [
 { #category : #private }
 HomeComponentNoveltyState >> noveltyCategoryButtonClass [
 	^ self activeCategoryButtonClass
-]
-
-{ #category : #rendering }
-HomeComponentNoveltyState >> renderElementsOn: html [
-	homeComponent renderAlertOn: html.
-	self renderCategoryButtonGroupOn: html.
-	homeComponent renderReadablesOn: html
 ]

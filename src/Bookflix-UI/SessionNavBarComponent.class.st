@@ -87,5 +87,8 @@ SessionNavBarComponent >> renderUserTopItemsOn: html [
 			on: html;
 		renderDropdownItem: 'Historial de Lectura'
 			withCallback: [ self session mainComponent content call: BooksHistoryComponent new ]
+			on: html;
+		renderDropdownItem: 'Favoritos'
+			withCallback: [ self session mainComponent content showFavoriteBooks ]
 			on: html
 ]

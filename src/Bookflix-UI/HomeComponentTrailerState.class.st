@@ -1,6 +1,6 @@
 Class {
 	#name : #HomeComponentTrailerState,
-	#superclass : #HomeComponentState,
+	#superclass : #HomeComponentCategoryState,
 	#category : #'Bookflix-UI-others'
 }
 
@@ -10,13 +10,6 @@ HomeComponentTrailerState >> getReadablesComponents [
 
 	^ Advance selectAll
 		collect: [ :each | TrailerComponentProxy with: each in: homeComponent ]
-]
-
-{ #category : #rendering }
-HomeComponentTrailerState >> renderElementsOn: html [
-	homeComponent renderAlertOn: html.
-	self renderCategoryButtonGroupOn: html.
-	homeComponent renderReadablesOn: html
 ]
 
 { #category : #private }

@@ -120,6 +120,13 @@ HomeComponent >> resetState [
 	state := HomeComponentBookState of: self
 ]
 
+{ #category : #'changing state' }
+HomeComponent >> showFavoriteBooks [
+	self
+		home;
+		state: (HomeComponentFavoriteState of: self)
+]
+
 { #category : #accessing }
 HomeComponent >> state: anObject [
 	state := anObject

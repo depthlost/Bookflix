@@ -1,6 +1,6 @@
 Class {
 	#name : #HomeComponentBookState,
-	#superclass : #HomeComponentState,
+	#superclass : #HomeComponentCategoryState,
 	#instVars : [
 		'searchComponent'
 	],
