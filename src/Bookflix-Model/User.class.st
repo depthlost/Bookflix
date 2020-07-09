@@ -137,9 +137,12 @@ User >> profiles [
 	^ profiles
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 User >> removeProfile: aProfile [
-	profiles remove: aProfile
+	(profiles includes: aProfile)
+		ifFalse: [ ^ self ].
+	profiles remove: aProfile.
+	self save
 ]
 
 { #category : #accessing }
