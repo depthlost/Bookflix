@@ -16,6 +16,9 @@ EnablePremiumModeComponent >> formTitle [
 
 { #category : #callbacks }
 EnablePremiumModeComponent >> onSubmit [
+	self session user
+		isPremium: true;
+		save.
 	^ AlertComponent
 		with: '¡Felicidades! ¡Ahora eres un usuario premium!'
 ]

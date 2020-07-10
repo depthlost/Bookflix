@@ -26,8 +26,12 @@ UserProfileManagementComponent >> renderFooterOn: html [
 
 { #category : #rendering }
 UserProfileManagementComponent >> renderRemoveButtonOn: html [
-	html anchor
-		class: 'btn btn-sm btn-outline-danger';
-		callback: [ self removeProfile ];
-		with: [ html span class: 'oi oi-trash' ]
+	self session user canRemoveProfile
+		ifTrue: [ html anchor
+				class: 'btn btn-sm btn-outline-danger';
+				callback: [ self removeProfile ];
+				with: [ html span class: 'oi oi-trash' ] ]
+		ifFalse: [ html anchor
+				class: 'btn btn-sm btn-outline-danger disabled';
+				with: [ html span class: 'oi oi-trash' ] ]
 ]

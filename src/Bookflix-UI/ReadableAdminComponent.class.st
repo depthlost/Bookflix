@@ -15,16 +15,6 @@ ReadableAdminComponent class >> decorateTo: aReadableComponent [
 		readableComponent: aReadableComponent
 ]
 
-{ #category : #private }
-ReadableAdminComponent >> deletionSuccessMessage [
-	^ 'Se elimino "' , readable title , '"'
-		,
-			(readable className = 'Book'
-				ifTrue:
-					[ :book | book advance ifNotNil: [ :advance | ' y "' , advance title , '"' ] ]
-				ifFalse: [ '' ]) , ' con exito'
-]
-
 { #category : #callbacks }
 ReadableAdminComponent >> goToModifyReadable [
 	parentComponent
@@ -39,15 +29,13 @@ ReadableAdminComponent >> readableComponent: aReadableComponent [
 	readableComponent := aReadableComponent
 ]
 
-{ #category : #callbacks }
-ReadableAdminComponent >> removeReadable [
-	readable className = 'Book'
-		ifTrue: [ Bookflix instance removeBook: readable ]
-		ifFalse: [ readable className = 'Novelty'
-				ifTrue: [ Bookflix instance removeNovelty: readable ]
-				ifFalse: [ Bookflix instance removeAdvance: readable ] ].
-	parentComponent
-		addAlert: (AlertComponent with: self deletionSuccessMessage)
+{ #category : #private }
+ReadableAdminComponent >> removeModalClass [
+	^ readable className = 'Novelty'
+		ifTrue: [ RemoveNoveltyModalComponent ]
+		ifFalse: [ readable className = 'Advance'
+				ifTrue: [ RemoveTrailerModalComponent ]
+				ifFalse: [ RemoveBookModalComponent ] ]
 ]
 
 { #category : #rendering }
@@ -81,50 +69,10 @@ ReadableAdminComponent >> renderModifyButtonOn: html [
 
 { #category : #rendering }
 ReadableAdminComponent >> renderRemoveButtonOn: html [
-	html anchor
-		class: 'text-danger ml-3';
-		attributeAt: 'href' put: '';
-		attributeAt: 'data-toggle' put: 'modal';
-		attributeAt: 'data-target'
-			put: '#remove_readable_' , readable hash asString , '_modal';
-		with: 'Borrar'.
-	self
-		renderRemoveModalWithId: 'remove_readable_' , readable hash asString , '_modal'
-		on: html
-]
-
-{ #category : #rendering }
-ReadableAdminComponent >> renderRemoveModalWithId: anId on: html [
 	html
-		html:
-			'<div class="modal fade" id="' , anId
-				, '" tabindex="-1" role="dialog" aria-labelledby="' , anId
-				,
-					'_label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="' , anId , '_label">Borrar "'
-				, readable title
-				,
-					'"</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body text-left"><p>¿Seguro que deseas borrar "'
-				, readable title
-				,
-					'"?</p></div>
-        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>'.
-	html anchor
-		class: 'btn btn-danger';
-		callback: [ self removeReadable ];
-		with: 'Borrar'.
-	html
-		html:
-			'</div>
-      </div>
-    </div>
-  </div>'
+		render:
+			(ModalAnchorComponent
+				modal: (self removeModalClass with: readable)
+				class: 'text-danger ml-3'
+				with: 'Borrar')
 ]

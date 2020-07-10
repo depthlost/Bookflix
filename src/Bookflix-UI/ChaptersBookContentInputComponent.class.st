@@ -2,14 +2,27 @@ Class {
 	#name : #ChaptersBookContentInputComponent,
 	#superclass : #BookContentInputComponent,
 	#instVars : [
-		'contentInputs'
+		'contentInputs',
+		'chaptersQuantityInput'
 	],
 	#category : #'Bookflix-UI-add/modify'
 }
 
 { #category : #construction }
-ChaptersBookContentInputComponent class >> with: aStringCollection [
-	^ self new with: aStringCollection
+ChaptersBookContentInputComponent class >> with: aStringCollection andChaptersQuantity: aNumber [
+	^ self new with: aStringCollection andChaptersQuantity: aNumber
+]
+
+{ #category : #callbacks }
+ChaptersBookContentInputComponent >> addContentUrl [
+	contentInputs add: ''.
+	chaptersQuantityInput := chaptersQuantityInput
+		max: contentInputs size
+]
+
+{ #category : #accessing }
+ChaptersBookContentInputComponent >> chaptersQuantityInput [
+	^ chaptersQuantityInput
 ]
 
 { #category : #accessing }
@@ -20,7 +33,8 @@ ChaptersBookContentInputComponent >> content [
 { #category : #initialization }
 ChaptersBookContentInputComponent >> initialize [
 	super initialize.
-	contentInputs := OrderedCollection with: ''
+	contentInputs := OrderedCollection with: ''.
+	chaptersQuantityInput := 1
 ]
 
 { #category : #rendering }
@@ -28,8 +42,25 @@ ChaptersBookContentInputComponent >> renderAddContentUrlButtonOn: html [
 	html button
 		type: 'submit';
 		class: 'btn btn-success';
-		callback: [ contentInputs add: '' ];
+		callback: [ self addContentUrl ];
 		with: '+'
+]
+
+{ #category : #rendering }
+ChaptersBookContentInputComponent >> renderChaptersQuantityOn: html [
+	html div
+		class: 'form-group';
+		with: [ html label
+				for: 'chapters_quantity_input';
+				with: 'Cantidad de capítulos'.
+			html numberInput
+				id: 'chapters_quantity_input';
+				class: 'form-control';
+				placeholder: 'Cantidad de capítulos';
+				required;
+				value: chaptersQuantityInput;
+				callback:
+						[ :input | chaptersQuantityInput := input asNumber max: contentInputs size ] ]
 ]
 
 { #category : #rendering }
@@ -37,6 +68,12 @@ ChaptersBookContentInputComponent >> renderContentInputOn: html [
 	contentInputs allButLast
 		doWithIndex: [ :each :index | self renderExistingContentUrl: index on: html ].
 	self renderNewContentUrlOn: html
+]
+
+{ #category : #rendering }
+ChaptersBookContentInputComponent >> renderContentOn: html [
+	super renderContentOn: html.
+	self renderChaptersQuantityOn: html
 ]
 
 { #category : #rendering }
@@ -88,6 +125,7 @@ ChaptersBookContentInputComponent >> renderRemoveContentUrlButton: index on: htm
 ]
 
 { #category : #initialization }
-ChaptersBookContentInputComponent >> with: aStringCollection [
-	contentInputs := aStringCollection
+ChaptersBookContentInputComponent >> with: aStringCollection andChaptersQuantity: aNumber [
+	contentInputs := aStringCollection.
+	chaptersQuantityInput := aNumber
 ]

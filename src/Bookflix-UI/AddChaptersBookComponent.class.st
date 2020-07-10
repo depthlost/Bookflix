@@ -15,6 +15,7 @@ AddChaptersBookComponent >> buildBook [
 		editorial: editorialInput
 		expirationDate: expirationDateInput
 		content: contentInputComponent content)
+		totalChapters: contentInputComponent chaptersQuantityInput;
 		addGenders: gendersInput;
 		yourself
 ]

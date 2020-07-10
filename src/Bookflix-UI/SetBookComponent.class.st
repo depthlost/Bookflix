@@ -37,7 +37,7 @@ SetBookComponent >> onSubmit [
 
 { #category : #private }
 SetBookComponent >> updateBook [
-	^ book
+	book
 		title: titleInput;
 		description: descriptionInput;
 		expirationDate: expirationDateInput;
@@ -45,9 +45,11 @@ SetBookComponent >> updateBook [
 		imageURL: imageUrlInput;
 		author: authorInput;
 		editorial: editorialInput;
-		updateChapters: contentInputComponent content;
-		"updateGenders: gendersInput;"
-			yourself
+		updateChapters: contentInputComponent content.
+	"updateGenders: gendersInput;"
+	book isCompleteBook
+		ifFalse: [ book totalChapters: contentInputComponent chaptersQuantityInput ].
+	^ book
 ]
 
 { #category : #seaside }
@@ -73,8 +75,9 @@ SetBookComponent >> with: aBook [
 	authorInput := book author.
 	editorialInput := book editorial.
 	gendersInput := book genders.
-	contentInputComponent := (book isCompleteBook
-		ifTrue: [ CompleteBookContentInputComponent ]
-		ifFalse: [ ChaptersBookContentInputComponent ])
-		with: book content copy
+	contentInputComponent := book isCompleteBook
+		ifTrue: [ CompleteBookContentInputComponent with: book content copy ]
+		ifFalse: [ ChaptersBookContentInputComponent
+				with: book content copy
+				andChaptersQuantity: book totalChapters ]
 ]

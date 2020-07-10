@@ -43,7 +43,7 @@ ModalComponent >> renderBodyContentOn: html [
 { #category : #rendering }
 ModalComponent >> renderBodyOn: html [
 	html div
-		class: 'modal-body';
+		class: 'modal-body text-left';
 		with: [ self renderBodyContentOn: html ]
 ]
 

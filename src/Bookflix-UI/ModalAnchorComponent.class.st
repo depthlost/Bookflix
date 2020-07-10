@@ -1,15 +1,15 @@
 Class {
-	#name : #ModalButtonComponent,
+	#name : #ModalAnchorComponent,
 	#superclass : #ModalTriggerComponent,
 	#category : #'Bookflix-UI-resources'
 }
 
 { #category : #rendering }
-ModalButtonComponent >> renderContentOn: html [
-	html button
-		type: 'button';
+ModalAnchorComponent >> renderContentOn: html [
+	html anchor
 		class: class;
 		style: style;
+		url: '';
 		attributeAt: 'data-toggle' put: 'modal';
 		attributeAt: 'data-target' put: '#' , modal id;
 		with: content.

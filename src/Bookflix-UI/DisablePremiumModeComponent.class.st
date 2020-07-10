@@ -24,6 +24,9 @@ DisablePremiumModeComponent >> initialize [
 
 { #category : #callbacks }
 DisablePremiumModeComponent >> onSubmit [
+	self session user
+		isPremium: false;
+		save.
 	^ AlertComponent with: 'Has desactivado el modo premium'
 ]
 
@@ -53,6 +56,6 @@ DisablePremiumModeComponent >> updateRoot: anHtmlRoot [
 
 { #category : #validation }
 DisablePremiumModeComponent >> validateInputData [
-	errorByExcessProfiles := true.
-	^ false
+	errorByExcessProfiles := self session user canNotPremium not.
+	^ errorByExcessProfiles not
 ]
