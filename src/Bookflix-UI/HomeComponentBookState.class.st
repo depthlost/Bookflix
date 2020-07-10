@@ -14,7 +14,7 @@ HomeComponentBookState >> bookCategoryButtonClass [
 
 { #category : #seaside }
 HomeComponentBookState >> children [
-	^ Array with: searchComponent
+	^ super children , (Array with: searchComponent)
 ]
 
 { #category : #private }
@@ -30,13 +30,15 @@ HomeComponentBookState >> getReadablesComponents [
 
 { #category : #initialization }
 HomeComponentBookState >> initialize [
+	super initialize.
 	searchComponent := SearchComponent new
 ]
 
 { #category : #rendering }
 HomeComponentBookState >> renderElementsOn: html [
-	homeComponent renderAlertOn: html.
-	self renderCategoryButtonGroupOn: html.
+	self
+		renderAlertOn: html;
+		renderCategoryButtonGroupOn: html.
 	html render: searchComponent.
-	homeComponent renderReadablesOn: html
+	self renderReadablesOn: html
 ]

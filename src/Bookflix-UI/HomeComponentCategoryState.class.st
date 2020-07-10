@@ -47,9 +47,10 @@ HomeComponentCategoryState >> renderCategoryButtonGroupOn: html [
 
 { #category : #rendering }
 HomeComponentCategoryState >> renderElementsOn: html [
-	homeComponent renderAlertOn: html.
-	self renderCategoryButtonGroupOn: html.
-	homeComponent renderReadablesOn: html
+	self
+		renderAlertOn: html;
+		renderCategoryButtonGroupOn: html;
+		renderReadablesOn: html
 ]
 
 { #category : #rendering }

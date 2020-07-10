@@ -13,6 +13,11 @@ HomeComponent >> addAlert: anAlertComponent [
 	^ alertComponent := anAlertComponent
 ]
 
+{ #category : #accessing }
+HomeComponent >> alertComponent [
+	^ alertComponent
+]
+
 { #category : #seaside }
 HomeComponent >> call: aComponent [
 	self home.
@@ -33,31 +38,6 @@ HomeComponent >> clearAlert [
 	alertComponent := nil
 ]
 
-{ #category : #private }
-HomeComponent >> getBookComponents [
-	"metodo modificado para retornar todos los leibles"
-
-	"^ Bookflix instance getAllBooks
-		collect: [ :each | ProxyBookComponent with: each in: self ]"
-
-	"^ searchComponent content
-		ifNotNil:
-			[ :books | books collect: [ :each | BookComponentProxy with: each in: self ] ]
-		ifNil: [ (Book selectAll
-				collect: [ :each | BookComponentProxy with: each in: self ])
-				,
-					(Novelty selectAll
-						collect: [ :each | NoveltyComponentProxy with: each in: self ])
-				,
-					(Advance selectAll
-						collect: [ :each | TrailerComponentProxy with: each in: self ]) ]"
-]
-
-{ #category : #private }
-HomeComponent >> getReadablesComponents [
-	^ state getReadablesComponents
-]
-
 { #category : #seaside }
 HomeComponent >> home [
 	self
@@ -75,44 +55,11 @@ HomeComponent >> initialize [
 ]
 
 { #category : #rendering }
-HomeComponent >> renderAlertOn: html [
-	alertComponent ifNotNil: [ html render: alertComponent ]
-]
-
-{ #category : #rendering }
 HomeComponent >> renderContentOn: html [
 	html div
 		class: 'container';
 		style: 'margin-top:2em';
-		with: [ self renderElementsOn: html ]
-]
-
-{ #category : #rendering }
-HomeComponent >> renderElementsOn: html [
-	state renderElementsOn: html
-]
-
-{ #category : #rendering }
-HomeComponent >> renderNoContentMessageOn: html [
-	html paragraph
-		class: 'mt-2';
-		with: 'No se encontro contenido'
-]
-
-{ #category : #rendering }
-HomeComponent >> renderReadableList: aReadableCollection on: html [
-	html div
-		class: 'd-flex justify-content-center';
-		with: [ html div
-				class: 'card-columns custom-columns';
-				with: [ aReadableCollection do: [ :each | html render: each ] ] ]
-]
-
-{ #category : #rendering }
-HomeComponent >> renderReadablesOn: html [
-	self getReadablesComponents
-		ifNotEmpty: [ :readables | self renderReadableList: readables on: html ]
-		ifEmpty: [ self renderNoContentMessageOn: html ]
+		with: [ state renderElementsOn: html ]
 ]
 
 { #category : #private }
@@ -140,6 +87,5 @@ HomeComponent >> states [
 { #category : #seaside }
 HomeComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix'.
-	anHtmlRoot stylesheet url: '/css/book_card.css'
+	anHtmlRoot title: 'Bookflix'
 ]

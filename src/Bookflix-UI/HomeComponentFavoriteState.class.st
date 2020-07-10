@@ -12,8 +12,8 @@ HomeComponentFavoriteState >> getReadablesComponents [
 
 { #category : #rendering }
 HomeComponentFavoriteState >> renderElementsOn: html [
-	self renderTitleOn: html.
-	homeComponent
+	self
+		renderTitleOn: html;
 		renderAlertOn: html;
 		renderReadablesOn: html
 ]
