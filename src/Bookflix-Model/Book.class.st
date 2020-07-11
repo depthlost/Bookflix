@@ -247,6 +247,13 @@ Book >> removeGender: aGender [
 	genders remove: aGender
 ]
 
+{ #category : #removing }
+Book >> removeVote: aUser [
+	(votes includesKey: aUser)
+		ifTrue: [ ^ votes removeKey: aUser ].
+	^ nil
+]
+
 { #category : #accessing }
 Book >> totalChapters [
 	^ totalChapters
