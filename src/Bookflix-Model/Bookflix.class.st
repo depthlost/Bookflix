@@ -101,6 +101,12 @@ Bookflix >> getAllReadables [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> getBookSortForCantRead [
+	^ self getAllBooks
+		sort: [ :book1 :book2 | book1 cantReads >= book2 cantReads ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 	^ User selectAll
 		detect: [ :user | user email = anEmail & (user password = aPassword) ]

@@ -21,8 +21,10 @@ Profile >> addFavorite: aBook [
 
 { #category : #adding }
 Profile >> addReadbleForHistorial: aBook [
+	aBook addReader: self.
 	(historial anySatisfy: [ :element | element book = aBook ])
-		ifTrue: [ (historial detect: [ :element | element book = aBook ]) updateMoment ]
+		ifTrue:
+			[ (historial detect: [ :element | element book = aBook ]) updateMoment ]
 		ifFalse: [ historial add: (HistorialElemnt book: aBook) ]
 ]
 

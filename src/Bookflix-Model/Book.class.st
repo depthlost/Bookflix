@@ -11,7 +11,8 @@ Class {
 		'chapters',
 		'totalChapters',
 		'comments',
-		'votes'
+		'votes',
+		'reades'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -64,6 +65,11 @@ Book >> addGenders: aGenders [
 	aGenders do: [ :gender | self addGender: gender ]
 ]
 
+{ #category : #adding }
+Book >> addReader: aProfile [
+	reades add: aProfile
+]
+
 { #category : #accessing }
 Book >> advance [
 	^ advance
@@ -97,6 +103,11 @@ Book >> cantDislikes: aUser [
 { #category : #accessing }
 Book >> cantLike: aUser [
 	^ (votes select: [ :vote | vote ]) size
+]
+
+{ #category : #'as yet unclassified' }
+Book >> cantReads [
+	
 ]
 
 { #category : #accessing }
@@ -172,6 +183,7 @@ Book >> initialize [
 	comments := OrderedCollection new.
 	votes := Dictionary new.
 	totalChapters := 0.
+	reades := Set new.
 	author := nil.
 	editorial := nil.
 	advance := nil
