@@ -39,13 +39,6 @@ Profile >> finish: aBook [
 		ifFalse: [ ^ false ]
 ]
 
-{ #category : #accessing }
-Profile >> finish: aBook as: aBool [
-	(historial anySatisfy: [ :element | element book = aBook ])
-		ifTrue: [ (historial detect: [ :element | element book = aBook ])
-				finish: aBool ]
-]
-
 { #category : #adding }
 Profile >> historial [
 	^ historial
