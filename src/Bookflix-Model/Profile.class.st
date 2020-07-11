@@ -31,6 +31,21 @@ Profile >> favorites [
 	^ favorites
 ]
 
+{ #category : #accessing }
+Profile >> finish: aBook [
+	(historial anySatisfy: [ :element | element book = aBook ])
+		ifTrue:
+			[ ^ (historial detect: [ :element | element book = aBook ]) isFinish ]
+		ifFalse: [ ^ false ]
+]
+
+{ #category : #accessing }
+Profile >> finish: aBook as: aBool [
+	(historial anySatisfy: [ :element | element book = aBook ])
+		ifTrue: [ (historial detect: [ :element | element book = aBook ])
+				finish: aBool ]
+]
+
 { #category : #adding }
 Profile >> historial [
 	^ historial
@@ -44,13 +59,13 @@ Profile >> initialize [
 ]
 
 { #category : #accessing }
-Profile >> isFinished: aBook [
-	^ finished anySatisfy: [ :book | book = aBook ]
-]
-
-{ #category : #accessing }
 Profile >> isInFavorites: aBook [
 	^ favorites includes: aBook
+]
+
+{ #category : #testing }
+Profile >> isInProgres: aBook [
+	^ historial anySatisfy: [ :element | element book = aBook ]
 ]
 
 { #category : #accessing }
@@ -66,4 +81,11 @@ Profile >> name: aName [
 { #category : #accessing }
 Profile >> removeFavorite: aBook [
 	favorites remove: aBook
+]
+
+{ #category : #accessing }
+Profile >> toogleFinish: aBook [
+	(historial anySatisfy: [ :element | element book = aBook ])
+		ifTrue:
+			[ (historial detect: [ :element | element book = aBook ]) toogleFinish ]
 ]

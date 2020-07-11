@@ -31,6 +31,16 @@ HistorialElemnt >> initialize [
 	finish := false
 ]
 
+{ #category : #testing }
+HistorialElemnt >> isFinish [
+	^ finish
+]
+
+{ #category : #testing }
+HistorialElemnt >> toogleFinish [
+	finish := finish not
+]
+
 { #category : #'as yet unclassified' }
 HistorialElemnt >> updateMoment [
 	moment := DateAndTime now
