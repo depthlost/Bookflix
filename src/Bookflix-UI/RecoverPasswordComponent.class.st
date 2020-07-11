@@ -36,7 +36,9 @@ RecoverPasswordComponent >> initialize [
 
 { #category : #callbacks }
 RecoverPasswordComponent >> onSubmit [
-	
+	(Bookflix instance getUserWithEmail: emailInput address)
+		password: 'default';
+		save
 ]
 
 { #category : #rendering }
@@ -89,6 +91,7 @@ RecoverPasswordComponent >> updateRoot: anHtmlRoot [
 
 { #category : #validation }
 RecoverPasswordComponent >> validateInputData [
-	errorByUserNotFound := true.
-	^ false
+	errorByUserNotFound := (Bookflix instance
+		existUserWithEmail: emailInput address) not.
+	^ errorByUserNotFound not
 ]
