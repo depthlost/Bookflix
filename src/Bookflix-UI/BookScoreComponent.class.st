@@ -32,7 +32,7 @@ BookScoreComponent >> renderContentOn: html [
 BookScoreComponent >> renderReadingQuantityOn: html [
 	html small
 		class: 'text-muted';
-		with: 'Leido: 16 veces'
+		with: 'Leido: ' , book cantReads asString , ' veces'
 ]
 
 { #category : #rendering }
