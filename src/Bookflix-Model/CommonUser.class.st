@@ -19,16 +19,6 @@ CommonUser class >> name: aName surname: aSurname email: anEmail password: aPass
 		yourself
 ]
 
-{ #category : #testing }
-CommonUser >> canAddProfile [
-	
-]
-
-{ #category : #testing }
-CommonUser >> canNotPremium [
-	^ profiles size <= 3
-]
-
 { #category : #accesing }
 CommonUser >> card [
 	^ card

@@ -52,7 +52,7 @@ User >> canAddProfile [
 
 { #category : #testing }
 User >> canNotPremium [
-	^ self subclassResponsibility
+	^ profiles size <= 2
 ]
 
 { #category : #testing }
@@ -73,8 +73,8 @@ User >> email: anEmail [
 { #category : #'as yet unclassified' }
 User >> haveMaxProfiles [
 	self isPremium
-		ifTrue: [ ^ profiles size => 5 ].
-	^ profiles size => 3
+		ifTrue: [ ^ profiles size => 4 ].
+	^ profiles size => 2
 ]
 
 { #category : #initialization }
