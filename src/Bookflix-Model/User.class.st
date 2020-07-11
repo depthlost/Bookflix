@@ -8,7 +8,8 @@ Class {
 		'password',
 		'birthdate',
 		'profiles',
-		'isPremium'
+		'isPremium',
+		'registrationDate'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -85,7 +86,8 @@ User >> initialize [
 	password := ''.
 	birthdate := Date today.
 	profiles := Set new.
-	isPremium := false
+	isPremium := false.
+	registrationDate := Date today
 ]
 
 { #category : #abstract }
@@ -136,6 +138,11 @@ User >> password: aPassword [
 { #category : #'as yet unclassified' }
 User >> profiles [
 	^ profiles
+]
+
+{ #category : #accessing }
+User >> registrationDate [
+	^ registrationDate
 ]
 
 { #category : #accessing }

@@ -101,6 +101,11 @@ Bookflix >> getAllReadables [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> getAllUsers [
+	^ User selectAll
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getBookSortForCantRead [
 	^ self getAllBooks
 		sort: [ :book1 :book2 | book1 cantReads >= book2 cantReads ]
@@ -111,6 +116,13 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 	^ User selectAll
 		detect: [ :user | user email = anEmail & (user password = aPassword) ]
 		ifNone: [ nil ]
+]
+
+{ #category : #'as yet unclassified' }
+Bookflix >> recordsBetween: aDate1 and: aDate2 [
+	^ self getAllUsers
+		select:
+			[ :user | aDate1 < user registrationDate & (user registrationDate < aDate2) ]
 ]
 
 { #category : #removing }
