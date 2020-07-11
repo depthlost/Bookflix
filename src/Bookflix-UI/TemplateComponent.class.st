@@ -32,7 +32,7 @@ TemplateComponent >> content: aComponent [
 TemplateComponent >> initialize [
 	super initialize.
 	self session mainComponent: self.
-	contentComponent := LoginComponent new.
+	contentComponent := HomeComponent new.
 	navbarComponent := ProxyNavBarComponent new
 ]
 

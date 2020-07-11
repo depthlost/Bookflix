@@ -1,6 +1,6 @@
 Class {
 	#name : #HomeComponentFavoriteState,
-	#superclass : #HomeComponentState,
+	#superclass : #HomeComponentStartedSessionState,
 	#category : #'Bookflix-UI-others'
 }
 

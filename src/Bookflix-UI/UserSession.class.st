@@ -13,9 +13,8 @@ Class {
 UserSession >> login: anUser [
 	user := anUser.
 	profile := user profiles asOrderedCollection first.
-	mainComponent
-		content: HomeComponent new;
-		navbar: ProxyNavBarComponent new
+	mainComponent navbar: ProxyNavBarComponent new.
+	mainComponent content loadSessionState
 ]
 
 { #category : #callbacks }

@@ -49,7 +49,13 @@ HomeComponent >> home [
 { #category : #initialization }
 HomeComponent >> initialize [
 	super initialize.
-	self resetState.
+	state := HomeComponentClosedSessionState of: self
+]
+
+{ #category : #'changing state' }
+HomeComponent >> loadSessionState [
+	super home.
+	state := HomeComponentBookState of: self.
 	self session user isAdmin
 		ifFalse: [ self show: UserProfilesViewComponent new ]
 ]
@@ -64,7 +70,7 @@ HomeComponent >> renderContentOn: html [
 
 { #category : #private }
 HomeComponent >> resetState [
-	state := HomeComponentBookState of: self
+	state resetState
 ]
 
 { #category : #'changing state' }

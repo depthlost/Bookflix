@@ -31,12 +31,6 @@ HomeComponentState >> of: aHomeComponent [
 ]
 
 { #category : #rendering }
-HomeComponentState >> renderAlertOn: html [
-	homeComponent alertComponent
-		ifNotNil: [ html render: homeComponent alertComponent ]
-]
-
-{ #category : #rendering }
 HomeComponentState >> renderElementsOn: html [
 	self subclassResponsibility
 ]
@@ -44,4 +38,9 @@ HomeComponentState >> renderElementsOn: html [
 { #category : #rendering }
 HomeComponentState >> renderReadablesOn: html [
 	html render: readableListComponent
+]
+
+{ #category : #reset }
+HomeComponentState >> resetState [
+	self subclassResponsibility
 ]
