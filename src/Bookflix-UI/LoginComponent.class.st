@@ -45,13 +45,10 @@ LoginComponent >> login [
 { #category : #rendering }
 LoginComponent >> renderBottomSectionOn: html [
 	html div
-		class: 'row mt-3';
-		with: [ html div
-				class: 'col-6';
-				with: [  ].
-			html div
-				class: 'col-6';
-				with: [ self renderRegisterButtonOn: html ] ]
+		class: 'mt-3 d-flex justify-content-between';
+		with: [ self
+				renderRecoverPasswordButtonOn: html;
+				renderRegisterButtonOn: html ]
 ]
 
 { #category : #rendering }
@@ -131,6 +128,13 @@ LoginComponent >> renderLoginErrorMessageOn: html [
 		class: 'form-text text-danger';
 		with:
 			'El correo electronico y/o contraseña es incorrecto. Por favor intenta de nuevo.'
+]
+
+{ #category : #rendering }
+LoginComponent >> renderRecoverPasswordButtonOn: html [
+	html anchor
+		callback: [ self call: RecoverPasswordComponent new ];
+		with: '¿Olvidaste tu contraseña?'
 ]
 
 { #category : #rendering }

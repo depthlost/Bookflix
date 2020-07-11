@@ -12,11 +12,19 @@ HomeComponentClosedSessionState >> getReadablesComponents [
 
 { #category : #rendering }
 HomeComponentClosedSessionState >> renderElementsOn: html [
-	html anchor
-		class: 'btn btn-primary';
-		callback: [ homeComponent call: LoginComponent new ];
-		with: 'Iniciar Sesión'.
-	self renderReadablesOn: html
+	self
+		renderLoginButtonOn: html;
+		renderReadablesOn: html
+]
+
+{ #category : #rendering }
+HomeComponentClosedSessionState >> renderLoginButtonOn: html [
+	html div
+		class: 'd-flex justify-content-end';
+		with: [ html anchor
+				class: 'btn btn-primary';
+				callback: [ homeComponent call: LoginComponent new ];
+				with: 'Iniciar Sesión' ]
 ]
 
 { #category : #reset }

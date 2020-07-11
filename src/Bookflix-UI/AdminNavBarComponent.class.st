@@ -36,5 +36,10 @@ AdminNavBarComponent >> renderUserTopItemsOn: html [
 			on: html;
 		renderDropdownItem: 'Agregar Novedad'
 			withCallback: [ self session mainComponent content call: AddNoveltyComponent new ]
+			on: html;
+		renderDropdownDividerOn: html;
+		renderDropdownItem: 'Reporte de Libros'
+			withCallback:
+				[ self session mainComponent content call: MostReadBooksComponent new ]
 			on: html
 ]
