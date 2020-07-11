@@ -107,7 +107,7 @@ Book >> cantLike: aUser [
 
 { #category : #'as yet unclassified' }
 Book >> cantReads [
-	
+	^ reades size
 ]
 
 { #category : #accessing }
