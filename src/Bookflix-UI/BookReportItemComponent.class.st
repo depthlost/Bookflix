@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'callComponent'
 	],
-	#category : #'Bookflix-UI-readables'
+	#category : #'Bookflix-UI-admin'
 }
 
 { #category : #'instance creation' }

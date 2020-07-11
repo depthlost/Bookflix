@@ -41,5 +41,9 @@ AdminNavBarComponent >> renderUserTopItemsOn: html [
 		renderDropdownItem: 'Reporte de Libros'
 			withCallback:
 				[ self session mainComponent content call: MostReadBooksComponent new ]
+			on: html;
+		renderDropdownItem: 'Reporte de Usuarios'
+			withCallback: [ self session mainComponent content
+				call: RegisteredUsersBetweenDatesComponent new ]
 			on: html
 ]

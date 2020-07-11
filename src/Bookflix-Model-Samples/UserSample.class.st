@@ -5,6 +5,23 @@ Class {
 }
 
 { #category : #adding }
+UserSample class >> addIvan [
+	(CommonUser
+		name: 'Ivan'
+		surname: 'Gomez'
+		email: 'ivan@gmail.com'
+		password: 'ivan123'
+		birthdate: (Date year: 1992 month: 8 day: 20)
+		card:
+			(Card
+				titular: 'Ivan Gomez'
+				type: 'Credito'
+				number: '1234123412341234'
+				expirationDate: (Month year: 2020 month: 10)
+				securityCode: '660')) save
+]
+
+{ #category : #adding }
 UserSample class >> addJulian [
 	(AdminUser
 		name: 'Julian'
@@ -35,5 +52,6 @@ UserSample class >> addLisa [
 UserSample class >> addUsers [
 	self
 		addJulian;
-		addLisa
+		addLisa;
+		addIvan
 ]

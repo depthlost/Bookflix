@@ -25,5 +25,5 @@ MostReadBooksComponent >> renderContentOn: html [
 { #category : #seaside }
 MostReadBooksComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix - Historial de Lectura'
+	anHtmlRoot title: 'Bookflix - Reporte de Libros'
 ]
