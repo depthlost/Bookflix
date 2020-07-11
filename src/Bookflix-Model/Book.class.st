@@ -10,7 +10,8 @@ Class {
 		'advance',
 		'chapters',
 		'totalChapters',
-		'comments'
+		'comments',
+		'votes'
 	],
 	#category : #'Bookflix-Model'
 }
@@ -89,6 +90,16 @@ Book >> author: aAuthor [
 ]
 
 { #category : #accessing }
+Book >> cantDislikes: aUser [
+	^ (votes reject: [ :vote | vote ]) size
+]
+
+{ #category : #accessing }
+Book >> cantLike: aUser [
+	^ (votes select: [ :vote | vote ]) size
+]
+
+{ #category : #accessing }
 Book >> content [
 	^ chapters
 ]
@@ -105,6 +116,11 @@ Book >> detach [
 { #category : #'as yet unclassified' }
 Book >> detachGenders [
 	genders do: [ :gender | gender removeBook: self ]
+]
+
+{ #category : #accessing }
+Book >> dislike: aUser [
+	votes at: aUser put: false
 ]
 
 { #category : #accessing }
@@ -154,6 +170,7 @@ Book >> initialize [
 	genders := Set new.
 	chapters := OrderedCollection new.
 	comments := OrderedCollection new.
+	votes := Dictionary new.
 	totalChapters := 0.
 	author := nil.
 	editorial := nil.
@@ -182,6 +199,11 @@ Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial co
 	self author: aAuthor.
 	self editorial: aEditorial.
 	chapters := aCollection
+]
+
+{ #category : #accessing }
+Book >> like: aUser [
+	votes at: aUser put: true
 ]
 
 { #category : #accessing }
