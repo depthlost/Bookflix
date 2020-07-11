@@ -4,8 +4,6 @@ Class {
 	#instVars : [
 		'name',
 		'historial',
-		'reades',
-		'finished',
 		'favorites'
 	],
 	#category : #'Bookflix-Model'
@@ -22,8 +20,10 @@ Profile >> addFavorite: aBook [
 ]
 
 { #category : #adding }
-Profile >> addReadableForHistorial: aReadble [
-	historial add: aReadble
+Profile >> addReadbleForHistorial: aBook [
+	(historial anySatisfy: [ :element | element book = aBook ])
+		ifTrue: [ (historial detect: [ :element | element book = aBook ]) updateMoment ]
+		ifFalse: [ historial add: (HistorialElemnt book: aBook) ]
 ]
 
 { #category : #accessing }
@@ -39,10 +39,8 @@ Profile >> historial [
 { #category : #initialization }
 Profile >> initialize [
 	name := '---'.
-	reades := Set new.
-	finished := Set new.
 	favorites := Set new.
-	historial := Set new
+	historial := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -56,11 +54,6 @@ Profile >> isInFavorites: aBook [
 ]
 
 { #category : #accessing }
-Profile >> isRead: aBook [
-	^ reades anySatisfy: [ :book | book = aBook ]
-]
-
-{ #category : #accessing }
 Profile >> name [
 	^ name
 ]
@@ -71,26 +64,6 @@ Profile >> name: aName [
 ]
 
 { #category : #accessing }
-Profile >> notFinished: aBook [
-	finished remove: aBook
-]
-
-{ #category : #accessing }
-Profile >> notRead: aBook [
-	reades remove: aBook
-]
-
-{ #category : #accessing }
 Profile >> removeFavorite: aBook [
 	favorites remove: aBook
-]
-
-{ #category : #accessing }
-Profile >> yesFinished: aBook [
-	finished add: aBook
-]
-
-{ #category : #accessing }
-Profile >> yesRead: aBook [
-	reades add: aBook
 ]
