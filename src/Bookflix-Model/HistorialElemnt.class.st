@@ -37,7 +37,7 @@ HistorialElemnt >> isFinish [
 ]
 
 { #category : #testing }
-HistorialElemnt >> toogleFinish [
+HistorialElemnt >> toggleFinish [
 	finish := finish not
 ]
 

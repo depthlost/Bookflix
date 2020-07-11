@@ -79,8 +79,8 @@ Profile >> removeFavorite: aBook [
 ]
 
 { #category : #accessing }
-Profile >> toogleFinish: aBook [
+Profile >> toggleFinish: aBook [
 	(historial anySatisfy: [ :element | element book = aBook ])
 		ifTrue:
-			[ (historial detect: [ :element | element book = aBook ]) toogleFinish ]
+			[ (historial detect: [ :element | element book = aBook ]) toggleFinish ]
 ]

@@ -96,12 +96,12 @@ Book >> author: aAuthor [
 ]
 
 { #category : #accessing }
-Book >> cantDislikes: aUser [
+Book >> cantDislikes [
 	^ (votes reject: [ :vote | vote ]) size
 ]
 
 { #category : #accessing }
-Book >> cantLike: aUser [
+Book >> cantLikes [
 	^ (votes select: [ :vote | vote ]) size
 ]
 
