@@ -35,7 +35,6 @@ UserProfilesManagementComponent >> renderProfileManagementButtonOn: html [
 { #category : #rendering }
 UserProfilesManagementComponent >> renderProfilesOn: html [
 	super renderProfilesOn: html.
-	self renderAddProfileOn: html
-	"self session user canAddProfile
-		ifTrue: [ self renderAddProfileOn: html ]"
+	self session user canAddProfile
+		ifTrue: [ self renderAddProfileOn: html ]
 ]
