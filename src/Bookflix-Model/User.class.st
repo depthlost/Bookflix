@@ -73,8 +73,8 @@ User >> email: anEmail [
 { #category : #'as yet unclassified' }
 User >> haveMaxProfiles [
 	self isPremium
-		ifTrue: [ ^ profiles size => 4 ].
-	^ profiles size => 2
+		ifTrue: [ ^ profiles size >= 4 ].
+	^ profiles size >= 2
 ]
 
 { #category : #initialization }
@@ -84,7 +84,8 @@ User >> initialize [
 	email := ''.
 	password := ''.
 	birthdate := Date today.
-	profiles := Set new
+	profiles := Set new.
+	isPremium := false
 ]
 
 { #category : #abstract }
