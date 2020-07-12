@@ -44,7 +44,7 @@ HistorialElemnt >> moment [
 { #category : #testing }
 HistorialElemnt >> toggleFinish [
 	finish
-		ifTrue: [ self updateMoment ].
+		ifFalse: [ self updateMoment ].
 	finish := finish not
 ]
 
