@@ -181,7 +181,7 @@ Book >> initialize [
 	genders := Set new.
 	chapters := OrderedCollection new.
 	comments := OrderedCollection new.
-	votes := Dictionary new.
+	votes := OrderedDictionary new.
 	totalChapters := 0.
 	reades := Set new.
 	author := nil.
@@ -274,4 +274,11 @@ Book >> updateGenders: aGenders [
 	self detachGenders.
 	genders := Set new.
 	self addGenders: aGenders
+]
+
+{ #category : #'as yet unclassified' }
+Book >> voteOf: aProfile [
+	(votes includesKey: aProfile)
+		ifTrue: [ ^ votes at: aProfile ].
+	^ nil
 ]
