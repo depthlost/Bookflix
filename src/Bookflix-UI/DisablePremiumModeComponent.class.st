@@ -19,6 +19,7 @@ DisablePremiumModeComponent >> formTitle [
 
 { #category : #initialization }
 DisablePremiumModeComponent >> initialize [
+	super initialize.
 	errorByExcessProfiles := false
 ]
 

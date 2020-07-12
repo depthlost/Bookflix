@@ -22,6 +22,13 @@ BookHistoryItemComponent >> onClick [
 	callComponent call: (BookDetailComponent with: element book)
 ]
 
+{ #category : #private }
+BookHistoryItemComponent >> readStatusMessage [
+	^ (self session profile finish: element book)
+		ifFalse: [ 'Sin terminar' ]
+		ifTrue: [ 'Terminado' ]
+]
+
 { #category : #rendering }
 BookHistoryItemComponent >> renderAuthorOn: html [
 	html small
@@ -38,7 +45,14 @@ BookHistoryItemComponent >> renderContentOn: html [
 				with: [ self renderImageOn: html ].
 			html div
 				class: 'col py-2';
-				with: [ self renderInformationOn: html ] ]
+				with: [ self renderInformationOn: html ].
+			html div
+				class: 'col-auto';
+				with: [ html small
+						class: 'text-muted';
+						with:
+							element moment asDate ddmmyyyy , ' '
+								, element moment asTime printMinutes ] ]
 ]
 
 { #category : #rendering }
@@ -59,14 +73,14 @@ BookHistoryItemComponent >> renderInformationOn: html [
 						renderAuthorOn: html ].
 			html div
 				class: 'w-100';
-				with: [ self renderStateOn: html ] ]
+				with: [ self renderReadStatusOn: html ] ]
 ]
 
 { #category : #rendering }
-BookHistoryItemComponent >> renderStateOn: html [
+BookHistoryItemComponent >> renderReadStatusOn: html [
 	html small
 		class: 'text-muted';
-		with: 'sin terminar'
+		with: self readStatusMessage
 ]
 
 { #category : #rendering }

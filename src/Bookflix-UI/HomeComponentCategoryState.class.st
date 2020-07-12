@@ -15,6 +15,11 @@ HomeComponentCategoryState >> bookCategoryButtonClass [
 ]
 
 { #category : #private }
+HomeComponentCategoryState >> categoryButtonGroupClass [
+	^ 'mb-4 d-flex justify-content-end'
+]
+
+{ #category : #private }
 HomeComponentCategoryState >> defaultClassOfCategoryButton [
 	^ 'btn btn-outline-dark'
 ]
@@ -35,7 +40,7 @@ HomeComponentCategoryState >> renderBooksCategoryButtonOn: html [
 { #category : #rendering }
 HomeComponentCategoryState >> renderCategoryButtonGroupOn: html [
 	html div
-		class: 'mb-2 d-flex justify-content-end';
+		class: self categoryButtonGroupClass;
 		with: [ html div
 				class: 'btn-group';
 				attributeAt: 'role' put: 'group';

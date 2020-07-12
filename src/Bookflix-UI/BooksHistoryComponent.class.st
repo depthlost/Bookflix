@@ -19,7 +19,16 @@ BooksHistoryComponent >> renderBooksHistoryOn: html [
 BooksHistoryComponent >> renderContentOn: html [
 	html div
 		class: 'container my-4';
-		with: [ self renderBooksHistoryOn: html ]
+		with: [ self session profile historial
+				ifEmpty: [ self renderEmptyHistoryMessageOn: html ]
+				ifNotEmpty: [ self renderBooksHistoryOn: html ] ]
+]
+
+{ #category : #rendering }
+BooksHistoryComponent >> renderEmptyHistoryMessageOn: html [
+	html paragraph
+		class: 'mt-4';
+		with: 'No se encontraron libros en el historial.'
 ]
 
 { #category : #seaside }

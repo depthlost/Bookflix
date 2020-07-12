@@ -27,17 +27,15 @@ SearchComponent >> criteriaInput: anObject [
 { #category : #rendering }
 SearchComponent >> renderContentOn: html [
 	html form
-		class: 'form-inline mb-4';
-		with: [ self
-				renderCriteriaOn: html;
-				renderSearchContentOn: html ]
+		class: 'w-100';
+		style: 'max-width: 30rem';
+		with: [ self renderFormContentOn: html ]
 ]
 
 { #category : #rendering }
 SearchComponent >> renderCriteriaOn: html [
 	html select
-		class: 'form-control mr-2';
-		style: 'width: 120px';
+		class: 'form-control';
 		list:
 			{SearchforBookName instance.
 			SearchforAuthorName instance.
@@ -48,9 +46,19 @@ SearchComponent >> renderCriteriaOn: html [
 ]
 
 { #category : #rendering }
+SearchComponent >> renderFormContentOn: html [
+	html div
+		class: 'input-group';
+		with: [ html div
+				class: 'input-group-prepend';
+				with: [ self renderCriteriaOn: html ].
+			self renderSearchContentOn: html ]
+]
+
+{ #category : #rendering }
 SearchComponent >> renderSearchContentOn: html [
 	html searchInput
-		class: 'form-control w-50 mr-2';
+		class: 'form-control';
 		placeholder: 'Buscar';
 		value: contentInput;
 		callback: [ :input | 

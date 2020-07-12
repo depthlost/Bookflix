@@ -37,5 +37,5 @@ SimpleViewTrailerComponent >> renderReadButtonOn: html [
 	html anchor
 		class: 'btn btn-success';
 		url: readable content;
-		with: 'Leer'
+		with: 'Ver'
 ]
