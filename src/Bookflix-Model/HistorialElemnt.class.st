@@ -36,6 +36,11 @@ HistorialElemnt >> isFinish [
 	^ finish
 ]
 
+{ #category : #accessing }
+HistorialElemnt >> moment [
+	^ moment
+]
+
 { #category : #testing }
 HistorialElemnt >> toggleFinish [
 	finish := finish not
