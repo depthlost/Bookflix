@@ -13,3 +13,8 @@ AdminUser >> canAddProfile [
 AdminUser >> isAdmin [
 	^ true
 ]
+
+{ #category : #accessing }
+AdminUser >> registrationDate [
+	^ '1/1/1110' asDate
+]
