@@ -2,8 +2,7 @@ Class {
 	#name : #HomeComponentState,
 	#superclass : #Object,
 	#instVars : [
-		'homeComponent',
-		'readableListComponent'
+		'homeComponent'
 	],
 	#category : #'Bookflix-UI-others'
 }
@@ -15,7 +14,7 @@ HomeComponentState class >> of: aHomeComponent [
 
 { #category : #seaside }
 HomeComponentState >> children [
-	^ Array with: readableListComponent
+	^ Array empty
 ]
 
 { #category : #get }
@@ -25,9 +24,7 @@ HomeComponentState >> getReadablesComponents [
 
 { #category : #initialization }
 HomeComponentState >> of: aHomeComponent [
-	homeComponent := aHomeComponent.
-	readableListComponent := ReadableListComponent
-		with: self getReadablesComponents
+	homeComponent := aHomeComponent
 ]
 
 { #category : #rendering }
@@ -37,7 +34,8 @@ HomeComponentState >> renderElementsOn: html [
 
 { #category : #rendering }
 HomeComponentState >> renderReadablesOn: html [
-	html render: readableListComponent
+	html
+		render: (ReadableListComponent with: self getReadablesComponents)
 ]
 
 { #category : #reset }

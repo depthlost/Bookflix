@@ -93,5 +93,6 @@ HomeComponent >> states [
 { #category : #seaside }
 HomeComponent >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
-	anHtmlRoot title: 'Bookflix'
+	anHtmlRoot title: 'Bookflix'.
+	anHtmlRoot stylesheet url: '/css/book_card.css'
 ]

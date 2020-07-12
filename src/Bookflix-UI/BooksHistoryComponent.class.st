@@ -8,10 +8,11 @@ Class {
 BooksHistoryComponent >> renderBooksHistoryOn: html [
 	html
 		render:
-			(ListComponent
+			(ActionListComponent
 				withTitle: 'Historial de Lectura'
-				collection: self session profile historial
-				do: [ :each :htmlCanvas | htmlCanvas text: each title ])
+				components:
+					(self session profile historial
+						collect: [ :each | BookHistoryItemComponent with: each callComponent: self ]))
 ]
 
 { #category : #rendering }

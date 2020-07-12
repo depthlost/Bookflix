@@ -49,9 +49,27 @@ UserSample class >> addLisa [
 ]
 
 { #category : #adding }
+UserSample class >> addMaria [
+	(CommonUser
+		name: 'Maria'
+		surname: 'Alvarez'
+		email: 'maria@gmail.com'
+		password: 'maria123'
+		birthdate: (Date year: 2000 month: 4 day: 22)
+		card:
+			(Card
+				titular: 'Maria Alvarez'
+				type: 'Credito'
+				number: '1234123412341234'
+				expirationDate: (Month year: 2022 month: 4)
+				securityCode: '440')) save
+]
+
+{ #category : #adding }
 UserSample class >> addUsers [
 	self
 		addJulian;
 		addLisa;
-		addIvan
+		addIvan;
+		addMaria
 ]

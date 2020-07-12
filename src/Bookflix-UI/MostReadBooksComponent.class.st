@@ -11,7 +11,7 @@ MostReadBooksComponent >> renderBookListOn: html [
 			(ActionListComponent
 				withTitle: 'Libros mas leidos'
 				components:
-					(Bookflix instance getAllBooks
+					(Bookflix instance getBookSortForCantRead
 						collect: [ :each | BookReportItemComponent with: each callComponent: self ]))
 ]
 

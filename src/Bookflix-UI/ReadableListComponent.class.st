@@ -37,8 +37,8 @@ ReadableListComponent >> renderReadablesOn: html [
 
 { #category : #seaside }
 ReadableListComponent >> updateRoot: anHtmlRoot [
-	super updateRoot: anHtmlRoot.
-	anHtmlRoot stylesheet url: '/css/book_card.css'
+	super updateRoot: anHtmlRoot
+	"anHtmlRoot stylesheet url: '/css/book_card.css'"
 ]
 
 { #category : #initialization }

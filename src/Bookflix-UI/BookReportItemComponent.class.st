@@ -26,7 +26,7 @@ BookReportItemComponent >> onClick [
 BookReportItemComponent >> renderAmountOfReadingsOn: html [
 	html small
 		class: 'text-muted';
-		with: '2000 lecturas'
+		with: element cantReads asString , ' lecturas'
 ]
 
 { #category : #rendering }

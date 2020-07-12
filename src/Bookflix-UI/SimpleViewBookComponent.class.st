@@ -27,7 +27,7 @@ SimpleViewBookComponent >> likeBook [
 
 { #category : #callbacks }
 SimpleViewBookComponent >> readBook [
-	self session profile addReadableForHistorial: readable.
+	self session profile addReadbleForHistorial: readable.
 	self session user save
 ]
 
