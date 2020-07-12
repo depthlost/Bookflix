@@ -12,6 +12,11 @@ HomeComponentBookState >> bookCategoryButtonClass [
 	^ self activeCategoryButtonClass
 ]
 
+{ #category : #private }
+HomeComponentBookState >> categoryButtonGroupClass [
+	^ 'mb-2 mb-md-4 col-12 col-md-6 d-flex justify-content-end order-0 order-md-1'
+]
+
 { #category : #seaside }
 HomeComponentBookState >> children [
 	^ super children , (Array with: searchComponent)
@@ -36,9 +41,19 @@ HomeComponentBookState >> initialize [
 
 { #category : #rendering }
 HomeComponentBookState >> renderElementsOn: html [
-	self
-		renderAlertOn: html;
-		renderCategoryButtonGroupOn: html.
-	html render: searchComponent.
+	self renderAlertOn: html.
+	html div
+		class: 'row';
+		with: [ self
+				renderSeekerOn: html;
+				renderCategoryButtonGroupOn: html ].
 	self renderReadablesOn: html
+]
+
+{ #category : #rendering }
+HomeComponentBookState >> renderSeekerOn: html [
+	html div
+		class:
+			'mb-4 col-12 col-md-6 d-flex justify-content-center order-1 order-md-0';
+		with: [ html render: searchComponent ]
 ]
