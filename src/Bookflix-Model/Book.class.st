@@ -97,12 +97,12 @@ Book >> author: aAuthor [
 
 { #category : #accessing }
 Book >> cantDislikes [
-	^ (votes reject: [ :vote | vote ]) size
+	^ (votes reject: [ :vote | vote value ]) size
 ]
 
 { #category : #accessing }
 Book >> cantLikes [
-	^ (votes select: [ :vote | vote ]) size
+	^ (votes select: [ :vote | vote value ]) size
 ]
 
 { #category : #'as yet unclassified' }
