@@ -287,7 +287,7 @@ Book >> updateGenders: aGenders [
 ]
 
 { #category : #'as yet unclassified' }
-Book >> voteIsDislikeikeOfProfile: aProfile [
+Book >> voteIsDislikeOfProfile: aProfile [
 	(votes
 		anySatisfy: [ :vote | vote profile = aProfile & vote value not ])
 		ifTrue: [ ^ true ].
