@@ -39,7 +39,9 @@ BookScoreComponent >> renderReadingQuantityOn: html [
 BookScoreComponent >> renderScoreOn: html [
 	html small
 		class: 'text-muted';
-		with: 'Calificación: 0,6'
+		with:
+			'Calificación: ' , book cantLikes asString , ' / '
+				, book cantDislikes asString , ''
 ]
 
 { #category : #initialization }
