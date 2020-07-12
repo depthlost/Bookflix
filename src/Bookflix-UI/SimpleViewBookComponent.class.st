@@ -20,6 +20,12 @@ SimpleViewBookComponent >> favoriteButtonClass [
 ]
 
 { #category : #callbacks }
+SimpleViewBookComponent >> finishBook [
+	self session profile toggleFinish: readable.
+	self session user save
+]
+
+{ #category : #callbacks }
 SimpleViewBookComponent >> likeBook [
 	readable like: self session profile.
 	Bookflix instance updateReadable: readable
@@ -70,12 +76,12 @@ SimpleViewBookComponent >> renderContentOn: html [
 
 { #category : #rendering }
 SimpleViewBookComponent >> renderDislikeButtonOn: html [
-	true
-		ifTrue: [ html anchor
+	(readable voteIsDislikeOfProfile: self session profile)
+		ifFalse: [ html anchor
 				class: 'btn btn-sm btn-outline-danger';
 				callback: [ self dislikeBook ];
 				with: [ html span class: 'oi oi-thumb-down' ] ]
-		ifFalse: [ html anchor
+		ifTrue: [ html anchor
 				class: 'btn btn-sm btn-outline-danger active';
 				callback: [ self removeBookVote ];
 				with: [ html span class: 'oi oi-thumb-down' ] ]
@@ -85,7 +91,7 @@ SimpleViewBookComponent >> renderDislikeButtonOn: html [
 SimpleViewBookComponent >> renderEndButtonOn: html [
 	html anchor
 		class: 'btn btn-sm btn-outline-dark';
-		callback: [  ];
+		callback: [ self finishBook ];
 		with: 'Terminar'
 ]
 
@@ -109,12 +115,12 @@ SimpleViewBookComponent >> renderHeadOn: html [
 
 { #category : #rendering }
 SimpleViewBookComponent >> renderLikeButtonOn: html [
-	true
-		ifTrue: [ html anchor
+	(readable voteIsLikeOfProfile: self session profile)
+		ifFalse: [ html anchor
 				class: 'btn btn-sm btn-outline-primary';
 				callback: [ self likeBook ];
 				with: [ html span class: 'oi oi-thumb-up' ] ]
-		ifFalse: [ html anchor
+		ifTrue: [ html anchor
 				class: 'btn btn-sm btn-outline-primary active';
 				callback: [ self removeBookVote ];
 				with: [ html span class: 'oi oi-thumb-up' ] ]
@@ -135,10 +141,10 @@ SimpleViewBookComponent >> renderScoreButtonsOn: html [
 
 { #category : #rendering }
 SimpleViewBookComponent >> renderScoreStateOn: html [
-	true
-		ifTrue: [ self renderScoreButtonsOn: html ]
-		ifFalse: [ false
-				ifTrue: [ self renderEndButtonOn: html ] ]
+	(self session profile isInProgres: readable)
+		ifTrue: [ (self session profile finish: readable)
+				ifFalse: [ self renderEndButtonOn: html ]
+				ifTrue: [ self renderScoreButtonsOn: html ] ]
 ]
 
 { #category : #rendering }

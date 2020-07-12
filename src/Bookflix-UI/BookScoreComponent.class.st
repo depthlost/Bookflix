@@ -40,7 +40,7 @@ BookScoreComponent >> renderScoreOn: html [
 	html small
 		class: 'text-muted';
 		with:
-			'Calificación: ' , book cantLikes asString , ' / '
+			'Calificación: +' , book cantLikes asString , ' -'
 				, book cantDislikes asString , ''
 ]
 
