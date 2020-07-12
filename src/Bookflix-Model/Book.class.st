@@ -287,8 +287,16 @@ Book >> updateGenders: aGenders [
 ]
 
 { #category : #'as yet unclassified' }
-Book >> voteOf: aProfile [
-	(votes anySatisfy: [ :vote | vote profile = aProfile ])
-		ifTrue: [ ^ votes detect: [ :vote | vote profile = aProfile ] ].
-	^ nil
+Book >> voteIsDislikeikeOfProfile: aProfile [
+	(votes
+		anySatisfy: [ :vote | vote profile = aProfile & vote value not ])
+		ifTrue: [ ^ true ].
+	^ false
+]
+
+{ #category : #'as yet unclassified' }
+Book >> voteIsLikeOfProfile: aProfile [
+	(votes anySatisfy: [ :vote | vote profile = aProfile & vote value ])
+		ifTrue: [ ^ true ].
+	^ false
 ]
