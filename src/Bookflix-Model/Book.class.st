@@ -130,8 +130,13 @@ Book >> detachGenders [
 ]
 
 { #category : #accessing }
-Book >> dislike: aUser [
-	votes at: aUser put: false
+Book >> dislike: aProfile [
+	| v |
+	(votes anySatisfy: [ :vote | vote profile = aProfile ])
+		ifTrue: [ v := votes detect: [ :vote | vote profile = aProfile ].
+			v value
+				ifTrue: [ v toggleValue ] ]
+		ifFalse: [ votes add: (Vote profile: aProfile value: false) ]
 ]
 
 { #category : #accessing }
@@ -214,8 +219,13 @@ Book >> isbn: aISBN imageURL: aImageURL author: aAuthor editorial: aEditorial co
 ]
 
 { #category : #accessing }
-Book >> like: aUser [
-	votes at: aUser put: true
+Book >> like: aProfile [
+	| v |
+	(votes anySatisfy: [ :vote | vote profile = aProfile ])
+		ifTrue: [ v := votes detect: [ :vote | vote profile = aProfile ].
+			v value
+				ifFalse: [ v toggleValue ] ]
+		ifFalse: [ votes add: (Vote profile: aProfile value: true) ]
 ]
 
 { #category : #accessing }
@@ -278,7 +288,7 @@ Book >> updateGenders: aGenders [
 
 { #category : #'as yet unclassified' }
 Book >> voteOf: aProfile [
-	(votes includesKey: aProfile)
-		ifTrue: [ ^ votes at: aProfile ].
+	(votes anySatisfy: [ :vote | vote profile = aProfile ])
+		ifTrue: [ ^ votes detect: [ :vote | vote profile = aProfile ] ].
 	^ nil
 ]

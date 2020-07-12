@@ -25,6 +25,11 @@ Vote >> profile: aProfile value: aBool [
 ]
 
 { #category : #'as yet unclassified' }
+Vote >> toggleValue [
+	value := value not
+]
+
+{ #category : #'as yet unclassified' }
 Vote >> value [
 	^ value
 ]
