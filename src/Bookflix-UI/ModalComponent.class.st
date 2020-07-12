@@ -31,6 +31,7 @@ ModalComponent >> id: anId labelId: aLabelId [
 
 { #category : #initialization }
 ModalComponent >> initialize [
+	super initialize.
 	id := 'modal_' , self hash asString.
 	labelId := 'modal_label_' , self hash asString
 ]

@@ -34,6 +34,7 @@ CardDataInputComponent >> errorByExpiredCard: anObject [
 
 { #category : #initialization }
 CardDataInputComponent >> initialize [
+	super initialize.
 	errorByExpiredCard := false
 ]
 
