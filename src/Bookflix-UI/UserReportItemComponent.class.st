@@ -28,7 +28,7 @@ UserReportItemComponent >> renderContentOn: html [
 				class: 'col-auto';
 				with: [ html small
 						class: 'text-muted';
-						with: '20-04-2020' ] ]
+						with: user registrationDate asDate ddmmyyyy ] ]
 ]
 
 { #category : #initialization }

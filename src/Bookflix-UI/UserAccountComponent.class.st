@@ -79,7 +79,7 @@ UserAccountComponent >> update [
 	self
 		answer:
 			(AlertComponent
-				with: 'Se actualizo la informacion de perfil con exito')
+				with: 'Se actualizo la informacion de cuenta con exito')
 ]
 
 { #category : #seaside }

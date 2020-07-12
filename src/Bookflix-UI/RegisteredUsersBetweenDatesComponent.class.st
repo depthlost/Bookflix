@@ -32,7 +32,7 @@ RegisteredUsersBetweenDatesComponent >> dateToInput: anObject [
 { #category : #initialization }
 RegisteredUsersBetweenDatesComponent >> initialize [
 	super initialize.
-	users := CommonUser selectAll
+	users := Bookflix instance getAllUsers
 ]
 
 { #category : #rendering }
@@ -113,9 +113,9 @@ RegisteredUsersBetweenDatesComponent >> renderUsersNotFoundMessageOn: html [
 
 { #category : #callbacks }
 RegisteredUsersBetweenDatesComponent >> searchUsers [
-	"enlazar con el modelo"
-
-	users := OrderedCollection empty
+	users := Bookflix instance
+		recordsBetween: (Date fromString: dateFromInput)
+		and: (Date fromString: dateToInput)
 ]
 
 { #category : #seaside }
