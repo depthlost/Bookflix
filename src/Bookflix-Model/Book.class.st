@@ -92,7 +92,7 @@ Book >> author: aAuthor [
 		ifTrue: [ ^ self ].
 	author ifNotNil: [ :arg | author removeBook: self ].
 	author := aAuthor.
-	author addBook: self
+	aAuthor addBook: self
 ]
 
 { #category : #accessing }
@@ -150,7 +150,7 @@ Book >> editorial: aEditorial [
 		ifTrue: [ ^ self ].
 	editorial ifNotNil: [ :arg | editorial removeBook: self ].
 	editorial := aEditorial.
-	editorial addBook: self
+	aEditorial addBook: self
 ]
 
 { #category : #accessing }
