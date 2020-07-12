@@ -35,8 +35,9 @@ RegisterComponent >> children [
 	^ Array with: userComponent with: cardComponent
 ]
 
-{ #category : #rendering }
+{ #category : #initialization }
 RegisterComponent >> initialize [
+	super initialize.
 	userComponent := UserDataInputComponent new.
 	cardComponent := CardDataInputComponent new
 ]

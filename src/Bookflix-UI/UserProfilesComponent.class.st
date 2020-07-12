@@ -12,7 +12,7 @@ UserProfilesComponent >> getUserProfileComponents [
 { #category : #rendering }
 UserProfilesComponent >> renderContentOn: html [
 	html div
-		class: 'container';
+		class: 'container pb-4';
 		style: 'margin-top:2em';
 		with: [ self
 				renderProfilesSectionOn: html;
