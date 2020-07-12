@@ -181,7 +181,7 @@ Book >> initialize [
 	genders := Set new.
 	chapters := OrderedCollection new.
 	comments := OrderedCollection new.
-	votes := OrderedDictionary new.
+	votes := Set new.
 	totalChapters := 0.
 	reades := Set new.
 	author := nil.

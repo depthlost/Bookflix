@@ -123,11 +123,10 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 		ifNone: [ nil ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Bookflix >> recordsBetween: aDate1 and: aDate2 [
 	^ self getAllUsers
-		select:
-			[ :user | aDate1 < user registrationDate & (user registrationDate < aDate2) ]
+		select: [ :user | user registrationDate between: aDate1 and: aDate2 ]
 ]
 
 { #category : #removing }
