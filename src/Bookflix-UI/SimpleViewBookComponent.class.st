@@ -4,6 +4,12 @@ Class {
 	#category : #'Bookflix-UI-readables'
 }
 
+{ #category : #callbacks }
+SimpleViewBookComponent >> dislikeBook [
+	readable dislike: self session profile.
+	Bookflix instance updateReadable: readable
+]
+
 { #category : #private }
 SimpleViewBookComponent >> favoriteButtonClass [
 	| class |
@@ -14,9 +20,21 @@ SimpleViewBookComponent >> favoriteButtonClass [
 ]
 
 { #category : #callbacks }
+SimpleViewBookComponent >> likeBook [
+	readable like: self session profile.
+	Bookflix instance updateReadable: readable
+]
+
+{ #category : #callbacks }
 SimpleViewBookComponent >> readBook [
 	self session profile addReadableForHistorial: readable.
 	self session user save
+]
+
+{ #category : #callbacks }
+SimpleViewBookComponent >> removeBookVote [
+	readable removeVote: self session profile.
+	Bookflix instance updateReadable: readable
 ]
 
 { #category : #rendering }
@@ -52,10 +70,15 @@ SimpleViewBookComponent >> renderContentOn: html [
 
 { #category : #rendering }
 SimpleViewBookComponent >> renderDislikeButtonOn: html [
-	html anchor
-		class: 'btn btn-sm btn-outline-danger';
-		callback: [  ];
-		with: [ html span class: 'oi oi-thumb-down' ]
+	true
+		ifTrue: [ html anchor
+				class: 'btn btn-sm btn-outline-danger';
+				callback: [ self dislikeBook ];
+				with: [ html span class: 'oi oi-thumb-down' ] ]
+		ifFalse: [ html anchor
+				class: 'btn btn-sm btn-outline-danger active';
+				callback: [ self removeBookVote ];
+				with: [ html span class: 'oi oi-thumb-down' ] ]
 ]
 
 { #category : #rendering }
@@ -86,10 +109,15 @@ SimpleViewBookComponent >> renderHeadOn: html [
 
 { #category : #rendering }
 SimpleViewBookComponent >> renderLikeButtonOn: html [
-	html anchor
-		class: 'btn btn-sm btn-outline-primary';
-		callback: [  ];
-		with: [ html span class: 'oi oi-thumb-up' ]
+	true
+		ifTrue: [ html anchor
+				class: 'btn btn-sm btn-outline-primary';
+				callback: [ self likeBook ];
+				with: [ html span class: 'oi oi-thumb-up' ] ]
+		ifFalse: [ html anchor
+				class: 'btn btn-sm btn-outline-primary active';
+				callback: [ self removeBookVote ];
+				with: [ html span class: 'oi oi-thumb-up' ] ]
 ]
 
 { #category : #rendering }
