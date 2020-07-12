@@ -258,9 +258,9 @@ Book >> removeGender: aGender [
 ]
 
 { #category : #removing }
-Book >> removeVote: aUser [
-	(votes includesKey: aUser)
-		ifTrue: [ ^ votes removeKey: aUser ].
+Book >> removeVote: aProfile [
+	(votes anySatisfy: [ :vote | vote profile = aProfile ])
+		ifTrue: [ ^ votes remove: (votes detect: [ :vote | vote profile = aProfile ]) ].
 	^ nil
 ]
 
