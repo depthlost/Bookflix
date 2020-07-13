@@ -119,6 +119,7 @@ Book >> content [
 Book >> detach [
 	author removeBook: self.
 	editorial removeBook: self.
+	self detachGenders.
 	advance ifNotNil: [ :arg | advance delete ].
 	advance := nil.
 	self save

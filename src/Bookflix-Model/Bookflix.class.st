@@ -160,7 +160,8 @@ Bookflix >> removeAdvance: aAdvance [
 { #category : #removing }
 Bookflix >> removeBook: aBook [
 	aBook detach.
-	aBook remove
+	(self getAllBooks includes: aBook)
+		ifTrue: [ aBook remove ]
 ]
 
 { #category : #removing }
