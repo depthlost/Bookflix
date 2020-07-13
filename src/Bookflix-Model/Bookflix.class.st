@@ -112,6 +112,13 @@ Bookflix >> getBookSortForCantRead [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> getBooksFor: aUser [
+	aUser isAdmin
+		ifTrue: [ ^ Book selectAll ].
+	^ Book selectAll reject: [ :book | book isExpired ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getUserWithEmail: aEmail [
 	^ self getAllUsers detect: [ :user | user email = aEmail ]
 ]
