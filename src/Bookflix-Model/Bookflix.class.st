@@ -71,6 +71,13 @@ Bookflix >> finderBooksThatSatisfy: aName with: aStrategy [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> getAdvancesFor: aUser [
+	aUser isAdmin
+		ifTrue: [ ^ Advance selectAll ].
+	^ Advance selectAll reject: [ :book | book isExpired ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getAllAuthors [
 	^ BookAuthor selectAll
 ]
@@ -121,8 +128,8 @@ Bookflix >> getBooksFor: aUser [
 { #category : #'as yet unclassified' }
 Bookflix >> getNoveltysFor: aUser [
 	aUser isAdmin
-		ifTrue: [ ^ Advance selectAll ].
-	^ Advance selectAll reject: [ :book | book isExpired ]
+		ifTrue: [ ^ Novelty selectAll ].
+	^ Novelty selectAll reject: [ :book | book isExpired ]
 ]
 
 { #category : #'as yet unclassified' }
