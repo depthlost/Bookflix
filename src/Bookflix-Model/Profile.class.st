@@ -34,8 +34,10 @@ Profile >> addReadbleForHistorial: aBook [
 ]
 
 { #category : #accessing }
-Profile >> favorites [
-	^ favorites
+Profile >> favorites: aUser [
+	aUser isAdmin
+		ifTrue: [ ^ favorites ].
+	^ favorites reject: [ :book | book isExpired ]
 ]
 
 { #category : #accessing }
