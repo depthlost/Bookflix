@@ -66,7 +66,6 @@ AddAuthorComponent >> renderNameOn: html [
 				placeholder: 'Nombre';
 				autofocus;
 				required;
-				attributeAt: 'minlength' put: '3';
 				on: #fullNameInput of: self.
 			errorByRegisteredName
 				ifTrue: [ self renderErrorByRegisteredNameOn: html ] ]

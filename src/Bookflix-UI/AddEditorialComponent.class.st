@@ -66,7 +66,6 @@ AddEditorialComponent >> renderNameOn: html [
 				placeholder: 'Nombre';
 				autofocus;
 				required;
-				attributeAt: 'minlength' put: '3';
 				on: #nameInput of: self.
 			errorByRegisteredName
 				ifTrue: [ self renderErrorByRegisteredNameOn: html ] ]
