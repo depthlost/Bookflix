@@ -84,7 +84,7 @@ Bookflix >> getAllAuthors [
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllBooks [
-	^ Book selectAll reject: [ :book | book isExpired ]
+	^ Book selectAll
 ]
 
 { #category : #'as yet unclassified' }
@@ -99,12 +99,12 @@ Bookflix >> getAllGenders [
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllNovelty [
-	^ Novelty selectAll reject: [ :book | book isExpired ]
+	^ Novelty selectAll
 ]
 
 { #category : #'as yet unclassified' }
 Bookflix >> getAllReadables [
-	^ Readable selectAll reject: [ :book | book isExpired ]
+	^ Readable selectAll
 ]
 
 { #category : #'as yet unclassified' }
@@ -147,7 +147,8 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 { #category : #accessing }
 Bookflix >> recordsBetween: aDate1 and: aDate2 [
 	^ self getAllUsers
-		select: [ :user | user registrationDate between: aDate1 and: aDate2 ]
+		select:
+			[ :user | (user registrationDate between: aDate1 and: aDate2) & user isAdmin not ]
 ]
 
 { #category : #removing }
