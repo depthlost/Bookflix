@@ -19,7 +19,8 @@ BookHistoryItemComponent >> callComponent: aComponent [
 
 { #category : #callbacks }
 BookHistoryItemComponent >> onClick [
-	callComponent call: (BookDetailComponent with: element book)
+	element book isExpired
+		ifFalse: [ callComponent call: (BookDetailComponent with: element book) ]
 ]
 
 { #category : #private }
