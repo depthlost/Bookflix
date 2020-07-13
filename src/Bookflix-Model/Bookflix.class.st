@@ -147,7 +147,8 @@ Bookflix >> getUserWithEmail: anEmail andPassword: aPassword [
 { #category : #accessing }
 Bookflix >> recordsBetween: aDate1 and: aDate2 [
 	^ self getAllUsers
-		select: [ :user | user registrationDate between: aDate1 and: aDate2 ]
+		select:
+			[ :user | (user registrationDate between: aDate1 and: aDate2) & user isAdmin not ]
 ]
 
 { #category : #removing }
