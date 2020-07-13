@@ -119,6 +119,13 @@ Bookflix >> getBooksFor: aUser [
 ]
 
 { #category : #'as yet unclassified' }
+Bookflix >> getNoveltysFor: aUser [
+	aUser isAdmin
+		ifTrue: [ ^ Advance selectAll ].
+	^ Advance selectAll reject: [ :book | book isExpired ]
+]
+
+{ #category : #'as yet unclassified' }
 Bookflix >> getUserWithEmail: aEmail [
 	^ self getAllUsers detect: [ :user | user email = aEmail ]
 ]
