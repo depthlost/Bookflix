@@ -6,7 +6,7 @@ Class {
 
 { #category : #get }
 HomeComponentNoveltyState >> getReadablesComponents [
-	^ Bookflix instance getAllNovelty
+	^ (Bookflix instance getNoveltysFor: homeComponent session user)
 		collect: [ :each | NoveltyComponentProxy with: each in: homeComponent ]
 ]
 

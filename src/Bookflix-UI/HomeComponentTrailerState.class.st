@@ -6,9 +6,7 @@ Class {
 
 { #category : #get }
 HomeComponentTrailerState >> getReadablesComponents [
-	"Bookflix instance getAllAdvances"
-
-	^ Advance selectAll
+	^ (Bookflix instance getAdvancesFor: homeComponent session user)
 		collect: [ :each | TrailerComponentProxy with: each in: homeComponent ]
 ]
 

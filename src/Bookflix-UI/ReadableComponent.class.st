@@ -49,7 +49,9 @@ ReadableComponent >> renderBodyOn: html [
 				renderTitleOn: html;
 				renderSubtitleOn: html;
 				renderDescriptionOn: html;
-				renderInformationButtonOn: html ]
+				renderInformationButtonOn: html.
+			readable isExpired
+				ifTrue: [ self renderExpiredMessageOn: html ] ]
 ]
 
 { #category : #rendering }
@@ -71,6 +73,15 @@ ReadableComponent >> renderDescriptionOn: html [
 	html paragraph
 		class: 'card-text';
 		with: (self getReadableDescriptionWithMaxLength: 150)
+]
+
+{ #category : #rendering }
+ReadableComponent >> renderExpiredMessageOn: html [
+	html div
+		class: 'd-flex justify-content-end';
+		with: [ html small
+				class: 'text-muted';
+				with: 'Vencido' ]
 ]
 
 { #category : #rendering }

@@ -24,7 +24,8 @@ HomeComponentBookState >> children [
 
 { #category : #private }
 HomeComponentBookState >> getBooks [
-	^ searchComponent content ifNil: [ Bookflix instance getAllBooks ]
+	^ searchComponent content
+		ifNil: [ Bookflix instance getBooksFor: homeComponent session user ]
 ]
 
 { #category : #get }
