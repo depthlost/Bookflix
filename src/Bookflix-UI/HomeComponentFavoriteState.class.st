@@ -6,7 +6,8 @@ Class {
 
 { #category : #get }
 HomeComponentFavoriteState >> getReadablesComponents [
-	^ homeComponent session profile favorites
+	^ (homeComponent session profile
+		favorites: homeComponent session user)
 		collect: [ :each | BookComponentProxy with: each in: homeComponent ]
 ]
 

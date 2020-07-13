@@ -45,8 +45,8 @@ SetBookComponent >> updateBook [
 		imageURL: imageUrlInput;
 		author: authorInput;
 		editorial: editorialInput;
-		updateChapters: contentInputComponent content.
-	"updateGenders: gendersInput;"
+		updateChapters: contentInputComponent content;
+		updateGenders: gendersInput.
 	book isCompleteBook
 		ifFalse: [ book totalChapters: contentInputComponent chaptersQuantityInput ].
 	^ book
