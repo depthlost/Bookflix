@@ -9,6 +9,11 @@ Class {
 	#category : #'Bookflix-Model'
 }
 
+{ #category : #testing }
+Profile class >> isVoyageRoot [
+	^ true
+]
+
 { #category : #accessing }
 Profile class >> name: aName [
 	^ self new name: aName

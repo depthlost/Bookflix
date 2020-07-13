@@ -150,6 +150,7 @@ User >> removeProfile: aProfile [
 	(profiles includes: aProfile)
 		ifFalse: [ ^ self ].
 	profiles remove: aProfile.
+	aProfile remove.
 	self save
 ]
 
